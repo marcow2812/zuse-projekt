@@ -6,3 +6,24 @@ Projektarbeit
 
 <h2>Projektplanung</h2>
 Ziel ist es, ein python-basiertes Programm zu schreiben, welches durch Zugriff auf die Kamera einen Würfel erkennt und darauf auf dem Bildschirm 3D-Objekt projeziert.
+
+<h2>Einrichtung der Umgebung</h2>
+<p>Python (vorinstalliert)</p>
+<p>sudo apt-get install pip</p>
+
+<p>Virtuelle Umgebung herunterladen und erstellen</p>
+<p>sudo apt install python3.12-venv</p>
+<p>python3 -m venv venv</p>
+<p>source venv/bin/activate</p>
+
+<p>pip install opencv-contrib-python numpy</p>
+
+```bash
+sudo apt-get update
+
+```markdown
+Führe den Befehl `pip install numpy` aus, um NumPy zu installieren.
+
+```python
+import cv2
+print("Hallo Welt!")
