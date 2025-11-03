@@ -18,12 +18,26 @@ Ziel ist es, ein python-basiertes Programm zu schreiben, welches durch Zugriff a
 
 <p>pip install opencv-contrib-python numpy</p>
 
-```bash
+<h2>Formatierungsversuche</h2>
+
+~~~bash
+pip install numpy
+python3 main.py
+~~~
+
+~~~bash
 sudo apt-get update
+~~~
 
-```markdown
+<p>Weitere Tests</p>
+
+~~~markdown
 Führe den Befehl `pip install numpy` aus, um NumPy zu installieren.
+~~~
 
-```python
+~~~python
 import cv2
 print("Hallo Welt!")
+~~~
+
+<p>Ende</p>
