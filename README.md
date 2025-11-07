@@ -20,7 +20,7 @@ Für die vereinfachte Installation der Pakete installieren wir die Bibliothek **
 ```
 sudo apt-get install pip
 ```
-> [!NOTE]
+> [!TIP]
 > Im folgenden Schritt wird eine virtuelle Umgebung für Python verwendet, um die benötigten Bibliotheken korrekt installieren zu können. Dieser Schritt ist nicht zwingend notwendig, wird allerdings für eine korrekte Installation der Pakete empfohlen.
 
 Anschließend installieren wir die **virtuelle Umgebung** für Python:
@@ -60,3 +60,8 @@ pip install opencv-contrib-python numpy
 <a href="https://github.com/habbes/opencv-web-video">Github Web Video</a>
 <a href="https://docs.opencv.org/4.x/js_video_display.html">OpenCV Video Chapture</a>
 <a href="https://stackoverflow.com/questions/75615296/open-cv-js-to-access-webcam-and-show-output">Stackoverflow Webcame Integration</a>
+
+<br>
+
+<a href="https://pixabay.com/de/sound-effects/">Lizenzfreie Sounds</a>
+<a href="https://pixabay.com/de/3d-models/">Lizenzfreie 3D-Objekte</a>
