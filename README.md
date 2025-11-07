@@ -40,4 +40,11 @@ import cv2
 print("Hallo Welt!")
 ~~~
 
+<h2>Weitere Links</h2>
+
+<a href="https://docs.opencv.org/4.x/d0/d84/tutorial_js_usage.html">docs.opencv.org</a>
+<a href="https://github.com/habbes/opencv-web-video">Github Web Video</a>
+<a href="https://docs.opencv.org/4.x/js_video_display.html">OpenCV Video Chapture</a>
+<a href="https://stackoverflow.com/questions/75615296/open-cv-js-to-access-webcam-and-show-output">Stackoverflow Webcame Integration</a>
+
 <p>Ende</p>
