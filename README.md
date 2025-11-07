@@ -19,43 +19,23 @@ Für die vereinfachte Installation der Pakete installieren wir die Bibliothek **
 sudo apt-get install pip
 ```
 > [!NOTE]
-> Im folgenden Schritt wird eine virtuelle Umgebung für Python verwendet, um die benötigten Bibliotheken korrekt installieren zu können. Dieser Schritt ist nicht zwingend notwendig, wird allerdings empfohlen.
+> Im folgenden Schritt wird eine virtuelle Umgebung für Python verwendet, um die benötigten Bibliotheken korrekt installieren zu können. Dieser Schritt ist nicht zwingend notwendig, wird allerdings für eine korrekte Installation der Pakete empfohlen.
 
 Anschließend installieren wir die **virtuelle Umgebung** für Python:
-```sudo apt install python3.12-venv
+```
+sudo apt install python3.12-venv
 python3 -m venv venv
-source venv/bin/activate```
-
-<p>pip install opencv-contrib-python numpy</p>
-
-
-## Formatierungsversuche
-
-Einzelne `Wörter` formatieren
-
-```
-pip install ...
+source venv/bin/activate
 ```
 
-~~~bash
-pip install numpy
-python3 main.py
-~~~
+Im nächsten Schritt können wir die benötigten Bibliotheken ***OpenCV-Contrib** und **Numpy** installieren:
+```
+pip install opencv-contrib-python numpy
+```
 
-~~~bash
-sudo apt-get update
-~~~
 
-<p>Weitere Tests</p>
+## Formatierungsversuche 
 
-~~~markdown
-Führe den Befehl `pip install numpy` aus, um NumPy zu installieren.
-~~~
-
-~~~python
-import cv2
-print("Hallo Welt!")
-~~~
 
 > [!NOTE]
 > Useful information that users should know, even when skimming content.
@@ -78,5 +58,3 @@ print("Hallo Welt!")
 <a href="https://github.com/habbes/opencv-web-video">Github Web Video</a>
 <a href="https://docs.opencv.org/4.x/js_video_display.html">OpenCV Video Chapture</a>
 <a href="https://stackoverflow.com/questions/75615296/open-cv-js-to-access-webcam-and-show-output">Stackoverflow Webcame Integration</a>
-
-<p>Ende</p>
