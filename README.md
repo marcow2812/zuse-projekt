@@ -1,7 +1,9 @@
 # Zuse-Projektarbeit
 <div align=right>
+<img src="https://www.jugend-forscht.de/typo3temp/_processed_/0/2/csm_Jugend_forscht_Plakat_2026_6a8bd73170.png" style="height:80px">
 <img src="https://www.konrad-zuse-schule.de/_assets/e4457f0bd19a5627ff505285c525e2c0/Images/logo_text.png" style="height:80px">
 </div>
+<span style="color:#CCCCCC">© Stiftung Jugend forscht e. V.</span>
 
 
 ## Projektplanung
