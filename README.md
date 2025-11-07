@@ -2,19 +2,29 @@
 <div align=right>
 <img src="https://www.konrad-zuse-schule.de/_assets/e4457f0bd19a5627ff505285c525e2c0/Images/logo_text.png" style="height:80px">
 </div>
-Projektarbeit
+
 
 ## Projektplanung
 Ziel ist es, ein python-basiertes Programm zu schreiben, welches durch Zugriff auf die Kamera einen Würfel erkennt und darauf auf dem Bildschirm 3D-Objekt projeziert.
 
 ## Einrichtung der Umgebung
-<p>Python (vorinstalliert)</p>
-<p>sudo apt-get install pip</p>
+Sollte **Python** auf dem Gerät nicht vorinstalliert sein, kann das Programm unter Linux mit dem folgenden Befehl installiert werden:
+```
+sudo apt-get update
+sudo apt-get upgrade
+sudo apt install python3
+```
+Für die vereinfachte Installation der Pakete installieren wir die Bibliothek **Pip**:
+```
+sudo apt-get install pip
+```
+> [!NOTE]
+> Im folgenden Schritt wird eine virtuelle Umgebung für Python verwendet, um die benötigten Bibliotheken korrekt installieren zu können. Dieser Schritt ist nicht zwingend notwendig, wird allerdings empfohlen.
 
-<p>Virtuelle Umgebung herunterladen und erstellen</p>
-<p>sudo apt install python3.12-venv</p>
-<p>python3 -m venv venv</p>
-<p>source venv/bin/activate</p>
+Anschließend installieren wir die **virtuelle Umgebung** für Python:
+```sudo apt install python3.12-venv
+python3 -m venv venv
+source venv/bin/activate```
 
 <p>pip install opencv-contrib-python numpy</p>
 
