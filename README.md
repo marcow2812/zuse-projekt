@@ -4,10 +4,10 @@
 </div>
 Projektarbeit
 
-<h2>Projektplanung</h2>
+## Projektplanung
 Ziel ist es, ein python-basiertes Programm zu schreiben, welches durch Zugriff auf die Kamera einen Würfel erkennt und darauf auf dem Bildschirm 3D-Objekt projeziert.
 
-<h2>Einrichtung der Umgebung</h2>
+## Einrichtung der Umgebung
 <p>Python (vorinstalliert)</p>
 <p>sudo apt-get install pip</p>
 
@@ -18,7 +18,14 @@ Ziel ist es, ein python-basiertes Programm zu schreiben, welches durch Zugriff a
 
 <p>pip install opencv-contrib-python numpy</p>
 
-<h2>Formatierungsversuche</h2>
+
+## Formatierungsversuche
+
+Einzelne `Wörter` formatieren
+
+```
+pip install ...
+```
 
 ~~~bash
 pip install numpy
@@ -39,6 +46,21 @@ Führe den Befehl `pip install numpy` aus, um NumPy zu installieren.
 import cv2
 print("Hallo Welt!")
 ~~~
+
+> [!NOTE]
+> Useful information that users should know, even when skimming content.
+
+> [!TIP]
+> Helpful advice for doing things better or more easily.
+
+> [!IMPORTANT]
+> Key information users need to know to achieve their goal.
+
+> [!WARNING]
+> Urgent info that needs immediate user attention to avoid problems.
+
+> [!CAUTION]
+> Advises about risks or negative outcomes of certain actions.
 
 <h2>Weitere Links</h2>
 
