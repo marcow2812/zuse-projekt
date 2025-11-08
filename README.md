@@ -36,10 +36,10 @@ wenn sie etwas anfassen können und eigene Erfahrungen sammeln können.
 
 ```mermaid
 graph TD;
-    Würfel erkannt-->Ja;
-    Würfel erkannt-->Nein;
-    Ja-->...;
-    Nein-->...;
+    Erkannt-->Ja;
+    Erkannt-->Nein;
+    Ja-->Weiter;
+    Nein-->Weiter;
 ```
 
 # Einrichtung der Umgebung
