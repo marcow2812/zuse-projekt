@@ -1,4 +1,4 @@
-# Bibliotheken importieren
+# OpenCV, Numpy
 import cv2
 import numpy as np
 import math
@@ -86,6 +86,7 @@ def mat_to_euler_degrees(R):
         return d
     return deg360(y), deg360(x), deg360(z)  # (yaw, pitch, roll)
 
+
 # ----------------------------
 # Cube <-> Marker Geometrie (relativ zum Mittelpkt. des Würfels)
 # ----------------------------
@@ -141,7 +142,10 @@ def build_marker_to_cube_map(marker_length):
 # ----------------------------
 def create_cube_mesh(size=0.05): # Seitenlänge 5cm
     # centered at origin
-    h = size/1 # Größe des Würfelobjektes (size/2 für Hälfte, size/1 für volle Seite)
+
+    # Anker hier #
+
+    h = size/2 # Größe des Würfelobjektes (size/2 für Hälfte, size/1 für volle Seite)
     vertices = np.array([
         [-h,-h,-h], [ h,-h,-h], [ h, h,-h], [-h, h,-h],  # back face z=-h
         [-h,-h, h], [ h,-h, h], [ h, h, h], [-h, h, h],  # front face z=+h
@@ -157,14 +161,21 @@ def create_cube_mesh(size=0.05): # Seitenlänge 5cm
     return vertices, faces
 
 # ----------------------------
-# Haupt-Skript
+# Hier beginnt der zusammengeführte Haupt-Teil
 # ----------------------------
+# Wir übernehmen und kombinieren die Logik aus:
+# - aruco_marker_image.py (Bild-Overlay, Metadaten, UI)
+# - aruco_marker_ki-generiert.py (Pose, Quaternionen, 3D-Würfel-Projektion)
+#
+# Ziel: 2D-Bilder im Hintergrund (auf Marker projiziert), 3D-Würfel im Vordergrund (zentriert auf gemittelten Würfelpose).
+#
+# Hinweis: Alle Kommentare aus beiden Quelldateien wurden beibehalten.
+
 def main():
     # Kamera einbinden & öffnen
     camera = cv2.VideoCapture(0)
-    # Prüfen, ob Webcame geöffnet wurde
     if not camera.isOpened():
-        print("[ERROR] Webcam konnte nicht geöffnet werden")
+        print("[ERROR] Webcame konnte nicht geöffnet werden")
         return
 
     # --- ArUco Dictionary und Detector ---
@@ -174,8 +185,7 @@ def main():
     except AttributeError:
         parameters = cv2.aruco.DetectorParameters()  # neuere OpenCV-Version
 
-
-    # --- Beispiel Kamerakalibrierung (anpassen!) ---
+    # Kamera-Kalibrierung (Beispielwerte)
     camera_matrix = np.array([[800, 0, 320],
                               [0, 800, 240],
                               [0, 0, 1]], dtype=float)
@@ -183,58 +193,178 @@ def main():
 
     # Marker / Würfel Geometrie (in Metern)
     marker_length = 0.055  # <- reale Marker-Kantenlänge in Metern (ANPASSEN)
+
+    # Marker->Würfel Map
     marker_to_cube = build_marker_to_cube_map(marker_length)
 
-    # 3D Objekt erstellen
+    # 3D Objekt erstellen (Würfel)
     mesh_vertices, mesh_faces = create_cube_mesh(size=marker_length*0.6)
 
-    window_name = "ArUco Cube Pose + 3D-Projektion"
-    cv2.namedWindow(window_name, cv2.WINDOW_NORMAL)
-    cv2.resizeWindow(window_name, 1280, 720)
-
+    # --- Overlay-Bilder / Metadaten (aus aruco_marker_image.py) ---
     # --- Overlay-Bild laden (mit Alphakanal) ---
     # overlay1 = cv2.imread("overlay.png", cv2.IMREAD_UNCHANGED)
-    #if overlay1 is None:
+    # if overlay1 is None:
     #    print("Fehler: Bild overlay.png nicht gefunden.")
     #    exit()
     # overlay2 = cv2.imread("perry.png", cv2.IMREAD_UNCHANGED)
-    #if overlay2 is None:
+    # if overlay2 is None:
     #    print("Fehler: Bild perry.png nicht gefunden.")
     #    exit()
+
+    imgList = ["./img/black.png", "./img/black.png", "./img/black.png", "./img/black.png", "./img/black.png", "./img/black.png"]
+
+    # imgList2 = [["img", "./img/berlin.png"], ["color", "red"], ["none"]]
+    # Abfrage: print(imgList2[0][1])
+
+    # imgList3 = {
+    #    "1": "./img/berlin.png",
+    #    "2": "red",
+    #    "3": "none",
+    # }
+    # print(imgList3["1"])
+
+
+    # Zuordnung
+    currentInformation = {
+        # 3D-Objekt
+        "oId": "O-123456",
+        "oTitle": "Mittelalterliche Architektur",
+        "oAccessed": "08.11.2025",
+        "oFilePath": "./3d/medieval-architecture-2725.glb",
+        "oFileURL": "https://pixabay.com/de/3d-models/mittelalterliche-architektur-2725/",
+        "oCreatorName": "SerenityArt",
+        "oCreatorLink": "https://pixabay.com/de/users/serenityart-38195676/?utm_source=link-attribution&utm_medium=referral&utm_campaign=object3d&utm_content=2725",
+        "oSourceName": "Pixabay",
+        "oSourceLink": "https://pixabay.com/de//?utm_source=link-attribution&utm_medium=referral&utm_campaign=object3d&utm_content=2725",
+                
+        # Musik
+        "mTitle": "noMittelalterliche Musikne",
+        "mId": "M-123456",
+        "mAccessed": "08.11.2025",
+        "mFilePath": "./music/musik-hintergrund-142725.mp3",
+        "mFileURL": "https://pixabay.com/music/folk-musik-hintergrund-142725/",
+        "mStartAt": 5,
+        "mCreatorName": "OTH Amberg-Weiden",
+        "mCreatorLink": "https://pixabay.com/users/dueg-oth-34165349/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=142725",
+        "mSourceName": "Pixabay",
+        "mSourceLink": "https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=142725",
+
+        # Würfelseiten
+        "side1": "./img/black.png",
+        "side2": "./img/black.png",
+        "side3": "./img/black.png",
+        "side4": "./img/black.png",
+        "side5": "./img/black.png",
+        "side6": "./img/black.png"
+
+        # "apple": {"field1": "./a", "field2": "red", "field3": "fruit"},
+    }
+
+    window_name = "ArUco Marker Bild-Overlay + Cube"
+    cv2.namedWindow(window_name, cv2.WINDOW_NORMAL)
+    cv2.resizeWindow(window_name, 1280, 720)
 
     while True:
         ret, frame = camera.read()
         if not ret:
             print("[ERROR] Kamerabild konnte nicht gelesen werden")
             break
+
         gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 
         # --- Marker erkennen ---
         corners, ids, rejected = cv2.aruco.detectMarkers(gray, aruco_dict, parameters=parameters)
 
+        # Wir sammeln die Pose-Informationen pro Marker für spätere Würfel-Mittelung
         cube_poses = []  # Liste von (R_cam_cube, t_cam_cube) aus jedem detektierten Marker
 
+        # Erst: rendern (projizieren) wir alle 2D-Overlays auf die erkannten Marker (HINTERGRUND)
         if ids is not None:
             ids = ids.flatten()
             for i, c in enumerate(corners):
                 marker_id = int(ids[i])
-                # Draw marker outlines
-                pts = c.reshape((4,2)).astype(int)
-                cv2.polylines(frame, [pts], True, (0,255,255), 2)
-                for p in pts:
-                    cv2.circle(frame, tuple(p), 3, (0,0,255), -1)
 
-                # Marker-Pose relativ zur Kamera
+                # --- Eckpunkte vorbereiten ---
+                corner = c.reshape((4, 2)).astype(np.float32)
+                pts_int = corner.astype(int)
+                (topLeft, topRight, bottomRight, bottomLeft) = pts_int
+
+                # Rahmen (gelb)
+                cv2.polylines(frame, [pts_int], isClosed=True, color=(0, 255, 255), thickness=2)
+
+                # Eckpunkte (rot)
+                for (x, y) in pts_int:
+                    cv2.circle(frame, (x, y), 3, (0, 0, 255), -1)
+
+                # --- Mittelpunkt markieren (blau) ---
+                centerX = int((topLeft[0] + bottomRight[0]) / 2)
+                centerY = int((topLeft[1] + bottomRight[1]) / 2)
+                cv2.circle(frame, (centerX, centerY), 5, (255, 0, 0), -1)
+
+                # Marker-ID anzeigen (grün)
+                cv2.putText(frame, f"ID: {marker_id}", (topLeft[0], topLeft[1] - 10),
+                            cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0, 0, 255), 2)
+
+                # Marker-Pose relativ zur Kamera (für 3D-Berechnungen)
                 rvec, tvec, _ = cv2.aruco.estimatePoseSingleMarkers([c], marker_length, camera_matrix, dist_coeffs)
                 rvec = rvec[0].reshape((3,1))
                 tvec = tvec[0].reshape((3,1))
                 R_cam_m = rodrigues_to_mat(rvec)
                 t_cam_m = tvec.reshape(3)
 
-                # Falls Marker nicht in our map: skip
+                # Wenn ein Overlay-Bild für diese Marker-ID vorhanden ist, lade und projiziere es
+                overlay_path = None
+                try:
+                    # imgList index basiert auf markerId-1; guard für IndexError
+                    overlay_path = imgList[(marker_id - 1)]
+                except Exception:
+                    overlay_path = None
+
+                if overlay_path is not None:
+                    overlay = cv2.imread(overlay_path, cv2.IMREAD_UNCHANGED)
+                    if overlay is None:
+                        # Overlay nicht gefunden => Hinweis, aber wir machen weiter
+                        # Fehler: Bild konnte nicht gefunden oder geladen werden
+                        print(f"Fehler: Bild '{overlay_path}' konnte nicht gefunden oder geladen werden")
+                    else:
+                        # Overlay-Bild perspektivisch auf Marker projizieren (HINTERGRUND)
+                        h, w = overlay.shape[:2]
+                        src_pts = np.array([[0, 0],
+                                            [w - 1, 0],
+                                            [w - 1, h - 1],
+                                            [0, h - 1]], dtype=np.float32)
+                        dst_pts = corner  # float32 4x2
+                        M = cv2.getPerspectiveTransform(src_pts, dst_pts)
+
+                        # Anker hier #
+
+
+                        warped = cv2.warpPerspective(overlay, M, (frame.shape[1], frame.shape[0]), flags=cv2.INTER_LINEAR, borderMode=cv2.BORDER_CONSTANT, borderValue=(0,0,0,0))
+
+                        # Alphamischung
+                        if warped.shape[2] == 4:  # PNG mit Alpha
+                            alpha = warped[:, :, 3].astype(float) / 255.0
+                            alpha_3 = cv2.merge([alpha, alpha, alpha])
+                            overlay_rgb = warped[:, :, :3].astype(float)
+                            background = frame.astype(float)
+                            # sichere Alpha-Blending: nur dort mischen, wo alpha > 0
+                            mask = alpha_3 > 0.01
+                            blended = background.copy()
+                            blended[mask] = overlay_rgb[mask] * alpha_3[mask] + background[mask] * (1 - alpha_3[mask])
+                            frame = np.clip(blended, 0, 255).astype(np.uint8)
+
+                        else:
+                            # Falls kein Alpha: leichte Mischung
+                            frame = cv2.addWeighted(frame, 1.0, warped, 0.6, 0)
+
+                # Falls Marker nicht in our map: skip 3D-calc for cube pose
                 if marker_id not in marker_to_cube:
+                    # print a small note in the frame
+                    cv2.putText(frame, f"Marker {marker_id} not in cube-map", (pts_int[0][0], pts_int[0][1] + 20),
+                                cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255), 1)
                     continue
 
+                # Berechne Marker->Würfel Transform (wie in ki-generiert)
                 R_m_cub, t_m_cub = marker_to_cube[marker_id]  # R and t in cube frame
 
                 # R_cam_cube = R_cam_m * R_m_cub^{-1}  (R_m_cub^{-1} == R_m_cub.T)
@@ -243,13 +373,10 @@ def main():
 
                 cube_poses.append((R_cam_cube, t_cam_cube))
 
-                # draw axis for marker
+                # draw axis for marker (sichtbar in Vordergrund - bleibt sichtbar)
                 cv2.drawFrameAxes(frame, camera_matrix, dist_coeffs, rvec, tvec, marker_length*0.5)
 
-                cv2.putText(frame, f"ID:{marker_id}", (pts[0][0], pts[0][1]-10),
-                            cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0,255,0), 2)
-
-        # Falls mehrere Marker: mitteln (Rotation über Quaternion)
+        # Jetzt: 3D-Projektion des Würfels basierend auf den gemessenen cube_poses (VORDERGRUND)
         if len(cube_poses) > 0:
             rots = []
             trans = []
@@ -273,7 +400,7 @@ def main():
 
             # 3D Objekt (Mesh) im Würfelzentrum -> transformieren und projizieren
             # Mesh im Würfel-Koordinatensystem platzieren (Zukunft: wende zusätzlich lokale Rotation an)
-            # Punkte in world/camera koordinates: X_cam = R_avg * X_cube + t_avg
+            # Punkte in camera coordinates: X_cam = R_avg * X_cube + t_avg
             verts_world = (R_avg @ mesh_vertices.T).T + t_avg[np.newaxis,:]
             # Projektion
             imgpts, _ = cv2.projectPoints(verts_world, np.zeros(3), np.zeros(3), camera_matrix, dist_coeffs)
@@ -291,7 +418,7 @@ def main():
                 poly = np.array([imgpts[idx] for idx in face], dtype=np.int32)
                 # einfache Farbgebung, abhängig von face id
                 color = tuple([int(120 + (fi*30)%120), int(50 + (fi*50)%200), int(200 - (fi*20)%120)])
-                # fill polygon
+                # fill polygon (dies legt die 3D-Projektion in den Vordergrund, über den Overlays)
                 cv2.fillConvexPoly(frame, poly, color)
                 cv2.polylines(frame, [poly], True, (10,10,10), 1)
 
@@ -303,9 +430,16 @@ def main():
         else:
             cv2.putText(frame, "Keine ausreichende Marker-Pose erkannt", (10,30), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0,0,255), 2)
 
+        # Small Screen / Fullscreen Optionen aus aruco_marker_image.py (kommentiert beibehalten)
+        # cv2.imshow("ArUco Marker Bild-Overlay", frame)
+        # Fullscreen
+        #window_name = "ArUco Marker Bild-Overlay"
+        #cv2.namedWindow(window_name, cv2.WINDOW_NORMAL)
+        #cv2.setWindowProperty(window_name, cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN)
+
         cv2.imshow(window_name, frame)
-        key = cv2.waitKey(1) & 0xFF
-        if key == ord('x'):
+
+        if cv2.waitKey(1) & 0xFF == ord('x'):
             break
 
     camera.release()
