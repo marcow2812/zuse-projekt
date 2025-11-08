@@ -73,6 +73,11 @@ Zum Abspielen von .mp3 Dateien verwenden wir `pygame`:
 pip install pygame
 ```
 
+Um `3D-Objekte` einzubinden, verwenden wir die folgenden Bibliotheken:
+```
+pip install trimesh pyglet
+```
+
 ## Projektablauf
 
 Projekt-Ablauf:
