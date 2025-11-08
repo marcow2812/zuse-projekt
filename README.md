@@ -9,7 +9,8 @@
 # Projektplanung
 
 > [!IMPORTANT]
-> Der AR-Cube sowie alle Funktionen befinden sich derzeit noch in der Entwicklungsphase.
+> Der AR-Cube sowie alle Funktionen befinden sich derzeit noch in der Entwicklungsphase.<br>
+Der AR-Cube ist ein Non-Profit-Projekt der Konrad-Zuse-Schule Hünfeld.
 <!-- Pilotprojekt laufen derzeit an der ... -->
 <!-- Sind Sie Schüler*in, Lehrer*in oder Direktor*in einer Schule in Deutschland? Bei Interesse an einer Pilotphase wenden Sie sich gerne an ... -->
 
@@ -17,8 +18,6 @@
 
 Ziel ist die Entwicklung eines python-basierten Programms, welches durch Zugriff auf die eingebaute Kamera einen Würfel anhand von ArUco Markern erkennt und auf dem Bildschirm 3D-Objekte auf den Würfel projeziert. Durch Drehung des Würfels können die Objekte von verschiedenen Seiten betrachtet werden. Zusätzlich können zum angezeigten Objekt indivudelle Sounds abgespielt und hilfreiche Informationen zum Lernen angezeigt werden.
 
-> [!TIP]
-> Der AR-Cube ist ein Non-Profit-Projekt der Konrad-Zuse-Schule Hünfeld.<br>
 
 
 ## Hintergrund
