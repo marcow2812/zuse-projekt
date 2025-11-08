@@ -138,9 +138,9 @@ def build_marker_to_cube_map(marker_length):
 # ----------------------------
 # 3D Mesh: kleines Demonstrationsobjekt (Würfel)
 # ----------------------------
-def create_cube_mesh(size=0.05): # Seitenlänge 5cm
+def create_cube_mesh(size=0.04):
     # centered at origin
-    h = size/1 # Größe des Würfelobjektes (size/2 für Hälfte, size/1 für volle Seite)
+    h = size/2
     vertices = np.array([
         [-h,-h,-h], [ h,-h,-h], [ h, h,-h], [-h, h,-h],  # back face z=-h
         [-h,-h, h], [ h,-h, h], [ h, h, h], [-h, h, h],  # front face z=+h
