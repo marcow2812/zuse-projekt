@@ -69,6 +69,11 @@ Im nächsten Schritt können wir die benötigten Bibliotheken `OpenCV-Contrib` u
 pip install opencv-contrib-python numpy
 ```
 
+Zum Abspielen von .mp3 Dateien verwenden wir `pygame`:
+```
+pip install pygame
+```
+
 ## Projektablauf
 
 Projekt-Ablauf:
