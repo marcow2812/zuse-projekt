@@ -6,12 +6,12 @@
 <!-- <img src="https://www.jugend-forscht.de/typo3temp/_processed_/0/2/csm_Jugend_forscht_Plakat_2026_6a8bd73170.png" style="height:80px"> -->
 <!-- <span style="color:#CCCCCC">© Stiftung Jugend forscht e. V.</span> -->
 
+# Projektplanung
+
 > [!IMPORTANT]
 > Der AR-Cube sowie alle Funktionen befinden sich derzeit noch in der Entwicklungsphase.
 <!-- Pilotprojekt laufen derzeit an der ... -->
 <!-- Sind Sie Schüler*in, Lehrer*in oder Direktor*in einer Schule in Deutschland? Bei Interesse an einer Pilotphase wenden Sie sich gerne an ... -->
-
-# Projektplanung
 
 **Bildung neu gedacht - AR-Würfel für Grundschulen und weiterführende Bildungseinrichtungen**
 
