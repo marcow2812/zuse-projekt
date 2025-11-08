@@ -64,7 +64,7 @@ python3 -m venv venv
 source venv/bin/activate
 ```
 
-Im nächsten Schritt können wir die benötigten Bibliotheken `OpenCV-Contrib` und `Numpy`**` installieren:
+Im nächsten Schritt können wir die benötigten Bibliotheken `OpenCV-Contrib` und `Numpy` installieren:
 ```
 pip install opencv-contrib-python numpy
 ```
