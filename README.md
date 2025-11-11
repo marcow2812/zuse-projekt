@@ -98,13 +98,20 @@ Drehung und Winkel berechnen
 
 ## Auswertung und Ergebnisse
 
+
 > [!NOTE]
 > ArUco Marker werden zuverlässiger erkannt, wenn sie von einem weißen Rand
 umgeben sind (Kontrast muss vorliegen). Mit einem schwarzen Hintergrund kann
-der Marker nicht erkannt oder gelesen werden. Die Zuverlässigkeit der Erkennung ist abhängig von der Auflösung der Kamera,
-den vorliegenden Lichtverhältnissen, der Größe des Würfels und teils von der
-Leistungsstärke des Geräts. Die Messung und Erkennung ist bei optimal vorliegenden Bedingungen auf bis
-zu 3 Meter zuverlässig.
+der Marker nicht erkannt oder gelesen werden. Die Messung und Erkennung ist bei optimal vorliegenden Bedingungen auf bis
+zu 3 Meter zuverlässig (Würfelgröße 5cm).
+
+> [!TIP]
+> Die Zuverlässigkeit der Erkennung ist abhängig von der Auflösung der Kamera,
+den vorliegenden Lichtverhältnissen, der Größe der Marker und teils von der
+Leistungsstärke des Geräts.
+
+> [!NOTE]
+> Das Erzeugen von 3D-Objekten auf den Würfel ist möglich. Dabei verbraucht dieser Schritt eine hohe Leistung, was im getesteten Szenario die Erkennung nur alle 3 - 4 Sekunden ermöglicht (am Beispiel eines MacBooks 2020 mit Intel i5).
 
 
 <!-- 
