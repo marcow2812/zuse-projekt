@@ -9,8 +9,7 @@
 # Projektplanung
 
 > [!IMPORTANT]
-> Der AR-Cube sowie alle Funktionen befinden sich derzeit noch in der Entwicklungsphase.<br>
-Der AR-Cube ist ein Non-Profit-Projekt der Konrad-Zuse-Schule Hünfeld.
+> Der AR-Cube ist ein Non-Profit-Projekt der Konrad-Zuse-Schule Hünfeld. Alle Funktionen befinden sich derzeit noch in der Entwicklungsphase.<br>
 <!-- Pilotprojekt laufen derzeit an der ... -->
 <!-- Sind Sie Schüler*in, Lehrer*in oder Direktor*in einer Schule in Deutschland? Bei Interesse an einer Pilotphase wenden Sie sich gerne an ... -->
 
@@ -99,17 +98,13 @@ Drehung und Winkel berechnen
 
 ## Auswertung und Ergebnisse
 
-ArUco Marker werden zuverlässiger erkannt, wenn sie von einem weißen Rand
+> [!NOTE]
+> ArUco Marker werden zuverlässiger erkannt, wenn sie von einem weißen Rand
 umgeben sind (Kontrast muss vorliegen). Mit einem schwarzen Hintergrund kann
-der Marker nicht erkannt oder gelesen werden.
-
-Die Zuverlässigkeit der Erkennung ist abhängig von der Auflösung der Kamera,
+der Marker nicht erkannt oder gelesen werden. Die Zuverlässigkeit der Erkennung ist abhängig von der Auflösung der Kamera,
 den vorliegenden Lichtverhältnissen, der Größe des Würfels und teils von der
-Leistungsstärke des Geräts.
-
-Die Messung und Erkennung ist bei optimal vorliegenden Bedingungen auf bis
+Leistungsstärke des Geräts. Die Messung und Erkennung ist bei optimal vorliegenden Bedingungen auf bis
 zu 3 Meter zuverlässig.
-
 
 
 <!-- 
