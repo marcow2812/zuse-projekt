@@ -146,5 +146,5 @@ Leistungsstärke des Geräts.
 -->
 
 <div align=right>
-    <span style="color:#CCCCCC">Marco W., 2025</span>
+    # Marco W., 2025
 </div>
