@@ -21,10 +21,11 @@ Ziel ist die Entwicklung eines python-basierten Programms, welches durch Zugriff
 
 ## Hintergrund
 
-Jeder Schüler und jede Schülerin lernt auf eine andere Weise.
+Wie kann der Unterricht in Schulen spannender, abwechslungsreicher und lehrreicher werden? Wie können Kinder und Jugendliche selbstständig Themen entdecken und Neues lernen? Mit dieser Frage habe ich mich während meiner Projektarbeit auseinandergesetzt.
+Der Hintergrund ist, dass jeder Schüler und jede Schülerin auf eine andere Weise lernt.
 Manche bevorzugen es, Texte zu einem Thema zu lesen. Andere schauen sich
 Videos an und wieder andere können sich mit Objekten besser vertraut machen,
-wenn sie etwas anfassen können und eigene Erfahrungen sammeln können.
+wenn sie etwas anfassen können und eigene Eindrücke und Erfahrungen sammeln können.
 
 ## Projektablauf
 
@@ -143,3 +144,7 @@ Leistungsstärke des Geräts.
 <a href="https://pixabay.com/de/3d-models/">Lizenzfreie 3D-Objekte</a>
 
 -->
+
+<div style="text-align:right;color:#e6e6e6">
+    <span>Marco W., 2025</span>
+</div>
