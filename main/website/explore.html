@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <title>Modul | Projektarbeit</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+        <link rel="icon" type="image/png" href="./data/img/favicon.png">
+        <meta name="theme-color" content="#62A60E">
+
+        <meta property="og:title" content="Projekt | Konrad-Zuse-Schule Hünfeld">
+        <meta property="og:description" content="Der AR-Cube ist ein Non-Profit-Projekt der Konrad-Zuse-Schule Hünfeld. Alle Funktionen befinden sich derzeit noch in der Entwicklungsphase.">
+        <meta property="og:site_name" content="Projekt">
+        <meta property="og:type" content="website">
+        <meta property="og:locale" content="de_DE">
+        <meta property="og:image" content="https://www.antenne.de/media/cache/3/version/5/streamlogo_antenne_aby-v1.jpg/62d86d4f8f5af06a.jpg">
+        <meta property="og:image:alt" content="Alternativtext">
+        <meta property="og:image:type" content="image/jpeg">
+        <meta property="og:image:width" content="1200">
+        <meta property="og:image:height" content="630">
+
+        <link rel="stylesheet" href="./data/style.css">
+        <script language="javascript" type="text/javascript" src="./data/script.js"></script>
+    </head>
+    <body onload="loadPage()">
+        <div class="container" id="loadingPage">
+            <div class="loader"></div>
+        </div>
+        <div id="main">
+
+            <header>
+                <div class="burger" onclick="openNav()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+
+                <div id="mySidenav" class="sidenav">
+                    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                    <a href="#">About</a>
+                    <a href="#">Services</a>
+                    <a href="#">Clients</a>
+                    <a href="#">Contact</a>
+                </div>
+
+
+                <img src="./data/img/zuse_logo_small.png">
+
+                <span class="beta-span">Beta</span>
+            </header>
+
+            <video id="video" autoplay playsinline></video>
+
+            <div class="menu">
+                <span onclick="startWebcam()">Kamera öffnen</span>
+            </div>
+
+        </div>
+    </body>
+</html>
