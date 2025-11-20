@@ -134,6 +134,11 @@ Leistungsstärke des Geräts.
 
 -->
 
+## Verwendete Lizenzen
+
+<p>Bootstrap Icons - https://icons.getbootstrap.com</p>
+<p>Github Juan Mellado - https://github.com/jcmellado/js-aruco</p>
+
 <h2>Weitere Links</h2>
 
 <a href="https://docs.opencv.org/4.x/d0/d84/tutorial_js_usage.html">docs.opencv.org</a>
