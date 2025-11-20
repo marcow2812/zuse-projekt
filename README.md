@@ -138,6 +138,7 @@ Leistungsstärke des Geräts.
 
 <p>Bootstrap Icons - https://icons.getbootstrap.com</p>
 <p>Github Juan Mellado - https://github.com/jcmellado/js-aruco</p>
+<p>Freecodecamp - https://www.freecodecamp.org/news/how-to-check-internet-connection-status-with-javascript</p>
 
 <h2>Weitere Links</h2>
 
