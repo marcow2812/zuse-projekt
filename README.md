@@ -132,6 +132,8 @@ Leistungsstärke des Geräts.
 > [!CAUTION]
 > Advises about risks or negative outcomes of certain actions.
 
+-->
+
 <h2>Weitere Links</h2>
 
 <a href="https://docs.opencv.org/4.x/d0/d84/tutorial_js_usage.html">docs.opencv.org</a>
@@ -144,7 +146,7 @@ Leistungsstärke des Geräts.
 <a href="https://pixabay.com/de/sound-effects/">Lizenzfreie Sounds</a>
 <a href="https://pixabay.com/de/3d-models/">Lizenzfreie 3D-Objekte</a>
 
--->
+
 
 <div align=right>
     Marco W., 2025
