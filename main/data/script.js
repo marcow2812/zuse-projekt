@@ -120,3 +120,4 @@ async function checkInternetConnection()
 
     setTimeout(checkInternetConnection, 60000); // Alle 60 Sekunden prüfen
 }
+
