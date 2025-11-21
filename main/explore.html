@@ -90,6 +90,10 @@
       <span>Zugriff auf die Kamera</span>
       <br><br>
       <button class="btn" onclick="startTheWebcam()">Zugriff erlauben</button>
+      <br><br>
+      <span>Zugriff für die Audiowiedergabe</span>
+      <br><br>
+      <button class="btn" onclick="unlockAudio()">Zugriff erlauben</button>
     </div>
   </div>
 
@@ -126,6 +130,14 @@
                 let markerVisible = false;
                 let lastSeenTime = 0;
                 let stopTimeout = null;
+
+                function unlockAudio()
+                {
+                    audio.currentTime = startAt;
+                    audio.play()
+                        .then(() => audio.pause())  // sofort pausieren, nur zum Freischalten
+                        .catch(err => console.log("Audio unlock failed:", err));
+                }
 
 
 
