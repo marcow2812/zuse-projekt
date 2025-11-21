@@ -11,6 +11,9 @@ function loadPage()
 
     checkInternetConnection();
 
+
+    openWelcomeModal();
+
     setTimeout(function()
     {
         loadingPage.style.display = "none";
@@ -29,6 +32,7 @@ function closeNav() {
   document.getElementById("mySidenav").style.width = "0";
 }
 
+/*
 async function startWebcam()
 {
       const video = document.getElementById('video-webcame');
@@ -56,6 +60,17 @@ async function startWebcam()
         headerIcon.classList.remove("icon-green");
         headerIcon.classList.add("icon-red");
     }
+}
+*/
+
+function openWelcomeModal()
+{
+    document.getElementById("welcomeModal").style.display = "block";
+}
+
+function closeWelcomeModal()
+{
+    document.getElementById("welcomeModal").style.display = "none";
 }
 
 async function checkInternetConnection()

@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html lang="de">
     <head>
-        <title>Modul | Projektarbeit</title>
+        <title>Explore | AR-Cube</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
         <link rel="icon" type="image/png" href="./data/img/favicon.png">
         <meta name="theme-color" content="#62A60E">
 
-        <meta property="og:title" content="Projekt | Konrad-Zuse-Schule Hünfeld">
-        <meta property="og:description" content="Der AR-Cube ist ein Non-Profit-Projekt der Konrad-Zuse-Schule Hünfeld. Alle Funktionen befinden sich derzeit noch in der Entwicklungsphase.">
+        <meta property="og:title" content="AR-Cube | Augmented Reality für Klassenräume">
+        <meta property="og:description" content="Der AR-Cube ist ein Non-Profit-Projekt der Konrad-Zuse-Schule Hünfeld.">
         <meta property="og:site_name" content="Projekt">
         <meta property="og:type" content="website">
         <meta property="og:locale" content="de_DE">
         <meta property="og:image" content="https://marcow2812.github.io/zuse-projekt/main/data/img/zuse_logo_small.png">
         <meta property="og:image:alt" content="Alternativtext">
-        <meta property="og:image:type" content="image/jpeg">
+        <meta property="og:image:type" content="image/png">
         <meta property="og:image:width" content="1200">
         <meta property="og:image:height" content="630">
 
@@ -43,11 +43,13 @@
 
                 <div id="mySidenav" class="sidenav">
                     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                    <span class="beta-span">Beta</span>
+                    
                     <a href="#">About</a>
                     <a href="#">Services</a>
                     <a href="#">Clients</a>
                     <a href="#">Contact</a>
+                    <span class="beta-span">Beta</span>
+
                 </div>
 
 
@@ -60,12 +62,8 @@
                     </svg>
                 </span>
 
-                <span id="header-icon-cam" class="header-icon cam">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-camera-fill" viewBox="0 0 16 16">
-                        <path d="M10.5 8.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0"/>
-                        <path d="M2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4zm.5 2a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1m9 2.5a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0"/>
-                    </svg>
-                </span>
+                
+
 
                 
             </header>
@@ -73,6 +71,42 @@
             <!--
             <video id="video-webcame" autoplay playsinline></video>
             -->
+
+            <!-- The Modal -->
+<div id="welcomeModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <span>Berechtigungen erteilen</span>
+    </div>
+    <div class="modal-body">
+        <span id="header-icon-cam" class="icon-cam">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-camera-fill" viewBox="0 0 16 16">
+                <path d="M10.5 8.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0"/>
+                <path d="M2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4zm.5 2a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1m9 2.5a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0"/>
+            </svg>
+        </span>
+      <span>Zugriff auf die Kamera</span>
+      <br><br>
+      <button class="btn" onclick="startTheWebcam()">Zugriff erlauben</button>
+    </div>
+  </div>
+
+</div>
+
+<!--
+<script>
+    var modal = document.getElementById("welcomeModal");
+    window.onclick = function(event) 
+    {
+    if (event.target == modal)
+    {
+        modal.style.display = "none";
+    }
+    }
+</script>
+-->
 
             <!-- ERGÄNZT -->
 
@@ -87,14 +121,86 @@
 
                 // Dein Overlay-Bild (PNG mit Alpha möglich)
                 const overlayImg = new Image();
-                overlayImg.src = "./data/img/overlay.png";
+                overlayImg.src = "./data/img/overlay.png"; // ./data/img/overlay.png
 
-                // Kamera starten
-                navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } })
-                .then(stream => {
-                    video.srcObject = stream;
-                })
-                .catch(console.error);
+
+
+                /*
+                async function startTheWebcam()
+                {
+                    var headerIcon = document.getElementById("header-icon-cam");
+                    headerIcon.classList.add("header-icon");
+
+
+                    // Kamera starten
+                    navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } })
+                    .then(stream => {
+                        video.srcObject = stream;
+                    })
+                    .catch(console.error);
+
+                    try
+                    {
+                        // Zugriff auf Kamera anfragen
+                        const stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: false });
+                        
+                        // Videostream an <video> binden
+                        video.srcObject = stream;
+
+
+                        headerIcon.classList.remove("icon-red");
+                        headerIcon.classList.add("icon-green");
+                        
+                    }
+                    catch (err) 
+                    {
+                        console.error("Fehler beim Zugriff auf die Kamera:", err);
+
+                        headerIcon.classList.remove("icon-green");
+                        headerIcon.classList.add("icon-red");
+                    }
+                }
+                    */
+
+                async function startTheWebcam() 
+                {
+                    const headerIcon = document.getElementById("header-icon-cam");
+
+                    try
+                    {
+                        // Anfrage für Kamera-Zugriff
+                        const stream = await navigator.mediaDevices.getUserMedia({
+                            video: { facingMode: "environment" },
+                            audio: false
+                        });
+
+                        // Wenn erfolgreich: Video starten
+                        video.srcObject = stream;
+
+                        // Icon grün setzen
+                        headerIcon.classList.remove("icon-red");
+                        headerIcon.classList.add("icon-green");
+
+                        // console.log("Kamerazugriff erlaubt.");
+                    } 
+                    catch (err) 
+                    {
+                        // console.error("Kamerazugriff verweigert oder Fehler:", err);
+
+                        // Icon rot setzen
+                        headerIcon.classList.remove("icon-green");
+                        headerIcon.classList.add("icon-red");
+                    }
+
+                    closeWelcomeModal();
+                }
+
+
+
+
+
+
+
 
                 // ArUco-Detector
                 const detector = new AR.Detector();
@@ -210,8 +316,8 @@
 
             <!-- ERGÄNZT -->
 
-            <div class="menu" onclick="startWebcam()">
-                <span>Kamera öffnen</span>
+            <div class="menu">
+                <span>Menü</span>
             </div>
 
         </div>
