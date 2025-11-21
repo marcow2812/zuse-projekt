@@ -13,6 +13,9 @@
 <!-- Pilotprojekt laufen derzeit an der ... -->
 <!-- Sind Sie Schüler*in, Lehrer*in oder Direktor*in einer Schule in Deutschland? Bei Interesse an einer Pilotphase wenden Sie sich gerne an ... -->
 
+> [!TIP]
+> Unter folgendem Link kannst du das Projekt live im Browser testen: <a href="https://marcow2812.github.io/zuse-projekt/main/">Projektarbeit</a>
+
 **Bildung neu gedacht - AR-Würfel für Grundschulen und weiterführende Bildungseinrichtungen**
 **Bildung neu gedacht - Augmented Reality in Klassenräumen**
 
