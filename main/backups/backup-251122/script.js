@@ -71,17 +71,6 @@ function openWelcomeModal()
 function closeWelcomeModal()
 {
     document.getElementById("welcomeModal").style.display = "none";
-    openInfoModal();
-}
-
-function openInfoModal()
-{
-    document.getElementById("infoModal").style.display = "block";
-}
-
-function closeInfoModal()
-{
-    document.getElementById("infoModal").style.display = "none";
 }
 
 async function checkInternetConnection()
