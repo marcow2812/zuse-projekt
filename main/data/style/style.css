@@ -8,6 +8,22 @@
       --gray-light: #f2f2f2;
 
     --bg: white;
+    --bg-dark: #343438;
+}
+
+/*
+@media (prefers-color-scheme: dark) {
+    #canvas
+    {
+        background-color: var(--bg-dark);
+    }
+}
+*/
+
+::selection
+{
+  color: white;
+  background: var(--green);
 }
 
 body
@@ -140,6 +156,7 @@ header img
 {
     width: 100%;
     height: auto;
+    background-color: white;
 }
 
 .sidenav {

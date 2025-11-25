@@ -82,7 +82,7 @@
     </div>
     <div class="modal-body">
         
-        <span class="icon-cam">
+        <span id="header-icon-audio" class="icon-cam">
             <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-volume-up-fill" viewBox="0 0 16 16">
                 <path d="M11.536 14.01A8.47 8.47 0 0 0 14.026 8a8.47 8.47 0 0 0-2.49-6.01l-.708.707A7.48 7.48 0 0 1 13.025 8c0 2.071-.84 3.946-2.197 5.303z"/>
                 <path d="M10.121 12.596A6.48 6.48 0 0 0 12.025 8a6.48 6.48 0 0 0-1.904-4.596l-.707.707A5.48 5.48 0 0 1 11.025 8a5.48 5.48 0 0 1-1.61 3.89z"/>
@@ -91,7 +91,7 @@
         </span>
         <span>Zugriff für die Audiowiedergabe</span>
         <br><br>
-        <button class="btn" id="audioAccessBtn" onclick="unlockAudio();document.getElementById('audioAccessBtn').style.display='none'">Zugriff erlauben</button>
+        <button class="btn" id="audioAccessBtn" onclick="unlockAudio()">Zugriff erlauben</button>
         <br><br>
         <span id="header-icon-cam" class="icon-cam">
             <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-camera-fill" viewBox="0 0 16 16">
@@ -101,7 +101,7 @@
         </span>
         <span>Zugriff auf die Kamera</span>
         <br><br>
-        <button class="btn" onclick="startTheWebcam()">Zugriff erlauben</button>
+        <button class="btn" id="cameraAccessBtn" onclick="startTheWebcam()">Zugriff erlauben</button>
         
       
     </div>
@@ -222,11 +222,29 @@
 
                 function unlockAudio()
                 {
+                    document.getElementById('audioAccessBtn').style.display = "none";
+
+                    const headerIcon = document.getElementById("header-icon-audio");
+
                     audio.currentTime = startAt;
+
                     audio.play()
-                        .then(() => audio.pause())  // sofort pausieren, nur zum Freischalten
-                        .catch(err => console.log("Audio unlock failed:", err));
+                        .then(() => {
+                            audio.pause();
+
+                            headerIcon.classList.remove("icon-red");
+                            headerIcon.classList.add("icon-green");
+                        })
+                        .catch(err => {
+                            console.error("Fehler: Audiowiedergabe wurde blockiert.\n" + err);
+
+                            headerIcon.classList.remove("icon-green");
+                            headerIcon.classList.add("icon-red");
+                        });
+
+                    checkCloseOption();
                 }
+
 
 
 
@@ -279,8 +297,10 @@
                 }
                     */
 
-                async function startTheWebcam() 
+                async function startTheWebcam()
                 {
+                    document.getElementById('cameraAccessBtn').style.display = "none";
+
                     const headerIcon = document.getElementById("header-icon-cam");
 
                     try
@@ -309,7 +329,7 @@
                         headerIcon.classList.add("icon-red");
                     }
 
-                    closeWelcomeModal();
+                    checkCloseOption();
                 }
 
 

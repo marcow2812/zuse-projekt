@@ -1,3 +1,5 @@
+var numberOfPermissions = 2;
+
 function loadPage()
 {
     var loadingPage = document.getElementById("loadingPage");
@@ -22,6 +24,22 @@ function loadPage()
 
     
 
+}
+
+var closeValue = 0;
+function checkCloseOption()
+{
+    closeValue = closeValue + 1;
+    if (closeValue == numberOfPermissions)
+    {
+        // Alles erlaubt
+        closeWelcomeModal();
+    }
+    else
+    {
+        // Noch nicht alles erlaubt, weiterhin sichtbar
+    }    
+    
 }
 
 function openNav() {
