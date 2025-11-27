@@ -18,22 +18,54 @@
     </style>
 </head>
 
-<body>
+<body onload="rotateObject(0, 0, 0)">
 
-    <!-- AUTOMATISCHE ROTATION -->
     <model-viewer
         id="model"
-        src="./data/3d/heart-23.glb"
+        src="./data/3d/medieval-architecture-2725.glb"
         camera-controls
-        auto-rotate
-        auto-rotate-delay="0"
-        rotation-per-second="45deg"
-        exposure="1.2"
+        
+        
+        
         environment-image="neutral"
         alt="3D Model"
         interaction-prompt="none"
         interaction-prompt-threshold="0">
     </model-viewer>
+
+    <!--
+    auto-rotate
+    auto-rotate-delay="0"
+    rotation-per-second="45deg"
+    exposure="1.2"
+
+
+    orientation="xdeg ydeg zdeg"	Dreht das Objekt selbst
+    camera-orbit="angleY angleX radius"	Steuert die Kamera
+    camera-target="x y z"	Zielpunkt der Kamera
+    camera-controls	Aktiviert Maus/Touch-Steuerung
+    disable-pan	Nur drehen/zoomen, kein Schwenken
+
+    environment-image="neutral"	Umgebungslicht
+    exposure="1.0"	Helligkeit
+    shadow-intensity="1"	Schattenstärke
+    shadow-softness="0–1"	Weiche Schatten
+
+    auto-rotate	Automatische Rotation
+    rotation-per-second="30deg"	Geschwindigkeit der Auto-Rotation
+    auto-rotate-delay="0"	Verzögerung bis zur Rotation
+    animation-name="Idle"	GLB-Animation starten
+    animation-loop	Loop aktivieren
+
+    interaction-prompt="none"	Entfernt die Finger-/Hilfsanzeige
+    interaction-prompt-threshold="0"	Prompt erscheint nie
+    touch-action="none"	Touch deaktivieren
+
+    src="file.glb"	3D-Modell
+    poster="bild.webp"	Ladebild
+    reveal="interaction"	Modell erst bei Interaktion laden
+    loading="lazy"	Lazy Loading
+    -->
 
 
     
@@ -43,13 +75,18 @@
 
         function rotateJS() {
             // rotation-per-second geht nur per HTML-Attribut
-            model.setAttribute("rotation-per-second", "20deg");
+            //model.setAttribute("rotation-per-second", "20deg");
 
             // oder absolute Ausrichtung:
-            // model.orientation = "0deg 45deg 0deg";
+            model.orientation = "0deg 45deg 0deg";
         }
 
-        rotateJS();
+        /* rotateJS(); */
+
+        function rotateObject(x, y, z)
+        {
+            model.orientation = `${x}deg ${y}deg ${z}deg`;
+        }
     </script>
 
 
