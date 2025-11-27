@@ -45,6 +45,25 @@ graph TD;
     Nein-->Weiter;
 ```
 
+# Würfel
+
+Folgendes Faltmuster stellt vereinfacht den Würfel dar.
+
+        [1]
+    [4] [2] [3]
+        [5]
+        [6]
+
+Dabei sind die einzelnen Seiten wiederum folgendermaßen gedreht:
+Seite 1: 0 Grad (unverändert)
+Seite 2: 0 Grad (unverändert)
+Seite 3: 90 Grad (90 Grad im Uhrzeigersinn)
+Seite 4: 270 Grad (90 Grad gegen den Uhrzeigersinn)
+Seite 5: 180 Grad (180 Grad Drehung)
+Seite 6: 180 Grad (180 Grad Drehung)
+
+
+
 # Einrichtung der Umgebung
 
 Sollte `Python` auf dem Gerät nicht vorinstalliert sein, kann das Programm unter Linux mit dem folgenden Befehl installiert werden:
