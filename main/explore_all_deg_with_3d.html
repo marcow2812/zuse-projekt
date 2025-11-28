@@ -206,10 +206,23 @@ function computeCubeOrientation(visible){
 // ---------------------------------------------------------
 // 6) Kamera starten
 // ---------------------------------------------------------
+/*
 const video = document.getElementById("video");
 navigator.mediaDevices.getUserMedia({ video:true }).then(stream=>{
     video.srcObject = stream;
 });
+*/
+
+navigator.mediaDevices.getUserMedia({
+    video: { facingMode: "user" },  // FRONTKAMERA
+    audio: false
+}).then(stream=>{
+    video.srcObject = stream;
+}).catch(err=>{
+    alert("Konnte Frontkamera nicht starten:", err);
+});
+
+
 
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
