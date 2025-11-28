@@ -213,6 +213,7 @@ navigator.mediaDevices.getUserMedia({ video:true }).then(stream=>{
 });
 */
 
+/*
 navigator.mediaDevices.getUserMedia({
     video: { facingMode: "user" },  // FRONTKAMERA
     audio: false
@@ -221,6 +222,48 @@ navigator.mediaDevices.getUserMedia({
 }).catch(err=>{
     alert("Konnte Frontkamera nicht starten:", err);
 });
+*/
+
+async function startFrontCamera() {
+    const video = document.getElementById("video");
+
+    // Alle Geräte laden
+    let devices = await navigator.mediaDevices.enumerateDevices();
+
+    // Versuchen, Frontkamera per Label zu finden
+    let frontCam = devices.find(d =>
+        d.kind === "videoinput" &&
+        d.label.toLowerCase().includes("front")
+    );
+
+    // Falls Labels nicht zugänglich sind → Permission anfordern
+    if (!frontCam) {
+        await navigator.mediaDevices.getUserMedia({ video: true });
+        devices = await navigator.mediaDevices.enumerateDevices();
+        frontCam = devices.find(d =>
+            d.kind === "videoinput" &&
+            d.label.toLowerCase().includes("front")
+        );
+    }
+
+    // Falls immer noch keine gefunden → erste Kamera nehmen
+    if (!frontCam) {
+        console.warn("⚠ Keine explizite Frontkamera gefunden – verwende erste Kamera.");
+        frontCam = devices.find(d => d.kind === "videoinput");
+    }
+
+    // Kamera starten
+    const stream = await navigator.mediaDevices.getUserMedia({
+        video: { deviceId: { exact: frontCam.deviceId } },
+        audio: false
+    });
+
+    video.srcObject = stream;
+    console.log("📷 Frontkamera gestartet:", frontCam.label);
+}
+
+// Frontkamera jetzt wirklich starten
+startFrontCamera();
 
 
 
