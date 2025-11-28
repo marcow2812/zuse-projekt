@@ -231,6 +231,7 @@ Leistungsstärke des Geräts.
 <p>Github Juan Mellado - https://github.com/jcmellado/js-aruco</p>
 <p>Freecodecamp - https://www.freecodecamp.org/news/how-to-check-internet-connection-status-with-javascript</p>
 <p>Google Model Viewer - https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js</p>
+<p>Smithsonian - https://www.si.edu/</p>
 
 <h2>Weitere Links</h2>
 
