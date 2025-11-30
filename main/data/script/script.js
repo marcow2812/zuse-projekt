@@ -150,3 +150,20 @@ async function checkInternetConnection()
     setTimeout(checkInternetConnection, 60000); // Alle 60 Sekunden prüfen
 }
 
+function getDegByMarker(marker, x, y, z)
+{
+    switch (marker)
+    {
+        case 1:
+            console.log("Marker 1");
+
+            rotateObject(0, 0, z);
+
+
+            break;
+        default:
+            console.log("Anderer Marker");
+    }
+    console.log("x: " + x + " y: " + y + " z: " + z);
+}
+
