@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset="UTF-8">
+        <title>Minimal ArUco Pose Tracker</title>
+
+            <script src="./data/js-aruco/aruco.js"></script>
+            <script src="./data/js-aruco/cv.js"></script>
+            <script src="./data/js-aruco/polyfill.js"></script>
+            <script src="./data/js-aruco/posit1.js"></script>
+            <script src="./data/script/script.js"></script>
+
+        <style>
+            body { background:#111; color:white; text-align:center; font-family:Arial; }
+            video, canvas { width:90vw; max-width:900px; }
+            #wrap { position:relative; display:inline-block; }
+            #overlay { position:absolute; top:0; left:0; }
+        </style>
+    </head>
+    <body>
+
+    <h2>ArUco Minimal Tracking</h2>
+
+    <div id="wrap">
+        <video id="video" autoplay playsinline muted></video>
+        <canvas id="overlay"></canvas>
+    </div>
+
+    <script>
+        // ----------------------------------------------------
+        // Elemente
+        // ----------------------------------------------------
+        const video = document.getElementById("video");
+        const canvas = document.getElementById("overlay");
+        const ctx = canvas.getContext("2d");
+
+        let detectorForMarker = null;
+        let posit = null;
+
+        const markerSize = 5;
+
+        // ----------------------------------------------------
+        // Rotationmatrix → Euler Winkel
+        // ----------------------------------------------------
+        function rotationMatrixToEuler(R)
+        {
+            const radToDeg = 180 / Math.PI;
+            const sy = Math.sqrt(R[0][0]*R[0][0] + R[1][0]*R[1][0]);
+
+            let x, y, z;
+
+            if (sy > 1e-6)
+            {
+                x = Math.atan2(R[2][1], R[2][2]);
+                y = Math.atan2(-R[2][0], sy);
+                z = Math.atan2(R[1][0], R[0][0]);
+            }
+            else
+            {
+                x = Math.atan2(-R[1][2], R[1][1]);
+                y = Math.atan2(-R[2][0], sy);
+                z = 0;
+            }
+
+            return { 
+                x: x * radToDeg, 
+                y: y * radToDeg, 
+                z: z * radToDeg 
+            };
+        }
+
+        // ----------------------------------------------------
+        // Webcam starten
+        // ----------------------------------------------------
+        async function startWebcam()
+        {
+            const stream = await navigator.mediaDevices.getUserMedia({
+                video: { facingMode: "environment" },
+                audio: false
+            });
+
+            video.srcObject = stream;
+
+            return new Promise(resolve => {
+                video.onloadedmetadata = () => resolve();
+            });
+        }
+
+        // ----------------------------------------------------
+        // Tracking-Loop
+        // ----------------------------------------------------
+        function tick()
+        {
+            if (video.readyState === video.HAVE_ENOUGH_DATA) {
+
+                canvas.width = video.videoWidth;
+                canvas.height = video.videoHeight;
+
+                ctx.drawImage(video, 0, 0);
+
+                const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+                const markers = detectorForMarker.detect(imageData);
+
+                markers.forEach(marker => {
+
+                    const corners = marker.corners;
+
+                    // Marker rot umranden
+                    ctx.strokeStyle = "red";
+                    ctx.lineWidth = 3;
+                    ctx.beginPath();
+                    ctx.moveTo(corners[0].x, corners[0].y);
+                    for (let i=1; i<corners.length; i++) ctx.lineTo(corners[i].x, corners[i].y);
+                    ctx.closePath();
+                    ctx.stroke();
+
+                    // Mittelpunkt
+                    const cx = (corners[0].x + corners[1].x + corners[2].x + corners[3].x) / 4;
+                    const cy = (corners[0].y + corners[1].y + corners[2].y + corners[3].y) / 4;
+
+                    const posCorners = corners.map(pt => ({
+                        x: pt.x - cx,
+                        y: pt.y - cy
+                    }));
+
+                    // Pose berechnen
+                    const pose = posit.pose(posCorners);
+                    const R = pose.bestRotation;
+                    const T = pose.bestTranslation;
+
+                    const e = rotationMatrixToEuler(R);
+
+                    /*
+                    console.log(
+                        `Marker ${marker.id} | rotX=${e.x.toFixed(1)} rotY=${e.y.toFixed(1)} rotZ=${e.z.toFixed(1)}`
+                    );
+                    */
+
+                    getDegByMarker(marker.id, e.x.toFixed(1), e.y.toFixed(1), e.z.toFixed(1));
+
+                });
+            }
+
+            requestAnimationFrame(tick);
+        }
+
+        // ----------------------------------------------------
+        // Start
+        // ----------------------------------------------------
+        (async () => {
+            await startWebcam();
+
+            detectorForMarker = new AR.Detector();
+            posit = new POS.Posit(markerSize, video.videoWidth);
+
+            console.log("Tracking gestartet.");
+            tick();
+        })();
+    </script>
+
+    </body>
+</html>
