@@ -161,6 +161,19 @@ function getDegByMarker(marker, x, y, z)
             //              nach vorne und hinten neigen
             rotateObject(z, 0, 0);
 
+
+            // Korrektur: Den Wert negieren
+            // const correctedZ = parseFloat(z) * -1;
+            
+            // Oder einfacher: 360 - z, um den Wert im 0-360° Bereich zu halten
+            const invertedZ = (360 - parseFloat(z)) % 360; 
+            
+            // Wir verwenden die Inversion, da sie sauberer ist:
+            rotateObject(invertedZ, 0, 0);
+
+
+
+
             break;
         case 2:
             console.log("Marker 2");
