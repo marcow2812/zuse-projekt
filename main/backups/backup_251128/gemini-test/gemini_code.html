@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>AR Cube Orientation mit 3D Achsen</title>
+
+<script src="./data/js-aruco/aruco.js"></script>
+<script src="./data/js-aruco/cv.js"></script>
+<script src="./data/js-aruco/polyfill.js"></script>
+<script src="./data/js-aruco/svd.js"></script>
+<script src="./data/js-aruco/posit1.js"></script>
+
+<style>
+body{
+    margin:0;
+    overflow:hidden;
+    font-family: monospace;
+}
+canvas{
+    width:100vw;
+    height:100vh;
+    object-fit:cover;
+}
+#log {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: rgba(0,0,0,0.7);
+    color: #0f0;
+    padding: 10px;
+    pointer-events: none;
+    white-space: pre;
+}
+</style>
+
+</head>
+<body>
+
+<div id="log">Warte auf Marker...</div>
+<video id="video" autoplay playsinline style="display:none;"></video>
+<canvas id="canvas"></canvas>
+
+<script>
+
+// ---------------------------------------------------------
+// 1) Konfiguration & Init
+// ---------------------------------------------------------
+const video = document.getElementById("video");
+const canvas = document.getElementById("canvas");
+const ctx = canvas.getContext("2d", { willReadFrequently: true });
+const logDiv = document.getElementById("log");
+
+// ArUco Detector Starten
+const detector = new AR.Detector();
+let posit = null; // Wird initialisiert, sobald Video läuft
+
+// Größe des Markers in "echten" Einheiten (z.B. 35mm). 
+// Beeinflusst die Länge der Translation (Z-Abstand), aber nicht die Rotation.
+const modelSize = 35.0; 
+
+
+// ---------------------------------------------------------
+// 2) Kamera starten
+// ---------------------------------------------------------
+navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } }).then(stream=>{
+    video.srcObject = stream;
+});
+
+
+// ---------------------------------------------------------
+// 3) Hilfsfunktionen für 3D Projektion
+// ---------------------------------------------------------
+
+// Projiziert einen 3D Punkt (x,y,z) auf den 2D Canvas basierend auf Pose
+function project(point3d, rotation, translation, focalLength, canvasCenter) {
+    // 1. Rotation anwenden
+    const x = rotation[0][0] * point3d[0] + rotation[0][1] * point3d[1] + rotation[0][2] * point3d[2];
+    const y = rotation[1][0] * point3d[0] + rotation[1][1] * point3d[1] + rotation[1][2] * point3d[2];
+    const z = rotation[2][0] * point3d[0] + rotation[2][1] * point3d[1] + rotation[2][2] * point3d[2];
+    
+    // 2. Translation anwenden
+    const xCam = x + translation[0];
+    const yCam = y + translation[1];
+    const zCam = z + translation[2];
+
+    // 3. Perspektivische Projektion
+    const scale = focalLength / zCam;
+    
+    return {
+        x: xCam * scale + canvasCenter.x,
+        y: -yCam * scale + canvasCenter.y // Minus Y, da Canvas Y nach unten zeigt, 3D meist nach oben
+    };
+}
+
+// Zeichnet eine Linie (Achse)
+function drawAxisLine(ctx, start, end, color, label) {
+    ctx.lineWidth = 3;
+    ctx.strokeStyle = color;
+    ctx.beginPath();
+    ctx.moveTo(start.x, start.y);
+    ctx.lineTo(end.x, end.y);
+    ctx.stroke();
+
+    // Pfeilspitze / Label (optional)
+    ctx.fillStyle = color;
+    ctx.font = "bold 16px Arial";
+    ctx.fillText(label, end.x, end.y);
+}
+
+
+// ---------------------------------------------------------
+// 4) Hauptloop
+// ---------------------------------------------------------
+function tick(){
+    requestAnimationFrame(tick);
+
+    if (video.readyState === video.HAVE_ENOUGH_DATA){
+        
+        // Canvas an Video anpassen
+        if (canvas.width !== video.videoWidth){
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+            // POSIT initialisieren: Focal Length ~ Canvas Width als Näherung
+            posit = new POSIT(modelSize, canvas.width); 
+        }
+
+        // Bild zeichnen
+        ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+        
+        // Marker erkennen
+        const imageData = ctx.getImageData(0,0,canvas.width,canvas.height);
+        const markers = detector.detect(imageData);
+
+        // Bildschirm löschen (Overlay)
+        // ctx.clearRect(0,0,canvas.width, canvas.height); 
+        // -> Wir malen direkt auf das Videobild, also kein clearRect nötig.
+
+        if (markers.length > 0) {
+            // Wir nehmen hier den ersten Marker für die Analyse
+            const marker = markers[0]; 
+            
+            // --- A) 3D Pose berechnen (POSIT) ---
+            const pose = posit.pose(marker.corners);
+            
+            // rotation ist eine 3x3 Matrix, translation ein Vektor
+            const rot = pose.bestRotation; 
+            const trans = pose.bestTranslation;
+
+            // --- B) Visuelle Achsen zeichnen ---
+            const center = { x: canvas.width / 2, y: canvas.height / 2 };
+            const focalLength = canvas.width; // Näherungswert
+
+            // Ursprung (0,0,0) des Markers
+            const origin2D = project([0,0,0], rot, trans, focalLength, center);
+
+            // Achsenlänge (z.B. halbe Markergröße)
+            const len = modelSize / 2;
+
+            // X-Achse (Rot)
+            const xEnd2D = project([len,0,0], rot, trans, focalLength, center);
+            drawAxisLine(ctx, origin2D, xEnd2D, "red", "X");
+
+            // Y-Achse (Grün)
+            const yEnd2D = project([0,len,0], rot, trans, focalLength, center);
+            drawAxisLine(ctx, origin2D, yEnd2D, "#00ff00", "Y"); // Helles Grün
+
+            // Z-Achse (Blau)
+            const zEnd2D = project([0,0,len], rot, trans, focalLength, center);
+            drawAxisLine(ctx, origin2D, zEnd2D, "blue", "Z");
+
+
+            // --- C) Konsolen Ausgabe der Vektoren ---
+            // Die Rotationsmatrix enthält direkt die Richtungsvektoren der lokalen Achsen 
+            // relativ zur Kamera.
+            // Spalte 0 = X-Vektor, Spalte 1 = Y-Vektor, Spalte 2 = Z-Vektor
+            
+            const xAxis = [rot[0][0], rot[1][0], rot[2][0]].map(n=>n.toFixed(2));
+            const yAxis = [rot[0][1], rot[1][1], rot[2][1]].map(n=>n.toFixed(2));
+            const zAxis = [rot[0][2], rot[1][2], rot[2][2]].map(n=>n.toFixed(2));
+
+            const logText = `Marker ID: ${marker.id}
+X-Achse: [${xAxis}]
+Y-Achse: [${yAxis}]
+Z-Achse: [${zAxis}]
+Pos (Z): ${trans[2].toFixed(1)}`;
+
+            logDiv.innerText = logText;
+            console.log(logText.replace(/\n/g, " | "));
+
+            // Gelbe Umrandung des Markers (altes Feature)
+            ctx.strokeStyle = "yellow";
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            marker.corners.forEach((c,i)=>{
+                if(i===0) ctx.moveTo(c.x, c.y);
+                else ctx.lineTo(c.x, c.y);
+            });
+            ctx.closePath();
+            ctx.stroke();
+        } else {
+            logDiv.innerText = "Kein Marker erkannt.";
+        }
+    }
+}
+
+tick();
+
+</script>
+
+</body>
+</html>

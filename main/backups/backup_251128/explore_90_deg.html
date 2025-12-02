@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>AR Cube Orientation</title>
+
+<script src="./data/js-aruco/aruco.js"></script>
+<script src="./data/js-aruco/cv.js"></script>
+<script src="./data/js-aruco/polyfill.js"></script>
+
+<style>
+body
+{
+    margin: 0;
+    overflow: hidden;
+}
+canvas
+{
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+}
+</style>
+
+</head>
+<body>
+
+<video id="video" autoplay playsinline style="display:none;"></video>
+<canvas id="canvas"></canvas>
+
+
+<script>
+
+// ---------------------------------------------------------
+// 1) Marker-Bildzuordnung (falls Overlay-Bilder genutzt werden)
+// ---------------------------------------------------------
+const imagesById = {
+    1: "./data/img/favicon.png",
+    2: "./data/img/favicon.png",
+    3: "./data/img/favicon.png",
+    4: "./data/img/favicon.png",
+    5: "./data/img/favicon.png",
+    6: "./data/img/favicon.png"
+};
+
+const imageCache = {};
+function getImageForId(id){
+    if (!imagesById[id]) return null;
+    if (imageCache[id]) return imageCache[id];
+    const img = new Image();
+    img.src = imagesById[id];
+    imageCache[id] = img;
+    return img;
+}
+
+
+// ---------------------------------------------------------
+// 2) Grundrotation der Marker laut Faltmuster (in Grad)
+// ---------------------------------------------------------
+const baseRot = {
+    1: 0,
+    2: 0,
+    3: 270,
+    4: 90,
+    5: 180,
+    6: 0
+};
+
+// ---------------------------------------------------------
+// 3) Faltmuster-Netz (Topologie des Würfels)
+// ---------------------------------------------------------
+//
+//           [1]
+//     [4]   [2]   [3]
+//           [5]
+//           [6]
+//
+// Jeder Eintrag: {right, left, up, down}
+// ---------------------------------------------------------
+
+const cubeNeighbors = {
+    1: {right:2, left:2, up:0, down:2}, // Oben, Spezialfall — wird später behandelt
+    2: {right:3, left:4, up:1, down:5},
+    3: {right:0, left:2, up:0, down:0},
+    4: {right:2, left:0, up:0, down:0},
+    5: {up:2, down:6, right:0, left:0},
+    6: {up:5, down:0, right:0, left:0}
+};
+
+
+// ---------------------------------------------------------
+// 4) Markerrotation aus den Corner-Punkten berechnen
+// ---------------------------------------------------------
+//
+// ArUco JS gibt die Corners IMMER in dieser Reihenfolge:
+// 0: top-left
+// 1: top-right
+// 2: bottom-right
+// 3: bottom-left
+//
+// Wenn der Marker verdreht erscheint, erkennt man das an der
+// Orientierung: z.B. wenn die längste Kante „unten“ liegt.
+// ---------------------------------------------------------
+function getMarkerRotation(corners){
+
+    const dx = corners[1].x - corners[0].x;
+    const dy = corners[1].y - corners[0].y;
+
+    const angle = Math.atan2(dy, dx) * 180 / Math.PI;
+
+    // Winkel in 0..360
+    let rot = (angle + 360) % 360;
+
+    // Snap auf 0 / 90 / 180 / 270 (ArUco hat nur 90° Schritte)
+    const options = [0,90,180,270];
+    let best = 0;
+    let diff = 999;
+
+    for (let o of options){
+        let d = Math.abs(rot - o);
+        if (d < diff){
+            diff = d;
+            best = o;
+        }
+    }
+
+    return best;
+}
+
+
+// ---------------------------------------------------------
+// 5) Orientierungsberechnung des Würfels
+// ---------------------------------------------------------
+function computeCubeOrientation(visibleMarkers)
+{
+
+    if (visibleMarkers.length === 0) return null;
+
+    // Nehme stärksten / größten Marker als „Front“
+    let main = visibleMarkers[0];
+
+    let id = main.id;
+    let measuredRot = main.rot;   // 0/90/180/270
+    let base = baseRot[id];
+
+    // -----------------------------------------------
+    // Yaw-Berechnung (Drehung des Würfels um Z)
+    // -----------------------------------------------
+    //
+    // Der Marker hat im Faltmuster die Orientierung baseRot[id].
+    // Wenn er im Livebild gemessenRot hat,
+    // dann ergibt sich YAW ungefähr aus:
+    //
+    // yaw = (measured - base)
+    // -----------------------------------------------
+    let yaw = (measuredRot - base + 360) % 360;
+
+    // -----------------------------------------------
+    // Pitch & Roll (nur grobe Klassifikation möglich)
+    // da wir ohne PnP keine Tiefeninfo haben
+    // -----------------------------------------------
+    let pitch = 0;
+    let roll = 0;
+
+    // Falls Marker 1 sichtbar → Würfel zeigt nach oben/unten
+    if (id === 1){
+        pitch = -90; // oben
+    }
+    else if (id === 6){
+        pitch = 90;  // unten
+    }
+    else {
+        // Frontseiten: 2,3,4,5
+        pitch = 0;
+    }
+
+    // Roll kann anhand der Rotation geschätzt werden
+    // z.B. Marker 3 oder 4 seitlich gekippt
+    if (id === 3 || id === 4){
+        roll = 0; // da Faltmuster seitlich ist
+    }
+
+    return {
+        yaw: yaw,
+        pitch: pitch,
+        roll: roll,
+        front: id,
+        measured: measuredRot,
+        base: base
+    };
+}
+
+
+
+// ---------------------------------------------------------
+// 6) Webcam starten
+// ---------------------------------------------------------
+const video = document.getElementById("video");
+navigator.mediaDevices.getUserMedia({video:true}).then(stream=>{
+    video.srcObject = stream;
+});
+
+const canvas = document.getElementById("canvas");
+const ctx = canvas.getContext("2d");
+
+const detector = new AR.Detector();
+
+
+// ---------------------------------------------------------
+// 7) Hauptloop
+// ---------------------------------------------------------
+function tick(){
+
+    if (video.readyState === video.HAVE_ENOUGH_DATA){
+
+        canvas.width = video.videoWidth;
+        canvas.height = video.videoHeight;
+
+        ctx.drawImage(video,0,0,canvas.width,canvas.height);
+
+        const imageData = ctx.getImageData(0,0,canvas.width,canvas.height);
+        const markers = detector.detect(imageData);
+
+        let visible = [];
+
+        markers.forEach(marker=>{
+
+            const corners = marker.corners;
+            const rot = getMarkerRotation(corners);
+
+            visible.push({
+                id: marker.id,
+                rot: rot,
+                corners: corners
+            });
+
+            // Debug zeichnen
+            ctx.strokeStyle = "yellow";
+            ctx.beginPath();
+            for (let i=0;i<4;i++){
+                let c = corners[i];
+                let n = corners[(i+1)%4];
+                ctx.moveTo(c.x,c.y);
+                ctx.lineTo(n.x,n.y);
+            }
+            ctx.stroke();
+
+            // Optional Overlay-Bild
+            const img = getImageForId(marker.id);
+            if (img && img.complete){
+                ctx.drawImage(img, corners[0].x, corners[0].y, 80, 80);
+            }
+
+        });
+
+        // Wenn Marker sichtbar → Orientierung berechnen
+        if (visible.length > 0){
+
+            const orientation = computeCubeOrientation(visible);
+
+            if (orientation){
+                console.log(
+                    "Cube rotation:",
+                    "Yaw:", orientation.yaw+"°",
+                    "Pitch:", orientation.pitch+"°",
+                    "Roll:", orientation.roll+"°",
+                    "(Front:", orientation.front+")"
+                );
+            }
+        }
+    }
+
+    requestAnimationFrame(tick);
+}
+
+tick();
+
+</script>
+
+</body>
+</html>
