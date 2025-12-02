@@ -35,18 +35,6 @@
         src="./data/google-model-viewer/model-viewer.min.js">
         </script>
 
-        <style>
-        model-viewer {
-            position: absolute;
-            top: 0px;
-            left: 0px;
-            width: 200px;
-            height: 200px;
-            /* background-color: #c29869; */
-            background-color: white;
-        }
-    </style>
-
     </head>
     <body onload="loadPage()">
         <div class="container" id="loadingPage">
@@ -206,14 +194,14 @@
 
 
             <model-viewer
-        id="model"
-        src="./data/3d/heart-23.glb"
-        
-        environment-image="neutral"
-        alt="3D Model"
-        interaction-prompt="none"
-        interaction-prompt-threshold="0">
-    </model-viewer>
+                id="model"
+                src="./data/3d/heart-23.glb"
+                
+                environment-image="neutral"
+                alt="3D Model"
+                interaction-prompt="none"
+                interaction-prompt-threshold="0">
+            </model-viewer>
 
     <script>
 
@@ -330,6 +318,7 @@ function rotateObject(x, y, z)
                 // ----------------------------------------------------
                 // Rotationmatrix → Euler Winkel
                 // ----------------------------------------------------
+                /*
                 function rotationMatrixToEuler(R)
                 {
                     const radToDeg = 180 / Math.PI;
@@ -355,14 +344,107 @@ function rotateObject(x, y, z)
                         y: y * radToDeg, 
                         z: z * radToDeg 
                     };
-                }
+                } */
 
 
+                // Gemini-generierter Bereich Anfang
+
+                // ----------------------------------------------------
+// Rotationmatrix → Euler Winkel (0 - 360 Grad)
+// ----------------------------------------------------
+/*
+
+function rotationMatrixToEuler(R)
+{
+    const radToDeg = 180 / Math.PI;
+    const sy = Math.sqrt(R[0][0]*R[0][0] + R[1][0]*R[1][0]);
+
+    let x, y, z;
+
+    if (sy > 1e-6)
+    {
+        x = Math.atan2(R[2][1], R[2][2]);
+        y = Math.atan2(-R[2][0], sy);
+        z = Math.atan2(R[1][0], R[0][0]);
+    }
+    else
+    {
+        x = Math.atan2(-R[1][2], R[1][1]);
+        y = Math.atan2(-R[2][0], sy);
+        z = 0;
+    }
+
+    // Erst in Grad umrechnen
+    let xDeg = x * radToDeg;
+    let yDeg = y * radToDeg;
+    let zDeg = z * radToDeg;
+
+    // KORREKTUR: Negative Werte in positive umwandeln (0 - 360)
+    // Die mathematische Formel (val % 360 + 360) % 360 fängt alle Fälle ab,
+    // aber einfach 360 addieren, wenn < 0, reicht hier meistens auch.
+    
+    if (xDeg < 0) xDeg += 360;
+    if (yDeg < 0) yDeg += 360;
+    if (zDeg < 0) zDeg += 360;
+
+    return { 
+        x: xDeg, 
+        y: yDeg, 
+        z: zDeg 
+    };
+}
+*/
+
+// Gemini-generierter Bereich Ende
 
 
+// ----------------------------------------------------
+// Rotationmatrix → Euler Winkel (Stabile Version gegen NaN/Gimbal Lock)
+// ----------------------------------------------------
+function rotationMatrixToEuler(R)
+{
+    const radToDeg = 180 / Math.PI;
 
+    // Standard Gimbal Lock Check (sy nahe 0)
+    // sy = sqrt(R[0][0]^2 + R[1][0]^2)
+    const sy = Math.sqrt(R[0][0] * R[0][0] + R[1][0] * R[1][0]); 
 
+    // Schwellwert für Gimbal Lock (z.B. 1e-6)
+    const isSingular = sy < 1e-6; 
 
+    let x, y, z;
+
+    if (!isSingular) // Kein Gimbal Lock
+    {
+        // Standard (z.B. ZYX-Reihenfolge)
+        x = Math.atan2(R[2][1], R[2][2]);
+        y = Math.atan2(-R[2][0], sy);
+        z = Math.atan2(R[1][0], R[0][0]);
+    }
+    else // Gimbal Lock
+    {
+        // Die Rotation wird auf die X-Achse (Roll) geworfen
+        x = Math.atan2(-R[1][2], R[1][1]); 
+        y = Math.atan2(-R[2][0], sy); // y ist +/- 90 Grad
+        z = 0; // z (Yaw) wird Null gesetzt
+    }
+
+    // Erst in Grad umrechnen
+    let xDeg = x * radToDeg;
+    let yDeg = y * radToDeg;
+    let zDeg = z * radToDeg;
+
+    // Negative Werte in positive umwandeln (0 - 360)
+    if (xDeg < 0) xDeg += 360;
+    if (yDeg < 0) yDeg += 360;
+    if (zDeg < 0) zDeg += 360;
+
+    return { 
+        x: xDeg, 
+        y: yDeg, 
+        z: zDeg 
+    };
+}
 
 
 
@@ -651,6 +733,15 @@ function rotateObject(x, y, z)
                         canvas.width = video.videoWidth;
                         canvas.height = video.videoHeight;
 
+                        // --- FIX START ---
+                        // Wir initialisieren POSIT erst hier, wenn wir sicher sind, 
+                        // dass videoWidth > 0 ist.
+                        if (posit === null) {
+                            posit = new POS.Posit(markerSize, canvas.width);
+                            console.log("POSIT initialisiert mit Breite: " + canvas.width);
+                        }
+                        // --- FIX ENDE ---
+
                         ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
 
                         const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
@@ -670,6 +761,7 @@ function rotateObject(x, y, z)
                             ctx.closePath();
                             ctx.stroke();
 
+                            /*
                             // Mittelpunkt
                             const cx = (corners[0].x + corners[1].x + corners[2].x + corners[3].x) / 4;
                             const cy = (corners[0].y + corners[1].y + corners[2].y + corners[3].y) / 4;
@@ -678,6 +770,23 @@ function rotateObject(x, y, z)
                                 x: pt.x - cx,
                                 y: pt.y - cy
                             }));
+                            */
+
+                            // KI-generiert:
+                            const canvasCenterX = canvas.width / 2;
+const canvasCenterY = canvas.height / 2;
+
+const posCorners = corners.map(pt => ({
+    x: pt.x - canvasCenterX,
+    y: canvasCenterY - pt.y 
+}));
+                            // ------------------
+                            
+
+
+
+
+
 
                             // Pose berechnen
                             const pose = posit.pose(posCorners);
@@ -779,7 +888,7 @@ function rotateObject(x, y, z)
                 (async () => {
 
                     detectorForMarker = new AR.Detector();
-                    posit = new POS.Posit(markerSize, video.videoWidth);
+                    // posit = new POS.Posit(markerSize, video.videoWidth);
 
                     console.log("Tracking gestartet.");
                     posit = new POS.Posit(markerSize, canvas.width);

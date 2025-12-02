@@ -152,15 +152,31 @@ async function checkInternetConnection()
 
 function getDegByMarker(marker, x, y, z)
 {
+
     switch (marker)
     {
         case 1:
             console.log("Marker 1");
-
-            rotateObject(0, 0, z);
-
+            //           Drehung nach rechts oder links von vorne
+            //              nach vorne und hinten neigen
+            rotateObject(z, 0, 0);
 
             break;
+        case 2:
+            console.log("Marker 2");
+        
+        case 3:
+            console.log("Marker 3");
+        
+        case 4:
+            console.log("Marker 4");
+
+        case 5:
+            console.log("Marker 5");
+        
+        case 6:
+            console.log("Marker 6");
+        
         default:
             console.log("Anderer Marker");
     }
