@@ -40,6 +40,7 @@ wenn sie etwas anfassen können und eigene Eindrücke und Erfahrungen sammeln k�
 - [ ] Drehung der GLB-Objekte anhand der Winkelerkennung
 - [ ] Bottom-Menü anpassen
 - [ ] Sidenav anpassen (Links, Feedback, Beta, Online-Status, Impressum, Datenschutz, ...)
+- [ ] z-index anpassen
 
 ```mermaid
 graph TD;
