@@ -20,8 +20,9 @@
         <meta property="og:image:height" content="630">
         -->
 
-        <link rel="stylesheet" href="./data/style/style.css">
-        <script language="javascript" type="text/javascript" src="./data/script/script.js"></script>
+        <link rel="stylesheet" href="./data/style/style.css?timestamp=<%= new Date().getTime() %>">
+        <script language="javascript" type="text/javascript" src="./data/script/script.js?timestamp=<%= new Date().getTime() %>"></script>
+        <script language="javascript" type="text/javascript" src="./data/script/allObjects.js?timestamp=<%= new Date().getTime() %>"></script>
 
         <!-- Aruco Marker Detection -->
         <script src="./data/js-aruco/aruco.js"></script>
@@ -836,12 +837,86 @@ function rotationMatrixToEuler(R)
                         // --- FIX ENDE ---
 
                         ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+                       
+
 
                         const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
                         let anyMarkerDetected = false;
                         const markers = detector.detect(imageData);
 
+                        
+
+
+
+
                         markers.forEach(marker => {
+
+
+                            
+                            if (markers.length > 0) {
+                        let anyMarkerDetected = false; 
+
+                        markers.forEach(function(marker) {
+
+                            const corners = marker.corners;
+                            
+                            // Dies ist der Block für die POSIT-Berechnung (existierender Code):
+                            const normalizedCorners = normalize(marker.corners, canvas.width, canvas.height);
+                            const pose = posit.pose(normalizedCorners);
+                            
+                            
+                            // ----------------------------------------------------------------
+                            // ⬇️ HIER DEN NEUEN CODE FÜR DIE 2D-MODELL-POSITIONIERUNG EINFÜGEN ⬇️
+                            // ----------------------------------------------------------------
+                            
+                            const TARGET_MARKER_ID = 1; // **Ihre Ziel-Marker-ID**
+
+                            if (marker.id === TARGET_MARKER_ID) {
+                                
+                                // 1. Marker-Mittelpunkt in internen Canvas-Koordinaten berechnen
+                                const corners = marker.corners;
+                                const centerX = (corners[0].x + corners[1].x + corners[2].x + corners[3].x) / 4;
+                                const centerY = (corners[0].y + corners[1].y + corners[2].y + corners[3].y) / 4;
+                                
+                                // 2. Das 3D-Objekt an dieser Position anzeigen und zentrieren
+                                // Diese Funktion muss in script.js definiert sein!
+                                positionModelOnMarker(centerX, centerY);
+
+                                // Bestätigen, dass ein Marker für die Steuerung gefunden wurde
+                                anyMarkerDetected = true; 
+                            }
+
+                            // ----------------------------------------------------------------
+                            // ⬆️ ENDE DES NEUEN CODES ⬆️
+                            // ----------------------------------------------------------------
+
+
+                            // Der Code für das Zeichnen der Overlays (existierender Code):
+                            /*
+                            if (marker.id == 100)
+                            {
+                                drawOverlay(ctx, overlayImg, corners);
+                            }
+                            */
+                            const img = getImageForId(marker.id);
+                            
+                            if (img && img.complete)
+                            {
+                                drawOverlay(ctx, img, corners);
+                            }
+
+                        }); // Ende von markers.forEach
+                        
+                        // Der Code für das Ausblenden des Modells (existierender Code):
+                        if (!anyMarkerDetected)
+                        {
+                            handleMarkerLost(); // Muss in script.js definiert sein!
+                        }
+
+                    }
+
+
+
 
                             const corners = marker.corners;
 
@@ -990,7 +1065,7 @@ const posCorners = corners.map(pt => ({
             </script>
 
             <div id="title">
-                <span>Titel des Objekts</span>
+                <span id="objectTitle">...</span>
             </div>
 
             <div class="menu">
@@ -999,6 +1074,11 @@ const posCorners = corners.map(pt => ({
                 <button onclick="document.getElementById('model').style.display='block'">Show</button>
             </div>
 
+            
+
         </div>
+
+
+
     </body>
 </html>

@@ -1,11 +1,15 @@
 /*    INSTANZVARIABLEN    */
 var numberOfPermissions = 2; // Anzahl zu erlaubender Berechtigungen
 var heightOfObjectMenu = "100%"; // Höhe Menü für Objekte
-var timeoutCheckInternetConnection = 60000; // Timeout zur Überprüfung der Internetverbindung
+var timeoutCheckInternetConnection = 30000; // Timeout zur Überprüfung der Internetverbindung
+
+var objectId;
 
 
 function loadThePage()
 {
+    getParameter();
+
     checkInternetConnection();
 
     openWelcomeModal();
@@ -17,7 +21,24 @@ function loadThePage()
     }, 3500)
 }
 
+function getParameter()
+{
+    const urlParams = new URLSearchParams(window.location.search);
+    var objectId = urlParams.get('o');
 
+    if (objectId != null)
+    {
+        console.log("Parameter: " + objectId);
+        setObject(objectId);
+    }
+    else
+    {
+        console.log("Kein Parameter übergeben");
+    }
+}
+
+
+/*
 function setCanvasSize()
 {
     var canvas = document.getElementById("canvas");
@@ -36,18 +57,22 @@ function setCanvasSize()
     if ((x + canvas.height) <= h)
     {
         console.log("Canvas volle Höhe");
+
         canvas.style.height = h+"px";
         canvas.style.width = "auto";
+
+        // canvas.style.left = "px";
     }
     else
     {
         console.log("Canvas volle Breite");
+
         // canvas.style.width = "100%";
         canvas.style.width = w+"px";
         canvas.style.height = "auto";
     }
 }
-
+*/
 
 
 var closeValue = 0;
@@ -168,10 +193,113 @@ function closeWelcomeModal()
 
 function openInfoModal()
 {
-    setCanvasSize();
+    // setCanvasSize();
     document.getElementById("infoModal").style.display = "block";
 }
 function closeInfoModal()
 {
     document.getElementById("infoModal").style.display = "none";
+}
+
+
+/**
+ * 1. Berechnet die tatsächlichen Bildschirmkoordinaten eines Punktes (x, y) 
+ * basierend auf den internen Canvas-Koordinaten.
+ * Dies berücksichtigt die Skalierung und Zentrierung des Canvas.
+ */
+/**
+ * 1. Berechnet die tatsächlichen Bildschirmkoordinaten eines Punktes (x, y) 
+ * basierend auf den internen Canvas-Koordinaten.
+ * Dies berücksichtigt die Skalierung und Zentrierung des Canvas.
+ */
+function mapCanvasToScreen(canvasX, canvasY) {
+    const canvasElement = document.getElementById('canvas');
+    
+    // Sicherheitspuffer
+    if (!canvasElement || canvasElement.width === 0 || canvasElement.height === 0) {
+        return { x: 0, y: 0 };
+    }
+
+    // NEU: getBoundingClientRect liefert die tatsächliche gerenderte Größe und Position
+    const rect = canvasElement.getBoundingClientRect();
+
+    // 1. Aktuelle skalierte Abmessungen in Bildschirm-Pixeln
+    const scaledW = rect.width;
+    const scaledH = rect.height;
+
+    // 2. Interne (unskalierte) Abmessungen (aus canvas.width/height Attributen)
+    const internalW = canvasElement.width;
+    const internalH = canvasElement.height;
+    
+    // 3. Skalierungsfaktor berechnen
+    // Der Marker-Punkt muss mit diesem Faktor skaliert werden
+    const scaleFactor = scaledW / internalW;
+
+    // 4. Offset des skalierten Canvas zur linken/oberen Kante des Viewports
+    // rect.left und rect.top liefern den exakten Abstand vom Viewport-Rand.
+    const offsetX = rect.left;
+    const offsetY = rect.top;
+
+    // 5. Finales Ergebnis: Skalierter Canvas-Punkt plus Offset
+    const screenX = offsetX + (canvasX * scaleFactor);
+    const screenY = offsetY + (canvasY * scaleFactor);
+
+    return { x: screenX, y: screenY };
+}
+
+
+/**
+ * 2. Positioniert das 3D-Modell (model-viewer) auf dem Bildschirm.
+ * Zentriert das Modell um die übergebenen Canvas-Koordinaten.
+ */
+function positionModelOnMarker(canvasX, canvasY) {
+    const model = document.getElementById('model');
+    
+    if (!model) return;
+
+    const screenCoords = mapCanvasToScreen(canvasX, canvasY);
+
+    // Dimensionen des <model-viewer> abrufen, um es zu zentrieren
+    const modelWidth = model.offsetWidth;
+    const modelHeight = model.offsetHeight;
+
+    // Position des Modells so setzen, dass dessen Mitte auf den Marker-Koordinaten liegt
+    const finalX = screenCoords.x - (modelWidth / 2);
+    const finalY = screenCoords.y - (modelHeight / 2);
+
+    // CSS-Position anwenden
+    model.style.left = `${finalX}px`;
+    model.style.top = `${finalY}px`;
+    model.style.display = 'block'; // Modell anzeigen
+}
+
+// Hides the model when the marker is lost (already mentioned in previous steps)
+function handleMarkerLost() {
+    const model = document.getElementById('model');
+    if (model) {
+        model.style.display = 'none';
+    }
+}
+
+/**
+ * Konvertiert Pixel-Koordinaten in normalisierte Koordinaten für den POSIT-Algorithmus.
+ */
+function normalize(corners, width, height) {
+    var halfWidth = width / 2;
+    var halfHeight = height / 2;
+
+    var normalized = [];
+
+    for (var i = 0; i < 4; i++) {
+        var x = corners[i].x;
+        var y = corners[i].y;
+
+        // Verschiebt den Nullpunkt in die Mitte des Canvas und skaliert auf den Bereich [-1, 1]
+        normalized[i] = {
+            x: (x - halfWidth) / halfWidth,
+            y: (y - halfHeight) / halfHeight
+        };
+    }
+
+    return normalized;
 }

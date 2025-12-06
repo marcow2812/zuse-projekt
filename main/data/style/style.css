@@ -33,21 +33,31 @@ html, body
     height: 100%;
     background-color: var(--bg);
     font-family: Arial, Helvetica, sans-serif;
-    overflow-y: hidden;
-    overflow-x: hidden;
+    overflow: hidden;
+    /* overflow-y: hidden;
+    overflow-x: hidden; */
 }
 
-model-viewer
+/* model-viewer
 {
     position: absolute;
     top: 0px;
     right: 0px;
     width: 200px;
     height: 200px;
-    /* background-color: #c29869; */
+    
     background-color: rgb(255, 255, 255, 0.3);
     border: 2px solid var(--gray-light);
     border-radius: 8px;
+} */
+
+model-viewer#model
+{
+    position: absolute; /* WICHTIG für die Platzierung über top/left */
+    /* background-color: transparent; */
+    width: 200px;  /* Feste Größe zur Berechnung der Zentrierung */
+    height: 200px;
+    display: none; /* Initial verstecken, bis Marker gefunden wird */
 }
 
 #loadingPage
@@ -184,13 +194,14 @@ header img
 
 #canvas
 {
-  position: absolute; /* WICHTIG: Nimmt das Element aus dem normalen Fluss */
-    top: 40px;
-    left: 0;
-
     width: 100%;
     height: auto;
     background-color: white;
+/*
+    position: absolute;
+    bottom:5px;
+    right: 15px;
+    */
 }
 
 .sidenav {
@@ -506,3 +517,4 @@ header img
 #myTable tr.header, #myTable tr:hover {
   background-color: #f1f1f1;
 }
+
