@@ -26,24 +26,26 @@
   background: var(--green);
 }
 
-body
+html, body
 {
     margin: 0;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     background-color: var(--bg);
     font-family: Arial, Helvetica, sans-serif;
-    overflow: hidden;
+    overflow-y: hidden;
+    overflow-x: hidden;
 }
 
 model-viewer
 {
     position: absolute;
     top: 0px;
-    left: 0px;
+    right: 0px;
     width: 200px;
     height: 200px;
     /* background-color: #c29869; */
-    background-color: white;
+    background-color: rgb(255, 255, 255, 0.3);
     border: 2px solid var(--gray-light);
     border-radius: 8px;
 }
@@ -123,11 +125,11 @@ header img
     text-transform: uppercase;
     
     cursor: pointer;
-    position: absolute;
+    /* position: absolute; */
     
-    right: 25px;
+    /*right: 25px;*/
     height: 16px;
-    display: flex;
+    /*display: flex;*/
     flex-direction: column;
     justify-content: space-between;
     cursor: pointer;
@@ -138,6 +140,23 @@ header img
     border: 1px solid #3385ff;
     border-radius: 100px;
   }
+
+#title
+{
+  font-size: 14px;
+  text-align: center;
+    background-color: rgb(255, 255, 255, 0.9);
+    color: black;
+    border: 1px solid white;
+    position: absolute;
+    width: 80%;
+    max-width: 200px;
+    top: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 4px;
+    border-radius: 100px;
+}
 
 .menu
 {
@@ -165,48 +184,55 @@ header img
 
 #canvas
 {
+  position: absolute; /* WICHTIG: Nimmt das Element aus dem normalen Fluss */
+    top: 40px;
+    left: 0;
+
     width: 100%;
     height: auto;
     background-color: white;
 }
 
 .sidenav {
-  height: 100%;
-  width: 0;
+  height: 0;
+  width: 100%;
   position: fixed;
   z-index: 1;
-  top: 0;
+  top: auto;
   left: 0;
-  background-color: #F2F2F2;
-  border-right: 1px solid #E6E6E6;
-  overflow-x: hidden;
-  transition: 0.5s;
-  padding-top: 60px;
-}
+  bottom: 0;
+  background-color: white;
 
-.sidenav a {
-  padding: 8px 8px 8px 32px;
-  text-decoration: none;
-  font-size: 22px;
-  color: #818181;
-  display: block;
+  overflow-y: auto;
   transition: 0.3s;
+  padding-top: 0;
 }
 
-.sidenav a:hover {
-  color: #5f5f5f;
-}
 
 .sidenav .closebtn {
+  color: var(--green);
   position: absolute;
-  top: 0;
+  top: 10px;
   right: 25px;
-  font-size: 36px;
+  font-size: 40px;
   margin-left: 50px;
+  text-decoration: none;
+}
+
+.sidenav .closebtn:hover
+{
+  color: green;
+}
+
+.sidenav-container
+{
+  /* top right bottom left */
+  padding: 50px 30px 30px 30px;
+  display: block;
 }
 
 @media screen and (max-height: 450px) {
-  .sidenav {padding-top: 15px;}
+  .sidenav {padding-top: 0;}
   .sidenav a {font-size: 18px;}
 }
 
@@ -245,7 +271,7 @@ header img
     margin-right: 5px;
 
     color: var(--gray);
-    background-color: var(--gray-light);
+    background-color: white; /* var(--gray-light) */
     border: 1px solid var(--gray);
 }
 
@@ -350,4 +376,133 @@ header img
   height: auto;
   color: var(--green);
   flex-shrink: 0;
+}
+
+.subject-container
+{
+  display: flex;
+  gap: 15px;
+  flex-direction: row; /* Standardmäßig nebeneinander */
+  /* NEU: Erlaubt das automatische Umbrechen in die nächste Zeile */
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+  justify-content: flex-start;
+}
+
+
+.subject-box
+{
+  flex: 0 1 110px;
+
+  /* flex-grow: 1; */
+  min-width: 110px;
+
+  /* width: 140px; */
+  height: 60px;
+  /* flex-shrink: 0; */
+
+  color: white;
+  background-color: #cccccc;
+
+  padding: 10px 30px 10px 30px;
+  
+  border-radius: 8px;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap; 
+  
+  background-repeat: no-repeat;
+  background-size: 100%;
+
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out, background 0.4s ease-in-out;
+
+  
+}
+.subject-box:hover {
+  transform: scale(1.04); 
+  z-index: 10; 
+}
+
+
+
+.subject-box.biologie
+{
+  background: linear-gradient(to right, rgb(2, 119, 2), lightgreen);
+  background-size: 160% 100%;
+  background-position: left bottom;
+}
+.subject-box.biologie:hover
+{
+  background-position: right bottom;
+}
+.subject-box.geschichte
+{
+  /* background-color: #cc6600; */
+  background: linear-gradient(to right, #b86007, #f78c22);
+  background-size: 160% 100%;
+  background-position: left bottom;
+}
+.subject-box.geschichte:hover
+{
+  background-position: right bottom;
+}
+.subject-box.erdkunde
+{
+  background: linear-gradient(to right, #913d05, #dd5b04);
+  background-size: 160% 100%;
+  background-position: left bottom;
+}
+.subject-box.erdkunde:hover
+{
+  background-position: right bottom;
+}
+.subject-box.powi
+{
+  background: linear-gradient(to right, #85057f, #eb1ce1);
+  background-size: 160% 100%;
+  background-position: left bottom;
+}
+.subject-box.powi:hover
+{
+  background-position: right bottom;
+}
+
+
+#myInput {
+  background-image: url('../img/favicon.png');
+  background-position: 10px 10px;
+  background-size: 23px;
+  background-repeat: no-repeat;
+  
+  width: calc(100% - 62px);
+  font-size: 16px;
+  padding: 12px 20px 12px 40px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
+}
+
+#myTable {
+  border-collapse: collapse;
+  width: 100%;
+  border: 1px solid #ddd;
+  font-size: 18px;
+}
+
+#myTable th, #myTable td {
+  text-align: left;
+  padding: 12px;
+}
+
+#myTable tr {
+  border-bottom: 1px solid #ddd;
+}
+
+#myTable tr.header, #myTable tr:hover {
+  background-color: #f1f1f1;
 }

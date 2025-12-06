@@ -1,111 +1,87 @@
-var numberOfPermissions = 2;
+/*    INSTANZVARIABLEN    */
+var numberOfPermissions = 2; // Anzahl zu erlaubender Berechtigungen
+var heightOfObjectMenu = "100%"; // Höhe Menü für Objekte
+var timeoutCheckInternetConnection = 60000; // Timeout zur Überprüfung der Internetverbindung
 
-function loadPage()
+
+function loadThePage()
 {
-    var loadingPage = document.getElementById("loadingPage");
-    var mainPage = document.getElementById("main");
-
-    let w = window.innerWidth;
-    let h = window.innerHeight;
-
-    console.log(w);
-    console.log(h);
-
     checkInternetConnection();
-
 
     openWelcomeModal();
 
     setTimeout(function()
     {
-        loadingPage.style.display = "none";
-        mainPage.style.display = "block";
+        document.getElementById("loadingPage").style.display = "none";
+        document.getElementById("main").style.display = "block";
     }, 3500)
-
-    
-
 }
+
+
+function setCanvasSize()
+{
+    var canvas = document.getElementById("canvas");
+    var canvasQuotient = canvas.height / canvas.width;
+
+    console.log("C-W: " + canvas.width + " C-H: " + canvas.height + " Q: " + canvasQuotient);
+
+    let w = window.innerWidth;
+    let h = window.innerHeight;
+    console.log("W-W: " + w + " W-H: " + h);
+
+    var x = ((w - canvas.width) * canvasQuotient);
+
+    console.log(x);
+
+    if ((x + canvas.height) <= h)
+    {
+        console.log("Canvas volle Höhe");
+        canvas.style.height = h+"px";
+        canvas.style.width = "auto";
+    }
+    else
+    {
+        console.log("Canvas volle Breite");
+        // canvas.style.width = "100%";
+        canvas.style.width = w+"px";
+        canvas.style.height = "auto";
+    }
+}
+
+
 
 var closeValue = 0;
 function checkCloseOption()
 {
     closeValue = closeValue + 1;
-    if (closeValue == numberOfPermissions)
+    if (closeValue >= numberOfPermissions)
     {
         // Alles erlaubt
         closeWelcomeModal();
     }
-    else
-    {
-        // Noch nicht alles erlaubt, weiterhin sichtbar
-    }    
-    
 }
 
-function openNav() {
-  document.getElementById("mySidenav").style.width = "220px";
-}
-
-function closeNav() {
-  document.getElementById("mySidenav").style.width = "0";
-}
-
-/*
-async function startWebcam()
-{
-      const video = document.getElementById('video-webcame');
-      var headerIcon = document.getElementById("header-icon-cam");
-    
-      headerIcon.classList.add("header-icon");
-
-    try
-    {
-        // Zugriff auf Kamera anfragen
-        const stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: false });
-        
-        // Videostream an <video> binden
-        video.srcObject = stream;
-
-
-        headerIcon.classList.remove("icon-red");
-        headerIcon.classList.add("icon-green");
-        
-    }
-    catch (err) 
-    {
-        console.error("Fehler beim Zugriff auf die Kamera:", err);
-
-        headerIcon.classList.remove("icon-green");
-        headerIcon.classList.add("icon-red");
-    }
-}
-*/
-
-function openWelcomeModal()
-{
-    document.getElementById("welcomeModal").style.display = "block";
-}
-
-function closeWelcomeModal()
-{
-    document.getElementById("welcomeModal").style.display = "none";
-    openInfoModal();
-}
-
-function openInfoModal()
-{
-    document.getElementById("infoModal").style.display = "block";
-}
-
-function closeInfoModal()
-{
-    document.getElementById("infoModal").style.display = "none";
-}
 
 async function checkInternetConnection()
 {
     var headerIcon = document.getElementById("header-icon-connection");
 
+    if (navigator.onLine)
+    {
+        // Online
+        console.log("Online");
+        headerIcon.classList.remove("icon-red");
+        headerIcon.classList.add("icon-green");
+    }
+    else
+    {
+        // Offline
+        console.log("Offline");
+        headerIcon.classList.remove("icon-green");
+        headerIcon.classList.add("icon-red");
+    }
+
+    /*
     try
     {
         const response = await fetch("./data/img/1pixel.png");
@@ -128,71 +104,74 @@ async function checkInternetConnection()
         headerIcon.classList.remove("icon-green");
         headerIcon.classList.add("icon-red");
     }
-
-
-    /*
-    console.log(navigator.onLine);
-
-    if (navigator.onLine)
-    {
-        // Connected
-        headerIcon.classList.remove("icon-red");
-        headerIcon.classList.add("icon-green");
-    }
-    else
-    {
-        // Not connected
-        headerIcon.classList.remove("icon-green");
-        headerIcon.classList.add("icon-red");
-    }
     */
 
-    setTimeout(checkInternetConnection, 60000); // Alle 60 Sekunden prüfen
+    setTimeout(checkInternetConnection, timeoutCheckInternetConnection);
 }
+
 
 function getDegByMarker(marker, x, y, z)
 {
-
+    console.log("Auswertung: " + marker)
     switch (marker)
     {
         case 1:
             console.log("Marker 1");
-            //           Drehung nach rechts oder links von vorne
-            //              nach vorne und hinten neigen
-            rotateObject(z, 0, 0);
-
-
-            // Korrektur: Den Wert negieren
-            // const correctedZ = parseFloat(z) * -1;
-            
-            // Oder einfacher: 360 - z, um den Wert im 0-360° Bereich zu halten
             const invertedZ = (360 - parseFloat(z)) % 360; 
-            
-            // Wir verwenden die Inversion, da sie sauberer ist:
+            //           Drehung nach rechts oder links (im/gegen Uhrzeigersinn)
+            //              nach vorne und hinten neigen (auf einen zu/von einem weg)
             rotateObject(invertedZ, 0, 0);
-
-
-
-
             break;
         case 2:
             console.log("Marker 2");
-        
+            break;
         case 3:
             console.log("Marker 3");
-        
+            break;
         case 4:
             console.log("Marker 4");
-
+            break;
         case 5:
             console.log("Marker 5");
-        
+            break;
         case 6:
             console.log("Marker 6");
-        
+            break;
         default:
             console.log("Anderer Marker");
     }
-    console.log("x: " + x + " y: " + y + " z: " + z);
+
+    console.log("x: " + x + " | y: " + y + " | z: " + z);
 }
 
+
+function openObjectMenu()
+{
+    document.getElementById("mySidenav").style.height = heightOfObjectMenu;
+}
+function closeObjectMenu()
+{
+    document.getElementById("mySidenav").style.height = "0%";
+}
+
+
+function openWelcomeModal()
+{
+    document.getElementById("welcomeModal").style.display = "block";
+}
+function closeWelcomeModal()
+{
+    document.getElementById("welcomeModal").style.display = "none";
+    openInfoModal();
+}
+
+
+function openInfoModal()
+{
+    setCanvasSize();
+    document.getElementById("infoModal").style.display = "block";
+}
+function closeInfoModal()
+{
+    document.getElementById("infoModal").style.display = "none";
+}

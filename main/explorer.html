@@ -15,49 +15,133 @@
         <meta property="og:image" content="https://marcow2812.github.io/zuse-projekt/main/data/img/zuse_logo_small.png">
         <meta property="og:image:alt" content="Alternativtext">
         <meta property="og:image:type" content="image/png">
+        <!--
         <meta property="og:image:width" content="1200">
         <meta property="og:image:height" content="630">
+        -->
 
         <link rel="stylesheet" href="./data/style/style.css">
         <script language="javascript" type="text/javascript" src="./data/script/script.js"></script>
 
-        <!-- ERGÄNZT -->
+        <!-- Aruco Marker Detection -->
         <script src="./data/js-aruco/aruco.js"></script>
         <script src="./data/js-aruco/cv.js"></script>
         <script src="./data/js-aruco/polyfill.js"></script>
-        <!-- ERGÄNZT -->
-
-
         <script src="./data/js-aruco/posit1.js"></script>
 
-
-        <script type="module"
-        src="./data/google-model-viewer/model-viewer.min.js">
-        </script>
-
+        <!-- Google Model Viewer -->
+        <script type="module" src="./data/google-model-viewer/model-viewer.min.js"></script>
     </head>
-    <body onload="loadPage()">
+    <body onload="loadThePage()">
+
         <div class="container" id="loadingPage">
             <div class="loader"></div>
         </div>
         <div id="main">
 
             <header>
-                <div class="burger" onclick="openNav()">
+                <div class="burger" onclick="openObjectMenu()">
                     <span></span>
                     <span></span>
                     <span></span>
                 </div>
 
                 <div id="mySidenav" class="sidenav">
-                    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                    
-                    <a href="#">About</a>
-                    <a href="#">Services</a>
-                    <a href="#">Clients</a>
-                    <a href="#">Contact</a>
-                    <span class="beta-span">Beta</span>
+                    <a href="javascript:void(0)" class="closebtn" onclick="closeObjectMenu()">&times;</a>
 
+                    <div class="sidenav-container">
+
+                        <span class="beta-span">Beta</span>
+
+                    
+                        <div class="subject-container">
+                            <div class="subject-box biologie">
+                                Biologie
+                            </div>
+                            <div class="subject-box geschichte">
+                                Geschichte
+                            </div>
+                            <div class="subject-box erdkunde">
+                                Erdkunde
+                            </div>
+                            <div class="subject-box powi">
+                                Politik und Wirtschaft
+                            </div>
+                        </div>
+                        <!-- 
+                        <div class="subject-container">
+                            <div class="subject-box" onclick="document.getElementById('model').src='./data/3d/pyramid_of_menkaure_giza_pyramid_complex_egypt.glb'" style="background-image: url('https://cdn.pixabay.com/photo/2016/05/19/14/13/daisies-1403041_1280.jpg');">
+                                Pyramide
+                            </div>
+                            <div class="subject-box" onclick="document.getElementById('model').src='./data/3d/heart-23.glb'" style="background-image: url('https://cdn.pixabay.com/photo/2016/10/21/00/43/giza-1756946_1280.jpg');">
+                                Herz
+                            </div>
+                        </div>
+                        -->
+
+                        <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Suchbegriff eingeben...">
+
+                        <table id="myTable">
+                        <tr class="header">
+                            <th style="width:60%;">Name</th>
+                            <th style="width:40%;">Country</th>
+                        </tr>
+                        <tr>
+                            <td>Alfreds Futterkiste</td>
+                            <td>Germany</td>
+                        </tr>
+                        <tr>
+                            <td>Berglunds snabbkop</td>
+                            <td>Sweden</td>
+                        </tr>
+                        <tr>
+                            <td>Island Trading</td>
+                            <td>UK</td>
+                        </tr>
+                        <tr>
+                            <td>Koniglich Essen</td>
+                            <td>Germany</td>
+                        </tr>
+                        <tr>
+                            <td>Laughing Bacchus Winecellars</td>
+                            <td>Canada</td>
+                        </tr>
+                        <tr>
+                            <td>Magazzini Alimentari Riuniti</td>
+                            <td>Italy</td>
+                        </tr>
+                        <tr>
+                            <td>North/South</td>
+                            <td>UK</td>
+                        </tr>
+                        <tr>
+                            <td>Paris specialites</td>
+                            <td>France</td>
+                        </tr>
+                        </table>
+
+                        <script>
+                        function myFunction() {
+                        var input, filter, table, tr, td, i, txtValue;
+                        input = document.getElementById("myInput");
+                        filter = input.value.toUpperCase();
+                        table = document.getElementById("myTable");
+                        tr = table.getElementsByTagName("tr");
+                        for (i = 0; i < tr.length; i++) {
+                            td = tr[i].getElementsByTagName("td")[0];
+                            if (td) {
+                            txtValue = td.textContent || td.innerText;
+                            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                                tr[i].style.display = "";
+                            } else {
+                                tr[i].style.display = "none";
+                            }
+                            }       
+                        }
+                        }
+                        </script>
+
+                    </div>
                 </div>
 
 
@@ -90,6 +174,7 @@
     </div>
     <div class="modal-body">
 
+        <!--
         <span id="header-icon-cookie" class="icon-cam">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cookie" viewBox="0 0 16 16">
                 <path d="M6 7.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m4.5.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3m-.5 3.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0"/>
@@ -98,8 +183,10 @@
         </span>
         <span>Cookies erlauben (nicht funktionsfähig)</span>
         <br><br>
-        <button class="btn" id="cookieAccessBtn" onclick="unlockCookie()">KEINE FUNKTION</button> <!-- Cookies erlauben -->
+        <button class="btn" id="cookieAccessBtn" onclick="unlockCookie()">KEINE FUNKTION</button>
         <br><br>
+        -->
+
         <span id="header-icon-audio" class="icon-cam">
             <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-volume-up-fill" viewBox="0 0 16 16">
                 <path d="M11.536 14.01A8.47 8.47 0 0 0 14.026 8a8.47 8.47 0 0 0-2.49-6.01l-.708.707A7.48 7.48 0 0 1 13.025 8c0 2.071-.84 3.946-2.197 5.303z"/>
@@ -213,7 +300,7 @@
                 interaction-prompt-threshold="0">
             </model-viewer>
 
-    <script>
+<script>
 
 const model = document.getElementById("model");
 
@@ -222,18 +309,10 @@ function rotateObject(x, y, z)
     model.orientation = `${x}deg ${y}deg ${z}deg`;
 }
 
-        /*
-        function rotateJS() {
-            // rotation-per-second geht nur per HTML-Attribut
-            //model.setAttribute("rotation-per-second", "20deg");
-
-            // oder absolute Ausrichtung:
-            model.orientation = "0deg 45deg 0deg";
-        }
-        */
-
-        /* rotateJS(); */
     </script>
+
+
+
 
     <!--
     auto-rotate
@@ -463,13 +542,17 @@ function rotationMatrixToEuler(R)
                 var audioDelay = 2000; // 2 Sekunden Verzögerung (kein Marker erkannt)
 
                 const imagesById = {
-                    0: "./data/img/overlay.png",
-                    1: "./data/img/marco.png",
-                    2: "./data/img/overlay.png",
-                    3: "./data/img/marco.png",
+                    1: "./data/img/overlay.png",
+                    2: "./data/img/marco.png",
+                    3: "./data/img/overlay.png",
+                    4: "./data/img/marco.png",
+                    5: "./data/img/overlay.png",
+                    6: "./data/img/marco.png",
                 };
 
                 const imageCache = {};
+
+                
 
                 function getImageForId(id)
                 {
@@ -900,18 +983,20 @@ const posCorners = corners.map(pt => ({
                     detectorForMarker = new AR.Detector();
                     // posit = new POS.Posit(markerSize, video.videoWidth);
 
-                    console.log("Tracking gestartet.");
+                    console.log("Tracking gestartet");
                     posit = new POS.Posit(markerSize, canvas.width);
                     tick();
                 })();
             </script>
 
-
-
-            <!-- ERGÄNZT -->
+            <div id="title">
+                <span>Titel des Objekts</span>
+            </div>
 
             <div class="menu">
-                <span>Menü</span>
+                <button onclick="document.getElementById('model').style.display='none'">Hide</button>
+                <button onclick="openObjectMenu()">Menü</button>
+                <button onclick="document.getElementById('model').style.display='block'">Show</button>
             </div>
 
         </div>
