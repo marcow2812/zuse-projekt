@@ -1,9 +1,9 @@
+var oSrc;
+var oTitle;
+
 function setObject(objectId)
 {
     closeObjectMenu(); // Wenn von Menü aufgerufen
-
-    var oSrc;
-    var oTitle;
 
     switch (objectId)
     {

@@ -9,6 +9,8 @@ var objectId;
 
 function loadThePage()
 {
+    setObject("disco-1");
+
     getParameter();
 
     checkInternetConnection();
@@ -24,7 +26,7 @@ function loadThePage()
 
 function shareObject(id)
 {
-    console.log(standardUrl + "?o=" + id);
+    console.warn(standardUrl + "?o=" + id);
 }
 
 function getParameter()
