@@ -56,19 +56,41 @@
 
                     
                         <div class="subject-container">
-                            <div class="subject-box biologie">
+                            <div class="subject-box green">
                                 Biologie
                             </div>
-                            <div class="subject-box geschichte">
+                            <div class="subject-box lightbrown">
                                 Geschichte
                             </div>
-                            <div class="subject-box erdkunde">
+                            <div class="subject-box brown">
                                 Erdkunde
                             </div>
-                            <div class="subject-box powi">
+                            <div class="subject-box purple">
                                 Politik und Wirtschaft
                             </div>
                         </div>
+
+                        <div class="subject-container">
+                            <div class="subject-box red" onclick="setObject('heart-1')">
+                                Herz <span onclick="shareObject('heart-1')">(Teilen)</span>
+                            </div>
+                            <div class="subject-box purple" onclick="setObject('disco-1')">
+                                Disco Kugel
+                            </div>
+                            <div class="subject-box lightbrown" onclick="setObject('atom-1')">
+                                Atom
+                            </div>
+                            <div class="subject-box brown" onclick="setObject('city-1')">
+                                Stadt
+                            </div>
+                            <div class="subject-box purple" onclick="setObject('davinci-1')">
+                                Da Vinci
+                            </div>
+                            <div class="subject-box purple" onclick="setObject('enigma-1')">
+                                Enigma
+                            </div>
+                        </div>
+
                         <!-- 
                         <div class="subject-container">
                             <div class="subject-box" onclick="document.getElementById('model').src='./data/3d/pyramid_of_menkaure_giza_pyramid_complex_egypt.glb'" style="background-image: url('https://cdn.pixabay.com/photo/2016/05/19/14/13/daisies-1403041_1280.jpg');">
@@ -582,6 +604,7 @@ function rotationMatrixToEuler(R)
                 let lastSeenTime = 0;
                 let stopTimeout = null;
 
+                
                 function unlockAudio()
                 {
                     document.getElementById('audioAccessBtn').style.display = "none";
@@ -827,7 +850,7 @@ function rotationMatrixToEuler(R)
 
 
                 function tick()
-{
+                {
     // 1. Initialprüfung auf den Detector
     if (!detectorForMarker)
     {
@@ -842,12 +865,14 @@ function rotationMatrixToEuler(R)
     if (video.readyState === video.HAVE_ENOUGH_DATA) {
         
         // Korrigiert: Nur einmalig Canvas-Größe und POSIT initialisieren, wenn nötig
-        if (canvas.width !== video.videoWidth || posit === null) {
+        if (canvas.width !== video.videoWidth || posit === null)
+        {
             canvas.width = video.videoWidth;
             canvas.height = video.videoHeight;
             
             // POSIT nur initialisieren, wenn die Größe bekannt ist und es noch nicht geschehen ist
-            if (posit === null && canvas.width > 0) {
+            if (posit === null && canvas.width > 0)
+            {
                 posit = new POS.Posit(markerSize, canvas.width);
                 console.log("POSIT initialisiert mit Breite: " + canvas.width);
             }
@@ -866,6 +891,28 @@ function rotationMatrixToEuler(R)
             markers.forEach(marker => {
                 
                 const corners = marker.corners;
+
+
+
+                // Koordinaten der ersten beiden Ecken (c0 und c1)
+                const x0 = corners[0].x;
+                const y0 = corners[0].y;
+                const x1 = corners[1].x;
+                const y1 = corners[1].y;
+
+                // Berechnung der Seitenlänge (in Pixel) mit dem Satz des Pythagoras
+                const deltaX = x1 - x0;
+                const deltaY = y1 - y0;
+                const sideLength = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+
+                // Ausgabe in der Konsole
+                // console.log(`Marker ID ${marker.id} | Seitenlänge (Pixel): ${sideLength.toFixed(2)}`);
+                setObjectSize(sideLength.toFixed(2));
+                // console.log(`Seitenlänge (Pixel): ${sideLength.toFixed(2)}`);
+
+
+
+
                 
                 // === MODELL-POSITIONIERUNG UND SICHTBARKEIT ===
                 
@@ -952,9 +999,7 @@ function rotationMatrixToEuler(R)
             </div>
 
             <div class="menu">
-                <button onclick="document.getElementById('model').style.display='none'">Hide</button>
                 <button onclick="openObjectMenu()">Menü</button>
-                <button onclick="document.getElementById('model').style.display='block'">Show</button>
             </div>
 
             

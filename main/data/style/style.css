@@ -55,8 +55,8 @@ model-viewer#model
 {
     position: absolute; /* WICHTIG für die Platzierung über top/left */
     /* background-color: transparent; */
-    width: 200px;  /* Feste Größe zur Berechnung der Zentrierung */
-    height: 200px;
+    width: 150px;  /* Feste Größe zur Berechnung der Zentrierung */
+    height: 150px;
     display: none; /* Initial verstecken, bis Marker gefunden wird */
     border: 1px solid blue;
 }
@@ -443,44 +443,56 @@ header img
 
 
 
-.subject-box.biologie
+.subject-box.green
 {
   background: linear-gradient(to right, rgb(2, 119, 2), lightgreen);
   background-size: 160% 100%;
   background-position: left bottom;
 }
-.subject-box.biologie:hover
+.subject-box.green:hover
 {
   background-position: right bottom;
 }
-.subject-box.geschichte
+
+.subject-box.red
+{
+  background: linear-gradient(to right, rgb(145, 8, 8), rgb(242, 80, 80));
+  background-size: 160% 100%;
+  background-position: left bottom;
+}
+.subject-box.red:hover
+{
+  background-position: right bottom;
+}
+
+.subject-box.lightbrown
 {
   /* background-color: #cc6600; */
   background: linear-gradient(to right, #b86007, #f78c22);
   background-size: 160% 100%;
   background-position: left bottom;
 }
-.subject-box.geschichte:hover
+.subject-box.lightbrown:hover
 {
   background-position: right bottom;
 }
-.subject-box.erdkunde
+.subject-box.brown
 {
   background: linear-gradient(to right, #913d05, #dd5b04);
   background-size: 160% 100%;
   background-position: left bottom;
 }
-.subject-box.erdkunde:hover
+.subject-box.brown:hover
 {
   background-position: right bottom;
 }
-.subject-box.powi
+.subject-box.purple
 {
   background: linear-gradient(to right, #85057f, #eb1ce1);
   background-size: 160% 100%;
   background-position: left bottom;
 }
-.subject-box.powi:hover
+.subject-box.purple:hover
 {
   background-position: right bottom;
 }

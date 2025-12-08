@@ -2,6 +2,7 @@
 var numberOfPermissions = 2; // Anzahl zu erlaubender Berechtigungen
 var heightOfObjectMenu = "100%"; // Höhe Menü für Objekte
 var timeoutCheckInternetConnection = 30000; // Timeout zur Überprüfung der Internetverbindung
+var standardUrl = "https://marcow2812.github.io/zuse-projekt/main/explorer.html"; // Standard-URL für QR-Code-Erstellung
 
 var objectId;
 
@@ -19,6 +20,11 @@ function loadThePage()
         document.getElementById("loadingPage").style.display = "none";
         document.getElementById("main").style.display = "block";
     }, 3500)
+}
+
+function shareObject(id)
+{
+    console.log(standardUrl + "?o=" + id);
 }
 
 function getParameter()
