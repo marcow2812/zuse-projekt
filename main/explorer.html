@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="de">
     <head>
-        <title>Explore | AR-Cube</title>
+        <title>Explorer | AR-Cube</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
         <link rel="icon" type="image/png" href="./data/img/favicon.png">
@@ -807,6 +807,12 @@ function rotationMatrixToEuler(R)
 
                 function handleMarkerLost()
                 {
+                    const model = document.getElementById('model');
+                    if (model) {
+                        // model.style.display muss auf 'none' gesetzt werden
+                        model.style.display = 'none'; 
+                    }
+
                     markerVisible = false;
 
                     // Verzögertes Stoppen → 1 Sekunde
@@ -821,235 +827,112 @@ function rotationMatrixToEuler(R)
 
 
                 function tick()
+{
+    // 1. Initialprüfung auf den Detector
+    if (!detectorForMarker)
+    {
+        requestAnimationFrame(tick);
+        return;
+    }
+
+    // Status-Variable, um zu verfolgen, ob ein positionierender Marker gefunden wurde
+    let anyMarkerDetected = false; 
+
+    // 2. Video-Bereitschaft prüfen und Canvas/POSIT-Initialisierung durchführen
+    if (video.readyState === video.HAVE_ENOUGH_DATA) {
+        
+        // Korrigiert: Nur einmalig Canvas-Größe und POSIT initialisieren, wenn nötig
+        if (canvas.width !== video.videoWidth || posit === null) {
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+            
+            // POSIT nur initialisieren, wenn die Größe bekannt ist und es noch nicht geschehen ist
+            if (posit === null && canvas.width > 0) {
+                posit = new POS.Posit(markerSize, canvas.width);
+                console.log("POSIT initialisiert mit Breite: " + canvas.width);
+            }
+        }
+        
+        // 3. Frame auf Canvas zeichnen
+        ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+        // 4. Marker-Erkennung (NUR EINMAL AUFRUFEN)
+        const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+        const markers = detectorForMarker.detect(imageData);
+
+        if (markers.length > 0) {
+            
+            // 5. Verarbeitung JEDES erkannten Markers (EINZELNE SCHLEIFE)
+            markers.forEach(marker => {
+                
+                const corners = marker.corners;
+                
+                // === MODELL-POSITIONIERUNG UND SICHTBARKEIT ===
+                
+                // Position des 3D-Objekts setzen
+                const centerX = (corners[0].x + corners[1].x + corners[2].x + corners[3].x) / 4;
+                const centerY = (corners[0].y + corners[1].y + corners[2].y + corners[3].y) / 4;
+                
+                // positionModelOnMarker() positioniert das Modell und setzt display: 'block'
+                positionModelOnMarker(centerX, centerY);
+                anyMarkerDetected = true; 
+                
+                // handleMarkerDetected() hier aufrufen, wenn bei JEDEM Marker etwas passieren soll (z.B. Musik)
+                // handleMarkerDetected(); 
+                
+                // ===============================================
+                
+                // --- AR & POSIT BERECHNUNGEN (Ihr existierender Code) ---
+
+                // POSIT Pose Berechnung
+                const normalizedCorners = normalize(corners, canvas.width, canvas.height);
+                const pose = posit.pose(normalizedCorners);
+                const R = pose.bestRotation;
+                const T = pose.bestTranslation;
+                const e = rotationMatrixToEuler(R);
+                getDegByMarker(marker.id, e.x.toFixed(1), e.y.toFixed(1), e.z.toFixed(1));
+
+                // Marker rot umranden (Debug)
+                ctx.strokeStyle = "red";
+                ctx.lineWidth = 3;
+                ctx.beginPath();
+                ctx.moveTo(corners[0].x, corners[0].y);
+                for (let i=1; i<corners.length; i++) ctx.lineTo(corners[i].x, corners[i].y);
+                ctx.closePath();
+                ctx.stroke();
+
+                // Debug-Linien (Gelb)
+                ctx.strokeStyle = "yellow";
+                ctx.lineWidth = 3;
+                ctx.beginPath();
+                corners.forEach((c, i) => {
+                    const next = corners[(i+1) % corners.length];
+                    ctx.moveTo(c.x, c.y);
+                    ctx.lineTo(next.x, next.y);
+                });
+                ctx.stroke();
+
+                // Overlay-Bild auf Marker zeichnen
+                const img = getImageForId(marker.id);
+                if (img && img.complete)
                 {
-                    if (video.readyState === video.HAVE_ENOUGH_DATA) {
-
-                        canvas.width = video.videoWidth;
-                        canvas.height = video.videoHeight;
-
-                        // --- FIX START ---
-                        // Wir initialisieren POSIT erst hier, wenn wir sicher sind, 
-                        // dass videoWidth > 0 ist.
-                        if (posit === null) {
-                            posit = new POS.Posit(markerSize, canvas.width);
-                            console.log("POSIT initialisiert mit Breite: " + canvas.width);
-                        }
-                        // --- FIX ENDE ---
-
-                        ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
-                       
-
-
-                        const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-                        let anyMarkerDetected = false;
-                        const markers = detector.detect(imageData);
-
-                        
-
-
-
-
-                        markers.forEach(marker => {
-
-
-                            
-                            if (markers.length > 0) {
-                        let anyMarkerDetected = false; 
-
-                        markers.forEach(function(marker) {
-
-                            const corners = marker.corners;
-                            
-                            // Dies ist der Block für die POSIT-Berechnung (existierender Code):
-                            const normalizedCorners = normalize(marker.corners, canvas.width, canvas.height);
-                            const pose = posit.pose(normalizedCorners);
-                            
-                            
-                            // ----------------------------------------------------------------
-                            // ⬇️ HIER DEN NEUEN CODE FÜR DIE 2D-MODELL-POSITIONIERUNG EINFÜGEN ⬇️
-                            // ----------------------------------------------------------------
-                            
-                            const TARGET_MARKER_ID = 1; // **Ihre Ziel-Marker-ID**
-
-                            if (marker.id === TARGET_MARKER_ID) {
-                                
-                                // 1. Marker-Mittelpunkt in internen Canvas-Koordinaten berechnen
-                                const corners = marker.corners;
-                                const centerX = (corners[0].x + corners[1].x + corners[2].x + corners[3].x) / 4;
-                                const centerY = (corners[0].y + corners[1].y + corners[2].y + corners[3].y) / 4;
-                                
-                                // 2. Das 3D-Objekt an dieser Position anzeigen und zentrieren
-                                // Diese Funktion muss in script.js definiert sein!
-                                positionModelOnMarker(centerX, centerY);
-
-                                // Bestätigen, dass ein Marker für die Steuerung gefunden wurde
-                                anyMarkerDetected = true; 
-                            }
-
-                            // ----------------------------------------------------------------
-                            // ⬆️ ENDE DES NEUEN CODES ⬆️
-                            // ----------------------------------------------------------------
-
-
-                            // Der Code für das Zeichnen der Overlays (existierender Code):
-                            /*
-                            if (marker.id == 100)
-                            {
-                                drawOverlay(ctx, overlayImg, corners);
-                            }
-                            */
-                            const img = getImageForId(marker.id);
-                            
-                            if (img && img.complete)
-                            {
-                                drawOverlay(ctx, img, corners);
-                            }
-
-                        }); // Ende von markers.forEach
-                        
-                        // Der Code für das Ausblenden des Modells (existierender Code):
-                        if (!anyMarkerDetected)
-                        {
-                            handleMarkerLost(); // Muss in script.js definiert sein!
-                        }
-
-                    }
-
-
-
-
-                            const corners = marker.corners;
-
-                            // Marker rot umranden
-                            ctx.strokeStyle = "red";
-                            ctx.lineWidth = 3;
-                            ctx.beginPath();
-                            ctx.moveTo(corners[0].x, corners[0].y);
-                            for (let i=1; i<corners.length; i++) ctx.lineTo(corners[i].x, corners[i].y);
-                            ctx.closePath();
-                            ctx.stroke();
-
-                            /*
-                            // Mittelpunkt
-                            const cx = (corners[0].x + corners[1].x + corners[2].x + corners[3].x) / 4;
-                            const cy = (corners[0].y + corners[1].y + corners[2].y + corners[3].y) / 4;
-
-                            const posCorners = corners.map(pt => ({
-                                x: pt.x - cx,
-                                y: pt.y - cy
-                            }));
-                            */
-
-                            // KI-generiert:
-                            const canvasCenterX = canvas.width / 2;
-const canvasCenterY = canvas.height / 2;
-
-const posCorners = corners.map(pt => ({
-    x: pt.x - canvasCenterX,
-    y: canvasCenterY - pt.y 
-}));
-                            // ------------------
-                            
-
-
-
-
-
-
-                            // Pose berechnen
-                            const pose = posit.pose(posCorners);
-                            const R = pose.bestRotation;
-                            const T = pose.bestTranslation;
-
-                            const e = rotationMatrixToEuler(R);
-
-                            /*
-                            console.log(
-                                `Marker ${marker.id} | rotX=${e.x.toFixed(1)} rotY=${e.y.toFixed(1)} rotZ=${e.z.toFixed(1)}`
-                            );
-                            */
-
-                            getDegByMarker(marker.id, e.x.toFixed(1), e.y.toFixed(1), e.z.toFixed(1));
-
-                        });
-
-                        /*
-                        if (markers.length > 0) {
-                            // Optional: erste Marker-ID ausgeben
-                            console.log("Marker erkannt:", markers[0].id);
-
-                            handleMarkerDetected();
-                        } else {
-                            handleMarkerLost();
-                        }
-                        */
-
-                        /*
-                        markers.forEach(marker => {
-                            const corners = marker.corners;
-
-                            // Linien zum Debuggen
-                            ctx.strokeStyle = "yellow";
-                            ctx.lineWidth = 3;
-                            ctx.beginPath();
-                            corners.forEach((c, i) => {
-                                const next = corners[(i+1) % corners.length];
-                                ctx.moveTo(c.x, c.y);
-                                ctx.lineTo(next.x, next.y);
-                            });
-                            ctx.stroke();
-
-                            // Bild auf Marker zeichnen
-                            if (overlayImg.complete)
-                            {
-                                // drawOverlay(corners);
-                                drawOverlay(ctx, overlayImg, corners);
-                                // drawOverlay(ctx, overlayImg, Array.from(corners));
-                            }
-                        }); */
-                        markers.forEach(marker => {
-                            anyMarkerDetected = true;
-
-                            handleMarkerDetected();  // Musik steuern
-
-                            const corners = marker.corners;
-
-                            // Debug-Linien
-                            ctx.strokeStyle = "yellow";
-                            ctx.lineWidth = 3;
-                            ctx.beginPath();
-                            corners.forEach((c, i) => {
-                                const next = corners[(i+1) % corners.length];
-                                ctx.moveTo(c.x, c.y);
-                                ctx.lineTo(next.x, next.y);
-                            });
-                            ctx.stroke();
-
-                            // Bild auf Marker zeichnen
-                            /*
-                            if (overlayImg.complete) {
-                                drawOverlay(ctx, overlayImg, corners);
-                            }
-                            */
-                            const img = getImageForId(marker.id);
-                            
-                            if (img && img.complete)
-                            {
-                                drawOverlay(ctx, img, corners);
-                            }
-
-                        });
-
-                        if (!anyMarkerDetected)
-                        {
-                            handleMarkerLost();
-                        }
-
-                    }
-                    
-
-                    requestAnimationFrame(tick);
+                    drawOverlay(ctx, img, corners);
                 }
+
+            }); // Ende markers.forEach
+            
+        } // Ende if (markers.length > 0)
+
+    } 
+    
+    // 6. KORREKTE SICHTBARKEITSKONTROLLE (Das Ziel der Frage)
+    // Wenn am Ende des Ticks kein Marker zur Positionierung gefunden wurde:
+    if (!anyMarkerDetected) {
+        handleMarkerLost(); // Setzt model.style.display = 'none'
+    }
+
+    requestAnimationFrame(tick);
+}
 
                 requestAnimationFrame(tick);
 

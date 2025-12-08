@@ -58,6 +58,7 @@ model-viewer#model
     width: 200px;  /* Feste Größe zur Berechnung der Zentrierung */
     height: 200px;
     display: none; /* Initial verstecken, bis Marker gefunden wird */
+    border: 1px solid blue;
 }
 
 #loadingPage
