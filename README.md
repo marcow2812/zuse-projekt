@@ -39,6 +39,7 @@ wenn sie etwas anfassen können und eigene Eindrücke und Erfahrungen sammeln k�
 - [ ] Winkelerkennung (x, y, z)
 - [ ] Drehung der GLB-Objekte anhand der Winkelerkennung
 - [ ] Bottom-Menü anpassen
+- [ ] Audio-Wiedergabe einbauen
 - [ ] Sidenav anpassen (Links, Feedback, Beta, Online-Status, Impressum, Datenschutz, ...)
 - [ ] z-index anpassen
 
