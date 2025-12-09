@@ -1,9 +1,13 @@
 var oSrc;
 var oTitle;
+var oBackground;
+var oSizeMultiplier;
 
 function setObject(objectId)
 {
     closeObjectMenu(); // Wenn von Menü aufgerufen
+
+    var model = document.getElementById("model");
 
     switch (objectId)
     {
@@ -11,44 +15,57 @@ function setObject(objectId)
             oSrc = "./data/3d/heart-23.glb";
             oTitle = "Rotes Herz";
             oSizeMultiplier = 3;
-            oBackgroundColor = "rgb(255, 179, 179, 0.3)";
+            oBackground = "rgb(255, 179, 179, 0.3)";
             break;
         case "disco-1":
             oSrc = "./data/3d/disco-ball-2730.glb";
             oTitle = "Disco Kugel";
             oSizeMultiplier = 3;
-            oBackgroundColor = "transparent";
+            oBackground = "transparent";
             break;
         case "atom-1":
             oSrc = "./data/3d/atom.glb";
             oTitle = "Aufbau eines Atoms";
             oSizeMultiplier = 4;
-            oBackgroundColor = "transparent";
+            oBackground = "transparent";
             break;
         case "city-1":
             oSrc = "./data/3d/city_pack_5.glb";
             oTitle = "Stadt";
             oSizeMultiplier = 4;
-            oBackgroundColor = "#e6e6e6";
+            oBackground = "#e6e6e6";
             break;
         case "davinci-1":
             oSrc = "./data/3d/da_vinci_code_cryptex.glb";
             oTitle = "Da Vinci Cryptex";
             oSizeMultiplier = 3;
-            oBackgroundColor = "transparent";
+            oBackground = "transparent";
             break;
         case "enigma-1":
             oSrc = "./data/3d/enigma_machine_1934.glb";
             oTitle = "Enigma";
             oSizeMultiplier = 3;
-            oBackgroundColor = "black";
+            oBackground = "url('./data/img/favicon.png')"; // black
             break;
-            
     }
 
-    document.getElementById("model").src = oSrc;
+    // Werte auf Standard zurücksetzen
+    model.style.backgroundColor = "transparent";
+
+    // Zuweisung und Anwendung
+    model.src = oSrc;
     document.getElementById("objectTitle").innerHTML = oTitle;
-    document.getElementById("model").style.backgroundColor = oBackgroundColor;
+    
+    // variable.includes("url(")
+
+    if (oBackground.includes("url("))
+    {
+        model.style.backgroundImage = oBackground;
+    }
+    else
+    {
+        model.style.backgroundColor = oBackground;
+    }    
     
 }
 

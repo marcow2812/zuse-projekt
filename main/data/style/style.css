@@ -60,6 +60,9 @@ model-viewer#model
     display: none; /* Initial verstecken, bis Marker gefunden wird */
     border: 1px solid white;
     border-radius: 8px;
+
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 #loadingPage
