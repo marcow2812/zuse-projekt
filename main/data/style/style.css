@@ -104,6 +104,8 @@ header
     align-items: center;
     justify-content: center;
 }
+
+/*
 .burger {
     position: absolute;
     left: 6px;
@@ -124,10 +126,12 @@ header
     background: #CCCCCC;
     border-radius: 3px;
   }
+  */
 
 header img
 {
     height: 4vh; /* x% der Fensterhöhe */
+    max-height: 28px;
     cursor: pointer;
 }
 
@@ -190,10 +194,10 @@ header img
 .menu
 {
     text-align: center;
-    background-color: rgb(242, 242, 242, 0.7);
+    background-color: rgb(242, 242, 242, 0.5);
     border: 1px solid #E6E6E6;
     position: absolute;
-    width: 80%;
+    width: 85%;
     max-width: 600px;
     bottom: 20px;
     left: 50%;
@@ -205,19 +209,27 @@ header img
     justify-content: center;
     align-items: center;
 }
-.menu button
+.menu .menuBtn
 {
   aspect-ratio: 1 / 1;
   display: flex;
   justify-content: center;
   align-items: center;
-  border: none;
   background-color: var(--green);
   border-radius: 50%;
   padding: 8px;
   color: white;
   cursor: pointer;
+  border: none;
+
+  box-shadow: 0 0 0px #4CAF50;
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
 }
+.menu .menuBtn:hover
+{
+  box-shadow: 0 0 12px var(--green);
+}
+
 .menu svg
 {
   width: 18px;
@@ -477,7 +489,7 @@ header img
   
 }
 .subject-box:hover {
-  transform: scale(1.04); 
+  transform: scale(1.06); 
   z-index: 10; 
 }
 
@@ -496,7 +508,7 @@ header img
 
 .subject-box.red
 {
-  background: linear-gradient(to right, rgb(145, 8, 8), rgb(242, 80, 80));
+  background: linear-gradient(to right, rgb(145, 8, 8), rgb(239, 90, 90));
   background-size: 160% 100%;
   background-position: left bottom;
 }
@@ -508,7 +520,7 @@ header img
 .subject-box.lightbrown
 {
   /* background-color: #cc6600; */
-  background: linear-gradient(to right, #b86007, #f78c22);
+  background: linear-gradient(to right, #b86007, #fea347);
   background-size: 160% 100%;
   background-position: left bottom;
 }
@@ -518,7 +530,7 @@ header img
 }
 .subject-box.brown
 {
-  background: linear-gradient(to right, #913d05, #dd5b04);
+  background: linear-gradient(to right, #913d05, #e0732a);
   background-size: 160% 100%;
   background-position: left bottom;
 }
@@ -528,7 +540,7 @@ header img
 }
 .subject-box.purple
 {
-  background: linear-gradient(to right, #85057f, #eb1ce1);
+  background: linear-gradient(to right, #85057f, #e539dc);
   background-size: 160% 100%;
   background-position: left bottom;
 }

@@ -41,7 +41,7 @@ function getParameter()
     }
     else
     {
-        console.log("Kein Parameter übergeben");
+        console.log("Kein Parameter");
     }
 }
 
