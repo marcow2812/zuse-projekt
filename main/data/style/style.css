@@ -134,7 +134,7 @@ header
 header img
 {
     height: 4vh; /* x% der Fensterhöhe */
-    max-height: 28px;
+    max-height: 22px;
     cursor: pointer;
 }
 
