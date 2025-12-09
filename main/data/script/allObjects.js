@@ -27,7 +27,7 @@ function setObject(objectId)
             oSrc = "./data/3d/atom.glb";
             oTitle = "Aufbau eines Atoms";
             oSizeMultiplier = 4;
-            oBackground = "transparent";
+            oBackground = "black";
             break;
         case "city-1":
             oSrc = "./data/3d/city_pack_5.glb";
