@@ -35,7 +35,7 @@ wenn sie etwas anfassen können und eigene Eindrücke und Erfahrungen sammeln k�
 
 - [x] GLB-Datei lokal einbinden
 - [ ] Anpassung Anzeigebild von Webcame (Hoch-/Querformat)
-- [ ] GLB-Code in explore.html einbauen
+- [x] GLB-Code in explore.html einbauen
 - [ ] Winkelerkennung (x, y, z)
 - [ ] Drehung der GLB-Objekte anhand der Winkelerkennung
 - [ ] Bottom-Menü anpassen
