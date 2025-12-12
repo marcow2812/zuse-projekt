@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Model Viewer Hotspot Beispiel</title>
+    <script type="module" src="./data/google-model-viewer/model-viewer.min.js"></script>
+    <style>
+        
+
+        /* Der Model Viewer muss eine definierte Größe haben */
+        model-viewer {
+            width: 100%;
+            height: 600px;
+            background-color: #f0f0f0; /* Heller Hintergrund */
+        }
+        
+        .hotspot {
+            color: white;
+            
+            background: #4CAF50; 
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            border: none;
+            cursor: pointer;
+            padding: 12px;
+            
+            z-index: 100;
+
+            box-shadow: 0 0 0px #4CAF50;
+            transition: box-shadow 0.3s ease;
+            position: relative; /* Wichtig für die Positionierung der Textbox */
+            /* Flexbox hilft, falls der Hotspot selbst komplexer wird, hier nicht zwingend notwendig, aber gute Praxis */
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
+        }
+
+        .hotspot:hover
+        {
+            box-shadow: 0 0 20px #4CAF50;
+        }
+
+        .hotspot-info {
+
+            /* Positionierung relativ zum Hotspot */
+            position: absolute;
+            /* Zentriert den Chip vertikal zur Mitte des Hotspots (Höhe 20px) */
+            top: 50%; 
+            transform: translateY(-50%); 
+            left: 30px; /* Abstand nach rechts vom Hotspot (20px Breite + 10px Abstand) */
+            
+            /* Stil für den Chip */
+            background-color: #4CAF50;
+            color: white;
+            padding: 5px 12px; /* Weniger vertikaler, mehr horizontaler Padding */
+            
+            /* Die wichtigste Änderung für den Chip-Stil: */
+            border-radius: 50px; /* Sehr hoher Wert sorgt für abgerundete Ränder */
+            
+            /* Längliche Form und Textkontrolle */
+            display: inline-block; /* Passt die Breite an den Inhalt an */
+            white-space: nowrap; /* Verhindert Zeilenumbruch */
+            
+            pointer-events: none; 
+            
+            /* Animation: Startzustand */
+            opacity: 0;
+            transform: translateY(-50%) translateX(-10px); /* Zentriert bleiben und leicht links starten */
+            transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+        }
+
+        /* 4. Zustand, wenn der Chip aktiv/sichtbar ist */
+        .hotspot-info.active {
+            opacity: 1; /* Volle Sichtbarkeit */
+            transform: translateY(-50%) translateX(0); /* Bewegt sich an die finale Position (vertikal zentriert) */
+        }
+
+        .hotspot b
+        {
+            font-family: serif;
+            font-size: 17px;
+        }
+        
+    </style>
+</head>
+<body>
+
+    <model-viewer 
+        src="./data/3d/atom.glb" 
+        alt="Ein 3D-Modell"
+        camera-controls 
+        ar
+        shadow-intensity="1">
+
+        <!--
+        <button 
+            slot="hotspot-1" 
+            class="hotspot" 
+            data-position="0.5 1 0" 
+            data-normal="0 1 0" 
+            onclick="alert('Hotspot 1 wurde geklickt! Dies ist ein wichtiger Bereich.')">
+        </button>
+        -->
+
+        <button 
+            slot="hotspot-1" 
+            class="hotspot" 
+            data-position="-30 180 -120" 
+            data-normal="-1 0 0" 
+            onclick="showHotspotInfobox(this)"> <b>i</b>
+
+            <div class="hotspot-info">
+                Elektronen
+            </div>
+
+        </button>
+
+        <button 
+            slot="hotspot-2" 
+            class="hotspot" 
+            data-position="200 -30 -20" 
+            data-normal="-1 0 0" 
+            onclick="showHotspotInfobox(this)"> <b>i</b>
+
+            <div class="hotspot-info">
+                Ein weiterer Punkt außerhalb
+            </div>
+
+        </button>
+
+    </model-viewer>
+
+    <!--
+        <script>
+        function showHotspotInfobox(buttonElement) {
+            const infoBox = buttonElement.querySelector('.hotspot-info');
+            const isActive = infoBox.classList.contains('active');
+            
+            // Deaktiviert alle anderen aktiven Chips
+            document.querySelectorAll('.hotspot-info.active').forEach(box => {
+                if (box !== infoBox) {
+                    box.classList.remove('active');
+                }
+            });
+
+            // Schaltet die Klasse 'active' für den geklickten Chip um
+            if (isActive) {
+                infoBox.classList.remove('active');
+            } else {
+                infoBox.classList.add('active');
+            }
+        }
+    </script>
+    -->
+
+    <script>
+        // Speichert eine Referenz auf das aktuell geöffnete Info-Element
+        let activeInfoBox = null; 
+
+        // Funktion, die beim Klicken auf den Hotspot ausgeführt wird
+        function showHotspotInfobox(buttonElement) {
+            const infoBox = buttonElement.querySelector('.hotspot-info');
+            
+            // 1. Wenn derselbe Hotspot bereits aktiv ist, einfach schließen und beenden
+            if (infoBox.classList.contains('active')) {
+                infoBox.classList.remove('active');
+                activeInfoBox = null;
+                return;
+            }
+            
+            // 2. Schließe das zuvor aktive Element, falls eines existiert
+            if (activeInfoBox) {
+                activeInfoBox.classList.remove('active');
+            }
+
+            // 3. Aktiviere das neue Element
+            infoBox.classList.add('active');
+            activeInfoBox = infoBox;
+        }
+
+        // Globaler Klick-Listener, um das Info-Modell zu schließen, wenn außerhalb geklickt wird
+        document.addEventListener('click', function(event) {
+            // Wenn kein Info-Modell geöffnet ist, beende die Funktion
+            if (!activeInfoBox) {
+                return;
+            }
+
+            const activeHotspotButton = activeInfoBox.closest('.hotspot');
+            
+            // Prüft, ob der Klick-Event außerhalb des aktiven Hotspot-Buttons stattgefunden hat.
+            // Die Methode 'contains' prüft, ob das Ziel des Klicks innerhalb des Hotspot-Buttons liegt.
+            if (!activeHotspotButton.contains(event.target)) {
+                // Wenn außerhalb geklickt wurde:
+                activeInfoBox.classList.remove('active');
+                activeInfoBox = null;
+            }
+        });
+    </script>
+
+        <!--
+            Data-Position: 
+            
+            X = Links/Rechts
+            Y = Oben/Unten
+            Z = Vorne/Hinten
+        -->
+
+</body>
+</html>
