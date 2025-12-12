@@ -232,6 +232,7 @@ Leistungsstärke des Geräts.
 
 <p>Bootstrap Icons - https://icons.getbootstrap.com</p>
 <p>Github Juan Mellado - https://github.com/jcmellado/js-aruco</p>
+<p>Github Datalog - https://github.com/datalog/qrcode-svg/tree/master</p>
 <p>Google Model Viewer - https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js</p>
 <p>Sketchfab - https://sketchfab.com/search?features=downloadable&type=models</p>
 <p>Smithsonian - https://www.si.edu/</p>
