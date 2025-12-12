@@ -40,6 +40,7 @@ wenn sie etwas anfassen können und eigene Eindrücke und Erfahrungen sammeln k�
 - [ ] Drehung der GLB-Objekte anhand der Winkelerkennung
 - [ ] Bottom-Menü anpassen
 - [ ] Audio-Wiedergabe einbauen
+- [ ] Platzierung der <script>-Elemente anpassen, sodass Skripte korrekt nach ihrer Implementierung aufgerufen werden (und nicht auf nicht existierende Objekte an einer unteren Stelle zugreifen wollen)
 - [ ] Sidenav anpassen (Links, Feedback, Beta, Online-Status, Impressum, Datenschutz, ...)
 - [ ] z-index anpassen
 
