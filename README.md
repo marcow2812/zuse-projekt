@@ -236,6 +236,11 @@ Leistungsstärke des Geräts.
 <p>Sketchfab - https://sketchfab.com/search?features=downloadable&type=models</p>
 <p>Smithsonian - https://www.si.edu/</p>
 
+<br>
+<p>Universität Tübingen - https://www.unimuseum.uni-tuebingen.de/de/sammlungen/3d-museum</p>
+<p>ScanMotion 3D - https://scanmotion-3d.de/3d-scan-museum-artefakte/</p>
+<p>Museenstiftung - https://3d-objekte.museumsstiftung.de/app/</p>
+
 <h2>Weitere Links</h2>
 
 <a href="https://docs.opencv.org/4.x/d0/d84/tutorial_js_usage.html">docs.opencv.org</a>
