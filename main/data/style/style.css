@@ -425,6 +425,7 @@ header img
   background-color: var(--green);
   border: none;
   cursor: pointer;
+  margin: 3px;
 }
 
 .icon-text-container
@@ -654,7 +655,7 @@ header img
             width: 80%;
             max-width: 600px;
             margin: 50px auto;
-            padding: 20px;
+            padding: 22px;
             text-align: left;
             position: relative;
             border-radius: 8px;
@@ -666,4 +667,6 @@ header img
       padding: 8px;
       border: 2px solid var(--gray-light);
       border-radius: 18px;
+      margin-top: 25px;
+      margin-bottom: 45px;
     }

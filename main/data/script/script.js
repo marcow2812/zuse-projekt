@@ -9,7 +9,7 @@ var objectId;
 
 function loadThePage()
 {
-    setObject("atom-1");
+    setObject("disco-1");
 
     getParameter();
 
@@ -24,10 +24,7 @@ function loadThePage()
     }, 3500)
 }
 
-function shareObject(id)
-{
-    console.warn(standardUrl + id);
-}
+
 
 function getParameter()
 {
@@ -316,3 +313,4 @@ function normalize(corners, width, height) {
 
     return normalized;
 }
+

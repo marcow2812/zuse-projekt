@@ -37,6 +37,9 @@
     </head>
     <body onload="loadThePage()">
 
+        <!-- Audio-Element -->
+        <audio id="audioPlayer" src="./data/music/racing-speed-action-music-416097.mp3"></audio>
+
         <!-- Lade-Animation -->
         <div id="loadingPage">
             <div class="loader"></div>
@@ -96,7 +99,7 @@
                         <h3>Objekte</h3>
 
                         <div class="subject-container">
-                            <div class="subject-box red" onclick="setObject('heart-1');shareObject('heart-1')">
+                            <div class="subject-box red" onclick="setObject('heart-1')">
                                 Herz
                             </div>
                             <div class="subject-box purple" onclick="setObject('disco-1')">
@@ -122,15 +125,47 @@
                             QR-Code erstellen
                         </button>
 
+
+
+                        <button onclick="playAudio()">Abspielen</button>
+                        <button onclick="pauseAudio()">Pause</button>
+
+
+                        <script>
+                            const audioElement = document.getElementById("audioPlayer");
+                            audioElement.loop = true;
+
+                            // Audio abspielen
+                            function playAudio()
+                            {
+                                audioElement.play();
+                            }
+
+                            // Audio pausieren
+                            function pauseAudio()
+                            {
+                                audioElement.currentTime = (audioElement.currentTime - 1.5);
+                                audioElement.pause();
+                            }
+
+                            function setAudioPlayTime(seconds)
+                            {
+                                audioElement.currentTime = seconds;
+                            }
+                        </script>
+
+
+
                         <!-- Overlay -->
                         <div class="overlay" id="overlay" onclick="document.getElementById('overlay').style.display = 'none'">
                             <div class="overlay-content" onclick="event.stopPropagation()">
 
                                 
                                 <div align="center">
-                                    <p style="font-size:20px" id="qrCodeObjectTitle">...</p>
+                                    <span style="font-size:20px" id="qrCodeObjectTitle">...</span>
                                     <div id="qr-container"></div>
-                                    <p onclick="downloadPNG()">QR-Code herunterladen</p>
+                                    <button class="btn" onclick="downloadPNG()">Herunterladen</button>
+                                    <button class="btn" onclick="copyQrCodeUrl()">Link kopieren</button>
                                 </div>
 
                             </div>
@@ -138,9 +173,13 @@
 
 
                         <script>
+                            var UrlOfQrCode;
+
                             function generateQrCode(parameter)
                             {
                                 const text = getStandardUrl() + parameter;
+
+                                UrlOfQrCode = text;
 
                                 const container = document.getElementById('qr-container');
                                 container.innerHTML = ""; // alten QR löschen
@@ -161,9 +200,14 @@
                                 // SVG-Element anhängen
                                 container.appendChild(svgNode);
 
-                                document.getElementById("qrCodeObjectTitle").innerHTML = getObjectTitle();
+                                document.getElementById("qrCodeObjectTitle").innerHTML = getObjectTitle(parameter) + " teilen";
 
                                 document.getElementById("overlay").style.display = "block";
+                            }
+
+                            function copyQrCodeUrl()
+                            {
+                                navigator.clipboard.writeText(UrlOfQrCode);
                             }
 
                             function downloadPNG()
@@ -391,7 +435,6 @@
                         <button class="btn" onclick="closeInfoModal()">Verstanden</button>
                     </div>
                     
-                    
                 </div>
             </div>
 
@@ -415,6 +458,7 @@
             <video id="video" autoplay playsinline style="display:none;"></video>
             <canvas id="canvas"></canvas>
 
+            
 
 
 
@@ -501,6 +545,7 @@
             </div>
             -->
 
+            <!-- Bottom-Menü -->
             <div class="menu">
                 <button class="menuBtn" onclick="openObjectMenu()">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-stars" viewBox="0 0 16 16">
@@ -643,12 +688,7 @@
                     return img;
                 }
 
-                // --- AUDIO-KONTROLLE ---
-                const audio = new Audio("./data/music/racing-speed-action-music-416097.mp3");
-                audio.loop = true;
 
-                // ab welcher Sekunde starten?
-                const startAt = 1;
 
                 // Zustände
                 let markerVisible = false;
@@ -662,7 +702,8 @@
 
                     const headerIcon = document.getElementById("header-icon-audio");
 
-                    audio.currentTime = startAt;
+                    // audio.currentTime = startAt;
+                    /*
 
                     audio.play()
                         .then(() => {
@@ -678,10 +719,10 @@
                             headerIcon.classList.add("icon-red");
                         });
 
+                        */
+
                     checkCloseOption();
                 }
-
-
 
 
 
@@ -793,59 +834,45 @@
                     ctx.restore();
                 }
 
-                function handleMarkerDetected() {
-                    markerVisible = true;
-                    lastSeenTime = performance.now();
+                function handleMarkerDetected()
+{
+    if (markerVisible) return; // ⛔ Marker war schon sichtbar
 
-                    // Falls ein Stopp geplant war → abbrechen
-                    if (stopTimeout) {
-                        clearTimeout(stopTimeout);
-                        stopTimeout = null;
-                    }
+    markerVisible = true;
+    lastSeenTime = performance.now();
 
-                    // Musik starten, aber an der alten Position weiter
-                    if (audio.paused) {
+    if (stopTimeout) {
+        clearTimeout(stopTimeout);
+        stopTimeout = null;
+    }
 
-                        // Nur beim allerersten Start zu Sekunde 1 springen
-                        if (audio.currentTime === 0) {
-                            audio.currentTime = startAt;
-                        }
+    playAudio();
+}
 
-                        audio.play();
-                    }
-                }
 
-                /*
-                function handleMarkerLost() {
-                    markerVisible = false;
 
-                    // Verzögertes Stoppen → 1 Sekunde
-                    stopTimeout = setTimeout(() => {
-                        if (!markerVisible) {
-                            audio.pause();
-                        }
-                    }, 1000);
-                }
-                */
 
 
                 function handleMarkerLost()
                 {
                     const model = document.getElementById('model');
-                    if (model) {
-                        // model.style.display muss auf 'none' gesetzt werden
+                    if (model)
+                    {
+                        // 3D-Objekt wird versteckt
                         model.style.display = 'none'; 
                     }
+                                    
+                    if (!markerVisible) return;
 
                     markerVisible = false;
 
-                    // Verzögertes Stoppen → 1 Sekunde
                     stopTimeout = setTimeout(() => {
                         if (!markerVisible) {
-                            audio.pause();
+                            pauseAudio();
                         }
                     }, audioDelay);
                 }
+
 
 
 
@@ -934,6 +961,8 @@
                 
                 // handleMarkerDetected() hier aufrufen, wenn bei JEDEM Marker etwas passieren soll (z.B. Musik)
                 // handleMarkerDetected(); 
+
+                handleMarkerDetected();
                 
                 // ===============================================
                 
