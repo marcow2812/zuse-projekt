@@ -3,6 +3,11 @@ var oTitle;
 var oBackground;
 var oSizeMultiplier;
 
+function getObjectTitle()
+{
+    return oTitle;
+}
+
 function setObject(objectId)
 {
     closeObjectMenu(); // Wenn von Menü aufgerufen
@@ -93,3 +98,4 @@ function setObjectSize(pixelSize)
 
     modelMap[objectId].src
 */
+

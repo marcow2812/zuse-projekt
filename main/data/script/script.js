@@ -2,14 +2,14 @@
 var numberOfPermissions = 2; // Anzahl zu erlaubender Berechtigungen
 var heightOfObjectMenu = "100%"; // Höhe Menü für Objekte
 var timeoutCheckInternetConnection = 30000; // Timeout zur Überprüfung der Internetverbindung
-var standardUrl = "https://marcow2812.github.io/zuse-projekt/main/explorer.html"; // Standard-URL für QR-Code-Erstellung
+var standardUrl = "https://marcow2812.github.io/zuse-projekt/main/explorer.html?o="; // Standard-URL für QR-Code-Erstellung
 
 var objectId;
 
 
 function loadThePage()
 {
-    setObject("disco-1");
+    setObject("atom-1");
 
     getParameter();
 
@@ -26,7 +26,7 @@ function loadThePage()
 
 function shareObject(id)
 {
-    console.warn(standardUrl + "?o=" + id);
+    console.warn(standardUrl + id);
 }
 
 function getParameter()
@@ -43,6 +43,11 @@ function getParameter()
     {
         console.log("Kein Parameter");
     }
+}
+
+function getStandardUrl()
+{
+    return standardUrl;
 }
 
 

@@ -599,68 +599,71 @@ header img
 
 .hotspot {
             color: white;
-            
-            background: #4CAF50; 
+            background: #4CAF50;
             border-radius: 50%;
             width: 20px;
             height: 20px;
             border: none;
             cursor: pointer;
             padding: 12px;
-            
             z-index: 100;
-
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
             box-shadow: 0 0 0px #4CAF50;
             transition: box-shadow 0.3s ease;
-            position: relative; /* Wichtig für die Positionierung der Textbox */
-            /* Flexbox hilft, falls der Hotspot selbst komplexer wird, hier nicht zwingend notwendig, aber gute Praxis */
-            display: flex; 
-            align-items: center; 
-            justify-content: center;
         }
-
-        .hotspot:hover
-        {
+        .hotspot:hover {
             box-shadow: 0 0 20px #4CAF50;
         }
 
         .hotspot-info {
-
-            /* Positionierung relativ zum Hotspot */
             position: absolute;
-            /* Zentriert den Chip vertikal zur Mitte des Hotspots (Höhe 20px) */
-            top: 50%; 
-            transform: translateY(-50%); 
-            left: 30px; /* Abstand nach rechts vom Hotspot (20px Breite + 10px Abstand) */
-            
-            /* Stil für den Chip */
+            top: 50%;
+            transform: translateY(-50%) translateX(-10px);
+            left: 30px;
             background-color: #4CAF50;
             color: white;
-            padding: 5px 12px; /* Weniger vertikaler, mehr horizontaler Padding */
-            
-            /* Die wichtigste Änderung für den Chip-Stil: */
-            border-radius: 50px; /* Sehr hoher Wert sorgt für abgerundete Ränder */
-            
-            /* Längliche Form und Textkontrolle */
-            display: inline-block; /* Passt die Breite an den Inhalt an */
-            white-space: nowrap; /* Verhindert Zeilenumbruch */
-            
-            pointer-events: none; 
-            
-            /* Animation: Startzustand */
+            padding: 5px 12px;
+            border-radius: 50px;
+            white-space: nowrap;
+            pointer-events: none;
             opacity: 0;
-            transform: translateY(-50%) translateX(-10px); /* Zentriert bleiben und leicht links starten */
             transition: opacity 0.3s ease-out, transform 0.3s ease-out;
         }
-
-        /* 4. Zustand, wenn der Chip aktiv/sichtbar ist */
         .hotspot-info.active {
-            opacity: 1; /* Volle Sichtbarkeit */
-            transform: translateY(-50%) translateX(0); /* Bewegt sich an die finale Position (vertikal zentriert) */
+            opacity: 1;
+            transform: translateY(-50%) translateX(0);
         }
 
-        .hotspot b
-        {
-            font-family: serif;
-            font-size: 17px;
+.overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: none; /* Anfangs versteckt */
+            z-index: 1000;
         }
+
+        /* Overlay Container */
+        .overlay-content {
+            background-color: #ffffff;
+            width: 80%;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            text-align: left;
+            position: relative;
+            border-radius: 8px;
+        }
+
+#qr-container {
+      width: 200px;
+      height: 200px;
+      padding: 8px;
+      border: 2px solid var(--gray-light);
+      border-radius: 18px;
+    }
