@@ -147,7 +147,7 @@ async function checkInternetConnection()
 
 function getDegByMarker(marker, x, y, z)
 {
-    console.log("Auswertung: " + marker)
+    // console.log("Auswertung: " + marker)
     switch (marker)
     {
         case 1:
