@@ -2,6 +2,7 @@
 {
     --green: #62A60E;
       --green-light: #E6FFE6; /* D8FFD8 */
+      --green-dark: #579210;
     --red: #a60e0e;
       --red-light: #ffe6e6;
     --gray: gray;
@@ -670,3 +671,104 @@ header img
       margin-top: 25px;
       margin-bottom: 45px;
     }
+
+
+
+
+.subject-container-new
+{
+  display: flex;
+  gap: 15px;
+  flex-direction: row; /* Standardmäßig nebeneinander */
+  /* NEU: Erlaubt das automatische Umbrechen in die nächste Zeile */
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+  justify-content: flex-start;
+}
+
+
+.subject-box-new
+{
+  flex: 0 1 220px;
+
+  /* flex-grow: 1; */
+  /* min-width: 90px; */
+
+  /* width: 300px; */
+  
+  /* flex-shrink: 0; */
+
+  color: white;
+  background-color: #f2f2f2;
+
+  padding: 5px;
+  
+  border-radius: 8px;
+
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap; 
+  
+  background-repeat: no-repeat;
+  background-size: 100%;
+
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out, background 0.4s ease-in-out;
+
+  
+}
+.subject-box-new:hover {
+  transform: scale(1.06); 
+  z-index: 10; 
+  background: linear-gradient(to right, var(--green), var(--green-dark));
+}
+
+.subject-box-image-container
+{
+  text-align: center;
+  width: 100%;
+  background-color: white;
+  border-radius: 4px;
+
+  position: relative;
+
+}
+.subject-box-image-container img
+{
+  height: 90px;
+}
+
+.subject-box-image-container .icon-qrcode
+{
+  background-color: #cccccc;
+  padding: 4px;
+  border-radius: 5px;
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+
+.subject-box-image-container .icon-copyright
+{
+  background-color: #cccccc;
+  padding: 4px;
+  border-radius: 5px;
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  top: 35px;
+  right: 5px;
+}
+
+.subject-box-title
+{
+  font-size: 14px;
+  margin-top: 4px;
+  padding: 5px;
+  width: 100%;
+  color: black;
+}

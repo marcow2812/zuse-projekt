@@ -21,7 +21,7 @@
         -->
         <link rel="stylesheet" href="./data/style/style.css?timestamp=<%= new Date().getTime() %>">
         <script language="javascript" type="text/javascript" src="./data/script/script.js?timestamp=<%= new Date().getTime() %>"></script>
-        <script language="javascript" type="text/javascript" src="./data/script/allObjects.js?timestamp=<%= new Date().getTime() %>"></script>
+        
 
         <!-- Aruco Marker Detection -->
         <script src="./data/js-aruco/aruco.js"></script>
@@ -75,27 +75,101 @@
                 <a href="javascript:void(0)" class="closebtn" onclick="closeObjectMenu()">&times;</a>
                     <div class="sidenav-container">
 
-                        <!-- <span class="beta-span">Beta</span> -->
+                        <span class="beta-span">Beta-Test</span>
+
+                        <h3>Objektübersicht</h3>
+
+                        <div class="subject-container-new">
+
+                            <div class="subject-box-new" onclick="setObject('heart-1')">
+                                <div class="subject-box-image-container">
+
+                                    <div class="icon-qrcode" onclick="generateQrCode('heart-1')">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-qr-code-scan" viewBox="0 0 16 16">
+                                            <path d="M0 .5A.5.5 0 0 1 .5 0h3a.5.5 0 0 1 0 1H1v2.5a.5.5 0 0 1-1 0zm12 0a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0V1h-2.5a.5.5 0 0 1-.5-.5M.5 12a.5.5 0 0 1 .5.5V15h2.5a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5v-3a.5.5 0 0 1 .5-.5m15 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1 0-1H15v-2.5a.5.5 0 0 1 .5-.5M4 4h1v1H4z"/>
+                                            <path d="M7 2H2v5h5zM3 3h3v3H3zm2 8H4v1h1z"/>
+                                            <path d="M7 9H2v5h5zm-4 1h3v3H3zm8-6h1v1h-1z"/>
+                                            <path d="M9 2h5v5H9zm1 1v3h3V3zM8 8v2h1v1H8v1h2v-2h1v2h1v-1h2v-1h-3V8zm2 2H9V9h1zm4 2h-1v1h-2v1h3zm-4 2v-1H8v1z"/>
+                                            <path d="M12 9h2V8h-2z"/>
+                                        </svg>
+                                    </div>
+
+                                    <div class="icon-copyright">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-c-circle-fill" viewBox="0 0 16 16">
+                                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.146 4.992c.961 0 1.641.633 1.729 1.512h1.295v-.088c-.094-1.518-1.348-2.572-3.03-2.572-2.068 0-3.269 1.377-3.269 3.638v1.073c0 2.267 1.178 3.603 3.27 3.603 1.675 0 2.93-1.02 3.029-2.467v-.093H9.875c-.088.832-.75 1.418-1.729 1.418-1.224 0-1.927-.891-1.927-2.461v-1.06c0-1.583.715-2.503 1.927-2.503"/>
+                                        </svg>
+                                    </div>
+
+                                    <img src="./data/3d/img/heart-1.webp">
+
+                                    
+                                </div>
+                                <div class="subject-box-title">
+                                    Rotes Herz
+                                </div>
+                            </div>
+                            
+                            <div class="subject-box-new" onclick="setObject('disco-1')">
+                                <div class="subject-box-image-container">
+
+                                    <div class="icon-qrcode" onclick="generateQrCode('disco-1')">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-qr-code-scan" viewBox="0 0 16 16">
+                                            <path d="M0 .5A.5.5 0 0 1 .5 0h3a.5.5 0 0 1 0 1H1v2.5a.5.5 0 0 1-1 0zm12 0a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0V1h-2.5a.5.5 0 0 1-.5-.5M.5 12a.5.5 0 0 1 .5.5V15h2.5a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5v-3a.5.5 0 0 1 .5-.5m15 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1 0-1H15v-2.5a.5.5 0 0 1 .5-.5M4 4h1v1H4z"/>
+                                            <path d="M7 2H2v5h5zM3 3h3v3H3zm2 8H4v1h1z"/>
+                                            <path d="M7 9H2v5h5zm-4 1h3v3H3zm8-6h1v1h-1z"/>
+                                            <path d="M9 2h5v5H9zm1 1v3h3V3zM8 8v2h1v1H8v1h2v-2h1v2h1v-1h2v-1h-3V8zm2 2H9V9h1zm4 2h-1v1h-2v1h3zm-4 2v-1H8v1z"/>
+                                            <path d="M12 9h2V8h-2z"/>
+                                        </svg>
+                                    </div>
+
+                                    <div class="icon-copyright">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-c-circle-fill" viewBox="0 0 16 16">
+                                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.146 4.992c.961 0 1.641.633 1.729 1.512h1.295v-.088c-.094-1.518-1.348-2.572-3.03-2.572-2.068 0-3.269 1.377-3.269 3.638v1.073c0 2.267 1.178 3.603 3.27 3.603 1.675 0 2.93-1.02 3.029-2.467v-.093H9.875c-.088.832-.75 1.418-1.729 1.418-1.224 0-1.927-.891-1.927-2.461v-1.06c0-1.583.715-2.503 1.927-2.503"/>
+                                        </svg>
+                                    </div>
+
+                                    <img src="./data/3d/img/disco-1.webp">
+
+                                    
+                                </div>
+                                <div class="subject-box-title">
+                                    Disco-Kugel
+                                </div>
+                            </div>
+
+                            <div class="subject-box-new" onclick="setObject('atom-1')">
+                                <div class="subject-box-image-container">
+
+                                    <div class="icon-qrcode" onclick="generateQrCode('atom-1')">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-qr-code-scan" viewBox="0 0 16 16">
+                                            <path d="M0 .5A.5.5 0 0 1 .5 0h3a.5.5 0 0 1 0 1H1v2.5a.5.5 0 0 1-1 0zm12 0a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0V1h-2.5a.5.5 0 0 1-.5-.5M.5 12a.5.5 0 0 1 .5.5V15h2.5a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5v-3a.5.5 0 0 1 .5-.5m15 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1 0-1H15v-2.5a.5.5 0 0 1 .5-.5M4 4h1v1H4z"/>
+                                            <path d="M7 2H2v5h5zM3 3h3v3H3zm2 8H4v1h1z"/>
+                                            <path d="M7 9H2v5h5zm-4 1h3v3H3zm8-6h1v1h-1z"/>
+                                            <path d="M9 2h5v5H9zm1 1v3h3V3zM8 8v2h1v1H8v1h2v-2h1v2h1v-1h2v-1h-3V8zm2 2H9V9h1zm4 2h-1v1h-2v1h3zm-4 2v-1H8v1z"/>
+                                            <path d="M12 9h2V8h-2z"/>
+                                        </svg>
+                                    </div>
+
+                                    <div class="icon-copyright">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-c-circle-fill" viewBox="0 0 16 16">
+                                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.146 4.992c.961 0 1.641.633 1.729 1.512h1.295v-.088c-.094-1.518-1.348-2.572-3.03-2.572-2.068 0-3.269 1.377-3.269 3.638v1.073c0 2.267 1.178 3.603 3.27 3.603 1.675 0 2.93-1.02 3.029-2.467v-.093H9.875c-.088.832-.75 1.418-1.729 1.418-1.224 0-1.927-.891-1.927-2.461v-1.06c0-1.583.715-2.503 1.927-2.503"/>
+                                        </svg>
+                                    </div>
+
+                                    <img src="./data/img/favicon.png">
+
+                                    
+                                </div>
+                                <div class="subject-box-title">
+                                    Aufbau eines Atoms
+                                </div>
+                            </div>
+
+                        </div>
+
+
 
                         <!--
-                        <h3>Fächer</h3>
-                    
-                        <div class="subject-container">
-                            <div class="subject-box green">
-                                Biologie
-                            </div>
-                            <div class="subject-box lightbrown">
-                                Geschichte
-                            </div>
-                            <div class="subject-box brown">
-                                Erdkunde
-                            </div>
-                            <div class="subject-box purple">
-                                Politik und Wirtschaft
-                            </div>
-                        </div>
-                        -->
-
                         <h3>Objekte</h3>
 
                         <div class="subject-container">
@@ -108,7 +182,8 @@
                             <div class="subject-box gray" onclick="setObject('atom-1')">
                                 Atom
                             </div>
-                            <!--
+                        
+                            
                             <div class="subject-box brown" onclick="setObject('city-1')">
                                 Stadt
                             </div>
@@ -118,18 +193,25 @@
                             <div class="subject-box purple" onclick="setObject('enigma-1')">
                                 Enigma
                             </div>
-                            -->
+                            
                         </div>
+                        -->
 
+                        <!--
                         <button class="open-overlay-btn" onclick="generateQrCode('atom-1')">
                             QR-Code erstellen
                         </button>
+                        -->
 
 
-
+                        <!--
                         <button onclick="playAudio()">Abspielen</button>
                         <button onclick="pauseAudio()">Pause</button>
+                        -->
 
+                        <!--
+                        <div id="testInnerHtml"></div>
+                        -->
 
                         <script>
                             const audioElement = document.getElementById("audioPlayer");
