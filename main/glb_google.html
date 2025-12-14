@@ -18,11 +18,37 @@
     </style>
 </head>
 
-<body onload="rotateObject(0, 0, 0)">
+<body onload="rotateObject(0, 0, 20)">
+
+    <!-- ./data/3d/heart-23.glb -->
+
+
+    <button onclick="document.getElementById('model').src='./data/3d/atom.glb'">Atom</button>
+    <button onclick="document.getElementById('model').src='./data/3d/city_pack_5.glb'">City</button>
+    <button onclick="document.getElementById('model').src='./data/3d/Conus_textile-150k-4096_std.glb'">Muschel</button>
+    <button onclick="document.getElementById('model').src='./data/3d/da_vinci_code_cryptex.glb'">DaVinci</button>
+    <button onclick="document.getElementById('model').src='./data/3d/da_vincis_-_flying_machine.glb'">Flugmaschine</button>
+    <button onclick="document.getElementById('model').src='./data/3d/enigma_machine_1934.glb'">Enigma</button>
+    <button onclick="document.getElementById('model').src='./data/3d/grand-piano-2114.glb'">Klavier</button>
+    <button onclick="document.getElementById('model').src='./data/3d/heart-23.glb'">Herz</button>
+    <button onclick="document.getElementById('model').src='./data/3d/leaning_tower_of_pisa.glb'">Schiefer Turm v. Pisa</button>
+    <button onclick="document.getElementById('model').src='./data/3d/medieval-architecture-2725.glb'">Haus</button>
+    <button onclick="document.getElementById('model').src='./data/3d/pyramid_of_menkaure_giza_pyramid_complex_egypt.glb'">Pyramide</button>
+    <button onclick="document.getElementById('model').src='./data/3d/sea_keep_lonely_watcher.glb'">Insel</button>
+
+    <button onclick="document.getElementById('model').src='./data/3d/solar-system/fad1f8a62d3848d0be664339e6f3b1a2.glb'">Sonnensystem 1</button>
+    <button onclick="document.getElementById('model').src='./data/3d/solar-system/solar_system (1).glb'">Sonnensystem 2</button>
+    <button onclick="document.getElementById('model').src='./data/3d/solar-system/solar_system (2).glb'">Sonnensystem 3</button>
+    <button onclick="document.getElementById('model').src='./data/3d/solar-system/solar_system_animation.glb'">Sonnensystem 4</button>
+    <button onclick="document.getElementById('model').src='./data/3d/solar-system/solar_system_custom.glb'">Sonnensystem 5</button>
+    <button onclick="document.getElementById('model').src='./data/3d/solar-system/solar_system.glb'">Sonnensystem 6</button>
+
+    <button onclick="document.getElementById('model').src='https://www.cbnb.de/model/solar1.glb'">Sonnensystem</button>
+
 
     <model-viewer
         id="model"
-        src="./data/3d/heart-23.glb"
+        src="./data/3d/sea_keep_lonely_watcher.glb"
         camera-controls
         
         
@@ -33,11 +59,17 @@
         interaction-prompt-threshold="0">
     </model-viewer>
 
+
     <!--
+
+    field-of-view="70deg"
+    max-field-of-view="100deg"
+
+
     auto-rotate
     auto-rotate-delay="0"
     rotation-per-second="45deg"
-    exposure="1.2"
+    exposure="1.2"      Belichtung
 
 
     orientation="xdeg ydeg zdeg"	Dreht das Objekt selbst
@@ -70,9 +102,14 @@
 
     
     <script>
-        // Beispiel: Rotation per JavaScript
         const model = document.getElementById("model");
 
+        function rotateObject(x, y, z)
+        {
+            model.orientation = `${x}deg ${y}deg ${z}deg`;
+        }
+
+        /*
         function rotateJS() {
             // rotation-per-second geht nur per HTML-Attribut
             //model.setAttribute("rotation-per-second", "20deg");
@@ -80,13 +117,9 @@
             // oder absolute Ausrichtung:
             model.orientation = "0deg 45deg 0deg";
         }
+        */
 
         /* rotateJS(); */
-
-        function rotateObject(x, y, z)
-        {
-            model.orientation = `${x}deg ${y}deg ${z}deg`;
-        }
     </script>
 
 
