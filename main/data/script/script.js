@@ -4,20 +4,34 @@ var heightOfObjectMenu = "100%"; // Höhe Menü für Objekte
 var timeoutCheckInternetConnection = 30000; // Timeout zur Überprüfung der Internetverbindung
 var standardUrl = "https://marcow2812.github.io/zuse-projekt/main/explorer.html?o="; // Standard-URL für QR-Code-Erstellung
 
+
 var objectId;
 
 
-const users = [
-      { id: 1, name: "Max Mustermann", alter: 28, beruf: "Entwickler" },
-      { id: 2, name: "Erika Musterfrau", alter: 34, beruf: "Designerin" },
-      { id: 3, name: "Hans Wurst", alter: 45, beruf: "Projektmanager" }
-    ];
-
-    console.log(users[0]);
+const database = [
+    { id: "heart-1", oImg: "./data/3d/img/heart-1.webp", oSrc: "./data/3d/heart-23.glb", oTitle: "Rotes Herz", oSizeMultiplier: 3, oBackground: "rgb(255, 179, 179, 0.3)", oStartAudioAt: 1.5, oCopyright: "3D model by <a href='https://pixabay.com/users/blendertimer-9538909/?utm_source=link-attribution&utm_medium=referral&utm_campaign=object3d&utm_content=23'>Daniel Roberts</a> from <a href='https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=object3d&utm_content=23'>Pixabay</a>" },
+    { id: "disco-1", oImg: "./data/3d/img/disco-1.webp", oSrc: "./data/3d/disco-ball-2730.glb", oTitle: "Disco-Kugel", oSizeMultiplier: 3, oBackground: "transparent", oStartAudioAt: 1.5, oCopyright: "3D model by <a href='https://pixabay.com/users/lyocrypt-50042056/?utm_source=link-attribution&utm_medium=referral&utm_campaign=object3d&utm_content=2730'>NaxiLyo Crypt</a> from <a href='https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=object3d&utm_content=2730'>Pixabay</a>" },
+    { id: "atom-1", oImg: "./data/img/favicon.png", oSrc: "./data/3d/atom.glb", oTitle: "Aufbau eines Atoms", oSizeMultiplier: 4, oBackground: "black", oStartAudioAt: 1.5, oCopyright: "'Atom' (https://skfb.ly/onXKz) by LucasPresoto is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/)." },
     
-    console.log(users[0].name);
+    { id: "earth-1", oImg: "./data/3d/img/earth-1.webp", oSrc: "./data/3d/earth-9.glb", oTitle: "Erdkugel", oSizeMultiplier: 4, oBackground: "black", oStartAudioAt: 1.5, oCopyright: "3D model by <a href='https://pixabay.com/users/blendertimer-9538909/?utm_source=link-attribution&utm_medium=referral&utm_campaign=object3d&utm_content=9'>Daniel Roberts</a> from <a href='https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=object3d&utm_content=9'>Pixabay</a>" },
+    { id: "solar-1", oImg: "./data/img/favicon.png", oSrc: "./data/3d/solar_system1.glb", oTitle: "Sonnensystem (1)", oSizeMultiplier: 4, oBackground: "black", oStartAudioAt: 1.5, oCopyright: "'Solar system' (https://skfb.ly/oKYnC) by dannzjs is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/)." },
+    { id: "solar-2", oImg: "./data/img/favicon.png", oSrc: "./data/3d/solar_system2.glb", oTitle: "Sonnensystem (2)", oSizeMultiplier: 4, oBackground: "black", oStartAudioAt: 1.5, oCopyright: "'Solar System : المجموعة الشمسية' (https://skfb.ly/YnDQ) by shooogp is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/)." },
+    { id: "mars-rover-1", oImg: "./data/img/favicon.png", oSrc: "./data/3d/mars-rover.glb", oTitle: "Mars Rover", oSizeMultiplier: 4, oBackground: "url('./data/3d/img/mars.jpg')", oStartAudioAt: 1.5, oCopyright: "'Curiosity Mars rover' (https://skfb.ly/oTPHp) by Cybertron B-127 is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).\nFoto von RDNE Stock project: https://www.pexels.com/de-de/foto/wuste-trocken-felsen-konzept-8474500/" },
+];
 
-    console.log(users.find(u => u.id === 2).name);
+/*
+{ id: "city-1", oImg: "./data/img/favicon.png", oSrc: "./data/3d/city_pack_5.glb", oTitle: "Stadt", oSizeMultiplier: 4, oBackground: "#e6e6e6", oStartAudioAt: 1.5, oCopyright: "" },
+    { id: "davinci-1", oImg: "./data/img/favicon.png", oSrc: "./data/3d/da_vinci_code_cryptex.glb", oTitle: "Da Vinci Cryptex", oSizeMultiplier: 3, oBackground: "transparent", oStartAudioAt: 1.5, oCopyright: "" },
+    { id: "enigma-1", oImg: "./data/img/favicon.png", oSrc: "./data/3d/enigma_machine_1934.glb", oTitle: "Enigma", oSizeMultiplier: 3, oBackground: "url('./data/img/favicon.png')", oStartAudioAt: 1.5, oCopyright: "" },
+*/
+
+/*
+console.log(database[0]);
+console.log(database[0].oTitle);
+console.log(database.find(u => u.id === "atom-1").oTitle);
+
+console.log(database.length);
+*/
 
 
 
@@ -26,6 +40,8 @@ function loadThePage()
     setObject("disco-1");
 
     getParameter();
+
+    setMenuFromDatabase();
 
     checkInternetConnection();
 
@@ -75,6 +91,59 @@ function getStandardUrl()
 
 /* --- SETTER-METHODEN --- */
 
+
+function setMenuFromDatabase(numberOfObjects)
+{
+    var innerHtmlOfMenu = "";
+    /* var runForThisNumber;
+
+    if (numberOfObjects <= database.length)
+    {
+        runForThisNumber = numberOfObjects;
+    }
+    else
+    {
+        runForThisNumber = database.length;
+    } */
+
+    for (i = 0; i < database.length; i++)
+    {
+        /* innerHtmlOfMenu = innerHtmlOfMenu + "<div class='subject-box-new' onclick='setObject('heart-1')'><div class='subject-box-image-container'><div class='icon-qrcode' onclick='generateQrCode('heart-1')'><svg xmlns='http://www.w3.org/2000/svg' fill='currentColor' class='bi bi-qr-code-scan' viewBox='0 0 16 16'><path d='M0 .5A.5.5 0 0 1 .5 0h3a.5.5 0 0 1 0 1H1v2.5a.5.5 0 0 1-1 0zm12 0a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0V1h-2.5a.5.5 0 0 1-.5-.5M.5 12a.5.5 0 0 1 .5.5V15h2.5a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5v-3a.5.5 0 0 1 .5-.5m15 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1 0-1H15v-2.5a.5.5 0 0 1 .5-.5M4 4h1v1H4z'/><path d='M7 2H2v5h5zM3 3h3v3H3zm2 8H4v1h1z'/><path d='M7 9H2v5h5zm-4 1h3v3H3zm8-6h1v1h-1z'/><path d='M9 2h5v5H9zm1 1v3h3V3zM8 8v2h1v1H8v1h2v-2h1v2h1v-1h2v-1h-3V8zm2 2H9V9h1zm4 2h-1v1h-2v1h3zm-4 2v-1H8v1z'/><path d='M12 9h2V8h-2z'/></svg></div><div class='icon-copyright'><svg xmlns='http://www.w3.org/2000/svg' fill='currentColor' class='bi bi-c-circle-fill' viewBox='0 0 16 16'><path d='M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.146 4.992c.961 0 1.641.633 1.729 1.512h1.295v-.088c-.094-1.518-1.348-2.572-3.03-2.572-2.068 0-3.269 1.377-3.269 3.638v1.073c0 2.267 1.178 3.603 3.27 3.603 1.675 0 2.93-1.02 3.029-2.467v-.093H9.875c-.088.832-.75 1.418-1.729 1.418-1.224 0-1.927-.891-1.927-2.461v-1.06c0-1.583.715-2.503 1.927-2.503'/></svg></div><img src='./data/3d/img/heart-1.webp'></div><div class='subject-box-title'>Rotes Herz</div></div>"; */
+        innerHtmlOfMenu = innerHtmlOfMenu + `
+        <div class="subject-box-new" onclick="setObject('${database[i].id}')">
+            <div class="subject-box-image-container">
+
+                <div class="icon-qrcode" onclick="generateQrCode('${database[i].id}')">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-qr-code-scan" viewBox="0 0 16 16">
+                        <path d="M0 .5A.5.5 0 0 1 .5 0h3a.5.5 0 0 1 0 1H1v2.5a.5.5 0 0 1-1 0zm12 0a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0V1h-2.5a.5.5 0 0 1-.5-.5M.5 12a.5.5 0 0 1 .5.5V15h2.5a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5v-3a.5.5 0 0 1 .5-.5m15 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1 0-1H15v-2.5a.5.5 0 0 1 .5-.5M4 4h1v1H4z"/>
+                        <path d="M7 2H2v5h5zM3 3h3v3H3zm2 8H4v1h1z"/>
+                        <path d="M7 9H2v5h5zm-4 1h3v3H3zm8-6h1v1h-1z"/>
+                        <path d="M9 2h5v5H9zm1 1v3h3V3zM8 8v2h1v1H8v1h2v-2h1v2h1v-1h2v-1h-3V8zm2 2H9V9h1zm4 2h-1v1h-2v1h3zm-4 2v-1H8v1z"/>
+                        <path d="M12 9h2V8h-2z"/>
+                    </svg>
+                </div>
+
+                <div class="icon-copyright" onclick="getCopyright('${database[i].id}')">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-c-circle-fill" viewBox="0 0 16 16">
+                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.146 4.992c.961 0 1.641.633 1.729 1.512h1.295v-.088c-.094-1.518-1.348-2.572-3.03-2.572-2.068 0-3.269 1.377-3.269 3.638v1.073c0 2.267 1.178 3.603 3.27 3.603 1.675 0 2.93-1.02 3.029-2.467v-.093H9.875c-.088.832-.75 1.418-1.729 1.418-1.224 0-1.927-.891-1.927-2.461v-1.06c0-1.583.715-2.503 1.927-2.503"/>
+                    </svg>
+                </div>
+
+                <img src="${database[i].oImg}">
+
+            </div>
+            <div class="subject-box-title">
+                ${database[i].oTitle}
+            </div>
+        </div>
+        `;
+    }
+
+    document.getElementById("subject-container-new").innerHTML = innerHtmlOfMenu;
+}
+
+
+
 /*
 function setCanvasSize()
 {
@@ -121,6 +190,11 @@ function checkCloseOption()
         // Alles erlaubt
         closeWelcomeModal();
     }
+}
+
+function getCopyright(id)
+{
+    alert(database.find(u => u.id === id).oCopyright);
 }
 
 
@@ -354,16 +428,20 @@ var oStartAudioAt;
 
 function getObjectTitle(parameter)
 {
-    setObject(parameter);
-    return oTitle;
+    /* setObject(parameter);
+    return oTitle; */
+    return database.find(u => u.id === parameter).oTitle;
 }
 
-function setObject(objectId)
+function setObject(objectIdParameter)
 {
+    objectId = objectIdParameter;
+
     closeObjectMenu(); // Wenn von Menü aufgerufen
 
     var model = document.getElementById("model");
 
+    /*
     switch (objectId)
     {
         case "heart-1":
@@ -409,24 +487,27 @@ function setObject(objectId)
             oStartAudioAt = 5;
             break;
     }
+    */
 
     // Werte auf Standard zurücksetzen
     model.style.backgroundColor = "transparent";
 
     // Zuweisung und Anwendung
-    model.src = oSrc;
-    document.getElementById("objectTitle").innerHTML = oTitle;
-    setAudioPlayTime(oStartAudioAt);
+    model.src = database.find(u => u.id === objectId).oSrc;
+    document.getElementById("objectTitle").innerHTML = database.find(u => u.id === objectId).oTitle;
+    setAudioPlayTime(database.find(u => u.id === objectId).oStartAudioAt);
     
     // variable.includes("url(")
 
-    if (oBackground.includes("url("))
+    
+
+    if (database.find(u => u.id === objectId).oBackground.includes("url("))
     {
-        model.style.backgroundImage = oBackground;
+        model.style.backgroundImage = database.find(u => u.id === objectId).oBackground;
     }
     else
     {
-        model.style.backgroundColor = oBackground;
+        model.style.backgroundColor = database.find(u => u.id === objectId).oBackground;
     }    
     
 }
@@ -434,6 +515,8 @@ function setObject(objectId)
 function setObjectSize(pixelSize)
 {
     // console.log(pixelSize);
-    document.getElementById("model").style.width = (pixelSize * oSizeMultiplier) + "px";
-    document.getElementById("model").style.height = (pixelSize * oSizeMultiplier) + "px";
+    console.log(objectId);
+
+    document.getElementById("model").style.width = (pixelSize * database.find(u => u.id === objectId).oSizeMultiplier) + "px";
+    document.getElementById("model").style.height = (pixelSize * database.find(u => u.id === objectId).oSizeMultiplier) + "px";
 }
