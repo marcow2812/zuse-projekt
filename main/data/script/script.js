@@ -492,7 +492,7 @@ function setObject(objectIdParameter)
     // Werte auf Standard zurücksetzen
     model.style.backgroundColor = "transparent";
 
-    model.sstyle.backgroundImage = "none";
+    model.style.backgroundImage = "none";
 
     // Zuweisung und Anwendung
     model.src = database.find(u => u.id === objectId).oSrc;
