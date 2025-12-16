@@ -15,8 +15,8 @@ const database = [
     
     { id: "earth-1", oImg: "./data/3d/img/earth-1.webp", oSrc: "./data/3d/earth-9.glb", oTitle: "Erdkugel", oSizeMultiplier: 4, oBackground: "black", oStartAudioAt: 1.5, oCopyright: "3D model by <a href='https://pixabay.com/users/blendertimer-9538909/?utm_source=link-attribution&utm_medium=referral&utm_campaign=object3d&utm_content=9'>Daniel Roberts</a> from <a href='https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=object3d&utm_content=9'>Pixabay</a>" },
     { id: "solar-1", oImg: "./data/img/favicon.png", oSrc: "./data/3d/solar_system1.glb", oTitle: "Sonnensystem (1)", oSizeMultiplier: 4, oBackground: "black", oStartAudioAt: 1.5, oCopyright: "'Solar system' (https://skfb.ly/oKYnC) by dannzjs is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/)." },
-    { id: "solar-2", oImg: "./data/img/favicon.png", oSrc: "./data/3d/solar_system2.glb", oTitle: "Sonnensystem (2)", oSizeMultiplier: 4, oBackground: "black", oStartAudioAt: 1.5, oCopyright: "'Solar System : المجموعة الشمسية' (https://skfb.ly/YnDQ) by shooogp is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/)." },
-    { id: "mars-rover-1", oImg: "./data/img/favicon.png", oSrc: "./data/3d/mars-rover.glb", oTitle: "Mars Rover", oSizeMultiplier: 4, oBackground: "url('./data/3d/img/mars.jpg')", oStartAudioAt: 1.5, oCopyright: "'Curiosity Mars rover' (https://skfb.ly/oTPHp) by Cybertron B-127 is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).\nFoto von RDNE Stock project: https://www.pexels.com/de-de/foto/wuste-trocken-felsen-konzept-8474500/" },
+    { id: "solar-2", oImg: "./data/img/favicon.png", oSrc: "./data/3d/solar_system2.glb", oTitle: "Sonnensystem (2)", oSizeMultiplier: 7, oBackground: "transparent", oStartAudioAt: 1.5, oCopyright: "'Solar System : المجموعة الشمسية' (https://skfb.ly/YnDQ) by shooogp is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/)." },
+    { id: "mars-rover-1", oImg: "./data/3d/img/mars-rover1.png", oSrc: "./data/3d/mars-rover.glb", oTitle: "Mars Rover", oSizeMultiplier: 4, oBackground: "url('./data/3d/img/mars.jpg')", oStartAudioAt: 1.5, oCopyright: "'Curiosity Mars rover' (https://skfb.ly/oTPHp) by Cybertron B-127 is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).\nFoto von RDNE Stock project: https://www.pexels.com/de-de/foto/wuste-trocken-felsen-konzept-8474500/" },
 ];
 
 /*
@@ -205,14 +205,14 @@ async function checkInternetConnection()
     if (navigator.onLine)
     {
         // Online
-        console.log("Online");
+        // console.log("Online");
         headerIcon.classList.remove("icon-red");
         headerIcon.classList.add("icon-green");
     }
     else
     {
         // Offline
-        console.log("Offline");
+        // console.log("Offline");
         headerIcon.classList.remove("icon-green");
         headerIcon.classList.add("icon-red");
     }
@@ -491,7 +491,6 @@ function setObject(objectIdParameter)
 
     // Werte auf Standard zurücksetzen
     model.style.backgroundColor = "transparent";
-
     model.style.backgroundImage = "none";
 
     // Zuweisung und Anwendung
