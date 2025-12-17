@@ -165,7 +165,7 @@ header img
 {
   font-size: 14px;
   text-align: center;
-    background-color: rgb(255, 255, 255, 0.9);
+    background-color: rgb(255, 255, 255, 0.6);
     color: black;
     border: 1px solid white;
     position: absolute;
@@ -698,7 +698,9 @@ header img
   
   /* flex-shrink: 0; */
 
-  color: white;
+  font-weight: bold;
+
+  color: #a5a5a5;
   background-color: #f2f2f2;
 
   padding: 5px;
@@ -717,13 +719,27 @@ header img
   cursor: pointer;
   transition: transform 0.2s ease-in-out, background 0.4s ease-in-out;
 
-  
+
 }
 .subject-box-new:hover {
   transform: scale(1.06); 
   z-index: 10; 
-  background: linear-gradient(to right, var(--green), var(--green-dark));
+  background: linear-gradient(to right, var(--green), #7acf12);
+  color: white;
+  box-shadow: 0 0 6px var(--green);
 }
+
+.subject-box-new svg
+{
+  color: white;
+}
+
+.subject-box-new .objectTitle
+{
+  padding-top: 10px;
+  padding-bottom: 6px;
+}
+
 
 .subject-box-image-container
 {

@@ -133,9 +133,9 @@ function setMenuFromDatabase(numberOfObjects)
                 <img src="${database[i].oImg}">
 
             </div>
-            <div class="subject-box-title">
-                ${database[i].oTitle}
-            </div>
+            <!-- <div class="subject-box-title"> -->
+                <span class="objectTitle">${database[i].oTitle}</span>
+            <!-- </div> -->
         </div>
         `;
     }
