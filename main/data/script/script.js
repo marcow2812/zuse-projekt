@@ -14,9 +14,10 @@ const database = [
     { id: "atom-1", oImg: "./data/img/favicon.png", oSrc: "./data/3d/atom.glb", oTitle: "Aufbau eines Atoms", oSizeMultiplier: 4, oBackground: "black", oStartAudioAt: 1.5, oCopyright: "'Atom' (https://skfb.ly/onXKz) by LucasPresoto is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/)." },
     
     { id: "earth-1", oImg: "./data/3d/img/earth-1.webp", oSrc: "./data/3d/earth-9.glb", oTitle: "Erdkugel", oSizeMultiplier: 4, oBackground: "black", oStartAudioAt: 1.5, oCopyright: "3D model by <a href='https://pixabay.com/users/blendertimer-9538909/?utm_source=link-attribution&utm_medium=referral&utm_campaign=object3d&utm_content=9'>Daniel Roberts</a> from <a href='https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=object3d&utm_content=9'>Pixabay</a>" },
-    { id: "solar-1", oImg: "./data/img/favicon.png", oSrc: "./data/3d/solar_system1.glb", oTitle: "Sonnensystem (1)", oSizeMultiplier: 4, oBackground: "black", oStartAudioAt: 1.5, oCopyright: "'Solar system' (https://skfb.ly/oKYnC) by dannzjs is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/)." },
-    { id: "solar-2", oImg: "./data/img/favicon.png", oSrc: "./data/3d/solar_system2.glb", oTitle: "Sonnensystem (2)", oSizeMultiplier: 7, oBackground: "transparent", oStartAudioAt: 1.5, oCopyright: "'Solar System : المجموعة الشمسية' (https://skfb.ly/YnDQ) by shooogp is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/)." },
-    { id: "mars-rover-1", oImg: "./data/3d/img/mars-rover1.png", oSrc: "./data/3d/mars-rover.glb", oTitle: "Mars Rover", oSizeMultiplier: 4, oBackground: "url('./data/3d/img/mars.jpg')", oStartAudioAt: 1.5, oCopyright: "'Curiosity Mars rover' (https://skfb.ly/oTPHp) by Cybertron B-127 is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).\nFoto von RDNE Stock project: https://www.pexels.com/de-de/foto/wuste-trocken-felsen-konzept-8474500/" },
+    
+    { id: "solar-1", oImg: "./data/img/favicon.png", oSrc: "./data/3d/solar_system1.glb", oTitle: "Sonnensystem (1)", oSizeMultiplier: 4, oBackground: "black", oStartAudioAt: 10, oCopyright: "'Solar system' (https://skfb.ly/oKYnC) by dannzjs is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/)." },
+    { id: "solar-2", oImg: "./data/img/favicon.png", oSrc: "./data/3d/solar_system2.glb", oTitle: "Sonnensystem (2)", oSizeMultiplier: 7, oBackground: "transparent", oStartAudioAt: 10, oCopyright: "'Solar System : المجموعة الشمسية' (https://skfb.ly/YnDQ) by shooogp is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/)." },
+    { id: "mars-rover-1", oImg: "./data/3d/img/mars-rover1.png", oSrc: "./data/3d/mars-rover.glb", oTitle: "Mars Rover", oSizeMultiplier: 4, oBackground: "url('./data/3d/img/mars.jpg')", oStartAudioAt: 10, oCopyright: "'Curiosity Mars rover' (https://skfb.ly/oTPHp) by Cybertron B-127 is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).\nFoto von RDNE Stock project: https://www.pexels.com/de-de/foto/wuste-trocken-felsen-konzept-8474500/" },
 ];
 
 /*
@@ -253,25 +254,42 @@ function getDegByMarker(marker, x, y, z)
     {
         case 1:
             console.log("Marker 1");
+
             const invertedZ = (360 - parseFloat(z)) % 360; 
             //           Drehung nach rechts oder links (im/gegen Uhrzeigersinn)
             //              nach vorne und hinten neigen (auf einen zu/von einem weg)
             rotateObject(invertedZ, 0, 0);
+
             break;
         case 2:
             console.log("Marker 2");
+
+            rotateObject(0, -90, 0);
+
             break;
         case 3:
             console.log("Marker 3");
+            
+            rotateObject(0, 0, -90);
+
             break;
         case 4:
             console.log("Marker 4");
+
+            rotateObject(0, 0, 90);
+
             break;
         case 5:
             console.log("Marker 5");
+
+            rotateObject(0, 0, 180);
+
             break;
         case 6:
             console.log("Marker 6");
+
+            rotateObject(0, 90, 0);
+
             break;
         default:
             console.log("Anderer Marker");
