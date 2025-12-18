@@ -482,16 +482,28 @@
                 ar-scale="fixed"
              -->
 
+            
+
+
+            <!-- ar-modes="webxr scene-viewer" 
+             placement="floor" -->
+
             <model-viewer
                 id="model"
-                src="./data/3d/heart-23.glb"
+                
                 environment-image="neutral"
-                alt="3D Model"
+                alt="3D Modell"
                 interaction-prompt="none"
                 interaction-prompt-threshold="0"
 
-                ar 
-                ar-modes="webxr scene-viewer"
+                ar
+                ar-placement="floor"
+                ar-modes="scene-viewer webxr quick-look"
+                touch-action="pan-y"
+                camera-controls
+
+                loading="eager"
+                
                 shadow-intensity="1">
 
                 <button 
