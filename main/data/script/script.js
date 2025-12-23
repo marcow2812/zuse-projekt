@@ -9,15 +9,15 @@ var objectId;
 
 
 const database = [
-    { id: "heart-1", oImg: "./data/3d/img/heart-1.webp", oSrc: "./data/3d/heart-23.glb", oTitle: "Rotes Herz", oSizeMultiplier: 3, oBackground: "rgb(255, 179, 179, 0.3)", oStartAudioAt: 1.5, oCopyright: "3D model by <a href='https://pixabay.com/users/blendertimer-9538909/?utm_source=link-attribution&utm_medium=referral&utm_campaign=object3d&utm_content=23'>Daniel Roberts</a> from <a href='https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=object3d&utm_content=23'>Pixabay</a>" },
-    { id: "disco-1", oImg: "./data/3d/img/disco-1.webp", oSrc: "./data/3d/disco-ball-2730.glb", oTitle: "Disco-Kugel", oSizeMultiplier: 3, oBackground: "transparent", oStartAudioAt: 1.5, oCopyright: "3D model by <a href='https://pixabay.com/users/lyocrypt-50042056/?utm_source=link-attribution&utm_medium=referral&utm_campaign=object3d&utm_content=2730'>NaxiLyo Crypt</a> from <a href='https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=object3d&utm_content=2730'>Pixabay</a>" },
-    { id: "atom-1", oImg: "./data/img/favicon.png", oSrc: "./data/3d/atom.glb", oTitle: "Aufbau eines Atoms", oSizeMultiplier: 4, oBackground: "black", oStartAudioAt: 1.5, oCopyright: "'Atom' (https://skfb.ly/onXKz) by LucasPresoto is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/)." },
+    { id: "heart-1", oImg: "./data/3d/img/heart-1.webp", oSrc: "./data/3d/object/heart-23.glb", oTitle: "Rotes Herz", oSizeMultiplier: 3, oBackground: "rgb(255, 179, 179, 0.3)", oStartAudioAt: 1.5, oCopyright: "3D model by <a href='https://pixabay.com/users/blendertimer-9538909/?utm_source=link-attribution&utm_medium=referral&utm_campaign=object3d&utm_content=23'>Daniel Roberts</a> from <a href='https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=object3d&utm_content=23'>Pixabay</a>" },
+    { id: "disco-1", oImg: "./data/3d/img/disco-1.webp", oSrc: "./data/3d/object/disco-ball-2730.glb", oTitle: "Disco-Kugel", oSizeMultiplier: 3, oBackground: "transparent", oStartAudioAt: 1.5, oCopyright: "3D model by <a href='https://pixabay.com/users/lyocrypt-50042056/?utm_source=link-attribution&utm_medium=referral&utm_campaign=object3d&utm_content=2730'>NaxiLyo Crypt</a> from <a href='https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=object3d&utm_content=2730'>Pixabay</a>" },
+    { id: "atom-1", oImg: "./data/img/favicon.png", oSrc: "./data/3d/object/atom.glb", oTitle: "Aufbau eines Atoms", oSizeMultiplier: 4, oBackground: "black", oStartAudioAt: 1.5, oCopyright: "'Atom' (https://skfb.ly/onXKz) by LucasPresoto is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/)." },
     
-    { id: "earth-1", oImg: "./data/3d/img/earth-1.webp", oSrc: "./data/3d/earth-9.glb", oTitle: "Erdkugel", oSizeMultiplier: 4, oBackground: "black", oStartAudioAt: 1.5, oCopyright: "3D model by <a href='https://pixabay.com/users/blendertimer-9538909/?utm_source=link-attribution&utm_medium=referral&utm_campaign=object3d&utm_content=9'>Daniel Roberts</a> from <a href='https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=object3d&utm_content=9'>Pixabay</a>" },
+    { id: "earth-1", oImg: "./data/3d/img/earth-1.webp", oSrc: "./data/3d/object/earth-9.glb", oTitle: "Erdkugel", oSizeMultiplier: 4, oBackground: "black", oStartAudioAt: 1.5, oCopyright: "3D model by <a href='https://pixabay.com/users/blendertimer-9538909/?utm_source=link-attribution&utm_medium=referral&utm_campaign=object3d&utm_content=9'>Daniel Roberts</a> from <a href='https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=object3d&utm_content=9'>Pixabay</a>" },
     
-    { id: "solar-1", oImg: "./data/img/favicon.png", oSrc: "./data/3d/solar_system1.glb", oTitle: "Sonnensystem (1)", oSizeMultiplier: 4, oBackground: "black", oStartAudioAt: 10, oCopyright: "'Solar system' (https://skfb.ly/oKYnC) by dannzjs is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/)." },
-    { id: "solar-2", oImg: "./data/img/favicon.png", oSrc: "./data/3d/solar_system2.glb", oTitle: "Sonnensystem (2)", oSizeMultiplier: 7, oBackground: "transparent", oStartAudioAt: 10, oCopyright: "'Solar System : المجموعة الشمسية' (https://skfb.ly/YnDQ) by shooogp is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/)." },
-    { id: "mars-rover-1", oImg: "./data/3d/img/mars-rover1.png", oSrc: "./data/3d/mars-rover.glb", oTitle: "Mars Rover", oSizeMultiplier: 4, oBackground: "url('./data/3d/img/mars.jpg')", oStartAudioAt: 10, oCopyright: "'Curiosity Mars rover' (https://skfb.ly/oTPHp) by Cybertron B-127 is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).\nFoto von RDNE Stock project: https://www.pexels.com/de-de/foto/wuste-trocken-felsen-konzept-8474500/" },
+    { id: "solar-1", oImg: "./data/img/favicon.png", oSrc: "./data/3d/object/solar_system1.glb", oTitle: "Sonnensystem (1)", oSizeMultiplier: 4, oBackground: "black", oStartAudioAt: 10, oCopyright: "'Solar system' (https://skfb.ly/oKYnC) by dannzjs is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/)." },
+    { id: "solar-2", oImg: "./data/img/favicon.png", oSrc: "./data/3d/object/solar_system2.glb", oTitle: "Sonnensystem (2)", oSizeMultiplier: 7, oBackground: "transparent", oStartAudioAt: 10, oCopyright: "'Solar System : المجموعة الشمسية' (https://skfb.ly/YnDQ) by shooogp is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/)." },
+    { id: "mars-rover-1", oImg: "./data/3d/img/mars-rover1.png", oSrc: "./data/3d/object/mars-rover.glb", oTitle: "Mars Rover", oSizeMultiplier: 4, oBackground: "url('./data/3d/img/mars.jpg')", oStartAudioAt: 10, oCopyright: "'Curiosity Mars rover' (https://skfb.ly/oTPHp) by Cybertron B-127 is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).\nFoto von RDNE Stock project: https://www.pexels.com/de-de/foto/wuste-trocken-felsen-konzept-8474500/" },
 ];
 
 /*
@@ -538,4 +538,19 @@ function setObjectSize(pixelSize)
 
     document.getElementById("model").style.width = (pixelSize * database.find(u => u.id === objectId).oSizeMultiplier) + "px";
     document.getElementById("model").style.height = (pixelSize * database.find(u => u.id === objectId).oSizeMultiplier) + "px";
+}
+
+function getContactInformation(parameter)
+{
+    if (parameter == null)
+    {
+        var address1 = "mailto:marco.weber@konrad-zuse-schule.de";
+        window.open(address1);
+    }
+    else if (parameter == "pp")
+    {
+        var address2 = "mailto:marco.weber@konrad-zuse-schule.de?subject=Anfrage%20Pilotprojekt";
+        // Pilotprojekt
+        window.open(address2);
+    }
 }
