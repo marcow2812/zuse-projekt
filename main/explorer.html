@@ -24,16 +24,16 @@
         
 
         <!-- Aruco Marker Detection -->
-        <script src="./data/js-aruco/aruco.js"></script>
-        <script src="./data/js-aruco/cv.js"></script>
-        <script src="./data/js-aruco/polyfill.js"></script>
-        <script src="./data/js-aruco/posit1.js"></script>
+        <script src="./data/script/js-aruco/aruco.js"></script>
+        <script src="./data/script/js-aruco/cv.js"></script>
+        <script src="./data/script/js-aruco/polyfill.js"></script>
+        <script src="./data/script/js-aruco/posit1.js"></script>
 
         <!-- Google Model Viewer -->
-        <script type="module" src="./data/google-model-viewer/model-viewer.min.js"></script>
+        <script type="module" src="./data/script/model-viewer.min.js"></script>
 
         <!-- QR-Code Generator -->
-        <script src="./data/qrcode-generator/qrcode.min.js"></script>
+        <script src="./data/script/qrcode.min.js"></script>
     </head>
     <body onload="loadThePage()">
 
@@ -587,6 +587,10 @@
                 </button>
             </div>
 
+            <div id="bottomCopyright" style="display:none;position:absolute; bottom:0px;right: 0px;background-color:white;color:black">
+                Copyright: Wolfgang Hunscher, Dortmund, CC BY-SA 3.0 <http://creativecommons.org/licenses/by-sa/3.0/>, via Wikimedia Commons
+            </div>
+
             
 
         </div>
@@ -701,9 +705,9 @@
                 var audioDelay = 2000; // 2 Sekunden Verzögerung (kein Marker erkannt)
 
                 const imagesById = {
-                    10: "./data/img/konrad-zuse.png",
+                    10: "./data/img/konrad-zuse-wikipedia.png",
                     11: "./data/img/overlay.png",
-                    12: "./data/img/konrad-zuse2.png",
+                    12: "./data/img/konrad-zuse-wikipedia.png",
                 };
 
                 const imageCache = {};
@@ -1036,6 +1040,7 @@
                     if (img && img.complete)
                     {
                         drawOverlay(ctx, img, corners);
+                        document.getElementById("bottomCopyright").style.display = "block";
                     }
                 }
                 else

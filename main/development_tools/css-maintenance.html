@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CSS Maintenance</title>
+        <style>
+
+            .server
+            {
+                width: 55px;
+                height: 100px;
+                background-color: lightgray;
+                border-radius: 6px;
+                padding: 7px;
+            }
+            .server .disk
+            {
+                position: relative;
+                width: 100%;
+                height: 20px;
+                background-color: #b3b3b3;
+                border-radius: 3px;
+                margin-bottom: 7px;
+            }
+
+            .server .disk .line
+            {
+                position: absolute;
+                top: 7.5px;
+                left: 7.5px;
+                width: 27.5px;
+                height: 5px;
+                background-color: white;
+                border-radius: 100px;
+            }
+
+            .server .disk .light
+            {
+                position: absolute;
+                top: 6.5px;
+                right: 6.5px;
+                width: 7px;
+                height: 7px;
+                background-color: rgb(160, 160, 255);
+                border-radius: 50%;
+                /* box-shadow: 0 0 4px #ff0000; */
+                /* box-shadow: rgba(160, 160, 255) 0px 0px 8px 0px; */   
+            }
+
+        </style>
+    </head>
+    <body onload="setServerAnimation()">
+
+        <div class="server">
+            <div class="disk">
+                <div class="line"></div>
+                <div id="light1" class="light"></div>
+            </div>
+            <div class="disk">
+                <div class="line"></div>
+                <div id="light2" class="light"></div>
+            </div>
+            <div class="disk">
+                <div class="line"></div>
+                <div id="light3" class="light"></div>
+            </div>
+        </div>
+
+        <script>
+
+            const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms)); 
+
+            async function setServerAnimation()
+            {
+                setL1();
+                await sleep(800);
+                setL3();
+                await sleep(1300);
+                setL2();
+            }
+
+            async function setL1()
+            {
+                var l1 = document.getElementById("light1");
+                while (true)
+                {
+                    var boxshadow = 0;
+                    for (i = 0; i <= 10; i++)
+                    {
+                        await sleep(80);
+                        l1.style.boxShadow = "0 0 "+boxshadow+"px white";
+                        boxshadow = boxshadow + 0.2;
+                    }
+                    for (i = 10; i >= 0; i--)
+                    {
+                        await sleep(80);
+                        l1.style.boxShadow = "0 0 "+boxshadow+"px white";
+                        boxshadow = boxshadow - 0.2;
+                    }
+                }
+            }
+
+            async function setL2()
+            {
+                var l2 = document.getElementById("light2");
+                while (true)
+                {
+                    var boxshadow = 0;
+                    for (i = 0; i <= 10; i++)
+                    {
+                        await sleep(80);
+                        l2.style.boxShadow = "0 0 "+boxshadow+"px white";
+                        boxshadow = boxshadow + 0.2;
+                    }
+                    for (i = 10; i >= 0; i--)
+                    {
+                        await sleep(80);
+                        l2.style.boxShadow = "0 0 "+boxshadow+"px white";
+                        boxshadow = boxshadow - 0.2;
+                    }
+                }
+            }
+
+            async function setL3()
+            {
+                var l3 = document.getElementById("light3");
+                while (true)
+                {
+                    var boxshadow = 0;
+                    for (i = 0; i <= 10; i++)
+                    {
+                        await sleep(80);
+                        l3.style.boxShadow = "0 0 "+boxshadow+"px white";
+                        boxshadow = boxshadow + 0.2;
+                    }
+                    for (i = 10; i >= 0; i--)
+                    {
+                        await sleep(80);
+                        l3.style.boxShadow = "0 0 "+boxshadow+"px white";
+                        boxshadow = boxshadow - 0.2;
+                    }
+                }
+            }
+
+        </script>
+
+    </body>
+</html>

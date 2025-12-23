@@ -21,6 +21,8 @@
         <link rel="stylesheet" href="./data/style/style.css?timestamp=<%= new Date().getTime() %>">
         <script language="javascript" type="text/javascript" src="./data/script/script.js?timestamp=<%= new Date().getTime() %>"></script>
 
+        <!-- Google Model Viewer -->
+        <script type="module" src="./data/script/model-viewer.min.js"></script>
 
         <style>
 
@@ -41,7 +43,7 @@
 }
 
 .container {
-    width: 100%;
+    width: 100%; 
     height: 100%;
     position: relative;
     transform-style: preserve-3d;
@@ -155,41 +157,28 @@
 .box2
 {
     color: #cccccc;
-    font-weight: bold;
-    text-transform: uppercase;
-    font-size: 40px;
-    display: flex;
-    justify-content: center; /* horizontal */
-    align-items: center; 
-    text-align: center;
-}
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 40px;
 
-.switch-container
-{
-  background-color: #f7f7f7;
-  height: 200px;
   display: flex;
-  justify-content: center; /* horizontal */
-    align-items: center; 
-    text-align: center;
-    font-size: 28px;
-    font-weight: bold;
+  flex-direction: column;   /* 👈 WICHTIG */
+  justify-content: center;  /* vertikal */
+  align-items: center;      /* horizontal */
+  text-align: center;
 }
 
-#switch-p {
-    color: #cccccc;
-}
-
-.green-text {
-    color: var(--green);
+.box2 span {
+  display: block;
 }
 
 
 
+
+/* 
 
 .rainbow-button {
   position: relative;
-  /* Die Dicke des Randes hier einstellen */
   padding: 2.5px; 
   border: none;
   background: none;
@@ -205,15 +194,12 @@
 .rainbow-button::before {
   content: '';
   position: absolute;
-  /* Deutlich größer gewählt, damit beim Drehen keine Lücken entstehen */
   width: 200%;
   height: 500%; 
   background: conic-gradient(
     #ff0000, #ff8000, #ffff00, #00ff00, #00ffff, #0000ff, #8000ff, #ff00ff, #ff0000
   );
-  /* Neue eindeutige Animation */
   animation: rainbow-spin 4s linear infinite;
-  /* Zentriert den Ankerpunkt der Drehung */
   top: -200%;
   left: -50%;
   z-index: -1;
@@ -239,7 +225,6 @@
   fill: currentColor;
 }
 
-/* Umbenannte Animation gegen Konflikte */
 @keyframes rainbow-spin {
   from {
     transform: rotate(0deg);
@@ -247,6 +232,250 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+*/
+
+
+:root {
+  --primary: #000000;
+  --secondary: #FFFFFF;
+  --accent: #aefa4c; /* ursprünglich: #FF5E5B - jetzt: #B8FF5B */
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+.dropbtn {
+  background-color: var(--green);
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+
+}
+
+.dropbtn:hover, .dropbtn:focus {
+  background-color: var(--green-dark);
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+    z-index: 20;
+    width: 100%;
+    max-width: 400px;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  /* min-width: 160px; */
+  width: 100%;
+  overflow: auto;
+  /* box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); */
+  z-index: 1;
+  padding: 15px;
+
+  background-image: url('./data/img/desk.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 0px 10px 10px 10px;
+}
+
+.show {display: block;}
+
+
+
+.login-container {
+  width: 100%;
+  max-width: 400px;
+  border: 1px solid var(--primary);
+  padding: 40px 30px;
+  background-color: var(--secondary);
+  box-shadow: 8px 8px 0px #919191;
+  position: relative;
+  border-radius: 12px;
+
+  font-family: 'Courier New', monospace;
+}
+
+.login-container::before {
+  content: '';
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  right: -6px;
+  bottom: -6px;
+  border: 1px solid var(--primary);
+  z-index: -1;
+  border-radius: 12px;
+}
+
+h1 {
+  color: var(--primary);
+  margin-bottom: 30px;
+  font-size: 28px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.input-group {
+  margin-bottom: 20px;
+  position: relative;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: var(--primary);
+}
+
+input {
+  width: 100%;
+  padding: 12px 15px;
+  border: 2px solid var(--primary);
+  background-color: var(--secondary);
+  font-size: 16px;
+  outline: none;
+  transition: all 0.3s;
+}
+
+input:focus {
+  box-shadow: 4px 4px 0px var(--primary);
+}
+
+.login-button {
+  width: 100%;
+  padding: 12px;
+  background-color: var(--accent);
+  color: var(--secondary);
+  border: 2px solid var(--primary);
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: all 0.3s;
+}
+
+.login-button:hover {
+  box-shadow: 4px 4px 0px var(--primary);
+  transform: translate(-2px, -2px);
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  margin: 25px 0;
+  color: var(--primary);
+  font-weight: bold;
+}
+
+.divider::before, .divider::after {
+  content: "";
+  flex: 1;
+  border-bottom: 2px solid var(--primary);
+  margin: 0 10px;
+}
+
+.social-login {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.social-btn {
+  width: auto;
+  padding: 0px 15px 0px 15px;
+  height: 50px;
+  border: 2px solid var(--primary);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.social-btn:hover {
+  box-shadow: 4px 4px 0px var(--primary);
+  transform: translate(-2px, -2px);
+}
+
+
+
+
+.video-container
+{
+  position: relative;
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+
+  display: flex;
+  justify-content: center;
+    align-items: center; 
+    text-align: center;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.video-container video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+  z-index: 1;
+}
+
+.video-container .content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+
+
+#switch-p
+{
+    color: #cccccc;
+}
+
+.green-text
+{
+    color: var(--green);
+}
+
+
+.contact-form
+{
+  height: 200px;
+  color: white;
+  background-color: var(--green);
+
+  display: flex;
+  flex-direction: column;   /* 👈 WICHTIG */
+  justify-content: center;  /* vertikal */
+  align-items: center;      /* horizontal */
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.contact-form p
+{
+  margin: 12px 0px 20px 0px;
+  cursor: pointer;
+  text-decoration: underline;
 }
 
         </style>
@@ -259,9 +488,79 @@
             <img src="./data/img/zuse_logo_small.png">
 
 
-            <button class="btn" style="position: absolute; right: 5px" onclick="location.href='./explorer.html'">Öffnen</button>
+            <button class="btn" style="position: absolute; right: 5px" onclick="location.href='./explorer.html'">Zum Projekt</button>
 
         </header>
+
+
+        <div class="dropdown">
+  <button onclick="myFunction()" class="dropbtn">DevAnmeldung</button>
+  <div id="myDropdown" class="dropdown-content">
+
+
+
+
+
+    <div class="login-container">
+        <h1>ANMELDEN</h1>
+        
+        <div class="input-group">
+            <label for="username">BENUTZERNAME</label>
+            <input type="username" id="username" placeholder="••••••••••••••">
+        </div>
+        
+        <div class="input-group">
+            <label for="password">PASSWORT</label>
+            <input type="password" id="password" placeholder="••••••••••••••">
+        </div>
+        
+        <button class="login-button" type="submit" onclick="setLogin()">ANMELDEN</button>
+        
+        <div class="divider">ODER</div>
+        
+        <div class="social-login">
+            <div class="social-btn" onclick="alert('Bitte wenden Sie sich an Ihren zuständigen Ansprechpartner!')">Zugang beantragen</div>
+            <!-- <div class="social-btn">F</div>
+            <div class="social-btn">X</div> -->
+        </div>
+
+        <script>
+          async function setLogin()
+          {
+            if(document.getElementById("username").value == null || document.getElementById("username").value.length <= 0)
+            {
+
+            }
+            else
+            {
+              window.location.href = "./login/02." + (document.getElementById('username').value.split("@")[0]).toLowerCase() + "." + await hashText(document.getElementById('username').value + document.getElementById('password').value)+".html?key="+await hashText(document.getElementById('username').value+"."+document.getElementById("password").value)+"&timestamp="+new Date().getTime();
+            }
+          }
+          async function hashText(text){const encoder = new TextEncoder();const data = encoder.encode(text);const hashBuffer = await crypto.subtle.digest("SHA-256", data);const hashArray = Array.from(new Uint8Array(hashBuffer));return hashArray.map(b => b.toString(16).padStart(2, "0")).join("");}
+        </script>
+
+        
+    </div>
+
+
+
+
+
+
+
+
+  </div>
+</div>
+
+<script>
+/* When the user clicks on the button, 
+toggle between hiding and showing the dropdown content */
+function myFunction() {
+  document.getElementById("myDropdown").classList.toggle("show");
+}
+
+
+</script>
 
 
 
@@ -274,12 +573,12 @@
                 <div class="outer-cube">
                     <div class="slider">
                         <div class="container">
-                            <!-- Jeweils ein Bild je Fläche -->
-                            <div class="slide front"><img src="./data/img/diashow/img1.png" alt=""></div>
+                            <!-- Reihenfolge: front, back, bottom, top, right, left, bottom -->
+                            <div class="slide front"><img src="./data/img/diashow/3d-druck-01.png" alt=""></div>
                             <div class="slide back"><img src="./data/img/diashow/img2.png" alt=""></div>
                             <div class="slide right"><img src="./data/img/diashow/img3.png" alt=""></div>
                             <div class="slide left"><img src="./data/img/diashow/img4.png" alt=""></div>
-                            <div class="slide top"><img src="./data/img/diashow/img5.png" alt=""></div>
+                            <div class="slide top"><img src="./data/img/diashow/3d-druck-02.png" alt=""></div>
                             <div class="slide bottom"><img src="./data/img/diashow/img6.png" alt=""></div>
                         </div>
                       <div class="shadow"></div>
@@ -288,14 +587,16 @@
 
             </div>
             <div class="box box2">
-                Entdecke
-                <br>
-                das
-                <br>
-                Entdecken
+                <!-- Augmented<br>Reality<br>für<br>Schulen -->
+                 <span>Augmented</span>
+                 <span>Reality</span>
+                 <span>im</span>
+                 <span>Unterricht</span>
+
             </div>
         </div>
 
+        <!-- 
         <div style="margin-top: 30px; margin-bottom: 30px;" align="center">
 
             <a href="./explorer.html">
@@ -307,9 +608,35 @@
             </a>
 
         </div>
+-->
 
+
+
+
+        
+
+
+
+
+
+
+
+
+
+<!--
         <div class="switch-container">
             <p id="switch-p"></p>
+        </div> -->
+
+        <div class="video-container">
+          <video autoplay muted loop playsinline>
+            <source src="./data/img/video/164477-830744018_tiny.mp4" type="video/mp4">
+            Dein Browser unterstützt kein HTML5-Video.
+          </video>
+
+          <div class="content">
+            <p id="switch-p"></p>
+          </div>
         </div>
 
         
@@ -372,6 +699,69 @@
 
         </script>
 
+        <model-viewer
+                id="example-model"
+                src="./data/3d/object/atom.glb"
+                environment-image="neutral"
+                alt="3D Modell"
+                interaction-prompt="none"
+                interaction-prompt-threshold="0"
+
+                ar
+                ar-placement="floor"
+                ar-modes="scene-viewer webxr quick-look"
+                touch-action="pan-y"
+                camera-controls
+
+                loading="eager"
+                
+                shadow-intensity="1">
+
+
+
+                <button 
+                    slot="hotspot-1" 
+                    class="hotspot" 
+                    data-position="-30 180 -120" 
+                    data-normal="-1 0 0" 
+                    onclick="showHotspotInfobox(this)"> <b>i</b>
+
+                    <div class="hotspot-info">
+                        Elektronen
+                    </div>
+
+                </button>
+
+                <button 
+                    slot="hotspot-2" 
+                    class="hotspot" 
+                    data-position="200 -30 -20" 
+                    data-normal="-1 0 0" 
+                    onclick="showHotspotInfobox(this)"> <b>i</b>
+
+                    <div class="hotspot-info">
+                        Ein weiterer Punkt
+                    </div>
+
+                </button>
+
+                
+
+            </model-viewer>
+
+            Copyright Hinweis!!!
+
+
+
+            
+
+
+        <div class="contact-form">
+          <h3>Allgemeine Fragen zum Projekt?</h3>
+          <p onclick="getContactInformation()">Kontakt aufnehmen</p>
+          <h3>Pilotprojekt mit ihrer Schule planen?</h3>
+          <p onclick="getContactInformation('pp')">Anfrage senden</p>
+        </div>
 
 
 
