@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Filter Suche</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        .filter-bar {
+            margin-bottom: 20px;
+        }
+
+        .filter-bar select,
+        .filter-bar input {
+            padding: 8px;
+            margin-right: 10px;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .item {
+            border: 1px solid #ccc;
+            padding: 15px;
+            width: 200px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="filter-bar">
+        <select id="categoryFilter">
+            <option value="all">Alle Kategorien</option>
+            <option value="technik">Technik</option>
+            <option value="design">Design</option>
+            <option value="marketing">Marketing</option>
+        </select>
+
+        <input type="text" id="searchInput" placeholder="Nach Titel suchen...">
+    </div>
+
+    <div class="container" id="itemsContainer">
+        <div class="item" data-category="technik" data-title="Laptop reparieren">
+            <h3>Laptop reparieren</h3>
+            <p>Kategorie: Technik</p>
+        </div>
+
+        <div class="item" data-category="design" data-title="Logo erstellen">
+            <h3>Logo erstellen</h3>
+            <p>Kategorie: Design</p>
+        </div>
+
+        <div class="item" data-category="marketing" data-title="Social Media Kampagne">
+            <h3>Social Media Kampagne</h3>
+            <p>Kategorie: Marketing</p>
+        </div>
+
+        <div class="item" data-category="technik" data-title="Webseite programmieren">
+            <h3>Webseite programmieren</h3>
+            <p>Kategorie: Technik</p>
+        </div>
+    </div>
+
+    <script>
+        const categoryFilter = document.getElementById("categoryFilter");
+        const searchInput = document.getElementById("searchInput");
+        const items = document.querySelectorAll(".item");
+
+        function filterItems() {
+            const selectedCategory = categoryFilter.value;
+            const searchText = searchInput.value.toLowerCase();
+
+            items.forEach(item => {
+                const itemCategory = item.dataset.category;
+                const itemTitle = item.dataset.title.toLowerCase();
+
+                const matchesCategory =
+                    selectedCategory === "all" || itemCategory === selectedCategory;
+
+                const matchesSearch =
+                    itemTitle.includes(searchText);
+
+                if (matchesCategory && matchesSearch) {
+                    item.style.display = "block";
+                } else {
+                    item.style.display = "none";
+                }
+            });
+        }
+
+        categoryFilter.addEventListener("change", filterItems);
+        searchInput.addEventListener("input", filterItems);
+    </script>
+
+</body>
+</html>

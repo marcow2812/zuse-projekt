@@ -79,11 +79,58 @@
 
                         <h3>Objektübersicht</h3>
 
+
+
+                        <div class="filter-bar">
+                            <select id="categoryFilter">
+                                <option value="all">Alle Kategorien</option>
+                                <option value="biologie">Biologie</option>
+                                <option value="design">Design</option>
+                                <option value="marketing">Marketing</option>
+                            </select>
+                        
+                            <input type="text" id="searchInput" placeholder="Suchbegriff eingeben...">
+                        </div>
+
+
+
+
                         <div id="subject-container-new" class="subject-container-new">
 
                             <!-- Ergänzt durch JS -->
 
                         </div>
+
+
+                        <script>
+        const categoryFilter = document.getElementById("categoryFilter");
+        const searchInput = document.getElementById("searchInput");
+        const items = document.querySelectorAll(".subject-box-new");
+
+        function filterObjects() {
+    const selectedCategory = document.getElementById("categoryFilter").value;
+    const searchText = document.getElementById("searchInput").value.toLowerCase();
+
+    const items = document.querySelectorAll(".subject-box-new");
+
+    items.forEach(item => {
+        const itemCategory = item.dataset.category;
+        const itemTitle = item.dataset.title.toLowerCase();
+
+        const matchesCategory =
+            selectedCategory === "all" || itemCategory === selectedCategory;
+
+        const matchesSearch =
+            itemTitle.includes(searchText);
+
+        item.style.display = (matchesCategory && matchesSearch) ? "block" : "none";
+    });
+}
+
+
+        categoryFilter.addEventListener("change", filterObjects);
+        searchInput.addEventListener("input", filterObjects);
+    </script>
 
 
 
@@ -249,88 +296,6 @@
                             }
                         </script>
 
-
-                        <!-- 
-                        <div class="subject-container">
-                            <div class="subject-box" onclick="document.getElementById('model').src='./data/3d/pyramid_of_menkaure_giza_pyramid_complex_egypt.glb'" style="background-image: url('https://cdn.pixabay.com/photo/2016/05/19/14/13/daisies-1403041_1280.jpg');">
-                                Pyramide
-                            </div>
-                            <div class="subject-box" onclick="document.getElementById('model').src='./data/3d/heart-23.glb'" style="background-image: url('https://cdn.pixabay.com/photo/2016/10/21/00/43/giza-1756946_1280.jpg');">
-                                Herz
-                            </div>
-                        </div>
-                        -->
-
-                        <!--
-                        <input type="text" id="myInput" onkeyup="searchInTable()" placeholder="Suchbegriff eingeben...">
-
-                        <table id="myTable">
-                        <tr class="header">
-                            <th style="width:60%;">Name</th>
-                            <th style="width:40%;">Country</th>
-                        </tr>
-                        <tr>
-                            <td>Alfreds Futterkiste</td>
-                            <td>Germany</td>
-                        </tr>
-                        <tr>
-                            <td>Berglunds snabbkop</td>
-                            <td>Sweden</td>
-                        </tr>
-                        <tr>
-                            <td>Island Trading</td>
-                            <td>UK</td>
-                        </tr>
-                        <tr>
-                            <td>Koniglich Essen</td>
-                            <td>Germany</td>
-                        </tr>
-                        <tr>
-                            <td>Laughing Bacchus Winecellars</td>
-                            <td>Canada</td>
-                        </tr>
-                        <tr>
-                            <td>Magazzini Alimentari Riuniti</td>
-                            <td>Italy</td>
-                        </tr>
-                        <tr>
-                            <td>North/South</td>
-                            <td>UK</td>
-                        </tr>
-                        <tr>
-                            <td>Paris specialites</td>
-                            <td>France</td>
-                        </tr>
-                        </table>
-
-                        <script>
-                            function searchInTable()
-                            {
-                                var input, filter, table, tr, td, i, txtValue;
-                                input = document.getElementById("myInput");
-                                filter = input.value.toUpperCase();
-                                table = document.getElementById("myTable");
-                                tr = table.getElementsByTagName("tr");
-                                for (i = 0; i < tr.length; i++)
-                                {
-                                    td = tr[i].getElementsByTagName("td")[0];
-                                    if (td)
-                                    {
-                                        txtValue = td.textContent || td.innerText;
-                                        if (txtValue.toUpperCase().indexOf(filter) > -1)
-                                        {
-                                            tr[i].style.display = "";
-                                        }
-                                        else
-                                        {
-                                            tr[i].style.display = "none";
-                                        }
-                                    }       
-                                }
-                            }
-                        </script>
-                        -->
-
                     </div>
                     
             </div>
@@ -437,6 +402,177 @@
                     
                 </div>
             </div>
+
+            </div>
+
+            <!-- The Modal -->
+            <div id="maintenanceModal" class="modal">
+
+                <!-- Modal content -->
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <span>Wartungsarbeiten</span>
+                    </div>
+                    <div class="modal-body">
+
+                        <div class="maintenance-row">
+
+
+
+
+
+
+                        <div class="server">
+                            <div class="disk">
+                                <div class="line"></div>
+                                <div id="light1" class="light"></div>
+                            </div>
+                            <div class="disk">
+                                <div class="line"></div>
+                                <div id="light2" class="light"></div>
+                            </div>
+                            <div class="disk">
+                                <div class="line"></div>
+                                <div id="light3" class="light"></div>
+                            </div>
+                        </div>
+
+        <script>
+
+            const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms)); 
+
+            async function setServerAnimation()
+            {
+                setL1();
+                await sleep(800);
+                setL3();
+                await sleep(1300);
+                setL2();
+            }
+
+            /*
+            async function setL1()
+            {
+                var l1 = document.getElementById("light1");
+                while (true)
+                {
+                    var boxshadow = 0;
+                    for (i = 0; i <= 10; i++)
+                    {
+                        await sleep(80);
+                        l1.style.boxShadow = "0 0 "+boxshadow+"px white";
+                        boxshadow = boxshadow + 0.2;
+                    }
+                    for (i = 10; i >= 0; i--)
+                    {
+                        await sleep(80);
+                        l1.style.boxShadow = "0 0 "+boxshadow+"px white";
+                        boxshadow = boxshadow - 0.2;
+                    }
+                }
+            }
+
+            async function setL2()
+            {
+                var l2 = document.getElementById("light2");
+                while (true)
+                {
+                    var boxshadow = 0;
+                    for (i = 0; i <= 10; i++)
+                    {
+                        await sleep(80);
+                        l2.style.boxShadow = "0 0 "+boxshadow+"px white";
+                        boxshadow = boxshadow + 0.2;
+                    }
+                    for (i = 10; i >= 0; i--)
+                    {
+                        await sleep(80);
+                        l2.style.boxShadow = "0 0 "+boxshadow+"px white";
+                        boxshadow = boxshadow - 0.2;
+                    }
+                }
+            }
+
+            async function setL3()
+            {
+                var l3 = document.getElementById("light3");
+                while (true)
+                {
+                    var boxshadow = 0;
+                    for (i = 0; i <= 10; i++)
+                    {
+                        await sleep(80);
+                        l3.style.boxShadow = "0 0 "+boxshadow+"px white";
+                        boxshadow = boxshadow + 0.2;
+                    }
+                    for (i = 10; i >= 0; i--)
+                    {
+                        await sleep(80);
+                        l3.style.boxShadow = "0 0 "+boxshadow+"px white";
+                        boxshadow = boxshadow - 0.2;
+                    }
+                }
+            } */
+
+            var off = "#cccccc";
+            var on = "#62A60E";
+
+            async function setL1()
+            {
+                var l = document.getElementById("light1");
+                while (true)
+                {
+                    await sleep(80);
+                    l.style.backgroundColor = on;
+                    await sleep(60);
+                    l.style.backgroundColor = off;
+                }
+            }
+
+            async function setL2()
+            {
+                var l = document.getElementById("light2");
+                while (true)
+                {
+                    await sleep(70);
+                    l.style.backgroundColor = on;
+                    await sleep(80);
+                    l.style.backgroundColor = off;
+                }
+            }
+
+            async function setL3()
+            {
+                var l = document.getElementById("light3");
+                while (true)
+                {
+                    await sleep(90);
+                    l.style.backgroundColor = on;
+                    await sleep(60);
+                    l.style.backgroundColor = off;
+                }
+            }
+
+        </script>
+
+
+
+
+
+                            <div id="maintenance-info">
+                                
+                            </div>
+
+                        </div>
+
+                        <br>
+
+                        <div align="center">
+                            <button class="btn" onclick="closeMaintenanceModal()">Verstanden</button>
+                        </div>
+                    
+                    </div>
+                </div>
 
             </div>
 
@@ -646,6 +782,8 @@
                 function rotateObject(x, y, z)
                 {
                     model.orientation = `${x}deg ${y}deg ${z}deg`;
+                    // model.cameraOrbit = `${x}deg ${y}deg ${z}deg`;
+
                 }
             </script>
 

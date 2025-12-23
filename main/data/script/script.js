@@ -4,20 +4,25 @@ var heightOfObjectMenu = "100%"; // Höhe Menü für Objekte
 var timeoutCheckInternetConnection = 30000; // Timeout zur Überprüfung der Internetverbindung
 var standardUrl = "https://marcow2812.github.io/zuse-projekt/main/explorer.html?o="; // Standard-URL für QR-Code-Erstellung
 
+var maintenanceStatus = 1; // 0 = keine, 1 = derzeitige Wartungsarbeiten, 2 = angekündigt
+var maintenanceDate = "24.12.2025";
+var maintenanceStartTime = "08:00";
+var maintenanceEndTime = "12:00";
+
 
 var objectId;
 
 
 const database = [
-    { id: "heart-1", oImg: "./data/3d/img/heart-1.webp", oSrc: "./data/3d/object/heart-23.glb", oTitle: "Rotes Herz", oSizeMultiplier: 3, oBackground: "rgb(255, 179, 179, 0.3)", oStartAudioAt: 1.5, oCopyright: "3D model by <a href='https://pixabay.com/users/blendertimer-9538909/?utm_source=link-attribution&utm_medium=referral&utm_campaign=object3d&utm_content=23'>Daniel Roberts</a> from <a href='https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=object3d&utm_content=23'>Pixabay</a>" },
-    { id: "disco-1", oImg: "./data/3d/img/disco-1.webp", oSrc: "./data/3d/object/disco-ball-2730.glb", oTitle: "Disco-Kugel", oSizeMultiplier: 3, oBackground: "transparent", oStartAudioAt: 1.5, oCopyright: "3D model by <a href='https://pixabay.com/users/lyocrypt-50042056/?utm_source=link-attribution&utm_medium=referral&utm_campaign=object3d&utm_content=2730'>NaxiLyo Crypt</a> from <a href='https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=object3d&utm_content=2730'>Pixabay</a>" },
-    { id: "atom-1", oImg: "./data/img/favicon.png", oSrc: "./data/3d/object/atom.glb", oTitle: "Aufbau eines Atoms", oSizeMultiplier: 4, oBackground: "black", oStartAudioAt: 1.5, oCopyright: "'Atom' (https://skfb.ly/onXKz) by LucasPresoto is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/)." },
+    { id: "heart-1", oSubject: "biologie", oImg: "./data/3d/img/heart-1.webp", oSrc: "./data/3d/object/heart-23.glb", oTitle: "Rotes Herz", oSizeMultiplier: 3, oBackground: "rgb(255, 179, 179, 0.3)", oStartAudioAt: 1.5, oCopyright: "3D model by <a href='https://pixabay.com/users/blendertimer-9538909/?utm_source=link-attribution&utm_medium=referral&utm_campaign=object3d&utm_content=23'>Daniel Roberts</a> from <a href='https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=object3d&utm_content=23'>Pixabay</a>" },
+    { id: "disco-1", oSubject: "biologie", oImg: "./data/3d/img/disco-1.webp", oSrc: "./data/3d/object/disco-ball-2730.glb", oTitle: "Disco-Kugel", oSizeMultiplier: 3, oBackground: "transparent", oStartAudioAt: 1.5, oCopyright: "3D model by <a href='https://pixabay.com/users/lyocrypt-50042056/?utm_source=link-attribution&utm_medium=referral&utm_campaign=object3d&utm_content=2730'>NaxiLyo Crypt</a> from <a href='https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=object3d&utm_content=2730'>Pixabay</a>" },
+    { id: "atom-1", oSubject: "biologie", oImg: "./data/img/favicon.png", oSrc: "./data/3d/object/atom.glb", oTitle: "Aufbau eines Atoms", oSizeMultiplier: 4, oBackground: "black", oStartAudioAt: 1.5, oCopyright: "'Atom' (https://skfb.ly/onXKz) by LucasPresoto is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/)." },
     
-    { id: "earth-1", oImg: "./data/3d/img/earth-1.webp", oSrc: "./data/3d/object/earth-9.glb", oTitle: "Erdkugel", oSizeMultiplier: 4, oBackground: "black", oStartAudioAt: 1.5, oCopyright: "3D model by <a href='https://pixabay.com/users/blendertimer-9538909/?utm_source=link-attribution&utm_medium=referral&utm_campaign=object3d&utm_content=9'>Daniel Roberts</a> from <a href='https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=object3d&utm_content=9'>Pixabay</a>" },
+    { id: "earth-1", oSubject: "biologie", oImg: "./data/3d/img/earth-1.webp", oSrc: "./data/3d/object/earth-9.glb", oTitle: "Erdkugel", oSizeMultiplier: 4, oBackground: "black", oStartAudioAt: 1.5, oCopyright: "3D model by <a href='https://pixabay.com/users/blendertimer-9538909/?utm_source=link-attribution&utm_medium=referral&utm_campaign=object3d&utm_content=9'>Daniel Roberts</a> from <a href='https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=object3d&utm_content=9'>Pixabay</a>" },
     
-    { id: "solar-1", oImg: "./data/img/favicon.png", oSrc: "./data/3d/object/solar_system1.glb", oTitle: "Sonnensystem (1)", oSizeMultiplier: 4, oBackground: "black", oStartAudioAt: 10, oCopyright: "'Solar system' (https://skfb.ly/oKYnC) by dannzjs is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/)." },
-    { id: "solar-2", oImg: "./data/img/favicon.png", oSrc: "./data/3d/object/solar_system2.glb", oTitle: "Sonnensystem (2)", oSizeMultiplier: 7, oBackground: "transparent", oStartAudioAt: 10, oCopyright: "'Solar System : المجموعة الشمسية' (https://skfb.ly/YnDQ) by shooogp is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/)." },
-    { id: "mars-rover-1", oImg: "./data/3d/img/mars-rover1.png", oSrc: "./data/3d/object/mars-rover.glb", oTitle: "Mars Rover", oSizeMultiplier: 4, oBackground: "url('./data/3d/img/mars.jpg')", oStartAudioAt: 10, oCopyright: "'Curiosity Mars rover' (https://skfb.ly/oTPHp) by Cybertron B-127 is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).\nFoto von RDNE Stock project: https://www.pexels.com/de-de/foto/wuste-trocken-felsen-konzept-8474500/" },
+    { id: "solar-1", oSubject: "biologie", oImg: "./data/img/favicon.png", oSrc: "./data/3d/object/solar_system1.glb", oTitle: "Sonnensystem (1)", oSizeMultiplier: 4, oBackground: "black", oStartAudioAt: 10, oCopyright: "'Solar system' (https://skfb.ly/oKYnC) by dannzjs is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/)." },
+    { id: "solar-2", oSubject: "biologie", oImg: "./data/img/favicon.png", oSrc: "./data/3d/object/solar_system2.glb", oTitle: "Sonnensystem (2)", oSizeMultiplier: 7, oBackground: "transparent", oStartAudioAt: 10, oCopyright: "'Solar System : المجموعة الشمسية' (https://skfb.ly/YnDQ) by shooogp is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/)." },
+    { id: "mars-rover-1", oSubject: "biologie", oImg: "./data/3d/img/mars-rover1.png", oSrc: "./data/3d/object/mars-rover.glb", oTitle: "Mars Rover", oSizeMultiplier: 4, oBackground: "url('./data/3d/img/mars.jpg')", oStartAudioAt: 10, oCopyright: "'Curiosity Mars rover' (https://skfb.ly/oTPHp) by Cybertron B-127 is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).\nFoto von RDNE Stock project: https://www.pexels.com/de-de/foto/wuste-trocken-felsen-konzept-8474500/" },
 ];
 
 /*
@@ -47,6 +52,16 @@ function loadThePage()
     checkInternetConnection();
 
     openWelcomeModal();
+
+
+    // 🟢 JETZT erst Listener setzen
+    document.getElementById("categoryFilter")
+        .addEventListener("change", filterObjects);
+
+    document.getElementById("searchInput")
+        .addEventListener("input", filterObjects);
+
+
 
     /*
     var valueForInnerHtml = "";
@@ -111,7 +126,7 @@ function setMenuFromDatabase(numberOfObjects)
     {
         /* innerHtmlOfMenu = innerHtmlOfMenu + "<div class='subject-box-new' onclick='setObject('heart-1')'><div class='subject-box-image-container'><div class='icon-qrcode' onclick='generateQrCode('heart-1')'><svg xmlns='http://www.w3.org/2000/svg' fill='currentColor' class='bi bi-qr-code-scan' viewBox='0 0 16 16'><path d='M0 .5A.5.5 0 0 1 .5 0h3a.5.5 0 0 1 0 1H1v2.5a.5.5 0 0 1-1 0zm12 0a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0V1h-2.5a.5.5 0 0 1-.5-.5M.5 12a.5.5 0 0 1 .5.5V15h2.5a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5v-3a.5.5 0 0 1 .5-.5m15 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1 0-1H15v-2.5a.5.5 0 0 1 .5-.5M4 4h1v1H4z'/><path d='M7 2H2v5h5zM3 3h3v3H3zm2 8H4v1h1z'/><path d='M7 9H2v5h5zm-4 1h3v3H3zm8-6h1v1h-1z'/><path d='M9 2h5v5H9zm1 1v3h3V3zM8 8v2h1v1H8v1h2v-2h1v2h1v-1h2v-1h-3V8zm2 2H9V9h1zm4 2h-1v1h-2v1h3zm-4 2v-1H8v1z'/><path d='M12 9h2V8h-2z'/></svg></div><div class='icon-copyright'><svg xmlns='http://www.w3.org/2000/svg' fill='currentColor' class='bi bi-c-circle-fill' viewBox='0 0 16 16'><path d='M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.146 4.992c.961 0 1.641.633 1.729 1.512h1.295v-.088c-.094-1.518-1.348-2.572-3.03-2.572-2.068 0-3.269 1.377-3.269 3.638v1.073c0 2.267 1.178 3.603 3.27 3.603 1.675 0 2.93-1.02 3.029-2.467v-.093H9.875c-.088.832-.75 1.418-1.729 1.418-1.224 0-1.927-.891-1.927-2.461v-1.06c0-1.583.715-2.503 1.927-2.503'/></svg></div><img src='./data/3d/img/heart-1.webp'></div><div class='subject-box-title'>Rotes Herz</div></div>"; */
         innerHtmlOfMenu = innerHtmlOfMenu + `
-        <div class="subject-box-new" onclick="setObject('${database[i].id}')">
+        <div class="subject-box-new" onclick="setObject('${database[i].id}')" data-category="${database[i].oSubject}" data-title="${database[i].oTitle}">
             <div class="subject-box-image-container">
 
                 <div class="icon-qrcode" onclick="generateQrCode('${database[i].id}')">
@@ -328,6 +343,35 @@ function openInfoModal()
 function closeInfoModal()
 {
     document.getElementById("infoModal").style.display = "none";
+    openMaintenanceModal();
+}
+
+function openMaintenanceModal()
+{
+
+    if (maintenanceStatus == 2)
+    {
+        // Geplant
+        document.getElementById("maintenance-info").innerHTML = `Am <b>${maintenanceDate}</b> führen wir zwischen <b>${maintenanceStartTime}</b> und <b>${maintenanceEndTime}</b> Uhr Wartungsarbeiten am System durch. Einige Funktionen können in dieser Zeit nicht verfügbar sein.`;
+    }
+    else if (maintenanceStatus == 1)
+    {
+        // Derzeit
+        document.getElementById("maintenance-info").innerHTML = `Wegen laufenden Wartungsarbeiten bis <b>${maintenanceEndTime}</b> Uhr können einige Funktionen nur eingeschränkt verfügbar sein.`;
+    }
+
+    if (maintenanceStatus != 0)
+    {
+        setServerAnimation();
+        document.getElementById("maintenanceModal").style.display = "block";
+    }
+    
+        
+}
+
+function closeMaintenanceModal()
+{
+    document.getElementById("maintenanceModal").style.display = "none";
 }
 
 
