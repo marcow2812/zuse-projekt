@@ -111,6 +111,19 @@ header
     align-items: center;
     justify-content: center;
 }
+header img
+{
+    height: 4vh; /* x% der Fensterhöhe */
+    max-height: 22px;
+}
+.logo-zuse
+{
+  margin-right: 7px;
+}
+.logo-ecube
+{
+  margin-left: 7px;
+}
 
 /*
 .burger {
@@ -135,12 +148,7 @@ header
   }
   */
 
-header img
-{
-    height: 4vh; /* x% der Fensterhöhe */
-    max-height: 22px;
-    cursor: pointer;
-}
+
 
 .beta-span
 {
@@ -168,7 +176,7 @@ header img
 {
   font-size: 14px;
   text-align: center;
-    background-color: rgb(255, 255, 255, 0.6);
+    background-color: rgba(255, 255, 255, 0.6);
     color: black;
     border: 1px solid white;
     position: absolute;

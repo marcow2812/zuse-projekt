@@ -1,34 +1,139 @@
 /*    INSTANZVARIABLEN    */
-var numberOfPermissions = 2; // Anzahl zu erlaubender Berechtigungen
-var heightOfObjectMenu = "100%"; // Höhe Menü für Objekte
-var timeoutCheckInternetConnection = 30000; // Timeout zur Überprüfung der Internetverbindung
-var standardUrl = "https://marcow2812.github.io/zuse-projekt/main/explorer.html?o="; // Standard-URL für QR-Code-Erstellung
+// Anzahl zu erlaubender Berechtigungen
+var numberOfPermissions = 2;
+// Höhe: Menü für Objekte
+var heightOfObjectMenu = "100%";
+// Timeout zur Überprüfung der Internetverbindung (10000 = 10s)
+var timeoutCheckInternetConnection = 30000;
+// Standard-URL für QR-Code-Erstellung
+var standardUrl = "https://marcow2812.github.io/zuse-projekt/main/explorer.html?o="; 
 
-var maintenanceStatus = 1; // 0 = keine, 1 = derzeitige Wartungsarbeiten, 2 = angekündigt
+
+// Wartungsarbeiten
+// 0 = keine, 1 = derzeitige Wartungsarbeiten, 2 = angekündigt
+var maintenanceStatus = 0; 
+// Datum
 var maintenanceDate = "24.12.2025";
+// Start der Wartungsarbeiten
 var maintenanceStartTime = "08:00";
+// Geplantes Ende der Wartungsarbeiten
 var maintenanceEndTime = "12:00";
 
-
+// Derzeitig gewähltes Objekt
 var objectId;
 
-
+// Objekt-Datenbank
 const database = [
-    { id: "heart-1", oSubject: "biologie", oImg: "./data/3d/img/heart-1.webp", oSrc: "./data/3d/object/heart-23.glb", oTitle: "Rotes Herz", oSizeMultiplier: 3, oBackground: "rgb(255, 179, 179, 0.3)", oStartAudioAt: 1.5, oCopyright: "3D model by <a href='https://pixabay.com/users/blendertimer-9538909/?utm_source=link-attribution&utm_medium=referral&utm_campaign=object3d&utm_content=23'>Daniel Roberts</a> from <a href='https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=object3d&utm_content=23'>Pixabay</a>" },
-    { id: "disco-1", oSubject: "biologie", oImg: "./data/3d/img/disco-1.webp", oSrc: "./data/3d/object/disco-ball-2730.glb", oTitle: "Disco-Kugel", oSizeMultiplier: 3, oBackground: "transparent", oStartAudioAt: 1.5, oCopyright: "3D model by <a href='https://pixabay.com/users/lyocrypt-50042056/?utm_source=link-attribution&utm_medium=referral&utm_campaign=object3d&utm_content=2730'>NaxiLyo Crypt</a> from <a href='https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=object3d&utm_content=2730'>Pixabay</a>" },
-    { id: "atom-1", oSubject: "biologie", oImg: "./data/img/favicon.png", oSrc: "./data/3d/object/atom.glb", oTitle: "Aufbau eines Atoms", oSizeMultiplier: 4, oBackground: "black", oStartAudioAt: 1.5, oCopyright: "'Atom' (https://skfb.ly/onXKz) by LucasPresoto is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/)." },
+    {
+        id: "mystery",
+        oTitle: "Rätselaufgabe",
+        oDescription: "Tag der offenen Tür 2026 - Konrad-Zuse-Schule Hünfeld",
+        oSubject: "biologie",
+        oFsk: 0,
+
+        oBanner: "./data/img/favicon.png",
+        oSrc: "./data/3d/object/disco-ball-2730.glb",
+        oCopyright: "3D model by <a href='https://pixabay.com/users/blendertimer-9538909/?utm_source=link-attribution&utm_medium=referral&utm_campaign=object3d&utm_content=23'>Daniel Roberts</a> from <a href='https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=object3d&utm_content=23'>Pixabay</a>",
+        oSizeMultiplier: 3,
+        oBackground: "rgba(255, 179, 179, 0.3)",
+        oBackgroundSrc: "",
+
+        oMainTextColor: "white",
+        oMainBgColor: "rgba(0, 102, 204, 0.5)",
+
+        oAudioSrc: "./data/music/night-before-dawn-129272.mp3",
+        oAudioCopyright: "Music by <a href='https://pixabay.com/users/sweet_kr-27931391/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=129272'>Artur Buriak</a> from <a href='https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=129272'>Pixabay</a>",
+        oAudioStartAt: 2.0,
+    },
+
+    {
+        id: "newton-1",
+        oTitle: "Kugelstoßpendel",
+        oDescription: "Eine Erfindung von Newton",
+        oSubject: "biologie",
+        oFsk: 0,
+
+        oBanner: "./data/img/favicon.png",
+        oSrc: "./data/3d/object/newtons_cradle.glb",
+        oCopyright: "'Newton's cradle' (https://skfb.ly/onFvQ) by BlackCube is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).",
+        oSizeMultiplier: 6,
+        oBackground: "white",
+        oBackgroundSrc: "",
+
+        oMainTextColor: "white",
+        oMainBgColor: "rgba(0, 102, 204, 0.5)",
+
+        oAudioSrc: "./data/music/night-before-dawn-129272.mp3",
+        oAudioCopyright: "Music by <a href='https://pixabay.com/users/sweet_kr-27931391/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=129272'>Artur Buriak</a> from <a href='https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=129272'>Pixabay</a>",
+        oAudioStartAt: 2.0,
+    },
+
     
-    { id: "earth-1", oSubject: "biologie", oImg: "./data/3d/img/earth-1.webp", oSrc: "./data/3d/object/earth-9.glb", oTitle: "Erdkugel", oSizeMultiplier: 4, oBackground: "black", oStartAudioAt: 1.5, oCopyright: "3D model by <a href='https://pixabay.com/users/blendertimer-9538909/?utm_source=link-attribution&utm_medium=referral&utm_campaign=object3d&utm_content=9'>Daniel Roberts</a> from <a href='https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=object3d&utm_content=9'>Pixabay</a>" },
+
+    {
+        id: "heart-1",
+        oTitle: "Rotes Herz",
+        oDescription: "Rote Herzen symbolisieren in vielen Kulturen ein Zeichen von Liebe",
+        oSubject: "biologie",
+        oFsk: 0,
+
+        oBanner: "./data/3d/img/heart-1.webp",
+        oSrc: "./data/3d/object/heart-23.glb",
+        oCopyright: "3D model by <a href='https://pixabay.com/users/blendertimer-9538909/?utm_source=link-attribution&utm_medium=referral&utm_campaign=object3d&utm_content=23'>Daniel Roberts</a> from <a href='https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=object3d&utm_content=23'>Pixabay</a>",
+        oSizeMultiplier: 3,
+        oBackground: "rgb(255, 179, 179, 0.3)",
+        oBackgroundSrc: "",
+
+        oAudioSrc: "./data/music/racing-speed-action-music-416097.mp3",
+        oAudioCopyright: "Music by <a href='https://pixabay.com/users/tatamusic-51344851/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=416097'>Mykola Sosin</a> from <a href='https://pixabay.com/music//?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=416097'>Pixabay</a>",
+        oAudioStartAt: 1.5,
+    },
+
+    {
+        id: "disco-1",
+        oSubject: "biologie",
+        oBanner: "./data/3d/img/disco-1.webp",
+        oSrc: "./data/3d/object/disco-ball-2730.glb",
+        oTitle: "Disco-Kugel",
+        oSizeMultiplier: 3,
+        oBackground: "transparent",
+        oAudioStartAt: 1.5,
+        oCopyright: "3D model by <a href='https://pixabay.com/users/lyocrypt-50042056/?utm_source=link-attribution&utm_medium=referral&utm_campaign=object3d&utm_content=2730'>NaxiLyo Crypt</a> from <a href='https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=object3d&utm_content=2730'>Pixabay</a>",
+    },
+
+    {
+        id: "atom-1",
+        oSubject: "biologie",
+        oBanner: "./data/img/favicon.png",
+        oSrc: "./data/3d/object/atom.glb",
+        oTitle: "Aufbau eines Atoms",
+        oSizeMultiplier: 4,
+        oBackground: "black",
+        oAudioStartAt: 1.5,
+        oCopyright: "'Atom' (https://skfb.ly/onXKz) by LucasPresoto is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).",
+    },
     
-    { id: "solar-1", oSubject: "biologie", oImg: "./data/img/favicon.png", oSrc: "./data/3d/object/solar_system1.glb", oTitle: "Sonnensystem (1)", oSizeMultiplier: 4, oBackground: "black", oStartAudioAt: 10, oCopyright: "'Solar system' (https://skfb.ly/oKYnC) by dannzjs is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/)." },
-    { id: "solar-2", oSubject: "biologie", oImg: "./data/img/favicon.png", oSrc: "./data/3d/object/solar_system2.glb", oTitle: "Sonnensystem (2)", oSizeMultiplier: 7, oBackground: "transparent", oStartAudioAt: 10, oCopyright: "'Solar System : المجموعة الشمسية' (https://skfb.ly/YnDQ) by shooogp is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/)." },
-    { id: "mars-rover-1", oSubject: "biologie", oImg: "./data/3d/img/mars-rover1.png", oSrc: "./data/3d/object/mars-rover.glb", oTitle: "Mars Rover", oSizeMultiplier: 4, oBackground: "url('./data/3d/img/mars.jpg')", oStartAudioAt: 10, oCopyright: "'Curiosity Mars rover' (https://skfb.ly/oTPHp) by Cybertron B-127 is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).\nFoto von RDNE Stock project: https://www.pexels.com/de-de/foto/wuste-trocken-felsen-konzept-8474500/" },
+    {
+        id: "earth-1",
+        oSubject: "biologie",
+        oBanner: "./data/3d/img/earth-1.webp",
+        oSrc: "./data/3d/object/earth-9.glb",
+        oTitle: "Erdkugel",
+        oSizeMultiplier: 4,
+        oBackground: "black",
+        oAudioStartAt: 1.5,
+        oCopyright: "3D model by <a href='https://pixabay.com/users/blendertimer-9538909/?utm_source=link-attribution&utm_medium=referral&utm_campaign=object3d&utm_content=9'>Daniel Roberts</a> from <a href='https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=object3d&utm_content=9'>Pixabay</a>",
+    },
+    
+    { id: "solar-1", oSubject: "biologie", oBanner: "./data/img/favicon.png", oSrc: "./data/3d/object/solar_system1.glb", oTitle: "Sonnensystem (1)", oSizeMultiplier: 4, oBackground: "black", oAudioStartAt: 10, oCopyright: "'Solar system' (https://skfb.ly/oKYnC) by dannzjs is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/)." },
+    { id: "solar-2", oSubject: "biologie", oBanner: "./data/img/favicon.png", oSrc: "./data/3d/object/solar_system2.glb", oTitle: "Sonnensystem (2)", oSizeMultiplier: 7, oBackground: "transparent", oAudioStartAt: 10, oCopyright: "'Solar System : المجموعة الشمسية' (https://skfb.ly/YnDQ) by shooogp is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/)." },
+    { id: "mars-rover-1", oSubject: "biologie", oBanner: "./data/3d/img/mars-rover1.png", oSrc: "./data/3d/object/mars-rover.glb", oTitle: "Mars Rover", oSizeMultiplier: 4, oBackground: "url('./data/3d/img/mars.jpg')", oAudioStartAt: 10, oCopyright: "'Curiosity Mars rover' (https://skfb.ly/oTPHp) by Cybertron B-127 is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).\nFoto von RDNE Stock project: https://www.pexels.com/de-de/foto/wuste-trocken-felsen-konzept-8474500/" },
 ];
 
 /*
-{ id: "city-1", oImg: "./data/img/favicon.png", oSrc: "./data/3d/city_pack_5.glb", oTitle: "Stadt", oSizeMultiplier: 4, oBackground: "#e6e6e6", oStartAudioAt: 1.5, oCopyright: "" },
-    { id: "davinci-1", oImg: "./data/img/favicon.png", oSrc: "./data/3d/da_vinci_code_cryptex.glb", oTitle: "Da Vinci Cryptex", oSizeMultiplier: 3, oBackground: "transparent", oStartAudioAt: 1.5, oCopyright: "" },
-    { id: "enigma-1", oImg: "./data/img/favicon.png", oSrc: "./data/3d/enigma_machine_1934.glb", oTitle: "Enigma", oSizeMultiplier: 3, oBackground: "url('./data/img/favicon.png')", oStartAudioAt: 1.5, oCopyright: "" },
+{ id: "city-1", oBanner: "./data/img/favicon.png", oSrc: "./data/3d/city_pack_5.glb", oTitle: "Stadt", oSizeMultiplier: 4, oBackground: "#e6e6e6", oAudioStartAt: 1.5, oCopyright: "" },
+    { id: "davinci-1", oBanner: "./data/img/favicon.png", oSrc: "./data/3d/da_vinci_code_cryptex.glb", oTitle: "Da Vinci Cryptex", oSizeMultiplier: 3, oBackground: "transparent", oAudioStartAt: 1.5, oCopyright: "" },
+    { id: "enigma-1", oBanner: "./data/img/favicon.png", oSrc: "./data/3d/enigma_machine_1934.glb", oTitle: "Enigma", oSizeMultiplier: 3, oBackground: "url('./data/img/favicon.png')", oAudioStartAt: 1.5, oCopyright: "" },
 */
 
 /*
@@ -69,7 +174,7 @@ function loadThePage()
     for (i = 0; i < 12; i++)
     {
         valueForInnerHtml = valueForInnerHtml + "<p>This is great</p>";
-    }
+    }oImg
 
     document.getElementById("testInnerHtml").innerHTML = valueForInnerHtml;
     */
@@ -145,7 +250,7 @@ function setMenuFromDatabase(numberOfObjects)
                     </svg>
                 </div>
 
-                <img src="${database[i].oImg}">
+                <img src="${database[i].oBanner}">
 
             </div>
             <!-- <div class="subject-box-title"> -->
@@ -486,7 +591,7 @@ var oSrc;
 var oTitle;
 var oBackground;
 var oSizeMultiplier;
-var oStartAudioAt;
+var oAudioStartAt;
 
 function getObjectTitle(parameter)
 {
@@ -511,42 +616,42 @@ function setObject(objectIdParameter)
             oTitle = "Rotes Herz";
             oSizeMultiplier = 3;
             oBackground = "rgb(255, 179, 179, 0.3)";
-            oStartAudioAt = 5;
+            oAudioStartAt = 5;
             break;
         case "disco-1":
             oSrc = "./data/3d/disco-ball-2730.glb";
             oTitle = "Disco-Kugel";
             oSizeMultiplier = 3;
             oBackground = "transparent";
-            oStartAudioAt = 1.5;
+            oAudioStartAt = 1.5;
             break;
         case "atom-1":
             oSrc = "./data/3d/atom.glb";
             oTitle = "Aufbau eines Atoms";
             oSizeMultiplier = 4;
             oBackground = "black";
-            oStartAudioAt = 5;
+            oAudioStartAt = 5;
             break;
         case "city-1":
             oSrc = "./data/3d/city_pack_5.glb";
             oTitle = "Stadt";
             oSizeMultiplier = 4;
             oBackground = "#e6e6e6";
-            oStartAudioAt = 5;
+            oAudioStartAt = 5;
             break;
         case "davinci-1":
             oSrc = "./data/3d/da_vinci_code_cryptex.glb";
             oTitle = "Da Vinci Cryptex";
             oSizeMultiplier = 3;
             oBackground = "transparent";
-            oStartAudioAt = 5;
+            oAudioStartAt = 5;
             break;
         case "enigma-1":
             oSrc = "./data/3d/enigma_machine_1934.glb";
             oTitle = "Enigma";
             oSizeMultiplier = 3;
             oBackground = "url('./data/img/favicon.png')"; // black
-            oStartAudioAt = 5;
+            oAudioStartAt = 5;
             break;
     }
     */
@@ -558,7 +663,13 @@ function setObject(objectIdParameter)
     // Zuweisung und Anwendung
     model.src = database.find(u => u.id === objectId).oSrc;
     document.getElementById("objectTitle").innerHTML = database.find(u => u.id === objectId).oTitle;
-    setAudioPlayTime(database.find(u => u.id === objectId).oStartAudioAt);
+    setAudioPlayTime(database.find(u => u.id === objectId).oAudioStartAt);
+
+    document.getElementById("audioPlayer").src = database.find(u => u.id === objectId).oAudioSrc;
+
+    document.getElementById("title").style.backgroundColor = database.find(u => u.id === objectId).oMainBgColor;
+    document.getElementById("title").style.borderColor = database.find(u => u.id === objectId).oMainBgColor;
+    document.getElementById("title").style.color = database.find(u => u.id === objectId).oMainTextColor;
     
     // variable.includes("url(")
 
