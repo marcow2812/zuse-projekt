@@ -1,5 +1,6 @@
 <div align=right>
-    <img src="https://raw.githubusercontent.com/marcow2812/zuse-projekt/refs/heads/main/main/data/img/ecube/ECube_green_top_small.png" style="height:70px;margin-right:20px">
+    <!-- <img src="https://raw.githubusercontent.com/marcow2812/zuse-projekt/refs/heads/main/main/data/img/ecube/ECube_green_top_small.png" style="height:70px;margin-right:20px"> -->
+    <img src="https://raw.githubusercontent.com/marcow2812/zuse-projekt/refs/heads/main/main/data/img/favicon.png" style="height:70px;margin-right:20px">
     <a href="https://www.konrad-zuse-schule.de">
         <img src="https://www.konrad-zuse-schule.de/_assets/e4457f0bd19a5627ff505285c525e2c0/Images/logo_text.png" style="height:70px">
     </a>
