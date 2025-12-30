@@ -369,13 +369,17 @@ async function checkInternetConnection()
 
 function getDegByMarker(marker, x, y, z)
 {
+
+    const invertedZ = (360 - parseFloat(z)) % 360; 
+
+
     // console.log("Auswertung: " + marker)
     switch (marker)
     {
         case 1:
             console.log("Marker 1");
 
-            const invertedZ = (360 - parseFloat(z)) % 360; 
+            
             //           Drehung nach rechts oder links (im/gegen Uhrzeigersinn)
             //              nach vorne und hinten neigen (auf einen zu/von einem weg)
             rotateObject(invertedZ, 0, 0);
@@ -390,13 +394,13 @@ function getDegByMarker(marker, x, y, z)
         case 3:
             console.log("Marker 3");
             
-            rotateObject(0, 0, -90);
+            rotateObject(0, -invertedZ, -90);
 
             break;
         case 4:
             console.log("Marker 4");
 
-            rotateObject(0, 0, 90);
+            rotateObject(0, invertedZ, 90);
 
             break;
         case 5:

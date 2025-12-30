@@ -1013,19 +1013,19 @@
                 }
 
                 function handleMarkerDetected()
-{
-    if (markerVisible) return; // ⛔ Marker war schon sichtbar
+                {
+                    if (markerVisible) return; // ⛔ Marker war schon sichtbar
 
-    markerVisible = true;
-    lastSeenTime = performance.now();
+                    markerVisible = true;
+                    lastSeenTime = performance.now();
 
-    if (stopTimeout) {
-        clearTimeout(stopTimeout);
-        stopTimeout = null;
-    }
+                    if (stopTimeout) {
+                        clearTimeout(stopTimeout);
+                        stopTimeout = null;
+                    }
 
-    playAudio();
-}
+                    playAudio();
+                }
 
 
 
@@ -1174,6 +1174,7 @@
                 });
                 ctx.stroke();
 
+                // Sondercode für SH
                 if (marker.id == 10 || marker.id == 11 || marker.id == 12)
                 {
                     // Overlay-Bild auf Marker zeichnen
