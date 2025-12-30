@@ -377,40 +377,39 @@ function getDegByMarker(marker, x, y, z)
     switch (marker)
     {
         case 1:
-            console.log("Marker 1");
+            console.log("Marker 1"); // fertig
 
-            
             //           Drehung nach rechts oder links (im/gegen Uhrzeigersinn)
             //              nach vorne und hinten neigen (auf einen zu/von einem weg)
             rotateObject(invertedZ, 0, 0);
 
             break;
         case 2:
-            console.log("Marker 2");
-
+            console.log("Marker 2"); // Fehler, dreht sich nur hin und her
+            // rotateObject(0, -90, 0);
             rotateObject(0, -90, 0);
 
             break;
         case 3:
-            console.log("Marker 3");
+            console.log("Marker 3"); // fertig
             
-            rotateObject(0, -invertedZ, -90);
+            rotateObject(0, invertedZ, -90);
 
             break;
         case 4:
-            console.log("Marker 4");
+            console.log("Marker 4"); // fertig
 
-            rotateObject(0, invertedZ, 90);
+            rotateObject(0, -invertedZ, 90);
 
             break;
         case 5:
-            console.log("Marker 5");
+            console.log("Marker 5"); // fertig
 
-            rotateObject(0, 0, 180);
+            rotateObject(-invertedZ, 0, 180);
 
             break;
         case 6:
-            console.log("Marker 6");
+            console.log("Marker 6"); // Fehler, wie bei Marker 2
 
             rotateObject(0, 90, 0);
 
