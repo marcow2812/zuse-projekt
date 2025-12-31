@@ -547,7 +547,7 @@ function mapCanvasToScreen(canvasX, canvasY) {
  * Zentriert das Modell um die übergebenen Canvas-Koordinaten.
  */
 function positionModelOnMarker(canvasX, canvasY) {
-    const model = document.getElementById('model');
+    const model = document.getElementById('move-model');
     
     if (!model) return;
 
@@ -569,7 +569,7 @@ function positionModelOnMarker(canvasX, canvasY) {
 
 // Hides the model when the marker is lost (already mentioned in previous steps)
 function handleMarkerLost() {
-    const model = document.getElementById('model');
+    const model = document.getElementById('move-model');
     if (model) {
         model.style.display = 'none';
     }
@@ -622,7 +622,7 @@ function setObject(objectIdParameter)
 
     closeObjectMenu(); // Wenn von Menü aufgerufen
 
-    var model = document.getElementById("model");
+    var model = document.getElementById("move-model");
 
     /*
     switch (objectId)
@@ -702,13 +702,42 @@ function setObject(objectIdParameter)
     
 }
 
+function openCurrentObjectMenu()
+{
+
+    var arModel = document.getElementById("ar-model");
+
+    arModel.style.backgroundColor = "transparent";
+    arModel.style.backgroundImage = "none";
+
+    arModel.src = database.find(u => u.id === objectId).oSrc; // objectId = Instanzvariable
+    if (database.find(u => u.id === objectId).oBackground.includes("url("))
+    {
+        arModel.style.backgroundImage = database.find(u => u.id === objectId).oBackground;
+    }
+    else
+    {
+        arModel.style.backgroundColor = database.find(u => u.id === objectId).oBackground;
+    }    
+
+
+    document.getElementById("bottom-modal-title").innerHTML = database.find(u => u.id === objectId).oTitle;
+    document.getElementById("bottom-modal-description").innerHTML = database.find(u => u.id === objectId).oDescription;
+
+    // Audio abspielen?
+
+    
+
+    document.getElementById("myBottomModal").style.display = "block";
+}
+
 function setObjectSize(pixelSize)
 {
     // console.log(pixelSize);
     console.log(objectId);
 
-    document.getElementById("model").style.width = (pixelSize * database.find(u => u.id === objectId).oSizeMultiplier) + "px";
-    document.getElementById("model").style.height = (pixelSize * database.find(u => u.id === objectId).oSizeMultiplier) + "px";
+    document.getElementById("move-model").style.width = (pixelSize * database.find(u => u.id === objectId).oSizeMultiplier) + "px";
+    document.getElementById("move-model").style.height = (pixelSize * database.find(u => u.id === objectId).oSizeMultiplier) + "px";
 }
 
 function getContactInformation(parameter)
@@ -724,4 +753,18 @@ function getContactInformation(parameter)
         // Pilotprojekt
         window.open(address2);
     }
+}
+
+function setFullscreenForObject(id)
+{
+    var elem = document.getElementById(id);
+
+    if (elem.requestFullscreen) {
+        elem.requestFullscreen();
+    } else if (elem.webkitRequestFullscreen) { /* Safari */
+        elem.webkitRequestFullscreen();
+    } else if (elem.msRequestFullscreen) { /* IE11 */
+        elem.msRequestFullscreen();
+    }
+
 }

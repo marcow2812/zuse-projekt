@@ -55,7 +55,7 @@ html, body
     border-radius: 8px;
 } */
 
-model-viewer#model
+model-viewer#move-model
 {
     position: absolute; /* WICHTIG für die Platzierung über top/left */
     /* background-color: transparent; */
@@ -67,6 +67,21 @@ model-viewer#model
 
     background-repeat: no-repeat;
     background-size: cover;
+}
+
+model-viewer#ar-model
+{
+  border: 2px solid var(--gray-light);
+    width: 100%;  /* Feste Größe zur Berechnung der Zentrierung */
+    height: 50vh;
+    max-height: 320px;
+
+    border-radius: 8px;
+
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    margin-bottom: 15px;
 }
 
 #loadingPage
@@ -181,13 +196,42 @@ header img
     border: 1px solid white;
     position: absolute;
     width: 80%;
-    max-width: 200px;
+    max-width: 220px;
     top: 50px;
     left: 50%;
     transform: translateX(-50%);
-    padding: 4px;
+    padding: 4px 26px 4px 12px;
     border-radius: 100px;
+    box-sizing: border-box;
 }
+
+.info-button {
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    height: 100%;
+    aspect-ratio: 1 / 1; /* sorgt für perfekte Kreisform */
+    
+    border: none;
+    border-radius: 50%;
+    background-color: var(--green);
+    color: white;
+
+    font-weight: bold;
+    font-size: 14px;
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Hover-Effekt (optional) */
+.info-button:hover {
+    background-color: var(--green-dark);
+}
+
 
 /*
 #infotext
@@ -898,6 +942,8 @@ header img
 
 /* The Modal (background) */
 .bottom-modal {
+
+  
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
@@ -916,6 +962,9 @@ header img
 
 /* Modal Content */
 .bottom-modal-content {
+
+  border-radius: 8px 8px 0px 0px;
+  
   position: fixed;
   bottom: 0;
   background-color: #fefefe;
@@ -928,32 +977,28 @@ header img
 
 /* The Close Button */
 .bottom-close {
+  margin-top: 16px;
   color: white;
   float: right;
-  font-size: 28px;
+  font-size: 32px;
   font-weight: bold;
 }
 
 .bottom-close:hover,
 .bottom-close:focus {
-  color: #000;
   text-decoration: none;
   cursor: pointer;
 }
 
 .bottom-modal-header {
+  border-radius: 8px 8px 0px 0px;
   padding: 2px 16px;
-  background-color: #5cb85c;
+  background-color: var(--green);
   color: white;
 }
 
 .bottom-modal-body {padding: 2px 16px;}
 
-.bottom-modal-footer {
-  padding: 2px 16px;
-  background-color: #5cb85c;
-  color: white;
-}
 
 /* Add Animation */
 @-webkit-keyframes slideIn {
