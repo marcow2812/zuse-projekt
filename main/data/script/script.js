@@ -23,6 +23,18 @@ var maintenanceEndTime = "12:00";
 var objectId;
 
 // Objekt-Datenbank
+
+/* 
+-------------------------------------------------
+
+Weitere Objekte:
+- Rätselaufgabe (Tag der offenen Tür Hünfeld)
+- Periodensystem der Elemente (einzelne Elemente)
+- Sonnensystem / einzelne Planeten
+
+-------------------------------------------------
+*/
+
 const database = [
     {
         id: "mystery",
@@ -301,7 +313,7 @@ function setCanvasSize()
 }
 */
 
-
+/*
 var closeValue = 0;
 function checkCloseOption()
 {
@@ -312,6 +324,7 @@ function checkCloseOption()
         closeWelcomeModal();
     }
 }
+    */
 
 function getCopyright(id)
 {
@@ -377,7 +390,7 @@ function getDegByMarker(marker, x, y, z)
     switch (marker)
     {
         case 1:
-            console.log("Marker 1"); // fertig
+            // fertig
 
             //           Drehung nach rechts oder links (im/gegen Uhrzeigersinn)
             //              nach vorne und hinten neigen (auf einen zu/von einem weg)
@@ -385,31 +398,31 @@ function getDegByMarker(marker, x, y, z)
 
             break;
         case 2:
-            console.log("Marker 2"); // Fehler, dreht sich nur hin und her
+            // Fehler, dreht sich nur hin und her
             // rotateObject(0, -90, 0);
             rotateObject(0, -90, 0);
 
             break;
         case 3:
-            console.log("Marker 3"); // fertig
+            // fertig
             
             rotateObject(0, invertedZ, -90);
 
             break;
         case 4:
-            console.log("Marker 4"); // fertig
+            // fertig
 
             rotateObject(0, -invertedZ, 90);
 
             break;
         case 5:
-            console.log("Marker 5"); // fertig
+            // fertig
 
             rotateObject(-invertedZ, 0, 180);
 
             break;
         case 6:
-            console.log("Marker 6"); // Fehler, wie bei Marker 2
+            // Fehler, wie bei Marker 2
 
             rotateObject(0, 90, 0);
 
@@ -418,7 +431,7 @@ function getDegByMarker(marker, x, y, z)
             console.log("Anderer Marker");
     }
 
-    console.log("x: " + x + " | y: " + y + " | z: " + z);
+    console.log(marker+"\nx: " + x + "\ny: " + y + "\nz: " + z);
 }
 
 

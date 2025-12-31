@@ -312,30 +312,6 @@
                     </div>
                     <div class="modal-body">
 
-                        <!--
-                        <span id="header-icon-cookie" class="icon-cam">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cookie" viewBox="0 0 16 16">
-                                <path d="M6 7.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m4.5.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3m-.5 3.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0"/>
-                                <path d="M8 0a7.96 7.96 0 0 0-4.075 1.114q-.245.102-.437.28A8 8 0 1 0 8 0m3.25 14.201a1.5 1.5 0 0 0-2.13.71A7 7 0 0 1 8 15a6.97 6.97 0 0 1-3.845-1.15 1.5 1.5 0 1 0-2.005-2.005A6.97 6.97 0 0 1 1 8c0-1.953.8-3.719 2.09-4.989a1.5 1.5 0 1 0 2.469-1.574A7 7 0 0 1 8 1c1.42 0 2.742.423 3.845 1.15a1.5 1.5 0 1 0 2.005 2.005A6.97 6.97 0 0 1 15 8c0 .596-.074 1.174-.214 1.727a1.5 1.5 0 1 0-1.025 2.25 7 7 0 0 1-2.51 2.224Z"/>
-                            </svg>
-                        </span>
-                        <span>Cookies erlauben (nicht funktionsfähig)</span>
-                        <br><br>
-                        <button class="btn" id="cookieAccessBtn" onclick="unlockCookie()">KEINE FUNKTION</button>
-                        <br><br>
-                        -->
-
-                        <span id="header-icon-audio" class="icon-cam">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-volume-up-fill" viewBox="0 0 16 16">
-                                <path d="M11.536 14.01A8.47 8.47 0 0 0 14.026 8a8.47 8.47 0 0 0-2.49-6.01l-.708.707A7.48 7.48 0 0 1 13.025 8c0 2.071-.84 3.946-2.197 5.303z"/>
-                                <path d="M10.121 12.596A6.48 6.48 0 0 0 12.025 8a6.48 6.48 0 0 0-1.904-4.596l-.707.707A5.48 5.48 0 0 1 11.025 8a5.48 5.48 0 0 1-1.61 3.89z"/>
-                                <path d="M8.707 11.182A4.5 4.5 0 0 0 10.025 8a4.5 4.5 0 0 0-1.318-3.182L8 5.525A3.5 3.5 0 0 1 9.025 8 3.5 3.5 0 0 1 8 10.475zM6.717 3.55A.5.5 0 0 1 7 4v8a.5.5 0 0 1-.812.39L3.825 10.5H1.5A.5.5 0 0 1 1 10V6a.5.5 0 0 1 .5-.5h2.325l2.363-1.89a.5.5 0 0 1 .529-.06"/>
-                            </svg>
-                        </span>
-                        <span>Zugriff auf die Audiowiedergabe</span>
-                        <br><br>
-                        <button class="btn" id="audioAccessBtn" onclick="unlockAudio()">Zugriff erlauben</button>
-                        <br><br>
                         <span id="header-icon-cam" class="icon-cam">
                             <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-camera-fill" viewBox="0 0 16 16">
                                 <path d="M10.5 8.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0"/>
@@ -344,8 +320,9 @@
                         </span>
                         <span>Zugriff auf die Kamera</span>
                         <br><br>
-                        <button class="btn" id="cameraAccessBtn" onclick="startTheWebcam()">Zugriff erlauben</button>
-                        
+                        <div align="center">
+                            <button class="btn" id="cameraAccessBtn" onclick="startTheWebcam()">Zugriff erlauben</button>
+                        </div>
                     
                     </div>
                 </div>
@@ -636,7 +613,7 @@
                 autoplay
 
                 ar
-                ar-placement="floor"
+                placement="floor"
                 ar-modes="scene-viewer webxr quick-look"
                 touch-action="pan-y"
                 camera-controls
@@ -708,6 +685,56 @@
             -->
 
 
+
+
+
+
+
+            <div id="myBottomModal" class="bottom-modal">
+
+  <!-- Modal content -->
+  <div class="bottom-modal-content">
+    <div class="bottom-modal-header">
+      <span class="bottom-close">&times;</span>
+      <h2>Modal Header</h2>
+    </div>
+    <div class="bottom-modal-body">
+      <p>Some text in the Modal Body</p>
+      <p>Some other text...</p>
+    </div>
+    <div class="bottom-modal-footer">
+      <h3>Modal Footer</h3>
+    </div>
+  </div>
+
+</div>
+
+<script>
+// Get the modal
+var modal = document.getElementById("myBottomModal");
+
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("bottom-close")[0];
+
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+</script>
+
+
+
+
+
             <div id="title">
                 <span id="objectTitle">...</span>
             </div>
@@ -724,6 +751,7 @@
                         <path d="M7.657 6.247c.11-.33.576-.33.686 0l.645 1.937a2.89 2.89 0 0 0 1.829 1.828l1.936.645c.33.11.33.576 0 .686l-1.937.645a2.89 2.89 0 0 0-1.828 1.829l-.645 1.936a.361.361 0 0 1-.686 0l-.645-1.937a2.89 2.89 0 0 0-1.828-1.828l-1.937-.645a.361.361 0 0 1 0-.686l1.937-.645a2.89 2.89 0 0 0 1.828-1.828zM3.794 1.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387A1.73 1.73 0 0 0 4.593 5.69l-.387 1.162a.217.217 0 0 1-.412 0L3.407 5.69A1.73 1.73 0 0 0 2.31 4.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387A1.73 1.73 0 0 0 3.407 2.31zM10.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.16 1.16 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.16 1.16 0 0 0-.732-.732L9.1 2.137a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732z"/>
                     </svg>
                 </button>
+                <button onclick="document.getElementById('myBottomModal').style.display='block'">Anzeigen</button>
             </div>
 
             <div id="bottomCopyright" style="display:none;position:absolute; bottom:0px;right: 0px;background-color:white;color:black">
@@ -873,7 +901,7 @@
                 let lastSeenTime = 0;
                 let stopTimeout = null;
 
-                
+                /*
                 function unlockAudio()
                 {
                     document.getElementById('audioAccessBtn').style.display = "none";
@@ -881,7 +909,7 @@
                     const headerIcon = document.getElementById("header-icon-audio");
 
                     // audio.currentTime = startAt;
-                    /*
+                    
 
                     audio.play()
                         .then(() => {
@@ -897,10 +925,11 @@
                             headerIcon.classList.add("icon-red");
                         });
 
-                        */
+                        
 
                     checkCloseOption();
                 }
+                    */
 
 
 
@@ -941,7 +970,7 @@
                         headerIcon.classList.add("icon-red");
                     }
 
-                    checkCloseOption();
+                    closeWelcomeModal();
                 }
 
                 // ArUco-Detector
