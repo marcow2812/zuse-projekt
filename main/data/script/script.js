@@ -38,20 +38,20 @@ Weitere Objekte:
 const database = [
     {
         id: "mystery",
-        oTitle: "Rätselaufgabe",
+        oTitle: "Zuse Tatort",
         oDescription: "Tag der offenen Tür 2026 - Konrad-Zuse-Schule Hünfeld",
         oSubject: "biologie",
         oFsk: 0,
 
         oBanner: "./data/img/favicon.png",
-        oSrc: "./data/3d/object/disco-ball-2730.glb",
-        oCopyright: "3D model by <a href='https://pixabay.com/users/blendertimer-9538909/?utm_source=link-attribution&utm_medium=referral&utm_campaign=object3d&utm_content=23'>Daniel Roberts</a> from <a href='https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=object3d&utm_content=23'>Pixabay</a>",
+        oSrc: "./data/3d/object/zuse-crime-scene.glb",
+        oCopyright: "Copyright folgt",
         oSizeMultiplier: 3,
-        oBackground: "rgba(255, 179, 179, 0.3)",
+        oBackground: "white",
         oBackgroundSrc: "",
 
         oMainTextColor: "white",
-        oMainBgColor: "rgba(0, 102, 204, 0.5)",
+        oMainBgColor: "rgba(98, 166, 14, 0.5)",
 
         oAudioSrc: "./data/music/night-before-dawn-129272.mp3",
         oAudioCopyright: "Music by <a href='https://pixabay.com/users/sweet_kr-27931391/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=129272'>Artur Buriak</a> from <a href='https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=129272'>Pixabay</a>",
