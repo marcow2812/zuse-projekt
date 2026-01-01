@@ -13,10 +13,10 @@
 
         .hotspot-hint {
             color: white;
-            background: red;
+            background: red; /* transparent */
             border-radius: 50%;
-            width: 20px;
-            height: 20px;
+            width: 60px;
+            height: 60px;
             border: none;
             cursor: pointer;
             padding: 12px;
@@ -25,11 +25,31 @@
             align-items: center;
             justify-content: center;
             position: relative;
-            box-shadow: 0 0 0px red;
             transition: box-shadow 0.3s ease;
         }
-        .hotspot-hint:hover {
-            box-shadow: 0 0 20px red;
+
+        .hotspot-hint:disabled
+        {
+            border: 3px solid red;
+        }
+
+        .hotspot-info {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%) translateX(-10px);
+            left: 70px;
+            background-color: red;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 50px;
+            white-space: nowrap;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+        }
+        .hotspot-info.active {
+            opacity: 1;
+            transform: translateY(-50%) translateX(0);
         }
 
 
@@ -56,12 +76,18 @@
                 autoplay
 
                 loading="eager"
+
+                ar
+                placement="floor"
+                ar-modes="scene-viewer webxr quick-look"
+                touch-action="pan-y"
+                camera-controls
                 
                 shadow-intensity="1">
 
     <!--
                    Rechts (+) / Links (-)
-                     Oben (+) / Unten (-)
+                     Oben (+) / Unten (-) (Höhe)
                        Vorne (+) / Hinten (-)
     data-position="X X X"
 
@@ -70,11 +96,22 @@
     
     -->
 
-    <button slot="hotspot-A"
+    <!-- Handabdruck auf Stuhl -->
+    <button id="hotspot-chair" slot="hotspot-chair"
         class="hotspot-hint"
-        data-position="-8 4.5 0"
+        data-position="-3.2 6 9.3"
         data-normal="-1 0 0"
-        onclick="foundHint()">
+        onclick="showHotspotInfobox(this);foundHint('hotspot-chair')">
+        <div class="hotspot-info">Blutiger Handabdruck</div>
+    </button>
+
+    <!-- Handabdruck auf Stuhl -->
+    <button id="hotspot-safe" slot="hotspot-safe"
+        class="hotspot-hint"
+        data-position="-11 6.5 3"
+        data-normal="-1 0 0"
+        onclick="showHotspotInfobox(this);foundHint('hotspot-safe')">
+        <div class="hotspot-info">Blutiger Handabdruck</div>
     </button>
 
 
@@ -84,24 +121,26 @@
     var found = 0;
     var toFind = 2;
 
-    function foundHint()
+    function foundHint(id)
     {
+        document.getElementById(id).disabled = true;
+   
         if (found < toFind)
         {
             found ++;
-            alert(found+" von " + toFind + " gefunden");
+            console.log(found+" von " + toFind + " gefunden");
         }
 
         if (found == toFind)
         {
-            alert("Gewonnen! Alle gefunden!");
+            console.log("Gewonnen! Alle gefunden!");
         }
         
     }
 </script>
 
-
 <!--
+
 
  <button slot="hotspot-2"
         class="hotspot"
@@ -113,24 +152,8 @@
     </button>
 
 
-            .hotspot-info {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%) translateX(-10px);
-            left: 30px;
-            background-color: #4CAF50;
-            color: white;
-            padding: 5px 12px;
-            border-radius: 50px;
-            white-space: nowrap;
-            pointer-events: none;
-            opacity: 0;
-            transition: opacity 0.3s ease-out, transform 0.3s ease-out;
-        }
-        .hotspot-info.active {
-            opacity: 1;
-            transform: translateY(-50%) translateX(0);
-        }
+          
+-->  
 
 
 
@@ -162,15 +185,17 @@
         activeInfoBox = infoBox;
     }
 
+    /*
     document.addEventListener('click', (event) => {
         if (!activeInfoBox) return;
 
-        const hotspotButton = activeInfoBox.closest('.hotspot');
+        const hotspotButton = activeInfoBox.closest('.hotspot-hint');
         if (!hotspotButton.contains(event.target)) {
             activeInfoBox.classList.remove('active');
             activeInfoBox = null;
         }
     });
+    */
 
     /* ------------------------------------------------------------
        KAMERA DREHEN (anstatt das Modell zu drehen!)
@@ -182,7 +207,6 @@
     }
 </script>
 
--->
 
 </body>
 </html>
