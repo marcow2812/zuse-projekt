@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Model Viewer Hotspot Beispiel</title>
-    <script type="module" src="./data/google-model-viewer/model-viewer.min.js"></script>
+    <script type="module" src="../data/script/model-viewer.min.js"></script>
     <style>
         model-viewer {
             width: 100%;
@@ -11,9 +11,9 @@
             background-color: #f0f0f0;
         }
 
-        .hotspot {
+        .hotspot-hint {
             color: white;
-            background: #4CAF50;
+            background: red;
             border-radius: 50%;
             width: 20px;
             height: 20px;
@@ -25,14 +25,95 @@
             align-items: center;
             justify-content: center;
             position: relative;
-            box-shadow: 0 0 0px #4CAF50;
+            box-shadow: 0 0 0px red;
             transition: box-shadow 0.3s ease;
         }
-        .hotspot:hover {
-            box-shadow: 0 0 20px #4CAF50;
+        .hotspot-hint:hover {
+            box-shadow: 0 0 20px red;
         }
 
-        .hotspot-info {
+
+    </style>
+</head>
+<body>
+
+
+<button onclick="setView(0, 75, 2)">Standard</button>
+<button onclick="setView(180, 75, 2)">Drehung 1</button>
+<button onclick="setView(300, 45, 2)">Drehung 2</button>
+
+<model-viewer id="model"
+    src="../data/3d/object/zuse-tatort.glb"
+
+    camera-controls
+    
+    
+    environment-image="neutral"
+                alt="3D Modell"
+                interaction-prompt="none"
+                interaction-prompt-threshold="0"
+
+                autoplay
+
+                loading="eager"
+                
+                shadow-intensity="1">
+
+    <!--
+                   Rechts (+) / Links (-)
+                     Oben (+) / Unten (-)
+                       Vorne (+) / Hinten (-)
+    data-position="X X X"
+
+    Rand von Objekt: 17 ist Rand von Untergrund
+    Höhe 4.5 ist Höhe von Tisch
+    
+    -->
+
+    <button slot="hotspot-A"
+        class="hotspot-hint"
+        data-position="-8 4.5 0"
+        data-normal="-1 0 0"
+        onclick="foundHint()">
+    </button>
+
+
+</model-viewer>
+
+<script>
+    var found = 0;
+    var toFind = 2;
+
+    function foundHint()
+    {
+        if (found < toFind)
+        {
+            found ++;
+            alert(found+" von " + toFind + " gefunden");
+        }
+
+        if (found == toFind)
+        {
+            alert("Gewonnen! Alle gefunden!");
+        }
+        
+    }
+</script>
+
+
+<!--
+
+ <button slot="hotspot-2"
+        class="hotspot"
+        data-position="200 -30 -20"
+        data-normal="-1 0 0"
+        onclick="showHotspotInfobox(this)">
+        <b>i</b>
+        <div class="hotspot-info">Ein weiterer Punkt</div>
+    </button>
+
+
+            .hotspot-info {
             position: absolute;
             top: 50%;
             transform: translateY(-50%) translateX(-10px);
@@ -50,44 +131,6 @@
             opacity: 1;
             transform: translateY(-50%) translateX(0);
         }
-    </style>
-</head>
-<body>
-
-
-<button onclick="setView(0, 75, 2)">Standard</button>
-<button onclick="setView(180, 75, 2)">Drehung 1</button>
-<button onclick="setView(300, 45, 2)">Drehung 2</button>
-
-<model-viewer id="model"
-    src="./data/3d/atom.glb"
-    alt="Ein 3D-Modell"
-    
-    exposure="1"
-
-    field-of-view="20deg"
-    camera-orbit="0deg 75deg auto">
-
-    <button slot="hotspot-1"
-        class="hotspot"
-        data-position="-30 180 -120"
-        data-normal="-1 0 0"
-        onclick="showHotspotInfobox(this)">
-        <b>i</b>
-        <div class="hotspot-info">Elektronen</div>
-    </button>
-
-    <button slot="hotspot-2"
-        class="hotspot"
-        data-position="200 -30 -20"
-        data-normal="-1 0 0"
-        onclick="showHotspotInfobox(this)">
-        <b>i</b>
-        <div class="hotspot-info">Ein weiterer Punkt</div>
-    </button>
-
-</model-viewer>
-
 
 
 
@@ -138,6 +181,8 @@
         modelViewer.cameraOrbit = `${orbitYDeg}deg ${orbitXDeg}deg auto`;
     }
 </script>
+
+-->
 
 </body>
 </html>

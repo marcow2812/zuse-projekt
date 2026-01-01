@@ -1020,3 +1020,25 @@ header img
   from {opacity: 0} 
   to {opacity: 1}
 }
+
+
+.hotspot-hint {
+            color: white;
+            background: red;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            border: none;
+            cursor: pointer;
+            padding: 12px;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            box-shadow: 0 0 0px red;
+            transition: box-shadow 0.3s ease;
+        }
+        .hotspot-hint:hover {
+            box-shadow: 0 0 20px red;
+        }

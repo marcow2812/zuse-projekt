@@ -728,14 +728,37 @@
                 
                 shadow-intensity="1">
 
+                <button slot="hotspot-A"
+        class="hotspot-hint"
+        data-position="-8 4.5 0"
+        data-normal="-1 0 0"
+        onclick="foundHint()">
+    </button>
+
 
             </model-viewer>
 
             <button onclick="setFullscreenForObject('ar-model')">Vollbild</button>
 
             <script>
-                
-            </script>
+    var found = 0;
+    var toFind = 2;
+
+    function foundHint()
+    {
+        if (found < toFind)
+        {
+            found ++;
+            alert(found+" von " + toFind + " gefunden");
+        }
+
+        if (found == toFind)
+        {
+            alert("Gewonnen! Alle gefunden!");
+        }
+        
+    }
+</script>
 
 
 

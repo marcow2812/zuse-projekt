@@ -44,7 +44,7 @@ const database = [
         oFsk: 0,
 
         oBanner: "./data/img/favicon.png",
-        oSrc: "./data/3d/object/zuse-crime-scene.glb",
+        oSrc: "./data/3d/object/zuse-tatort.glb",
         oCopyright: "Copyright folgt",
         oSizeMultiplier: 3,
         oBackground: "white",
