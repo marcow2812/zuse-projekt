@@ -76,14 +76,19 @@
                 autoplay
 
                 loading="eager"
-
+                
                 ar
                 placement="floor"
-                ar-modes="scene-viewer webxr quick-look"
+                ar-modes="webxr"
                 touch-action="pan-y"
                 camera-controls
                 
                 shadow-intensity="1">
+
+
+                <!--
+                ar-modes="scene-viewer webxr quick-look"
+                -->
 
     <!--
                    Rechts (+) / Links (-)
@@ -108,7 +113,7 @@
     <!-- Handabdruck auf Stuhl -->
     <button id="hotspot-safe" slot="hotspot-safe"
         class="hotspot-hint"
-        data-position="-11 6.5 3"
+        data-position="-10.5 6.5 3"
         data-normal="-1 0 0"
         onclick="showHotspotInfobox(this);foundHint('hotspot-safe')">
         <div class="hotspot-info">Blutiger Handabdruck</div>
@@ -177,9 +182,11 @@
             return;
         }
 
+        /*
         if (activeInfoBox) {
             activeInfoBox.classList.remove('active');
         }
+            */
 
         infoBox.classList.add('active');
         activeInfoBox = infoBox;
