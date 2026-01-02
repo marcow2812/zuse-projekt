@@ -13,7 +13,7 @@
 
         .hotspot-hint {
             color: white;
-            background: red; /* transparent */
+            background: transparent; /* transparent */
             border-radius: 50%;
             width: 60px;
             height: 60px;
@@ -39,6 +39,7 @@
             transform: translateY(-50%) translateX(-10px);
             left: 70px;
             background-color: red;
+            font-weight: bold;
             color: white;
             padding: 5px 12px;
             border-radius: 50px;
@@ -83,7 +84,7 @@
                 touch-action="pan-y"
                 camera-controls
                 
-                shadow-intensity="1">
+                shadow-intensity="0.5">
 
 
                 <!--
@@ -110,7 +111,7 @@
         <div class="hotspot-info">Blutiger Handabdruck</div>
     </button>
 
-    <!-- Handabdruck auf Stuhl -->
+    <!-- Handabdruck auf Tresor -->
     <button id="hotspot-safe" slot="hotspot-safe"
         class="hotspot-hint"
         data-position="-10.5 6.5 3"
@@ -119,12 +120,48 @@
         <div class="hotspot-info">Blutiger Handabdruck</div>
     </button>
 
+    <!-- Bluttropfen auf Tisch -->
+    <button id="hotspot-blood1" slot="hotspot-blood1"
+        class="hotspot-hint"
+        data-position="-12.5 4.5 6"
+        data-normal="-1 0 0"
+        onclick="showHotspotInfobox(this);foundHint('hotspot-blood1')">
+        <div class="hotspot-info">Bluttropfen</div>
+    </button>
+
+    <!-- Bluttropfen am Boden -->
+    <button id="hotspot-blood2" slot="hotspot-blood2"
+        class="hotspot-hint"
+        data-position="-11.8 0.5 5.8"
+        data-normal="-1 0 0"
+        onclick="showHotspotInfobox(this);foundHint('hotspot-blood2')">
+        <div class="hotspot-info">Bluttropfen</div>
+    </button>
+
+    <!-- Werkzeug im Mülleimer -->
+    <button id="hotspot-tool1" slot="hotspot-tool1"
+        class="hotspot-hint"
+        data-position="-13.5 1 -11.5"
+        data-normal="-1 0 0"
+        onclick="showHotspotInfobox(this);foundHint('hotspot-tool1')">
+        <div class="hotspot-info">Schraubenzieher</div>
+    </button>
+
+    <!-- Werkzeug auf Sofa -->
+    <button id="hotspot-tool2" slot="hotspot-tool2"
+        class="hotspot-hint"
+        data-position="12 2.5 -12.5"
+        data-normal="-1 0 0"
+        onclick="showHotspotInfobox(this);foundHint('hotspot-tool2')">
+        <div class="hotspot-info">Hammer</div>
+    </button>
+
 
 </model-viewer>
 
 <script>
     var found = 0;
-    var toFind = 2;
+    var toFind = 6;
 
     function foundHint(id)
     {
@@ -139,6 +176,7 @@
         if (found == toFind)
         {
             console.log("Gewonnen! Alle gefunden!");
+            alert("Alle Beweise gefunden! Gute Arbeit!");
         }
         
     }
