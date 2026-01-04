@@ -47,7 +47,7 @@ const database = [
         oSrc: "./data/3d/object/zuse-tatort.glb",
         oCopyright: "Copyright Marco Weber, 2026",
         oSizeMultiplier: 3,
-        oBackground: "white",
+        oBackground: "#f2f2f2",
         oBackgroundSrc: "",
 
         oMainTextColor: "white",
@@ -788,6 +788,7 @@ function setObject(objectIdParameter)
     model.style.backgroundImage = "none";
 
     // Zuweisung und Anwendung
+    model.src = ""; // Zurücksetzen für Ladebild
     model.src = database.find(u => u.id === objectId).oSrc;
     document.getElementById("objectTitle").innerHTML = database.find(u => u.id === objectId).oTitle;
     setAudioPlayTime(database.find(u => u.id === objectId).oAudioStartAt);
