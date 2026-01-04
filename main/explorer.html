@@ -627,7 +627,9 @@
 
                 loading="eager"
                 
-                shadow-intensity="1">
+                shadow-intensity="1"
+                
+                poster="./data/img/favicon.png">
 
                 <button 
                     slot="hotspot-1" 
@@ -703,7 +705,7 @@
   <div class="bottom-modal-content">
     <div class="bottom-modal-header">
       <span class="bottom-close">&times;</span>
-      <h2 id="bottom-modal-title">...</h2>
+      <h3 id="bottom-modal-title">...</h3>
     </div>
     <div class="bottom-modal-body">
       <p id="bottom-modal-description">...</p>
@@ -726,39 +728,85 @@
 
                 loading="eager"
                 
-                shadow-intensity="1">
-
-                <button slot="hotspot-A"
-        class="hotspot-hint"
-        data-position="-8 4.5 0"
-        data-normal="-1 0 0"
-        onclick="foundHint()">
-    </button>
+                shadow-intensity="1"
+                
+                poster="./data/img/favicon.png">
 
 
             </model-viewer>
 
-            <button onclick="setFullscreenForObject('ar-model')">Vollbild</button>
-
             <script>
     var found = 0;
-    var toFind = 2;
+    var toFind = 6;
 
-    function foundHint()
+    function foundHint(id)
     {
+        document.getElementById(id).disabled = true;
+   
         if (found < toFind)
         {
             found ++;
-            alert(found+" von " + toFind + " gefunden");
+            console.log(found+" von " + toFind + " gefunden");
         }
 
         if (found == toFind)
         {
-            alert("Gewonnen! Alle gefunden!");
+            console.log("Gewonnen! Alle gefunden!");
+            alert("Alle Beweise gefunden! Gute Arbeit!");
         }
         
     }
 </script>
+
+<script>
+        
+    const modelViewer = document.querySelector("#model");
+
+
+
+    /* ------------------------------------------------------------
+       HOTSPOT INFOBOXEN
+    ------------------------------------------------------------ */
+    let activeInfoBox = null;
+
+    function showHotspotInfobox(buttonElement) {
+        const infoBox = buttonElement.querySelector('.hotspot-info');
+
+        if (infoBox.classList.contains('active')) {
+            infoBox.classList.remove('active');
+            activeInfoBox = null;
+            return;
+        }
+
+        /*
+        if (activeInfoBox) {
+            activeInfoBox.classList.remove('active');
+        }
+            */
+
+        infoBox.classList.add('active');
+        activeInfoBox = infoBox;
+    }
+
+    /*
+    document.addEventListener('click', (event) => {
+        if (!activeInfoBox) return;
+
+        const hotspotButton = activeInfoBox.closest('.hotspot-hint');
+        if (!hotspotButton.contains(event.target)) {
+            activeInfoBox.classList.remove('active');
+            activeInfoBox = null;
+        }
+    });
+    */
+
+</script>
+
+            <button onclick="setFullscreenForObject('ar-model')">Vollbild</button>
+
+            <button onclick="enterAR()">Webcame stoppen (vor AR-Modus)</button>
+
+            <button onclick="startTheWebcam()">Webcame weiter (nach AR-Modus)</button>
 
 
 
@@ -822,6 +870,7 @@ window.onclick = function(event) {
         </div>
         <!-- Ende Main-Container -->
 
+        <!--
             <script>
                 // Speichert eine Referenz auf das aktuell geöffnete Info-Element
                 let activeInfoBox = null; 
@@ -865,6 +914,7 @@ window.onclick = function(event) {
                     }
                 });
             </script>
+            -->
 
             <script>
                 const model = document.getElementById("move-model");
@@ -997,6 +1047,7 @@ window.onclick = function(event) {
                 const ctx = canvas.getContext('2d', { willReadFrequently: true }); /* Ergänzt */
                 // const ctx = canvas.getContext("2d");
 
+                /*
                 async function startTheWebcam()
                 {
                     document.getElementById('cameraAccessBtn').style.display = "none";
@@ -1031,6 +1082,67 @@ window.onclick = function(event) {
 
                     closeWelcomeModal();
                 }
+
+                function stopWebcam() {
+                const stream = video.srcObject;
+                if (stream) {
+                    stream.getTracks().forEach(track => track.stop());
+                    video.srcObject = null;
+                }
+                } */
+
+                let webcamStream = null;
+
+async function startTheWebcam() {
+    try {
+        webcamStream = await navigator.mediaDevices.getUserMedia({
+            video: { facingMode: "environment" },
+            audio: false
+        });
+
+        video.srcObject = webcamStream;
+        await video.play();
+
+        console.log("Webcam gestartet");
+    } catch (err) {
+        console.error("Webcam-Fehler:", err);
+    }
+    closeWelcomeModal();
+}
+
+function stopWebcam() {
+    if (webcamStream) {
+        webcamStream.getTracks().forEach(track => track.stop());
+        webcamStream = null;
+    }
+
+    video.srcObject = null;
+    console.log("Webcam gestoppt");
+}
+
+
+function enterAR() {
+    stopWebcam();
+
+    const arModel = document.getElementById("ar-model");
+    arModel.activateAR();
+}
+
+const arModel = document.getElementById("ar-model");
+
+arModel.addEventListener("ar-status", (event) => {
+    const status = event.detail.status;
+
+    console.log("AR-Status:", status);
+
+    if (status === "not-presenting") {
+        // AR wurde beendet → Webcam wieder starten
+        startTheWebcam();
+    }
+});
+
+
+
 
                 // ArUco-Detector
                 const detector = new AR.Detector();

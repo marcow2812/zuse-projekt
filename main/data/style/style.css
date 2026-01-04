@@ -73,8 +73,8 @@ model-viewer#ar-model
 {
   border: 2px solid var(--gray-light);
     width: 100%;  /* Feste Größe zur Berechnung der Zentrierung */
-    height: 50vh;
-    max-height: 320px;
+    height: 70vh;
+    max-height: 380px;
 
     border-radius: 8px;
 
@@ -643,12 +643,12 @@ header img
 }
 
 
-.hotspot {
+.hotspot-hint {
             color: white;
-            background: #4CAF50;
+            background: transparent; /* transparent */
             border-radius: 50%;
-            width: 20px;
-            height: 20px;
+            width: 60px;
+            height: 60px;
             border: none;
             cursor: pointer;
             padding: 12px;
@@ -657,19 +657,21 @@ header img
             align-items: center;
             justify-content: center;
             position: relative;
-            box-shadow: 0 0 0px #4CAF50;
             transition: box-shadow 0.3s ease;
         }
-        .hotspot:hover {
-            box-shadow: 0 0 20px #4CAF50;
+
+        .hotspot-hint:disabled
+        {
+            border: 3px solid red;
         }
 
         .hotspot-info {
             position: absolute;
             top: 50%;
             transform: translateY(-50%) translateX(-10px);
-            left: 30px;
-            background-color: #4CAF50;
+            left: 70px;
+            background-color: red;
+            font-weight: bold;
             color: white;
             padding: 5px 12px;
             border-radius: 50px;
@@ -977,7 +979,7 @@ header img
 
 /* The Close Button */
 .bottom-close {
-  margin-top: 16px;
+  margin-top: 12px;
   color: white;
   float: right;
   font-size: 32px;
@@ -1022,23 +1024,3 @@ header img
 }
 
 
-.hotspot-hint {
-            color: white;
-            background: red;
-            border-radius: 50%;
-            width: 20px;
-            height: 20px;
-            border: none;
-            cursor: pointer;
-            padding: 12px;
-            z-index: 100;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            box-shadow: 0 0 0px red;
-            transition: box-shadow 0.3s ease;
-        }
-        .hotspot-hint:hover {
-            box-shadow: 0 0 20px red;
-        }

@@ -45,7 +45,7 @@ const database = [
 
         oBanner: "./data/img/favicon.png",
         oSrc: "./data/3d/object/zuse-tatort.glb",
-        oCopyright: "Copyright folgt",
+        oCopyright: "Copyright Marco Weber, 2026",
         oSizeMultiplier: 3,
         oBackground: "white",
         oBackgroundSrc: "",
@@ -81,7 +81,6 @@ const database = [
     },
 
     
-
     {
         id: "heart-1",
         oTitle: "Rotes Herz",
@@ -96,6 +95,9 @@ const database = [
         oBackground: "rgb(255, 179, 179, 0.3)",
         oBackgroundSrc: "",
 
+        oMainTextColor: "white",
+        oMainBgColor: "rgba(0, 102, 204, 0.5)",
+
         oAudioSrc: "./data/music/racing-speed-action-music-416097.mp3",
         oAudioCopyright: "Music by <a href='https://pixabay.com/users/tatamusic-51344851/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=416097'>Mykola Sosin</a> from <a href='https://pixabay.com/music//?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=416097'>Pixabay</a>",
         oAudioStartAt: 1.5,
@@ -103,22 +105,35 @@ const database = [
 
     {
         id: "disco-1",
+        oTitle: "Disco-Kugel",
+        oDescription: "Hier sehen Sie eine Disco-Kugel",
         oSubject: "biologie",
+        oFsk: 0,
+
         oBanner: "./data/3d/img/disco-1.webp",
         oSrc: "./data/3d/object/disco-ball-2730.glb",
-        oTitle: "Disco-Kugel",
+        oCopyright: "3D model by <a href='https://pixabay.com/users/lyocrypt-50042056/?utm_source=link-attribution&utm_medium=referral&utm_campaign=object3d&utm_content=2730'>NaxiLyo Crypt</a> from <a href='https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=object3d&utm_content=2730'>Pixabay</a>",
         oSizeMultiplier: 3,
         oBackground: "transparent",
+        oBackgroundSrc: "",
+
+        oMainTextColor: "white",
+        oMainBgColor: "rgba(0, 102, 204, 0.5)",
+
+        oAudioSrc: "./data/music/racing-speed-action-music-416097.mp3",
+        oAudioCopyright: "Music by <a href='https://pixabay.com/users/tatamusic-51344851/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=416097'>Mykola Sosin</a> from <a href='https://pixabay.com/music//?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=416097'>Pixabay</a>",
         oAudioStartAt: 1.5,
-        oCopyright: "3D model by <a href='https://pixabay.com/users/lyocrypt-50042056/?utm_source=link-attribution&utm_medium=referral&utm_campaign=object3d&utm_content=2730'>NaxiLyo Crypt</a> from <a href='https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=object3d&utm_content=2730'>Pixabay</a>",
     },
 
     {
         id: "atom-1",
+        oTitle: "Aufbau eines Atoms",
+        oDescription: "Atome sind die Bausteine, aus denen alle festen, flüssigen und gasförmigen Stoffe bestehen. <br> Sie bestehen aus Protonen, Neutronen und Elektronen.",
+
         oSubject: "biologie",
         oBanner: "./data/img/favicon.png",
         oSrc: "./data/3d/object/atom.glb",
-        oTitle: "Aufbau eines Atoms",
+        
         oSizeMultiplier: 4,
         oBackground: "black",
         oAudioStartAt: 1.5,
@@ -137,9 +152,41 @@ const database = [
         oCopyright: "3D model by <a href='https://pixabay.com/users/blendertimer-9538909/?utm_source=link-attribution&utm_medium=referral&utm_campaign=object3d&utm_content=9'>Daniel Roberts</a> from <a href='https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=object3d&utm_content=9'>Pixabay</a>",
     },
     
-    { id: "solar-1", oSubject: "biologie", oBanner: "./data/img/favicon.png", oSrc: "./data/3d/object/solar_system1.glb", oTitle: "Sonnensystem (1)", oSizeMultiplier: 4, oBackground: "black", oAudioStartAt: 10, oCopyright: "'Solar system' (https://skfb.ly/oKYnC) by dannzjs is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/)." },
-    { id: "solar-2", oSubject: "biologie", oBanner: "./data/img/favicon.png", oSrc: "./data/3d/object/solar_system2.glb", oTitle: "Sonnensystem (2)", oSizeMultiplier: 7, oBackground: "transparent", oAudioStartAt: 10, oCopyright: "'Solar System : المجموعة الشمسية' (https://skfb.ly/YnDQ) by shooogp is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/)." },
-    { id: "mars-rover-1", oSubject: "biologie", oBanner: "./data/3d/img/mars-rover1.png", oSrc: "./data/3d/object/mars-rover.glb", oTitle: "Mars Rover", oSizeMultiplier: 4, oBackground: "url('./data/3d/img/mars.jpg')", oAudioStartAt: 10, oCopyright: "'Curiosity Mars rover' (https://skfb.ly/oTPHp) by Cybertron B-127 is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).\nFoto von RDNE Stock project: https://www.pexels.com/de-de/foto/wuste-trocken-felsen-konzept-8474500/" },
+    {
+        id: "solar-1",
+        oSubject: "biologie",
+        oBanner: "./data/img/favicon.png",
+        oSrc: "./data/3d/object/solar_system1.glb",
+        oTitle: "Sonnensystem (1)",
+        oSizeMultiplier: 4,
+        oBackground: "black",
+        oAudioStartAt: 10,
+        oCopyright: "'Solar system' (https://skfb.ly/oKYnC) by dannzjs is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).",
+    },
+
+    {
+        id: "solar-2",
+        oSubject: "biologie",
+        oBanner: "./data/img/favicon.png",
+        oSrc: "./data/3d/object/solar_system2.glb",
+        oTitle: "Sonnensystem (2)",
+        oSizeMultiplier: 7,
+        oBackground: "transparent",
+        oAudioStartAt: 10,
+        oCopyright: "'Solar System : المجموعة الشمسية' (https://skfb.ly/YnDQ) by shooogp is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).",
+    },
+
+    {
+        id: "mars-rover-1",
+        oSubject: "biologie",
+        oBanner: "./data/3d/img/mars-rover1.png",
+        oSrc: "./data/3d/object/mars-rover.glb",
+        oTitle: "Mars Rover",
+        oSizeMultiplier: 4,
+        oBackground: "url('./data/3d/img/mars.jpg')",
+        oAudioStartAt: 10,
+        oCopyright: "'Curiosity Mars rover' (https://skfb.ly/oTPHp) by Cybertron B-127 is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).\nFoto von RDNE Stock project: https://www.pexels.com/de-de/foto/wuste-trocken-felsen-konzept-8474500/",
+    },
 ];
 
 /*
@@ -160,7 +207,7 @@ console.log(database.length);
 
 function loadThePage()
 {
-    setObject("disco-1");
+    setObject("earth-1");
 
     getParameter();
 
@@ -618,6 +665,70 @@ function getObjectTitle(parameter)
 
 function setObject(objectIdParameter)
 {
+
+    /* Zusatzfunktion für Zuse Tatort */
+    
+    if (objectIdParameter == "mystery")
+    {
+        document.getElementById("ar-model").innerHTML = `<!-- Handabdruck auf Stuhl -->
+    <button id="hotspot-chair" slot="hotspot-chair"
+        class="hotspot-hint"
+        data-position="-3.2 6 9.3"
+        data-normal="-1 0 0"
+        onclick="showHotspotInfobox(this);foundHint('hotspot-chair')">
+        <div class="hotspot-info">Blutiger Handabdruck</div>
+    </button>
+
+    <!-- Handabdruck auf Tresor -->
+    <button id="hotspot-safe" slot="hotspot-safe"
+        class="hotspot-hint"
+        data-position="-10.5 6.5 3"
+        data-normal="-1 0 0"
+        onclick="showHotspotInfobox(this);foundHint('hotspot-safe')">
+        <div class="hotspot-info">Blutiger Handabdruck</div>
+    </button>
+
+    <!-- Bluttropfen auf Tisch -->
+    <button id="hotspot-blood1" slot="hotspot-blood1"
+        class="hotspot-hint"
+        data-position="-12.5 4.5 6"
+        data-normal="-1 0 0"
+        onclick="showHotspotInfobox(this);foundHint('hotspot-blood1')">
+        <div class="hotspot-info">Bluttropfen</div>
+    </button>
+
+    <!-- Bluttropfen am Boden -->
+    <button id="hotspot-blood2" slot="hotspot-blood2"
+        class="hotspot-hint"
+        data-position="-11.8 0.5 5.8"
+        data-normal="-1 0 0"
+        onclick="showHotspotInfobox(this);foundHint('hotspot-blood2')">
+        <div class="hotspot-info">Bluttropfen</div>
+    </button>
+
+    <!-- Werkzeug im Mülleimer -->
+    <button id="hotspot-tool1" slot="hotspot-tool1"
+        class="hotspot-hint"
+        data-position="-13.5 1 -11.5"
+        data-normal="-1 0 0"
+        onclick="showHotspotInfobox(this);foundHint('hotspot-tool1')">
+        <div class="hotspot-info">Schraubenzieher</div>
+    </button>
+
+    <!-- Werkzeug auf Sofa -->
+    <button id="hotspot-tool2" slot="hotspot-tool2"
+        class="hotspot-hint"
+        data-position="12 2.5 -12.5"
+        data-normal="-1 0 0"
+        onclick="showHotspotInfobox(this);foundHint('hotspot-tool2')">
+        <div class="hotspot-info">Hammer</div>
+    </button>`;
+    }
+    else
+    {
+        document.getElementById("ar-model").innerHTML = "";
+    }
+
     objectId = objectIdParameter;
 
     closeObjectMenu(); // Wenn von Menü aufgerufen
