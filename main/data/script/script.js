@@ -43,7 +43,7 @@ const database = [
         oSubject: "biologie",
         oFsk: 0,
 
-        oBanner: "./data/img/favicon.png",
+        oBanner: "./data/img/ecube/CrimeScene_green_top_big.png",
         oSrc: "./data/3d/object/zuse-tatort.glb",
         oCopyright: "Copyright Marco Weber, 2026",
         oSizeMultiplier: 3,
@@ -801,6 +801,8 @@ function setObject(objectIdParameter)
     
     // variable.includes("url(")
 
+
+
     
 
     if (database.find(u => u.id === objectId).oBackground.includes("url("))
@@ -835,6 +837,7 @@ function openCurrentObjectMenu()
 
     document.getElementById("bottom-modal-title").innerHTML = database.find(u => u.id === objectId).oTitle;
     document.getElementById("bottom-modal-description").innerHTML = database.find(u => u.id === objectId).oDescription;
+    document.getElementById("copyright-accordion").innerHTML = database.find(u => u.id === objectId).oCopyright;
 
     // Audio abspielen?
 

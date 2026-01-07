@@ -82,15 +82,17 @@
 
 
 
-                        <div class="filter-bar">
-                            <select id="categoryFilter">
-                                <option value="all">Alle Kategorien</option>
-                                <option value="biologie">Biologie</option>
-                                <option value="design">Design</option>
-                                <option value="marketing">Marketing</option>
-                            </select>
-                        
-                            <input type="text" id="searchInput" placeholder="Suchbegriff eingeben...">
+                        <div class="filter-bar" align="center">
+                            <div class="form-row">
+                                <select class="categoryFilter" id="categoryFilter">
+                                    <option value="all">Alle Kategorien</option>
+                                    <option value="biologie">Biologie</option>
+                                    <option value="design">Design</option>
+                                    <option value="marketing">Marketing</option>
+                                </select>
+                            
+                                <input type="text" id="searchInput" placeholder="Suchbegriff eingeben...">
+                            </div>
                         </div>
 
 
@@ -215,6 +217,89 @@
                                     <button class="btn" onclick="downloadPNG()">Herunterladen</button>
                                     <button class="btn" onclick="copyQrCodeUrl()">Link kopieren</button>
                                 </div>
+
+
+                                <div class="slideshow-container">
+                                    <div class="mySlides">
+                                        <img src="./data/img/marker/marker_1.png">
+                                    </div>
+
+                                    <div class="mySlides">
+                                        <img src="./data/img/marker/marker_4.png">
+                                    </div>
+
+                                    <div class="mySlides">
+                                        <img src="./data/img/marker/marker_3.png">
+                                    </div>
+                                        
+                                    <div class="mySlides">
+                                        <img src="./data/img/marker/marker_5.png">
+                                    </div>
+
+                                    <div class="mySlides">
+                                        <img src="./data/img/marker/marker_2.png">
+                                    </div>
+                                        
+                                    <div class="mySlides">
+                                        <img src="./data/img/marker/marker_6.png">
+                                    </div>
+
+
+                                    <div align=center>
+                                    <div class="caption-slideshow-container">
+                                        <p id="caption"></p>
+                                    </div>
+                                    
+
+                                    <div class="row">
+                                        <div class="column">
+                                        <img class="demo cursor" src="./data/img/marker/marker_1.png" style="width:100%;border-radius:0px 0px 0px 8px" onclick="currentSlide(1)" alt="Ansicht von vorne">
+                                        </div>
+                                        <div class="column">
+                                        <img class="demo cursor" src="./data/img/marker/marker_4.png" style="width:100%" onclick="currentSlide(2)" alt="Ansicht von links">
+                                        </div>
+                                        <div class="column">
+                                        <img class="demo cursor" src="./data/img/marker/marker_3.png" style="width:100%" onclick="currentSlide(3)" alt="Ansicht von rechts">
+                                        </div>
+                                        <div class="column">
+                                        <img class="demo cursor" src="./data/img/marker/marker_5.png" style="width:100%" onclick="currentSlide(4)" alt="Ansicht von hinten">
+                                        </div>
+                                        <div class="column">
+                                        <img class="demo cursor" src="./data/img/marker/marker_2.png" style="width:100%" onclick="currentSlide(5)" alt="Ansicht von unten">
+                                        </div>    
+                                        <div class="column">
+                                        <img class="demo cursor" src="./data/img/marker/marker_6.png" style="width:100%;border-radius:0px 0px 8px 0px" onclick="currentSlide(6)" alt="Ansicht von oben">
+                                        </div>
+                                    </div>
+                                    </div>
+                                    </div>
+
+                                    <script>
+let slideIndex = 1;
+showSlides(slideIndex);
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  let i;
+  let slides = document.getElementsByClassName("mySlides");
+  let dots = document.getElementsByClassName("demo");
+  let captionText = document.getElementById("caption");
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active-img", "");
+  }
+  slides[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " active-img";
+  captionText.innerHTML = dots[slideIndex-1].alt;
+}
+</script>
 
                             </div>
                         </div>
@@ -554,6 +639,31 @@
 
             </div>
 
+            <!-- The Modal -->
+            <div id="settingModal" class="modal">
+
+                <!-- Modal content -->
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <span>Einstellungen</span>
+                    </div>
+                    <div class="modal-body">
+
+                        <select class="categoryFilter" id="cubesizeFilter" onclick="setCubeSize()">
+                            <option value="2">Kleiner Würfel (2cm)</option>
+                            <option value="5" selected>Standard-Würfel (5cm)</option>
+                            <option value="20">Großer Würfel (20cm)</option>
+                        </select>
+                        <br><br>
+                        <div align="center">
+                            <button class="btn" id="cameraAccessBtn" onclick="document.getElementById('settingModal').style.display='none'">Speichern</button>
+                        </div>
+                    
+                    </div>
+                </div>
+
+            </div>
+
             <!--
             <script>
                 var modal = document.getElementById("welcomeModal");
@@ -710,6 +820,8 @@
     <div class="bottom-modal-body">
 
       <p id="bottom-modal-description">...</p>
+
+      <button class="btn" onclick="document.getElementById('myBottomModal').style.display='none';generateQrCode('earth-1')">Objekt teilen (Beta)</button>
     
         <model-viewer
                 id="ar-model"
@@ -733,8 +845,44 @@
                 
                 poster="./data/img/favicon.png">
 
+                
+
 
             </model-viewer>
+
+            <button class="btn" onclick="setFullscreenForObject('ar-model')">Vollbild</button>
+
+            <button class="btn" onclick="enterAR()">Webcame stoppen (vor AR-Modus)</button>
+
+            <button class="btn" onclick="startTheWebcam()">Webcame weiter (nach AR-Modus)</button>
+
+
+
+            <button class="accordion">Copyright</button>
+            <div class="panel">
+                <p id="copyright-accordion"></p>
+            </div>
+
+            <script>
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.maxHeight) {
+      panel.style.maxHeight = null;
+    } else {
+      panel.style.maxHeight = panel.scrollHeight + "px";
+    } 
+  });
+}
+</script>
+
+                        
+
+
 
             <script>
     var found = 0;
@@ -803,11 +951,7 @@
 
 </script>
 
-            <button class="btn" onclick="setFullscreenForObject('ar-model')">Vollbild</button>
-
-            <button class="btn" onclick="enterAR()">Webcame stoppen (vor AR-Modus)</button>
-
-            <button class="btn" onclick="startTheWebcam()">Webcame weiter (nach AR-Modus)</button>
+            
 
 
 
@@ -855,9 +999,24 @@ window.onclick = function(event) {
 
             <!-- Bottom-Menü -->
             <div class="menu">
+
+                <button class="settingBtn" onclick="document.getElementById('settingModal').style.display='block'">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-gear" viewBox="0 0 16 16">
+                        <path d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492M5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0"/>
+                        <path d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115z"/>
+                    </svg>
+                </button>
+
+
                 <button class="menuBtn" onclick="openObjectMenu()">
+                    <!--
                     <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-stars" viewBox="0 0 16 16">
                         <path d="M7.657 6.247c.11-.33.576-.33.686 0l.645 1.937a2.89 2.89 0 0 0 1.829 1.828l1.936.645c.33.11.33.576 0 .686l-1.937.645a2.89 2.89 0 0 0-1.828 1.829l-.645 1.936a.361.361 0 0 1-.686 0l-.645-1.937a2.89 2.89 0 0 0-1.828-1.828l-1.937-.645a.361.361 0 0 1 0-.686l1.937-.645a2.89 2.89 0 0 0 1.828-1.828zM3.794 1.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387A1.73 1.73 0 0 0 4.593 5.69l-.387 1.162a.217.217 0 0 1-.412 0L3.407 5.69A1.73 1.73 0 0 0 2.31 4.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387A1.73 1.73 0 0 0 3.407 2.31zM10.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.16 1.16 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.16 1.16 0 0 0-.732-.732L9.1 2.137a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732z"/>
+                    </svg>
+                    -->
+
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-grid" viewBox="0 0 16 16">
+                        <path d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5zM2.5 2a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5zm6.5.5A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5zM1 10.5A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5zm6.5.5A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5z"/>
                     </svg>
                 </button>
             </div>
@@ -933,7 +1092,14 @@ window.onclick = function(event) {
                 let detectorForMarker = null;
                 let posit = null;
 
-                const markerSize = 5;
+                let markerSize = 5;
+
+                function setCubeSize()
+                {
+                    console.log(document.getElementById("cubesizeFilter").value);
+                    markerSize = document.getElementById("cubesizeFilter").value;
+                    console.log(markerSize);
+                }
 
                 function rotationMatrixToEuler(R)
                 {
