@@ -44,7 +44,7 @@ const database = [
         oFsk: 0,
 
         oBanner: "./data/img/ecube/CrimeScene_green_top_big.png",
-        oSrc: "./data/3d/object/zuse-tatort.glb",
+        oSrc: "https://www.cbnb.de/3dobjects/zuse-tatort.glb",
         oCopyright: "Copyright Marco Weber, 2026",
         oSizeMultiplier: 3,
         oBackground: "#f2f2f2",
