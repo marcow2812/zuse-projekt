@@ -921,8 +921,8 @@ for (i = 0; i < acc.length; i++) {
     function showHotspotInfobox(buttonElement) {
         const infoBox = buttonElement.querySelector('.hotspot-info');
 
-        if (infoBox.classList.contains('active')) {
-            infoBox.classList.remove('active');
+        if (infoBox.classList.contains('active-hotspot')) {
+            infoBox.classList.remove('active-hotspot');
             activeInfoBox = null;
             return;
         }
@@ -933,7 +933,7 @@ for (i = 0; i < acc.length; i++) {
         }
             */
 
-        infoBox.classList.add('active');
+        infoBox.classList.add('active-hotspot');
         activeInfoBox = infoBox;
     }
 

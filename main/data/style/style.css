@@ -709,7 +709,7 @@ header img
             opacity: 0;
             transition: opacity 0.3s ease-out, transform 0.3s ease-out;
         }
-        .hotspot-info.active {
+        .hotspot-info.active-hotspot {
             opacity: 1;
             transform: translateY(-50%) translateX(0);
         }
@@ -1060,7 +1060,7 @@ header img
   background-color: #fefefe;
   width: 100%;
 
-  max-height: 100vh;      /* maximal Bildschirmhöhe */
+  max-height: 90vh;      /* maximal Bildschirmhöhe */
   overflow-y: auto;       /* scrollbar bei Überlänge */
 
 
