@@ -39,8 +39,8 @@ const database = [
     {
         id: "mystery",
         oTitle: "Zuse Tatort",
-        oDescription: "Tag der offenen Tür 2026 - Konrad-Zuse-Schule Hünfeld",
-        oSubject: "biologie",
+        oDescription: "Willkommen zum Tag der offenen Tür 2026 an der Konrad-Zuse-Schule Hünfeld!<br><br>Wir haben einen kleinen Tatort nachgebaut und insgesamt <b>6 Beweisspuren</b> versteckt. Könnt ihr alle finden?",
+        oSubject: "zu",
         oFsk: 0,
 
         oBanner: "./data/img/ecube/CrimeScene_green_top_big.png",
@@ -62,7 +62,7 @@ const database = [
         id: "newton-1",
         oTitle: "Kugelstoßpendel",
         oDescription: "Eine Erfindung von Newton",
-        oSubject: "biologie",
+        oSubject: "ph",
         oFsk: 0,
 
         oBanner: "./data/img/favicon.png",
@@ -85,7 +85,7 @@ const database = [
         id: "heart-1",
         oTitle: "Rotes Herz",
         oDescription: "Rote Herzen symbolisieren in vielen Kulturen ein Zeichen von Liebe",
-        oSubject: "biologie",
+        oSubject: "bi",
         oFsk: 0,
 
         oBanner: "./data/3d/img/heart-1.webp",
@@ -107,7 +107,7 @@ const database = [
         id: "disco-1",
         oTitle: "Disco-Kugel",
         oDescription: "Hier sehen Sie eine Disco-Kugel",
-        oSubject: "biologie",
+        oSubject: "bi",
         oFsk: 0,
 
         oBanner: "./data/3d/img/disco-1.webp",
@@ -130,7 +130,7 @@ const database = [
         oTitle: "Aufbau eines Atoms",
         oDescription: "Atome sind die Bausteine, aus denen alle festen, flüssigen und gasförmigen Stoffe bestehen. <br> Sie bestehen aus Protonen, Neutronen und Elektronen.",
 
-        oSubject: "biologie",
+        oSubject: "ch",
         oBanner: "./data/img/favicon.png",
         oSrc: "./data/3d/object/atom.glb",
         
@@ -142,7 +142,7 @@ const database = [
     
     {
         id: "earth-1",
-        oSubject: "biologie",
+        oSubject: "er",
         oBanner: "./data/3d/img/earth-1.webp",
         oSrc: "./data/3d/object/earth-9.glb",
         oTitle: "Erdkugel",
@@ -154,7 +154,7 @@ const database = [
     
     {
         id: "solar-1",
-        oSubject: "biologie",
+        oSubject: "ph",
         oBanner: "./data/img/favicon.png",
         oSrc: "./data/3d/object/solar_system1.glb",
         oTitle: "Sonnensystem (1)",
@@ -166,7 +166,7 @@ const database = [
 
     {
         id: "solar-2",
-        oSubject: "biologie",
+        oSubject: "ph",
         oBanner: "./data/img/favicon.png",
         oSrc: "./data/3d/object/solar_system2.glb",
         oTitle: "Sonnensystem (2)",
@@ -178,7 +178,7 @@ const database = [
 
     {
         id: "mars-rover-1",
-        oSubject: "biologie",
+        oSubject: "ph",
         oBanner: "./data/3d/img/mars-rover1.png",
         oSrc: "./data/3d/object/mars-rover.glb",
         oTitle: "Mars Rover",
@@ -270,6 +270,11 @@ function getStandardUrl()
 }
 
 /* --- SETTER-METHODEN --- */
+
+function shareObjectByQrCode()
+{
+    generateQrCode(objectId);
+}
 
 
 function setMenuFromDatabase(numberOfObjects)
@@ -836,6 +841,35 @@ function openCurrentObjectMenu()
 
 
     document.getElementById("bottom-modal-title").innerHTML = database.find(u => u.id === objectId).oTitle + " betrachten";
+
+    var subjectName;
+
+    switch (database.find(u => u.id === objectId).oSubject)
+    {
+        case "zu":
+            subjectName = "Zuse intern";
+            break;
+
+        case "ph":
+            subjectName = "Physik";
+            break;
+        case "bi":
+            subjectName = "Biologie";
+            break;
+        case "ch":
+            subjectName = "Chemie";
+            break;
+        case "er":
+            subjectName = "Erdkunde";
+            break;
+
+        default:
+            subjectName = "Keine Kategorie";
+            
+    }
+
+    document.getElementById("subject-badge").innerHTML = subjectName;
+    
     document.getElementById("bottom-modal-description").innerHTML = database.find(u => u.id === objectId).oDescription;
     document.getElementById("copyright-accordion").innerHTML = database.find(u => u.id === objectId).oCopyright;
 

@@ -86,9 +86,11 @@
                             <div class="form-row">
                                 <select class="categoryFilter" id="categoryFilter">
                                     <option value="all">Alle Kategorien</option>
-                                    <option value="biologie">Biologie</option>
-                                    <option value="design">Design</option>
-                                    <option value="marketing">Marketing</option>
+                                    <option value="zu">Zuse intern</option>
+                                    <option value="bi">Biologie</option>
+                                    <option value="ph">Physik</option>
+                                    <option value="ch">Chemie</option>
+                                    <option value="er">Erdkunde</option>
                                 </select>
                             
                                 <input type="text" id="searchInput" placeholder="Suchbegriff eingeben...">
@@ -819,9 +821,11 @@ function showSlides(n) {
     </div>
     <div class="bottom-modal-body">
 
+        <div id="subject-badge">...</div>
+
       <p id="bottom-modal-description">...</p>
 
-      <button class="btn" onclick="document.getElementById('myBottomModal').style.display='none';generateQrCode('earth-1')">Objekt teilen (Beta)</button>
+      <button class="btn" onclick="document.getElementById('myBottomModal').style.display='none';shareObjectByQrCode()">Objekt teilen</button>
     
         <model-viewer
                 id="ar-model"
@@ -852,9 +856,9 @@ function showSlides(n) {
 
             <button class="btn" onclick="setFullscreenForObject('ar-model')">Vollbild</button>
 
-            <button class="btn" onclick="enterAR()">Webcame stoppen (vor AR-Modus)</button>
+            <button class="btn" onclick="enterAR()">(BETA) Webcame stoppen (vor AR-Modus)</button>
 
-            <button class="btn" onclick="startTheWebcam()">Webcame weiter (nach AR-Modus)</button>
+            <button class="btn" onclick="startTheWebcam()">(BETA) Webcame weiter (nach AR-Modus)</button>
 
 
 
