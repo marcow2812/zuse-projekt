@@ -1,0 +1,244 @@
+:root
+{
+    --green: #62A60E;
+    --green-light: #98e739;
+    --green-dark: #579210;
+
+    --gray: #9f9e9e;
+}
+
+body
+{
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: white;
+}
+
+::selection
+{
+    color: white;
+    background: var(--green);
+}
+
+h2
+{
+    color: var(--gray);
+    margin-left: 8px;
+}
+
+marquee
+{
+    padding: 10px;
+    color: white;
+    background-color: var(--green);
+    border: none;
+    text-transform: uppercase;
+}
+
+marquee span
+{
+    margin-right: 40px;
+}
+
+header
+{
+    background-color: white;
+    padding: 7px;
+    border-bottom: 1px solid #E6E6E6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+header img
+{
+    height: 5vh;
+    max-height: 25px;
+}
+.logo-zuse
+{
+  margin-right: 7px;
+}
+.logo-ecube
+{
+  margin-left: 7px;
+}
+
+.menuBtn
+{
+    position: absolute;
+    left: 10px;
+    color: var(--gray);
+}
+
+.overlay {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: rgb(255,255,255);
+  background-color: rgba(255,255,255, 0.9);
+  overflow-x: hidden;
+  transition: 0.5s;
+}
+
+.overlay-content {
+  position: relative;
+  top: 25%;
+  width: 100%;
+  text-align: center;
+  margin-top: 30px;
+}
+
+.overlay a {
+  padding: 8px;
+  text-decoration: none;
+  font-size: 32px;
+  color: #a9a8a8;
+  display: block;
+  transition: 0.3s;
+}
+
+.overlay a:hover, .overlay a:focus {
+  color: var(--green);
+}
+
+.overlay .closebtn {
+  position: absolute;
+  top: 20px;
+  right: 45px;
+  font-size: 60px;
+}
+
+@media screen and (max-height: 450px) {
+  .overlay a {font-size: 20px}
+  .overlay .closebtn {
+  font-size: 40px;
+  top: 15px;
+  right: 35px;
+  }
+}
+
+.color-gradient
+{
+    margin-top: 25px;
+    color: white;
+    text-align: center;
+    padding: 100px 0px;
+    /* background: linear-gradient(90deg, var(--green), var(--green-light)); */
+    background-image: url('https://cdn.pixabay.com/photo/2020/02/17/09/15/board-4855963_960_720.jpg');
+    background-position: cover;
+    font-size: 1.7em;
+    font-weight: bold;
+}
+
+#switch-span
+{
+    padding: 3px 10px;
+    background-color: rgb(106, 106, 106);
+}
+
+header .open-project-link
+{
+    position: absolute;
+    right: 5px;
+    padding: 7px 9px;
+    color: white;
+    background-color: var(--green);
+    border: none;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+model-viewer
+{
+    width: 300px;
+    height: 300px;
+}
+
+.copyright
+{
+    color: var(--gray);
+    font-size: 12px;
+}
+
+.split-container {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+  margin-bottom: 25px;
+}
+
+.box {
+  flex: 1;
+  min-width: 270px;
+}
+
+@media (max-width: 600px) {
+  .split-container {
+    flex-direction: column;
+  }
+
+  .box {
+    width: 100%;
+  }
+}
+
+.box1
+{
+  padding: 35px 0px 35px 0px;
+  place-items: center;
+}
+
+.box1 img
+{
+    border-radius: 12px;
+}
+
+.box2
+{
+    color: #cccccc;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 40px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.box2 span {
+  display: block;
+}
+
+.p-text
+{
+    padding: 8px;
+    font-size: 24px;
+    color: var(--gray);
+}
+
+.contact-form
+{
+  height: 200px;
+  color: white;
+  background-color: var(--green);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-top: 25px;
+}
+
+.contact-form p
+{
+  margin: 12px 0px 20px 0px;
+  cursor: pointer;
+  text-decoration: underline;
+}

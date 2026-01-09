@@ -57,6 +57,30 @@ const database = [
         oAudioCopyright: "Music by <a href='https://pixabay.com/users/sweet_kr-27931391/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=129272'>Artur Buriak</a> from <a href='https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=129272'>Pixabay</a>",
         oAudioStartAt: 2.0,
     },
+    {
+        id: "wwm",
+        oTitle: "Zuse - Wer wird Millionär",
+        oDescription: "Willkommen zum Tag der offenen Tür 2026 an der Konrad-Zuse-Schule Hünfeld!",
+        oSubject: "zu",
+        oFsk: 0,
+
+        oBanner: "./data/img/ecube/CrimeScene_green_top_big.png",
+        oSrc: "",
+        oCopyright: "Copyright: Zusammengestellt durch Marco Weber",
+        oSizeMultiplier: 3,
+        oBackground: "transparent",
+        oBackgroundSrc: "",
+
+        oMainTextColor: "white",
+        oMainBgColor: "rgba(46, 65, 168, 0.8)",
+
+        oAudioSrc: "./data/music/night-before-dawn-129272.mp3",
+        oAudioCopyright: "Music by <a href='https://pixabay.com/users/sweet_kr-27931391/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=129272'>Artur Buriak</a> from <a href='https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=129272'>Pixabay</a>",
+        oAudioStartAt: 2.0,
+    },
+
+
+
 
     {
         id: "newton-1",
@@ -244,6 +268,12 @@ function loadThePage()
         document.getElementById("loadingPage").style.display = "none";
         document.getElementById("main").style.display = "block";
     }, 3500)
+
+    /*
+    console.log(imagesById);
+    imagesById[19] = "./data/img/overlay.png";
+    console.log(imagesById);
+    */
 }
 
 /* --- GETTER-METHODEN --- */
@@ -619,6 +649,10 @@ function positionModelOnMarker(canvasX, canvasY) {
     model.style.display = 'block'; // Modell anzeigen
 }
 
+
+
+
+
 // Hides the model when the marker is lost (already mentioned in previous steps)
 function handleMarkerLost() {
     const model = document.getElementById('move-model');
@@ -732,6 +766,19 @@ function setObject(objectIdParameter)
     else
     {
         document.getElementById("ar-model").innerHTML = "";
+    }
+
+    if (objectIdParameter == "wwm")
+    {
+        document.getElementById("wwm-box").style.display = "block";
+        imagesById[1] = "./data/img/marco.png";
+        imagesById[2] = "./data/img/marco.png";
+    }
+    else
+    {
+        document.getElementById("wwm-box").style.display = "none";
+        imagesById[1] = "";
+        imagesById[2] = "";
     }
 
     objectId = objectIdParameter;

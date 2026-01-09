@@ -71,7 +71,7 @@ model-viewer#move-model
     width: 150px;  /* Feste Größe zur Berechnung der Zentrierung */
     height: 150px;
     display: none; /* Initial verstecken, bis Marker gefunden wird */
-    border: 1px solid white;
+    /* border: 1px solid white; */
     border-radius: 8px;
 
     background-repeat: no-repeat;
@@ -404,25 +404,26 @@ header img
   right: 6px;
 }
 
+/*
 .icon-cam
 {
     display: inline-flex;
     align-items: center;
     justify-content: center;
 
-    width: 22px;     /* fixer, runder Button */
+    width: 22px;
     height: 22px;
 
-    padding: 2px;      /* wichtig */
+    padding: 2px;
     border-radius: 50%;
 
     margin-right: 5px;
 
     color: var(--gray);
-    background-color: white; /* var(--gray-light) */
+    background-color: white;
     border: 1px solid var(--gray);
 }
-
+*/
 
 
 .icon-green
@@ -1260,4 +1261,71 @@ header img
   outline: none;
 
   display: inline-block;
+}
+
+#wwm-box
+{
+    position: absolute;
+    width: 100%;
+    max-width: 450px;
+    top: 90px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 14px;
+    font-weight: bold;
+    color: white;
+}
+#wwm-frage
+{
+
+  text-align: center;
+    /* background-color: rgba(12, 27, 95, 0.8); */
+    background: linear-gradient(180deg, #1d269b, #2e41a8, #1d269b);
+    
+    border: 1px solid #0c1b5f;
+    
+    padding: 6px 12px 6px 12px;
+    border-radius: 100px;
+    box-sizing: border-box;
+    margin-bottom: 12px;
+}
+
+.flex-container {
+  display: flex; /* Aktiviert Flexbox */
+  gap: 2px;    /* Optional: Abstand zwischen den Boxen */
+}
+
+.wwm-answer
+{
+  flex: 1;
+  text-align: left;
+  background: linear-gradient(180deg, #1d269b, #2e41a8, #1d269b);
+  border: 1px solid #0c1b5f;
+    
+    padding: 4px 10px 4px 10px;
+    border-radius: 100px;
+    box-sizing: border-box;
+
+    margin-bottom: 2px;
+}
+
+.wwm-orange
+{
+  color: #ff983d;
+}
+
+.wwm-set
+{
+  margin-top: 10px;
+    background: linear-gradient(180deg, #f17d41, #f8a75a, #f17d41);
+  flex: 1;
+  text-align: left;
+  width: 50%;
+text-align: center;
+  border: 1px solid #f17d41;
+    
+    padding: 6px 12px 6px 12px;
+    border-radius: 100px;
+    box-sizing: border-box;
+cursor: pointer;
 }

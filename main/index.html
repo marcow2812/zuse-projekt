@@ -18,758 +18,93 @@
         <meta property="og:image:width" content="500">
         <meta property="og:image:height" content="500">
 
-        <link rel="stylesheet" href="./data/style/style.css?timestamp=<%= new Date().getTime() %>">
+        <link rel="stylesheet" href="./data/style/main.css?timestamp=<%= new Date().getTime() %>">
+        <script language="javascript" type="text/javascript" src="./data/script/main.js?timestamp=<%= new Date().getTime() %>"></script>
         <script language="javascript" type="text/javascript" src="./data/script/script.js?timestamp=<%= new Date().getTime() %>"></script>
 
         <!-- Google Model Viewer -->
         <script type="module" src="./data/script/model-viewer.min.js"></script>
-
-        <style>
-
-          body
-          {
-            overflow: scroll;
-          }
-
-.outer-cube
-{
-  display: grid;
-}
-
-.slider {
-    width: 200px;
-    height: 200px;
-    perspective: 600px;
-}
-
-.container {
-    width: 100%; 
-    height: 100%;
-    position: relative;
-    transform-style: preserve-3d;
-    animation: rotate 20s infinite cubic-bezier(1, -0.75, 0.5, 1.2);
-}
-
-/* Jede Fläche */
-.slide {
-    position: absolute;
-    width: 200px;
-    height: 200px;
-    backface-visibility: hidden;
-    border: 1px solid #cccccc;
-}
-
-.slide img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-/* Seiten im 3D-Raum */
-.front  { transform: rotateY(  0deg ) translateZ(100px); }
-.back   { transform: rotateY(180deg) translateZ(100px); }
-.right  { transform: rotateY( 90deg ) translateZ(100px); }
-.left   { transform: rotateY(-90deg ) translateZ(100px); }
-.top    { transform: rotateX( 90deg ) translateZ(100px); }
-.bottom { transform: rotateX(-90deg ) translateZ(100px); }
-
-.bottom img, .top img
-{
-  transform: rotateX(180deg);
-}
-
-.right img
-{
-    transform: rotate(-90deg);
-}
-
-.left img
-{
-    transform: rotate(90deg);
-}
-
-
-/* Animation exakt wie im Original */
-@keyframes rotate {
-    0%, 10% {
-        transform: rotateY(0deg) rotateX(0deg);
-    }
-
-    15%, 20% {
-        transform: rotateY(180deg) rotateX(0deg);
-    }
-
-    25%, 35% {
-        transform: rotateY(180deg) rotateX(270deg);
-    }
-
-    40%, 50% {
-        transform: rotateY(180deg) rotateX(90deg);
-    }
-
-    55%, 65% {
-        transform: rotateY(-90deg) rotateX(90deg);
-    }
-
-    70%, 80% {
-        transform: rotateY(90deg) rotateX(90deg);
-    }
-
-    90%, 95% {
-        transform: rotateY(0deg) rotateX(90deg);
-    }
-
-    100% {
-        transform: rotateY(0deg) rotateX(0deg);
-    }
-}
-
-
-
-.split-container {
-  display: flex;
-  gap: 10px;
-  width: 100%;
-}
-
-.box {
-  flex: 1;
-  min-width: 270px;
-}
-
-/* Wenn der Bildschirm zu klein wird */
-@media (max-width: 600px) {
-  .split-container {
-    flex-direction: column;
-  }
-
-  .box {
-    width: 100%;
-  }
-}
-
-.box1
-{
-  padding: 35px 0px 35px 0px;
-  place-items: center;
-}
-
-.box2
-{
-    color: #cccccc;
-  font-weight: bold;
-  text-transform: uppercase;
-  font-size: 40px;
-
-  display: flex;
-  flex-direction: column;   /* 👈 WICHTIG */
-  justify-content: center;  /* vertikal */
-  align-items: center;      /* horizontal */
-  text-align: center;
-}
-
-.box2 span {
-  display: block;
-}
-
-
-
-
-/* 
-
-.rainbow-button {
-  position: relative;
-  padding: 2.5px; 
-  border: none;
-  background: none;
-  cursor: pointer;
-  border-radius: 100px; 
-  overflow: hidden; 
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  mask-image: -webkit-radial-gradient(white, black);
-}
-
-.rainbow-button::before {
-  content: '';
-  position: absolute;
-  width: 200%;
-  height: 500%; 
-  background: conic-gradient(
-    #ff0000, #ff8000, #ffff00, #00ff00, #00ffff, #0000ff, #8000ff, #ff00ff, #ff0000
-  );
-  animation: rainbow-spin 4s linear infinite;
-  top: -200%;
-  left: -50%;
-  z-index: -1;
-}
-
-.button-content {
-  background: white;
-  color: #1a1a1a;
-  padding: 12px 28px;
-  border-radius: 999px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-family: 'Segoe UI', sans-serif;
-  font-size: 18px;
-  font-weight: 600;
-  z-index: 1;
-}
-
-.cart-icon {
-  width: 22px;
-  height: 22px;
-  fill: currentColor;
-}
-
-@keyframes rainbow-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-*/
-
-
-:root {
-  --primary: #000000;
-  --secondary: #FFFFFF;
-  --accent: #aefa4c; /* ursprünglich: #FF5E5B - jetzt: #B8FF5B */
-}
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-
-.dropbtn {
-  background-color: var(--green);
-  color: white;
-  padding: 16px;
-  font-size: 16px;
-  border: none;
-  cursor: pointer;
-
-}
-
-.dropbtn:hover, .dropbtn:focus {
-  background-color: var(--green-dark);
-}
-
-.dropdown {
-  position: relative;
-  display: inline-block;
-    z-index: 20;
-    width: 100%;
-    max-width: 400px;
-}
-
-.dropdown-content {
-  display: none;
-  position: absolute;
-  /* min-width: 160px; */
-  width: 100%;
-  overflow: auto;
-  /* box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); */
-  z-index: 1;
-  padding: 15px;
-
-  background-image: url('./data/img/desk.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
-  border-radius: 0px 10px 10px 10px;
-}
-
-.show {display: block;}
-
-
-
-.login-container {
-  width: 100%;
-  max-width: 400px;
-  border: 1px solid var(--primary);
-  padding: 40px 30px;
-  background-color: var(--secondary);
-  box-shadow: 8px 8px 0px #919191;
-  position: relative;
-  border-radius: 12px;
-
-  font-family: 'Courier New', monospace;
-}
-
-.login-container::before {
-  content: '';
-  position: absolute;
-  top: 6px;
-  left: 6px;
-  right: -6px;
-  bottom: -6px;
-  border: 1px solid var(--primary);
-  z-index: -1;
-  border-radius: 12px;
-}
-
-h1 {
-  color: var(--primary);
-  margin-bottom: 30px;
-  font-size: 28px;
-  font-weight: 700;
-  text-align: center;
-}
-
-.input-group {
-  margin-bottom: 20px;
-  position: relative;
-}
-
-label {
-  display: block;
-  margin-bottom: 8px;
-  font-weight: bold;
-  color: var(--primary);
-}
-
-input {
-  width: 100%;
-  padding: 12px 15px;
-  border: 2px solid var(--primary);
-  background-color: var(--secondary);
-  font-size: 16px;
-  outline: none;
-  transition: all 0.3s;
-}
-
-input:focus {
-  box-shadow: 4px 4px 0px var(--primary);
-}
-
-.login-button {
-  width: 100%;
-  padding: 12px;
-  background-color: var(--accent);
-  color: var(--secondary);
-  border: 2px solid var(--primary);
-  font-size: 16px;
-  font-weight: bold;
-  cursor: pointer;
-  margin-top: 10px;
-  transition: all 0.3s;
-}
-
-.login-button:hover {
-  box-shadow: 4px 4px 0px var(--primary);
-  transform: translate(-2px, -2px);
-}
-
-.divider {
-  display: flex;
-  align-items: center;
-  margin: 25px 0;
-  color: var(--primary);
-  font-weight: bold;
-}
-
-.divider::before, .divider::after {
-  content: "";
-  flex: 1;
-  border-bottom: 2px solid var(--primary);
-  margin: 0 10px;
-}
-
-.social-login {
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-}
-
-.social-btn {
-  width: auto;
-  padding: 0px 15px 0px 15px;
-  height: 50px;
-  border: 2px solid var(--primary);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  transition: all 0.3s;
-}
-
-.social-btn:hover {
-  box-shadow: 4px 4px 0px var(--primary);
-  transform: translate(-2px, -2px);
-}
-
-
-
-
-.video-container
-{
-  position: relative;
-  width: 100%;
-  height: 200px;
-  overflow: hidden;
-
-  display: flex;
-  justify-content: center;
-    align-items: center; 
-    text-align: center;
-    font-size: 28px;
-    font-weight: bold;
-}
-
-.video-container video {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  min-width: 100%;
-  min-height: 100%;
-  width: auto;
-  height: auto;
-  transform: translate(-50%, -50%);
-  object-fit: cover;
-  z-index: 1;
-}
-
-.video-container .content {
-  position: relative;
-  z-index: 2;
-  text-align: center;
-}
-
-
-#switch-p
-{
-    color: #cccccc;
-}
-
-.green-text
-{
-    color: var(--green);
-}
-
-
-.contact-form
-{
-  height: 200px;
-  color: white;
-  background-color: var(--green);
-
-  display: flex;
-  flex-direction: column;   /* 👈 WICHTIG */
-  justify-content: center;  /* vertikal */
-  align-items: center;      /* horizontal */
-  text-align: center;
-  margin-top: 20px;
-  margin-bottom: 20px;
-}
-
-.contact-form p
-{
-  margin: 12px 0px 20px 0px;
-  cursor: pointer;
-  text-decoration: underline;
-}
-
-#loginIframe
-{
-  width: 100%;
-  height: 70vh;
-  background-color: white;
-  border: 1px solid black;
-  border-radius: 12px;
-}
-
-        </style>
-
     </head>
     <body onload="setSwitchContainer()">
 
+        <marquee>
+            <span>Entwickelt in Hessen</span>
+            <span>-</span>
+            <span>Getestet von Lernenden</span>
+            <span>-</span>
+            <span>100% kostenlos</span>
+            <span>-</span>
+            <span>Entwickelt für Schulen</span>
+            <span>-</span>
+            <span>Bekannt durch Jugend forscht 2026</span>
+        </marquee>
+
         <header>
+            <span class="menuBtn" style="font-size:30px;cursor:pointer" onclick="openNavMenu()">&#9776;</span>
 
             <img class="logo-zuse" src="./data/img/zuse_logo_small.png">
 
             <img class="logo-ecube" src="./data/img/ecube/ECube_green_top_small.png">
 
-            <button class="btn" style="position: absolute; right: 5px" onclick="location.href='./explorer.html'">Zum Projekt</button>
-
+            <a class="open-project-link" href="https://marcow2812.github.io/zuse-projekt/main/explorer.html">Zum Projekt</a>
         </header>
 
-
-        <div class="dropdown">
-  <button onclick="myFunction()" class="dropbtn">Anmelden</button>
-  <div id="myDropdown" class="dropdown-content">
-
-
-
-
-
-    <div id="login-container" class="login-container">
-        <h1>ANMELDEN</h1>
-        
-        <div class="input-group">
-            <label for="username">BENUTZERNAME</label>
-            <input type="username" id="username" placeholder="••••••••••••••">
+        <div id="navMenu" class="overlay">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNavMenu()">&times;</a>
+            <div class="overlay-content">
+                <a href="#">Über uns</a>
+                <a href="#">Der Würfel</a>
+                <a href="#">Entwicklung</a>
+                <a href="#">Projekt öffnen</a>
+            </div>
         </div>
-        
-        <div class="input-group">
-            <label for="password">PASSWORT</label>
-            <input type="password" id="password" placeholder="••••••••••••••">
-        </div>
-        
-        <button class="login-button" type="submit" onclick="setLogin()">ANMELDEN</button>
-        
-        <div class="divider">ODER</div>
-        
-        <div class="social-login">
-            <div class="social-btn" onclick="alert('Bitte wenden Sie sich an Ihren zuständigen Ansprechpartner!')">Zugang beantragen</div>
-            <!-- <div class="social-btn">F</div>
-            <div class="social-btn">X</div> -->
-        </div>
-
-        <script>
-          async function setLogin()
-          {
-            if(document.getElementById("username").value == null || document.getElementById("username").value.length <= 0)
-            {
-
-            }
-            else
-            {
-              document.getElementById("login-container").style.display = "none";
-              // window.location.href = "./login/02." + (document.getElementById('username').value.split("@")[0]).toLowerCase() + "." + await hashText(document.getElementById('username').value + document.getElementById('password').value)+".html?key="+await hashText(document.getElementById('username').value+"."+document.getElementById("password").value)+"&timestamp="+new Date().getTime();
-              document.getElementById("loginIframe").src = "./login/02." + (document.getElementById('username').value.split("@")[0]).toLowerCase() + "." + await hashText(document.getElementById('username').value + document.getElementById('password').value)+".html?key="+await hashText(document.getElementById('username').value+"."+document.getElementById("password").value)+"&timestamp="+new Date().getTime();
-              document.getElementById("loginIframe").style.display = "block";
-            }
-          }
-          async function hashText(text){const encoder = new TextEncoder();const data = encoder.encode(text);const hashBuffer = await crypto.subtle.digest("SHA-256", data);const hashArray = Array.from(new Uint8Array(hashBuffer));return hashArray.map(b => b.toString(16).padStart(2, "0")).join("");}
-        </script>
-
-        
-    </div>
-
-    <iframe id="loginIframe" style="width:100%;display:none"></iframe>
-
-
-
-
-
-
-
-
-  </div>
-</div>
-
-<script>
-/* When the user clicks on the button, 
-toggle between hiding and showing the dropdown content */
-function myFunction() {
-  document.getElementById("myDropdown").classList.toggle("show");
-}
-
-
-</script>
-
-
 
         
 
         <div class="split-container">
             <div class="box box1">
 
-                <!-- Copyright: Animation von https://codepen.io/hrtzt/pen/JdYaEZ -->
-                <div class="outer-cube">
-                    <div class="slider">
-                        <div class="container">
-                            <!-- Reihenfolge: front, back, bottom, top, right, left, bottom -->
-                            <div class="slide front"><img src="./data/img/diashow/3d-druck-01.png" alt=""></div>
-                            <div class="slide back"><img src="./data/img/diashow/img2.png" alt=""></div>
-                            <div class="slide right"><img src="./data/img/diashow/img3.png" alt=""></div>
-                            <div class="slide left"><img src="./data/img/diashow/img4.png" alt=""></div>
-                            <div class="slide top"><img src="./data/img/diashow/3d-druck-02.png" alt=""></div>
-                            <div class="slide bottom"><img src="./data/img/diashow/img6.png" alt=""></div>
-                        </div>
-                      <div class="shadow"></div>
-                    </div>
-                </div>
+                <img src="./data/img/Gemini_Generated_Image_43afj743afj743af.png" width="100%">
 
             </div>
             <div class="box box2">
-                <!-- Augmented<br>Reality<br>für<br>Schulen -->
                  <span>Augmented</span>
                  <span>Reality</span>
                  <span>im</span>
                  <span>Unterricht</span>
+                 <span>erleben</span>
 
             </div>
         </div>
 
-        <!-- 
-        <div style="margin-top: 30px; margin-bottom: 30px;" align="center">
-
-            <a href="./explorer.html">
-                <button class="rainbow-button">
-                    <span class="button-content">
-                        Jetzt starten
-                    </span>
-                </button>
-            </a>
-
-        </div>
--->
+        <p class="p-text">Mit dem E-Cube können Schülerinnen und Schüler den Unterricht auf eine neue Weise kennenlernen: Spielend, spannend und abwechslungsreich!</p>
 
 
-
-
-        
-
-
-
-
-
-
-
-
-
-<!--
-        <div class="switch-container">
-            <p id="switch-p"></p>
-        </div> -->
-
-        <div class="video-container">
-          <video autoplay muted loop playsinline>
-            <source src="./data/img/video/164477-830744018_tiny.mp4" type="video/mp4">
-            Dein Browser unterstützt kein HTML5-Video.
-          </video>
-
-          <div class="content">
-            <p id="switch-p"></p>
-          </div>
+        <div class="color-gradient">
+            <span id="switch-span">...</span>
         </div>
 
-        
+        <h2>3D-Objekte im Unterricht</h2>
 
+        <div align="center">
+            <model-viewer
+                    src="./data/3d/object/atom.glb"
+                    environment-image="neutral"
+                    alt="3D Modell"
+                    interaction-prompt="none"
+                    interaction-prompt-threshold="0"
 
-        <script>
-          const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms)); 
-          async function setSwitchContainer()
-          {
-
-            var liste = [
-              "Bildung",
-              "Lernen",
-              "Entdecken",
-              "Experimentieren",
-              "Verstehen",
-              "Erkunden",
-              "Forschen",
-              "Unterrichten"
-            ]
-
-            var sleeptime = 1700;
-            var lettertime = 130;
-            
-            var lastPart = "neu gedacht";
-            var currentValue = "";
-
-            var p = document.getElementById("switch-p");
-
-            while (true)
-          {
-          
-
-            for (i = 0; i < liste.length; i++)
-            {
-
-                var firstPart = liste[i];
-
-                for (j = 0; j < firstPart.length; j++)
-                {
-                  await sleep(lettertime);
-                  currentValue = currentValue + firstPart[j];
-                  p.innerHTML = `<span class="green-text">${currentValue}</span> ${lastPart}`;
-                }
-                await sleep(sleeptime);
-                while (currentValue.length > 0)
-                {
-                  await sleep(lettertime);
-                  currentValue = currentValue.slice(0, -1);
-                  p.innerHTML = `<span class="green-text">${currentValue}</span> ${lastPart}`;
-                }
-
-            }
-            
-          }
-            
-            
-            
-          }
-
-        </script>
-
-        <model-viewer
-                id="example-model"
-                src="./data/3d/object/atom.glb"
-                environment-image="neutral"
-                alt="3D Modell"
-                interaction-prompt="none"
-                interaction-prompt-threshold="0"
-
-                ar
-                ar-placement="floor"
-                ar-modes="scene-viewer webxr quick-look"
-                touch-action="pan-y"
-                camera-controls
-
-                loading="eager"
-                
-                shadow-intensity="1">
-
-
-
-                <button 
-                    slot="hotspot-1" 
-                    class="hotspot" 
-                    data-position="-30 180 -120" 
-                    data-normal="-1 0 0" 
-                    onclick="showHotspotInfobox(this)"> <b>i</b>
-
-                    <div class="hotspot-info">
-                        Elektronen
-                    </div>
-
-                </button>
-
-                <button 
-                    slot="hotspot-2" 
-                    class="hotspot" 
-                    data-position="200 -30 -20" 
-                    data-normal="-1 0 0" 
-                    onclick="showHotspotInfobox(this)"> <b>i</b>
-
-                    <div class="hotspot-info">
-                        Ein weiterer Punkt
-                    </div>
-
-                </button>
-
-                
-
+                    ar
+                    ar-placement="floor"
+                    ar-modes="scene-viewer webxr quick-look"
+                    touch-action="pan-y"
+                    camera-controls
+                    loading="eager"
+                    
+                    shadow-intensity="1">
             </model-viewer>
-
-            Copyright Hinweis!!!
-
-
-
-            
-
+            <p class="copyright">"Atom" (https://skfb.ly/onXKz) by LucasPresoto is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).</p>
+        </div>
 
         <div class="contact-form">
           <h3>Allgemeine Fragen zum Projekt?</h3>
@@ -778,8 +113,5 @@ function myFunction() {
           <p onclick="getContactInformation('pp')">Anfrage senden</p>
         </div>
 
-
-
-        
     </body>
 </html>

@@ -21,7 +21,6 @@
         <link rel="stylesheet" href="./data/style/style.css?timestamp=<%= new Date().getTime() %>">
         <script language="javascript" type="text/javascript" src="./data/script/script.js?timestamp=<%= new Date().getTime() %>"></script>
         
-
         <!-- Aruco Marker Detection -->
         <script src="./data/script/js-aruco/aruco.js"></script>
         <script src="./data/script/js-aruco/cv.js"></script>
@@ -48,14 +47,6 @@
         <div id="main">
 
             <header>
-
-                <!--
-                <div class="burger" onclick="openObjectMenu()">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-                -->
 
                 <img class="logo-zuse" src="./data/img/zuse_logo_small.png">
 
@@ -108,80 +99,36 @@
 
 
                         <script>
-        const categoryFilter = document.getElementById("categoryFilter");
-        const searchInput = document.getElementById("searchInput");
-        const items = document.querySelectorAll(".subject-box-new");
+                            const categoryFilter = document.getElementById("categoryFilter");
+                            const searchInput = document.getElementById("searchInput");
+                            const items = document.querySelectorAll(".subject-box-new");
 
-        function filterObjects() {
-    const selectedCategory = document.getElementById("categoryFilter").value;
-    const searchText = document.getElementById("searchInput").value.toLowerCase();
+                            function filterObjects() {
+                        const selectedCategory = document.getElementById("categoryFilter").value;
+                        const searchText = document.getElementById("searchInput").value.toLowerCase();
 
-    const items = document.querySelectorAll(".subject-box-new");
+                        const items = document.querySelectorAll(".subject-box-new");
 
-    items.forEach(item => {
-        const itemCategory = item.dataset.category;
-        const itemTitle = item.dataset.title.toLowerCase();
+                        items.forEach(item => {
+                            const itemCategory = item.dataset.category;
+                            const itemTitle = item.dataset.title.toLowerCase();
 
-        const matchesCategory =
-            selectedCategory === "all" || itemCategory === selectedCategory;
+                            const matchesCategory =
+                                selectedCategory === "all" || itemCategory === selectedCategory;
 
-        const matchesSearch =
-            itemTitle.includes(searchText);
+                            const matchesSearch =
+                                itemTitle.includes(searchText);
 
-        item.style.display = (matchesCategory && matchesSearch) ? "block" : "none";
-    });
-}
-
-
-        categoryFilter.addEventListener("change", filterObjects);
-        searchInput.addEventListener("input", filterObjects);
-    </script>
+                            item.style.display = (matchesCategory && matchesSearch) ? "block" : "none";
+                        });
+                    }
 
 
-
-                        <!--
-                        <h3>Objekte</h3>
-
-                        <div class="subject-container">
-                            <div class="subject-box red" onclick="setObject('heart-1')">
-                                Herz
-                            </div>
-                            <div class="subject-box purple" onclick="setObject('disco-1')">
-                                Disco Kugel
-                            </div>
-                            <div class="subject-box gray" onclick="setObject('atom-1')">
-                                Atom
-                            </div>
-                        
-                            
-                            <div class="subject-box brown" onclick="setObject('city-1')">
-                                Stadt
-                            </div>
-                            <div class="subject-box purple" onclick="setObject('davinci-1')">
-                                Da Vinci
-                            </div>
-                            <div class="subject-box purple" onclick="setObject('enigma-1')">
-                                Enigma
-                            </div>
-                            
-                        </div>
-                        -->
-
-                        <!--
-                        <button class="open-overlay-btn" onclick="generateQrCode('atom-1')">
-                            QR-Code erstellen
-                        </button>
-                        -->
+                            categoryFilter.addEventListener("change", filterObjects);
+                            searchInput.addEventListener("input", filterObjects);
+                        </script>
 
 
-                        <!--
-                        <button onclick="playAudio()">Abspielen</button>
-                        <button onclick="pauseAudio()">Pause</button>
-                        -->
-
-                        <!--
-                        <div id="testInnerHtml"></div>
-                        -->
 
                         <script>
                             const audioElement = document.getElementById("audioPlayer");
@@ -277,31 +224,31 @@
                                     </div>
 
                                     <script>
-let slideIndex = 1;
-showSlides(slideIndex);
+                                    let slideIndex = 1;
+                                    showSlides(slideIndex);
 
-function currentSlide(n) {
-  showSlides(slideIndex = n);
-}
+                                    function currentSlide(n) {
+                                    showSlides(slideIndex = n);
+                                    }
 
-function showSlides(n) {
-  let i;
-  let slides = document.getElementsByClassName("mySlides");
-  let dots = document.getElementsByClassName("demo");
-  let captionText = document.getElementById("caption");
-  if (n > slides.length) {slideIndex = 1}
-  if (n < 1) {slideIndex = slides.length}
-  for (i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";
-  }
-  for (i = 0; i < dots.length; i++) {
-    dots[i].className = dots[i].className.replace(" active-img", "");
-  }
-  slides[slideIndex-1].style.display = "block";
-  dots[slideIndex-1].className += " active-img";
-  captionText.innerHTML = dots[slideIndex-1].alt;
-}
-</script>
+                                    function showSlides(n) {
+                                    let i;
+                                    let slides = document.getElementsByClassName("mySlides");
+                                    let dots = document.getElementsByClassName("demo");
+                                    let captionText = document.getElementById("caption");
+                                    if (n > slides.length) {slideIndex = 1}
+                                    if (n < 1) {slideIndex = slides.length}
+                                    for (i = 0; i < slides.length; i++) {
+                                        slides[i].style.display = "none";
+                                    }
+                                    for (i = 0; i < dots.length; i++) {
+                                        dots[i].className = dots[i].className.replace(" active-img", "");
+                                    }
+                                    slides[slideIndex-1].style.display = "block";
+                                    dots[slideIndex-1].className += " active-img";
+                                    captionText.innerHTML = dots[slideIndex-1].alt;
+                                    }
+                                    </script>
 
                             </div>
                         </div>
@@ -317,7 +264,7 @@ function showSlides(n) {
                                 UrlOfQrCode = text;
 
                                 const container = document.getElementById('qr-container');
-                                container.innerHTML = ""; // alten QR löschen
+                                container.innerHTML = "";
 
                                 if (!text) {
                                     alert("Bitte Text oder URL eingeben.");
@@ -332,7 +279,6 @@ function showSlides(n) {
                                     pal: ["#000000","#ffffff"]
                                 });
 
-                                // SVG-Element anhängen
                                 container.appendChild(svgNode);
 
                                 document.getElementById("qrCodeObjectTitle").innerHTML = getObjectTitle(parameter) + " teilen";
@@ -367,7 +313,6 @@ function showSlides(n) {
 
                                     URL.revokeObjectURL(url);
 
-                                    // PNG als Download
                                     canvas.toBlob((blob) => {
                                     const pngUrl = URL.createObjectURL(blob);
 
@@ -399,13 +344,7 @@ function showSlides(n) {
                     </div>
                     <div class="modal-body">
 
-                        <span id="header-icon-cam" class="icon-cam">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-camera-fill" viewBox="0 0 16 16">
-                                <path d="M10.5 8.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0"/>
-                                <path d="M2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4zm.5 2a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1m9 2.5a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0"/>
-                            </svg>
-                        </span>
-                        <span>Zugriff auf die Kamera</span>
+                        <span>Zugriff auf die Kamera erlauben</span>
                         <br><br>
                         <div align="center">
                             <button class="btn" id="cameraAccessBtn" onclick="startTheWebcam()">Zugriff erlauben</button>
@@ -515,70 +454,6 @@ function showSlides(n) {
                 setL2();
             }
 
-            /*
-            async function setL1()
-            {
-                var l1 = document.getElementById("light1");
-                while (true)
-                {
-                    var boxshadow = 0;
-                    for (i = 0; i <= 10; i++)
-                    {
-                        await sleep(80);
-                        l1.style.boxShadow = "0 0 "+boxshadow+"px white";
-                        boxshadow = boxshadow + 0.2;
-                    }
-                    for (i = 10; i >= 0; i--)
-                    {
-                        await sleep(80);
-                        l1.style.boxShadow = "0 0 "+boxshadow+"px white";
-                        boxshadow = boxshadow - 0.2;
-                    }
-                }
-            }
-
-            async function setL2()
-            {
-                var l2 = document.getElementById("light2");
-                while (true)
-                {
-                    var boxshadow = 0;
-                    for (i = 0; i <= 10; i++)
-                    {
-                        await sleep(80);
-                        l2.style.boxShadow = "0 0 "+boxshadow+"px white";
-                        boxshadow = boxshadow + 0.2;
-                    }
-                    for (i = 10; i >= 0; i--)
-                    {
-                        await sleep(80);
-                        l2.style.boxShadow = "0 0 "+boxshadow+"px white";
-                        boxshadow = boxshadow - 0.2;
-                    }
-                }
-            }
-
-            async function setL3()
-            {
-                var l3 = document.getElementById("light3");
-                while (true)
-                {
-                    var boxshadow = 0;
-                    for (i = 0; i <= 10; i++)
-                    {
-                        await sleep(80);
-                        l3.style.boxShadow = "0 0 "+boxshadow+"px white";
-                        boxshadow = boxshadow + 0.2;
-                    }
-                    for (i = 10; i >= 0; i--)
-                    {
-                        await sleep(80);
-                        l3.style.boxShadow = "0 0 "+boxshadow+"px white";
-                        boxshadow = boxshadow - 0.2;
-                    }
-                }
-            } */
-
             var off = "#cccccc";
             var on = "#62A60E";
 
@@ -625,12 +500,12 @@ function showSlides(n) {
 
 
                             <div id="maintenance-info">
-                                
+                                <!-- Ergänzt durch JS -->
                             </div>
 
                         </div>
 
-                        <br>
+                        <br><br>
 
                         <div align="center">
                             <button class="btn" onclick="closeMaintenanceModal()">Verstanden</button>
@@ -666,20 +541,44 @@ function showSlides(n) {
 
             </div>
 
-            <!--
-            <script>
-                var modal = document.getElementById("welcomeModal");
-                window.onclick = function(event) 
-                {
-                if (event.target == modal)
-                {
-                    modal.style.display = "none";
-                }
-                }
-            </script>
-            -->
-
             <!-- ERGÄNZT -->
+
+            <div id="wwm-box">
+                <div id="wwm-frage">
+                    Wofür gibt es einen Oscar?
+                </div>
+
+                <div class="flex-container">
+                    <div class="wwm-answer">
+                        <span class="wwm-orange">A: </span>Toller Chirurg
+                    </div>
+                    <div class="wwm-answer">
+                        <span class="wwm-orange">B: </span>Exquisites Skalpell
+                    </div>
+                </div>
+                <div class="flex-container">
+                    <div class="wwm-answer">
+                        <span class="wwm-orange">C: </span>Bester Schnitt
+                    </div>
+                    <div class="wwm-answer">
+                        <span class="wwm-orange">D: </span>Fabelhafte OP
+                    </div>
+                </div>
+                <div class="flex-container">
+                    <div class="wwm-answer">
+                        <span class="wwm-orange">E: </span>Schöne Behandlung
+                    </div>
+                    <div class="wwm-answer">
+                        <span class="wwm-orange">F: </span>Baldige Genesung
+                    </div>
+                </div>
+                <div align="center">
+                    <div class="wwm-set">
+                        Beantworten
+                    </div>
+                </div>
+            </div>
+
 
             <video id="video" autoplay playsinline style="display:none;"></video>
             <canvas id="canvas"></canvas>
@@ -727,6 +626,12 @@ function showSlides(n) {
             
             -->
 
+            <!--
+            
+            poster="./data/img/favicon.png"
+            
+            -->
+
             <model-viewer
                 id="move-model"
                 
@@ -739,9 +644,7 @@ function showSlides(n) {
 
                 loading="eager"
                 
-                shadow-intensity="1"
-                
-                poster="./data/img/favicon.png">
+                shadow-intensity="1">
 
                 <button 
                     slot="hotspot-1" 
@@ -770,6 +673,8 @@ function showSlides(n) {
                 </button>
 
             </model-viewer>
+
+            
 
             <!--
             auto-rotate
@@ -916,13 +821,12 @@ for (i = 0; i < acc.length; i++) {
     const modelViewer = document.querySelector("#model");
 
 
+    /* Hotspot-Infoboxen */
 
-    /* ------------------------------------------------------------
-       HOTSPOT INFOBOXEN
-    ------------------------------------------------------------ */
     let activeInfoBox = null;
 
-    function showHotspotInfobox(buttonElement) {
+    function showHotspotInfobox(buttonElement)
+    {
         const infoBox = buttonElement.querySelector('.hotspot-info');
 
         if (infoBox.classList.contains('active-hotspot')) {
@@ -931,27 +835,9 @@ for (i = 0; i < acc.length; i++) {
             return;
         }
 
-        /*
-        if (activeInfoBox) {
-            activeInfoBox.classList.remove('active');
-        }
-            */
-
         infoBox.classList.add('active-hotspot');
         activeInfoBox = infoBox;
     }
-
-    /*
-    document.addEventListener('click', (event) => {
-        if (!activeInfoBox) return;
-
-        const hotspotButton = activeInfoBox.closest('.hotspot-hint');
-        if (!hotspotButton.contains(event.target)) {
-            activeInfoBox.classList.remove('active');
-            activeInfoBox = null;
-        }
-    });
-    */
 
 </script>
 
@@ -966,25 +852,23 @@ for (i = 0; i < acc.length; i++) {
 </div>
 
 <script>
-// Get the modal
+
 var modal = document.getElementById("myBottomModal");
 
-
-// Get the <span> element that closes the modal
 var span = document.getElementsByClassName("bottom-close")[0];
 
-
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() {
+span.onclick = function()
+{
   modal.style.display = "none";
 }
 
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
+window.onclick = function(event)
+{
   if (event.target == modal) {
     modal.style.display = "none";
   }
 }
+
 </script>
 
 
@@ -995,11 +879,6 @@ window.onclick = function(event) {
                 <span id="objectTitle">...</span>
                 <button class="info-button" onclick="openCurrentObjectMenu()">i</button>
             </div>
-            <!--
-            <div id="infotext">
-                <span id="objectInfotext">Dieser vielsagende Infotext soll etwas über das zu sehende Objekt verraten. Er ist immer sichtbar und ändert sich von Objekt zu Objekt.</span>
-            </div>
-            -->
 
             <!-- Bottom-Menü -->
             <div class="menu">
@@ -1013,11 +892,6 @@ window.onclick = function(event) {
 
 
                 <button class="menuBtn" onclick="openObjectMenu()">
-                    <!--
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-stars" viewBox="0 0 16 16">
-                        <path d="M7.657 6.247c.11-.33.576-.33.686 0l.645 1.937a2.89 2.89 0 0 0 1.829 1.828l1.936.645c.33.11.33.576 0 .686l-1.937.645a2.89 2.89 0 0 0-1.828 1.829l-.645 1.936a.361.361 0 0 1-.686 0l-.645-1.937a2.89 2.89 0 0 0-1.828-1.828l-1.937-.645a.361.361 0 0 1 0-.686l1.937-.645a2.89 2.89 0 0 0 1.828-1.828zM3.794 1.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387A1.73 1.73 0 0 0 4.593 5.69l-.387 1.162a.217.217 0 0 1-.412 0L3.407 5.69A1.73 1.73 0 0 0 2.31 4.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387A1.73 1.73 0 0 0 3.407 2.31zM10.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.16 1.16 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.16 1.16 0 0 0-.732-.732L9.1 2.137a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732z"/>
-                    </svg>
-                    -->
 
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-grid" viewBox="0 0 16 16">
                         <path d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5zM2.5 2a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5zm6.5.5A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5zM1 10.5A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5zm6.5.5A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5z"/>
@@ -1033,52 +907,6 @@ window.onclick = function(event) {
 
         </div>
         <!-- Ende Main-Container -->
-
-        <!--
-            <script>
-                // Speichert eine Referenz auf das aktuell geöffnete Info-Element
-                let activeInfoBox = null; 
-
-                // Funktion, die beim Klicken auf den Hotspot ausgeführt wird
-                function showHotspotInfobox(buttonElement) {
-                    const infoBox = buttonElement.querySelector('.hotspot-info');
-                    
-                    // 1. Wenn derselbe Hotspot bereits aktiv ist, einfach schließen und beenden
-                    if (infoBox.classList.contains('active')) {
-                        infoBox.classList.remove('active');
-                        activeInfoBox = null;
-                        return;
-                    }
-                    
-                    // 2. Schließe das zuvor aktive Element, falls eines existiert
-                    if (activeInfoBox) {
-                        activeInfoBox.classList.remove('active');
-                    }
-
-                    // 3. Aktiviere das neue Element
-                    infoBox.classList.add('active');
-                    activeInfoBox = infoBox;
-                }
-
-                // Globaler Klick-Listener, um das Info-Modell zu schließen, wenn außerhalb geklickt wird
-                document.addEventListener('click', function(event) {
-                    // Wenn kein Info-Modell geöffnet ist, beende die Funktion
-                    if (!activeInfoBox) {
-                        return;
-                    }
-
-                    const activeHotspotButton = activeInfoBox.closest('.hotspot');
-                    
-                    // Prüft, ob der Klick-Event außerhalb des aktiven Hotspot-Buttons stattgefunden hat.
-                    // Die Methode 'contains' prüft, ob das Ziel des Klicks innerhalb des Hotspot-Buttons liegt.
-                    if (!activeHotspotButton.contains(event.target)) {
-                        // Wenn außerhalb geklickt wurde:
-                        activeInfoBox.classList.remove('active');
-                        activeInfoBox = null;
-                    }
-                });
-            </script>
-            -->
 
             <script>
                 const model = document.getElementById("move-model");
@@ -1109,31 +937,26 @@ window.onclick = function(event) {
                 {
                     const radToDeg = 180 / Math.PI;
 
-                    // Standard Gimbal Lock Check (sy nahe 0)
-                    // sy = sqrt(R[0][0]^2 + R[1][0]^2)
                     const sy = Math.sqrt(R[0][0] * R[0][0] + R[1][0] * R[1][0]); 
 
-                    // Schwellwert für Gimbal Lock (z.B. 1e-6)
                     const isSingular = sy < 1e-6; 
 
                     let x, y, z;
 
-                    if (!isSingular) // Kein Gimbal Lock
+                    if (!isSingular)
                     {
-                        // Standard (z.B. ZYX-Reihenfolge)
                         x = Math.atan2(R[2][1], R[2][2]);
                         y = Math.atan2(-R[2][0], sy);
                         z = Math.atan2(R[1][0], R[0][0]);
                     }
-                    else // Gimbal Lock
+                    else
                     {
-                        // Die Rotation wird auf die X-Achse (Roll) geworfen
                         x = Math.atan2(-R[1][2], R[1][1]); 
-                        y = Math.atan2(-R[2][0], sy); // y ist +/- 90 Grad
-                        z = 0; // z (Yaw) wird Null gesetzt
+                        y = Math.atan2(-R[2][0], sy);
+                        z = 0;
                     }
 
-                    // Erst in Grad umrechnen
+                    // Umrechnung in Grad
                     let xDeg = x * radToDeg;
                     let yDeg = y * radToDeg;
                     let zDeg = z * radToDeg;
@@ -1175,92 +998,14 @@ window.onclick = function(event) {
                 }
 
 
-
-                // Zustände
                 let markerVisible = false;
                 let lastSeenTime = 0;
                 let stopTimeout = null;
 
-                /*
-                function unlockAudio()
-                {
-                    document.getElementById('audioAccessBtn').style.display = "none";
-
-                    const headerIcon = document.getElementById("header-icon-audio");
-
-                    // audio.currentTime = startAt;
-                    
-
-                    audio.play()
-                        .then(() => {
-                            audio.pause();
-
-                            headerIcon.classList.remove("icon-red");
-                            headerIcon.classList.add("icon-green");
-                        })
-                        .catch(err => {
-                            console.error("Fehler: Audiowiedergabe wurde blockiert.\n" + err);
-
-                            headerIcon.classList.remove("icon-green");
-                            headerIcon.classList.add("icon-red");
-                        });
-
-                        
-
-                    checkCloseOption();
-                }
-                    */
-
-
 
                 const video = document.getElementById("video");
                 const canvas = document.getElementById("canvas");
-                const ctx = canvas.getContext('2d', { willReadFrequently: true }); /* Ergänzt */
-                // const ctx = canvas.getContext("2d");
-
-                /*
-                async function startTheWebcam()
-                {
-                    document.getElementById('cameraAccessBtn').style.display = "none";
-
-                    const headerIcon = document.getElementById("header-icon-cam");
-
-                    try
-                    {
-                        // Anfrage für Kamera-Zugriff
-                        const stream = await navigator.mediaDevices.getUserMedia({
-                            video: { facingMode: "environment" },
-                            audio: false
-                        });
-
-                        // Wenn erfolgreich: Video starten
-                        video.srcObject = stream;
-
-                        // Icon grün setzen
-                        headerIcon.classList.remove("icon-red");
-                        headerIcon.classList.add("icon-green");
-
-                        // console.log("Kamerazugriff erlaubt.");
-                    } 
-                    catch (err) 
-                    {
-                        // console.error("Kamerazugriff verweigert oder Fehler:", err);
-
-                        // Icon rot setzen
-                        headerIcon.classList.remove("icon-green");
-                        headerIcon.classList.add("icon-red");
-                    }
-
-                    closeWelcomeModal();
-                }
-
-                function stopWebcam() {
-                const stream = video.srcObject;
-                if (stream) {
-                    stream.getTracks().forEach(track => track.stop());
-                    video.srcObject = null;
-                }
-                } */
+                const ctx = canvas.getContext('2d', { willReadFrequently: true });
 
                 let webcamStream = null;
 
@@ -1307,7 +1052,7 @@ arModel.addEventListener("ar-status", (event) => {
     console.log("AR-Status:", status);
 
     if (status === "not-presenting") {
-        // AR wurde beendet → Webcam wieder starten
+        // Webcam starten
         startTheWebcam();
     }
 });
@@ -1318,56 +1063,16 @@ arModel.addEventListener("ar-status", (event) => {
                 // ArUco-Detector
                 const detector = new AR.Detector();
 
-                /*
-                function drawOverlay(corners) {
-                    
-                    const dst = [
-                        { x: corners[0].x, y: corners[0].y }, 
-                        { x: corners[1].x, y: corners[1].y }, 
-                        { x: corners[2].x, y: corners[2].y }, 
-                        { x: corners[3].x, y: corners[3].y }  
-                    ];
-
-                    const w = overlayImg.width;
-                    const h = overlayImg.height;
-
-                    const src = [
-                        { x: 0, y: 0 },
-                        { x: w, y: 0 },
-                        { x: w, y: h },
-                        { x: 0, y: h }
-                    ];
-
-                    const H = AR.perspectiveTransform(src, dst);
-
-                    ctx.save();
-
-                    ctx.setTransform(
-                        H[0], H[3],
-                        H[1], H[4],
-                        H[2], H[5]
-                    );
-
-                    ctx.drawImage(overlayImg, 0, 0, w, h);
-
-                    ctx.restore();
-                }
-                    */
-
                 function drawOverlay(ctx, image, corners)
                 {
                     // corners = Array von 4 Punkten [{x,y}, ...] im Uhrzeigersinn: TL, TR, BR, BL
                     const [tl, tr, br, bl] = corners;
 
-                    // Quelle (image)
                     const w = image.width;
                     const h = image.height;
 
-                    // Für einfache Projektion: wir zeichnen das Bild auf den Canvas mit ctx.setTransform
-                    // Achtung: das ist eine vereinfachte Variante, keine perfekte perspektivische Verzerrung
                     ctx.save();
                     
-                    // Berechne groben Affine-Transform von Bild -> Marker
                     const dx1 = tr.x - tl.x;
                     const dy1 = tr.y - tl.y;
                     const dx2 = bl.x - tl.x;
@@ -1385,7 +1090,7 @@ arModel.addEventListener("ar-status", (event) => {
 
                 function handleMarkerDetected()
                 {
-                    if (markerVisible) return; // ⛔ Marker war schon sichtbar
+                    if (markerVisible) return;
 
                     markerVisible = true;
                     lastSeenTime = performance.now();
@@ -1407,7 +1112,6 @@ arModel.addEventListener("ar-status", (event) => {
                     const model = document.getElementById('move-model');
                     if (model)
                     {
-                        // 3D-Objekt wird versteckt
                         model.style.display = 'none'; 
                     }
                                     
@@ -1471,6 +1175,7 @@ arModel.addEventListener("ar-status", (event) => {
 
 
 
+
                 // Koordinaten der ersten beiden Ecken (c0 und c1)
                 const x0 = corners[0].x;
                 const y0 = corners[0].y;
@@ -1482,13 +1187,7 @@ arModel.addEventListener("ar-status", (event) => {
                 const deltaY = y1 - y0;
                 const sideLength = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
 
-                // Ausgabe in der Konsole
-                // console.log(`Marker ID ${marker.id} | Seitenlänge (Pixel): ${sideLength.toFixed(2)}`);
                 setObjectSize(sideLength.toFixed(2));
-                // console.log(`Seitenlänge (Pixel): ${sideLength.toFixed(2)}`);
-
-
-
 
                 
                 // === MODELL-POSITIONIERUNG UND SICHTBARKEIT ===
@@ -1526,6 +1225,7 @@ arModel.addEventListener("ar-status", (event) => {
                 getDegByMarker(marker.id, e.x.toFixed(1), e.y.toFixed(1), e.z.toFixed(1));
 
                 // Marker rot umranden (Debug)
+                /*
                 ctx.strokeStyle = "red";
                 ctx.lineWidth = 3;
                 ctx.beginPath();
@@ -1544,24 +1244,32 @@ arModel.addEventListener("ar-status", (event) => {
                     ctx.lineTo(next.x, next.y);
                 });
                 ctx.stroke();
+                */
 
                 // Sondercode für SH
-                if (marker.id == 10 || marker.id == 11 || marker.id == 12)
+                /*
+                if (marker.id == 10 || marker.id == 11 || marker.id == 12 || marker.id == 19)
                 {
+                */
                     // Overlay-Bild auf Marker zeichnen
                     const img = getImageForId(marker.id);
                     if (img && img.complete)
                     {
                         drawOverlay(ctx, img, corners);
-                        document.getElementById("bottomCopyright").style.display = "block";
+                        
                     }
-                }
+                /*}
                 else
                 {
 
+                }*/
+
+                if (marker.id == 10 || marker.id == 11 || marker.id == 12 || marker.id == 19)
+                {
+                    document.getElementById("bottomCopyright").style.display = "block";
                 }
 
-                
+
 
             }); // Ende markers.forEach
             
@@ -1589,6 +1297,52 @@ arModel.addEventListener("ar-status", (event) => {
                     posit = new POS.Posit(markerSize, canvas.width);
                     tick();
                 })();
+
+
+
+                function getPerspectiveTransform(w, h, p1, p2, p3, p4) {
+    function solve(A, b) {
+        var n = A.length;
+        for (var i = 0; i < n; i++) {
+            var max = i;
+            for (var j = i + 1; j < n; j++) {
+                if (Math.abs(A[j][i]) > Math.abs(A[max][i])) max = j;
+            }
+            var temp = A[i]; A[i] = A[max]; A[max] = temp;
+            var t = b[i]; b[i] = b[max]; b[max] = t;
+            for (var j = i + 1; j < n; j++) {
+                var factor = A[j][i] / A[i][i];
+                b[j] -= factor * b[i];
+                for (var k = i; k < n; k++) A[j][k] -= factor * A[i][k];
+            }
+        }
+        var x = new Array(n);
+        for (var i = n - 1; i >= 0; i--) {
+            var sum = 0;
+            for (var j = i + 1; j < n; j++) sum += A[i][j] * x[j];
+            x[i] = (b[i] - sum) / A[i][i];
+        }
+        return x;
+    }
+
+    var A = [
+        [0, 0, 1, 0, 0, 0, 0, 0], [w, 0, 1, 0, 0, 0, -p2.x * w, 0],
+        [w, h, 1, 0, 0, 0, -p3.x * w, -p3.x * h], [0, h, 1, 0, 0, 0, 0, -p4.x * h],
+        [0, 0, 0, 0, 0, 1, 0, 0], [0, 0, 0, w, 0, 1, -p2.y * w, 0],
+        [0, 0, 0, w, h, 1, -p3.y * w, -p3.y * h], [0, 0, 0, 0, h, 1, 0, -p4.y * h]
+    ];
+    var b = [p1.x, p2.x, p3.x, p4.x, p1.y, p2.y, p3.y, p4.y];
+    var h_params = solve(A, b);
+    
+    return [
+        h_params[0], h_params[3], 0, h_params[6],
+        h_params[1], h_params[4], 0, h_params[7],
+        0, 0, 1, 0,
+        h_params[2], h_params[5], 0, 1
+    ];
+}
+
+
             </script>
 
             
