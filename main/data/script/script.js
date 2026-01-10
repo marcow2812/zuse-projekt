@@ -8,6 +8,9 @@ var timeoutCheckInternetConnection = 30000;
 // Standard-URL für QR-Code-Erstellung
 var standardUrl = "https://marcow2812.github.io/zuse-projekt/main/explorer.html?o="; 
 
+var markerLostTimeout;
+var isMarkerVisible = false;
+
 
 // Wartungsarbeiten
 // 0 = keine, 1 = derzeitige Wartungsarbeiten, 2 = angekündigt
@@ -231,7 +234,7 @@ console.log(database.length);
 
 function loadThePage()
 {
-    setObject("earth-1");
+    setObject("disco-1");
 
     getParameter();
 
@@ -274,6 +277,7 @@ function loadThePage()
     imagesById[19] = "./data/img/overlay.png";
     console.log(imagesById);
     */
+
 }
 
 /* --- GETTER-METHODEN --- */
@@ -513,7 +517,7 @@ function getDegByMarker(marker, x, y, z)
             console.log("Anderer Marker");
     }
 
-    console.log(marker+"\nx: " + x + "\ny: " + y + "\nz: " + z);
+    // console.log(marker+"\nx: " + x + "\ny: " + y + "\nz: " + z);
 }
 
 
@@ -628,6 +632,8 @@ function mapCanvasToScreen(canvasX, canvasY) {
  * 2. Positioniert das 3D-Modell (model-viewer) auf dem Bildschirm.
  * Zentriert das Modell um die übergebenen Canvas-Koordinaten.
  */
+
+/*
 function positionModelOnMarker(canvasX, canvasY) {
     const model = document.getElementById('move-model');
     
@@ -647,6 +653,59 @@ function positionModelOnMarker(canvasX, canvasY) {
     model.style.left = `${finalX}px`;
     model.style.top = `${finalY}px`;
     model.style.display = 'block'; // Modell anzeigen
+}
+    */
+
+function positionModelOnMarker(markers) {
+    // Die ID muss exakt mit der ID im HTML übereinstimmen: "move-model"
+    var modelViewer = document.getElementById("move-model");
+    var canvas = document.getElementById("canvas");
+
+    // Sicherheitscheck: Wenn eines der Elemente nicht existiert, Funktion abbrechen
+    if (!modelViewer || !canvas) {
+        console.error("Fehler: move-model oder canvas nicht gefunden!");
+        return;
+    }
+
+    if (markers && markers.length > 0) {
+        // --- MARKER GEFUNDEN ---
+        
+        // Falls ein Ausblend-Timer läuft, stoppen wir ihn sofort
+        if (markerLostTimeout) {
+            clearTimeout(markerLostTimeout);
+            markerLostTimeout = null;
+        }
+        isMarkerVisible = true;
+
+        // 1. Mittelpunkt des Markers berechnen
+        var centerX = (markers[0].corners[0].x + markers[0].corners[1].x + markers[0].corners[2].x + markers[0].corners[3].x) / 4;
+        var centerY = (markers[0].corners[0].y + markers[0].corners[1].y + markers[0].corners[2].y + markers[0].corners[3].y) / 4;
+
+        // 2. Skalierung und Position des Canvas berechnen
+        const rect = canvas.getBoundingClientRect();
+        const scaleX = rect.width / canvas.width;
+        const scaleY = rect.height / canvas.height;
+
+        // 3. Position auf dem Bildschirm berechnen
+        const screenX = rect.left + (centerX * scaleX);
+        const screenY = rect.top + (centerY * scaleY);
+
+        // 4. Position zuweisen und anzeigen
+        modelViewer.style.display = "block";
+        modelViewer.style.left = screenX + "px";
+        modelViewer.style.top = screenY + "px";
+        modelViewer.style.transform = "translate(-50%, -50%)";
+
+    } else {
+
+        if (isMarkerVisible && !markerLostTimeout) {
+            markerLostTimeout = setTimeout(function() {
+                modelViewer.style.display = "none";
+                isMarkerVisible = false;
+                markerLostTimeout = null;
+            }, 600); // 400ms Toleranzzeit gegen Flackern
+        }
+    }
 }
 
 
@@ -847,6 +906,10 @@ function setObject(objectIdParameter)
 
     document.getElementById("audioPlayer").src = database.find(u => u.id === objectId).oAudioSrc;
 
+    document.getElementById("title").style.backgroundColor = "rgba(98, 166, 14, 0.5)";
+    document.getElementById("title").style.borderColor = "rgba(98, 166, 14, 0.5)";
+    document.getElementById("title").style.color = "white";
+
     document.getElementById("title").style.backgroundColor = database.find(u => u.id === objectId).oMainBgColor;
     document.getElementById("title").style.borderColor = database.find(u => u.id === objectId).oMainBgColor;
     document.getElementById("title").style.color = database.find(u => u.id === objectId).oMainTextColor;
@@ -930,7 +993,7 @@ function openCurrentObjectMenu()
 function setObjectSize(pixelSize)
 {
     // console.log(pixelSize);
-    console.log(objectId);
+    // console.log(objectId);
 
     document.getElementById("move-model").style.width = (pixelSize * database.find(u => u.id === objectId).oSizeMultiplier) + "px";
     document.getElementById("move-model").style.height = (pixelSize * database.find(u => u.id === objectId).oSizeMultiplier) + "px";
@@ -964,3 +1027,42 @@ function setFullscreenForObject(id)
     }
 
 }
+
+/*
+function setWebcamSize(x, y)
+{
+    //console.log("Webcam width: " + x);
+    //console.log("Webcam height: " + y);
+
+    let ww = window.innerWidth;
+    let wh = window.innerHeight;
+    //console.log(ww);
+    //console.log(wh);
+
+    // x = Webcame width
+    // y = Webcame height
+    // ww = Fenster width
+    // wh = Fenster height
+
+    w1 = ww / x;
+    w2 = wh / y;
+    console.log(w1);
+    console.log(w2);
+
+    
+    if (w1 >= w2)
+    {
+        // w1 >= w2
+        console.log("Fall 1");
+        document.getElementById("canvas").style.width = "100%";
+    }
+    else
+    {
+        // w2 > w1
+        console.log("Fall 2");
+        document.getElementById("canvas").style.height = wh;
+    }
+        
+
+}
+*/

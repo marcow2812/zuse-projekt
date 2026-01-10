@@ -566,7 +566,7 @@
                 </div>
                 <div class="flex-container">
                     <div class="wwm-answer">
-                        <span class="wwm-orange">E: </span>Schöne Behandlung
+                        <span class="wwm-orange">E: </span>Gute Besserung
                     </div>
                     <div class="wwm-answer">
                         <span class="wwm-orange">F: </span>Baldige Genesung
@@ -1004,6 +1004,14 @@ window.onclick = function(event)
 
 
                 const video = document.getElementById("video");
+
+                /*
+                video.addEventListener('loadedmetadata', () => {
+                    setWebcamSize(video.videoWidth, video.videoHeight);
+                });
+                */
+
+
                 const canvas = document.getElementById("canvas");
                 const ctx = canvas.getContext('2d', { willReadFrequently: true });
 
@@ -1162,6 +1170,12 @@ arModel.addEventListener("ar-status", (event) => {
         // 3. Frame auf Canvas zeichnen
         ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
 
+        /*
+        ctx.filter = "brightness(120%) contrast(130%) grayscale(100%)";
+        ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+        ctx.filter = "none"; // Filter wieder zurücksetzen
+        */
+
         // 4. Marker-Erkennung (NUR EINMAL AUFRUFEN)
         const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
         const markers = detectorForMarker.detect(imageData);
@@ -1201,7 +1215,8 @@ arModel.addEventListener("ar-status", (event) => {
                 // Überprüfung: Marker-ID 10, dann kein 3D-Objekt
                 if (marker.id >= 1 && marker.id <= 6)
                 {
-                    positionModelOnMarker(centerX, centerY);
+                    //positionModelOnMarker(centerX, centerY);
+                    positionModelOnMarker(markers);
                 }
 
                 
