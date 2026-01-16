@@ -36,12 +36,12 @@ wenn sie etwas anfassen können und eigene Eindrücke und Erfahrungen sammeln k�
 ## Projektablauf
 
 - [x] GLB-Datei lokal einbinden
-- [ ] Anpassung Anzeigebild von Webcame (Hoch-/Querformat)
+- [X] Anpassung Anzeigebild von Webcame (Hoch-/Querformat)
 - [x] GLB-Code in explore.html einbauen
 - [ ] Winkelerkennung (x, y, z)
-- [ ] Drehung der GLB-Objekte anhand der Winkelerkennung
-- [ ] Bottom-Menü anpassen
-- [ ] Audio-Wiedergabe einbauen
+- [X] Drehung der GLB-Objekte anhand der Winkelerkennung
+- [X] Bottom-Menü anpassen
+- [X] Audio-Wiedergabe einbauen
 - [ ] Platzierung der <script>-Elemente anpassen, sodass Skripte korrekt nach ihrer Implementierung aufgerufen werden (und nicht auf nicht existierende Objekte an einer unteren Stelle zugreifen wollen)
 - [ ] Sidenav anpassen (Links, Feedback, Beta, Online-Status, Impressum, Datenschutz, ...)
 - [ ] z-index anpassen
