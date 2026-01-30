@@ -113,7 +113,7 @@ const database = [
         oBanner: "./data/3d/img/cat.png",
         oSrc: "./data/3d/object/an_animated_cat.glb",
         oCopyright: "'An Animated Cat' (https://skfb.ly/6YPwH) by Evil_Katz is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).",
-        oSizeMultiplier: 6,
+        oSizeMultiplier: 8,
         oBackground: "transparent",
         oBackgroundSrc: "",
 
@@ -132,7 +132,7 @@ const database = [
         oBanner: "./data/3d/img/dog.png",
         oSrc: "./data/3d/object/dog_puppy.glb",
         oCopyright: "'Dog Puppy' (https://skfb.ly/oRKH6) by kenchoo is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).",
-        oSizeMultiplier: 6,
+        oSizeMultiplier: 8,
         oBackground: "transparent",
         oBackgroundSrc: "",
 
