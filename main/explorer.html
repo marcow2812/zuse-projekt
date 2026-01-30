@@ -747,14 +747,9 @@
                 ar-modes="scene-viewer webxr quick-look"
                 touch-action="pan-y"
                 camera-controls
-
                 loading="eager"
-                
-                shadow-intensity="1"
-                
+                shadow-intensity="1"                
                 poster="./data/img/favicon.png">
-
-                
 
 
             </model-viewer>
@@ -1237,7 +1232,7 @@ arModel.addEventListener("ar-status", (event) => {
                 const R = pose.bestRotation;
                 const T = pose.bestTranslation;
                 const e = rotationMatrixToEuler(R);
-                getDegByMarker(marker.id, e.x.toFixed(1), e.y.toFixed(1), e.z.toFixed(1));
+                setDegByMarker(marker.id, e.x.toFixed(1), e.y.toFixed(1), e.z.toFixed(1));
 
                 // Marker rot umranden (Debug)
                 /*

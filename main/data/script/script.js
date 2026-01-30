@@ -39,6 +39,7 @@ Weitere Objekte:
 */
 
 const database = [
+    /*
     {
         id: "mystery",
         oTitle: "Zuse Tatort",
@@ -77,10 +78,90 @@ const database = [
         oMainTextColor: "white",
         oMainBgColor: "rgba(46, 65, 168, 0.8)",
 
-        oAudioSrc: "./data/music/night-before-dawn-129272.mp3",
-        oAudioCopyright: "Music by <a href='https://pixabay.com/users/sweet_kr-27931391/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=129272'>Artur Buriak</a> from <a href='https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=129272'>Pixabay</a>",
-        oAudioStartAt: 2.0,
+        oAudioId: 1,
     },
+    */
+
+    
+
+    {
+        id: "bird-1",
+        oTitle: "Vogel",
+        oDescription: "Ein oranger Vogel",
+        oSubject: "bi",
+        oFsk: 0,
+
+        oBanner: "./data/3d/img/bird.png",
+        oSrc: "./data/3d/object/bird_orange.glb",
+        oCopyright: "'Bird Orange' (https://skfb.ly/oGo8E) by Wen Yeh is licensed under CC Attribution-NonCommercial-ShareAlike (http://creativecommons.org/licenses/by-nc-sa/4.0/).",
+        oSizeMultiplier: 6,
+        oBackground: "url('./data/3d/img/nature-1311619_640.jpg')",
+        oBackgroundSrc: "",
+
+        oMainTextColor: "white",
+        oMainBgColor: "rgba(0, 102, 204, 0.5)",
+
+        oAudioId: 3,
+    },
+    {
+        id: "cat-1",
+        oTitle: "Katze",
+        oDescription: "Eine lebendige Katze",
+        oSubject: "bi",
+        oFsk: 0,
+
+        oBanner: "./data/3d/img/cat.png",
+        oSrc: "./data/3d/object/an_animated_cat.glb",
+        oCopyright: "'An Animated Cat' (https://skfb.ly/6YPwH) by Evil_Katz is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).",
+        oSizeMultiplier: 6,
+        oBackground: "transparent",
+        oBackgroundSrc: "",
+
+        oMainTextColor: "white",
+        oMainBgColor: "rgba(0, 102, 204, 0.5)",
+
+        oAudioId: 3,
+    },
+    {
+        id: "dog-1",
+        oTitle: "Hund",
+        oDescription: "Ein lebendiger Hund",
+        oSubject: "bi",
+        oFsk: 0,
+
+        oBanner: "./data/3d/img/dog.png",
+        oSrc: "./data/3d/object/dog_puppy.glb",
+        oCopyright: "'Dog Puppy' (https://skfb.ly/oRKH6) by kenchoo is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).",
+        oSizeMultiplier: 6,
+        oBackground: "transparent",
+        oBackgroundSrc: "",
+
+        oMainTextColor: "white",
+        oMainBgColor: "rgba(0, 102, 204, 0.5)",
+
+        oAudioId: 3,
+    },
+    {
+        id: "fish-1",
+        oTitle: "Koi",
+        oDescription: "Ein lebendiger Koi",
+        oSubject: "bi",
+        oFsk: 0,
+
+        oBanner: "./data/3d/img/fish.png",
+        oSrc: "./data/3d/object/koi_fish.glb",
+        oCopyright: "'Koi Fish' (https://skfb.ly/oNCWq) by 7PLUS is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).",
+        oSizeMultiplier: 6,
+        oBackground: "url('./data/3d/img/meer-4898934_640.jpg')",
+        oBackgroundSrc: "",
+
+        oMainTextColor: "white",
+        oMainBgColor: "rgba(0, 102, 204, 0.5)",
+
+        oAudioId: 3,
+    },
+
+
 
 
 
@@ -102,9 +183,7 @@ const database = [
         oMainTextColor: "white",
         oMainBgColor: "rgba(0, 102, 204, 0.5)",
 
-        oAudioSrc: "./data/music/night-before-dawn-129272.mp3",
-        oAudioCopyright: "Music by <a href='https://pixabay.com/users/sweet_kr-27931391/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=129272'>Artur Buriak</a> from <a href='https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=129272'>Pixabay</a>",
-        oAudioStartAt: 2.0,
+        oAudioId: 1,
     },
 
     
@@ -125,9 +204,7 @@ const database = [
         oMainTextColor: "white",
         oMainBgColor: "rgba(0, 102, 204, 0.5)",
 
-        oAudioSrc: "./data/music/racing-speed-action-music-416097.mp3",
-        oAudioCopyright: "Music by <a href='https://pixabay.com/users/tatamusic-51344851/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=416097'>Mykola Sosin</a> from <a href='https://pixabay.com/music//?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=416097'>Pixabay</a>",
-        oAudioStartAt: 1.5,
+        oAudioId: 2,
     },
 
     {
@@ -147,9 +224,7 @@ const database = [
         oMainTextColor: "white",
         oMainBgColor: "rgba(0, 102, 204, 0.5)",
 
-        oAudioSrc: "./data/music/racing-speed-action-music-416097.mp3",
-        oAudioCopyright: "Music by <a href='https://pixabay.com/users/tatamusic-51344851/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=416097'>Mykola Sosin</a> from <a href='https://pixabay.com/music//?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=416097'>Pixabay</a>",
-        oAudioStartAt: 1.5,
+        oAudioId: 2,
     },
 
     {
@@ -216,6 +291,31 @@ const database = [
     },
 ];
 
+
+
+const audioDatabase = [
+    {
+        id: 1,
+        aSrc: "./data/music/night-before-dawn-129272.mp3",
+        aStartAt: 2.5,
+        aCopyright: "Music by <a href='https://pixabay.com/users/sweet_kr-27931391/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=129272'>Artur Buriak</a> from <a href='https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=129272'>Pixabay</a>",
+    },
+    {
+        id: 2,
+        aSrc: "./data/music/racing-speed-action-music-416097.mp3",
+        aStartAt: 1.5,
+        aCopyright: "Music by <a href='https://pixabay.com/users/tatamusic-51344851/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=416097'>Mykola Sosin</a> from <a href='https://pixabay.com/music//?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=416097'>Pixabay</a>",
+    },
+    {
+        id: 3,
+        aSrc: "./data/music/birds-forrest-457845.mp3",
+        aStartAt: 0,
+        aCopyright: "Sound Effect by <a href='https://pixabay.com/users/u_thlvfy3fsc-53936441/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=457845'>u_thlvfy3fsc</a> from <a href='https://pixabay.com/sound-effects//?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=457845'>Pixabay</a>",
+    },
+
+    
+];
+
 /*
 { id: "city-1", oBanner: "./data/img/favicon.png", oSrc: "./data/3d/city_pack_5.glb", oTitle: "Stadt", oSizeMultiplier: 4, oBackground: "#e6e6e6", oAudioStartAt: 1.5, oCopyright: "" },
     { id: "davinci-1", oBanner: "./data/img/favicon.png", oSrc: "./data/3d/da_vinci_code_cryptex.glb", oTitle: "Da Vinci Cryptex", oSizeMultiplier: 3, oBackground: "transparent", oAudioStartAt: 1.5, oCopyright: "" },
@@ -234,7 +334,7 @@ console.log(database.length);
 
 function loadThePage()
 {
-    setObject("disco-1");
+    setObject("newton-1");
 
     getParameter();
 
@@ -327,6 +427,9 @@ function setMenuFromDatabase(numberOfObjects)
 
     for (i = 0; i < database.length; i++)
     {
+
+
+
         /* innerHtmlOfMenu = innerHtmlOfMenu + "<div class='subject-box-new' onclick='setObject('heart-1')'><div class='subject-box-image-container'><div class='icon-qrcode' onclick='generateQrCode('heart-1')'><svg xmlns='http://www.w3.org/2000/svg' fill='currentColor' class='bi bi-qr-code-scan' viewBox='0 0 16 16'><path d='M0 .5A.5.5 0 0 1 .5 0h3a.5.5 0 0 1 0 1H1v2.5a.5.5 0 0 1-1 0zm12 0a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0V1h-2.5a.5.5 0 0 1-.5-.5M.5 12a.5.5 0 0 1 .5.5V15h2.5a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5v-3a.5.5 0 0 1 .5-.5m15 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1 0-1H15v-2.5a.5.5 0 0 1 .5-.5M4 4h1v1H4z'/><path d='M7 2H2v5h5zM3 3h3v3H3zm2 8H4v1h1z'/><path d='M7 9H2v5h5zm-4 1h3v3H3zm8-6h1v1h-1z'/><path d='M9 2h5v5H9zm1 1v3h3V3zM8 8v2h1v1H8v1h2v-2h1v2h1v-1h2v-1h-3V8zm2 2H9V9h1zm4 2h-1v1h-2v1h3zm-4 2v-1H8v1z'/><path d='M12 9h2V8h-2z'/></svg></div><div class='icon-copyright'><svg xmlns='http://www.w3.org/2000/svg' fill='currentColor' class='bi bi-c-circle-fill' viewBox='0 0 16 16'><path d='M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.146 4.992c.961 0 1.641.633 1.729 1.512h1.295v-.088c-.094-1.518-1.348-2.572-3.03-2.572-2.068 0-3.269 1.377-3.269 3.638v1.073c0 2.267 1.178 3.603 3.27 3.603 1.675 0 2.93-1.02 3.029-2.467v-.093H9.875c-.088.832-.75 1.418-1.729 1.418-1.224 0-1.927-.891-1.927-2.461v-1.06c0-1.583.715-2.503 1.927-2.503'/></svg></div><img src='./data/3d/img/heart-1.webp'></div><div class='subject-box-title'>Rotes Herz</div></div>"; */
         innerHtmlOfMenu = innerHtmlOfMenu + `
         <div class="subject-box-new" onclick="setObject('${database[i].id}')" data-category="${database[i].oSubject}" data-title="${database[i].oTitle}">
@@ -356,6 +459,7 @@ function setMenuFromDatabase(numberOfObjects)
             <!-- </div> -->
         </div>
         `;
+        
     }
 
     document.getElementById("subject-container-new").innerHTML = innerHtmlOfMenu;
@@ -466,7 +570,7 @@ async function checkInternetConnection()
 }
 
 
-function getDegByMarker(marker, x, y, z)
+function setDegByMarker(marker, x, y, z)
 {
 
     const invertedZ = (360 - parseFloat(z)) % 360; 
@@ -902,9 +1006,23 @@ function setObject(objectIdParameter)
     model.src = ""; // Zurücksetzen für Ladebild
     model.src = database.find(u => u.id === objectId).oSrc;
     document.getElementById("objectTitle").innerHTML = database.find(u => u.id === objectId).oTitle;
-    setAudioPlayTime(database.find(u => u.id === objectId).oAudioStartAt);
+    
 
-    document.getElementById("audioPlayer").src = database.find(u => u.id === objectId).oAudioSrc;
+
+    // setAudioPlayTime(database.find(u => u.id === objectId).oAudioStartAt);
+    // document.getElementById("audioPlayer").src = database.find(u => u.id === objectId).oAudioSrc;
+
+    var audioId = database.find(u => u.id === objectId).oAudioId;
+
+    // console.warn(audioId);
+
+    //console.warn(audioDatabase.find(u => u.id === audioId).aStartAt);
+    //console.warn(audioDatabase.find(u => u.id === audioId).aSrc);
+
+    setAudioPlayTime(audioDatabase.find(u => u.id === audioId).aStartAt);
+    document.getElementById("audioPlayer").src = audioDatabase.find(u => u.id === audioId).aSrc;
+
+
 
     document.getElementById("title").style.backgroundColor = "rgba(98, 166, 14, 0.5)";
     document.getElementById("title").style.borderColor = "rgba(98, 166, 14, 0.5)";
