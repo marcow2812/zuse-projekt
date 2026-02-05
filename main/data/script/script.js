@@ -99,7 +99,7 @@ const database = [
         oBackgroundSrc: "",
 
         oMainTextColor: "white",
-        oMainBgColor: "rgba(0, 102, 204, 0.5)",
+        oMainBgColor: "rgba(98, 166, 14, 0.5)",
 
         oAudioId: 3,
     },
@@ -118,7 +118,7 @@ const database = [
         oBackgroundSrc: "",
 
         oMainTextColor: "white",
-        oMainBgColor: "rgba(0, 102, 204, 0.5)",
+        oMainBgColor: "rgba(98, 166, 14, 0.5)",
 
         oAudioId: 3,
     },
@@ -137,7 +137,7 @@ const database = [
         oBackgroundSrc: "",
 
         oMainTextColor: "white",
-        oMainBgColor: "rgba(0, 102, 204, 0.5)",
+        oMainBgColor: "rgba(98, 166, 14, 0.5)",
 
         oAudioId: 3,
     },
@@ -156,7 +156,7 @@ const database = [
         oBackgroundSrc: "",
 
         oMainTextColor: "white",
-        oMainBgColor: "rgba(0, 102, 204, 0.5)",
+        oMainBgColor: "rgba(98, 166, 14, 0.5)",
 
         oAudioId: 3,
     },
@@ -181,12 +181,12 @@ const database = [
         oBackgroundSrc: "",
 
         oMainTextColor: "white",
-        oMainBgColor: "rgba(0, 102, 204, 0.5)",
+        oMainBgColor: "rgba(98, 166, 14, 0.5)",
 
         oAudioId: 1,
     },
 
-    
+    /*
     {
         id: "heart-1",
         oTitle: "Rotes Herz",
@@ -202,7 +202,7 @@ const database = [
         oBackgroundSrc: "",
 
         oMainTextColor: "white",
-        oMainBgColor: "rgba(0, 102, 204, 0.5)",
+        oMainBgColor: "rgba(98, 166, 14, 0.5)",
 
         oAudioId: 2,
     },
@@ -222,10 +222,11 @@ const database = [
         oBackgroundSrc: "",
 
         oMainTextColor: "white",
-        oMainBgColor: "rgba(0, 102, 204, 0.5)",
+        oMainBgColor: "rgba(98, 166, 14, 0.5)",
 
         oAudioId: 2,
     },
+    */
 
     {
         id: "atom-1",
@@ -240,6 +241,9 @@ const database = [
         oBackground: "black",
         oAudioStartAt: 1.5,
         oCopyright: "'Atom' (https://skfb.ly/onXKz) by LucasPresoto is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).",
+    
+        oMainTextColor: "white",
+        oMainBgColor: "rgba(98, 166, 14, 0.5)",
     },
     
     {
@@ -252,8 +256,33 @@ const database = [
         oBackground: "black",
         oAudioStartAt: 1.5,
         oCopyright: "3D model by <a href='https://pixabay.com/users/blendertimer-9538909/?utm_source=link-attribution&utm_medium=referral&utm_campaign=object3d&utm_content=9'>Daniel Roberts</a> from <a href='https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=object3d&utm_content=9'>Pixabay</a>",
-    },
     
+        oMainTextColor: "white",
+        oMainBgColor: "rgba(98, 166, 14, 0.5)",
+    
+    },
+    {
+        id: "earth-2",
+        oTitle: "Cartoon Erdkugel",
+        oDescription: "Ein Rundflug über unsere Erde",
+        oSubject: "er",
+        oFsk: 0,
+
+        oBanner: "./data/3d/img/earth2.png",
+        oSrc: "./data/3d/object/earth_cartoon.glb",
+        oCopyright: "'Earth cartoon' (https://skfb.ly/oYy8F) by onirix is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).",
+        oSizeMultiplier: 6,
+        oBackground: "none",
+        oBackgroundSrc: "",
+
+        oMainTextColor: "white",
+        oMainBgColor: "rgba(98, 166, 14, 0.5)",
+
+        oAudioId: 3,
+    },
+
+
+    /*
     {
         id: "solar-1",
         oSubject: "ph",
@@ -264,18 +293,25 @@ const database = [
         oBackground: "black",
         oAudioStartAt: 10,
         oCopyright: "'Solar system' (https://skfb.ly/oKYnC) by dannzjs is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).",
+    
+        oMainTextColor: "white",
+        oMainBgColor: "rgba(98, 166, 14, 0.5)",
     },
+    */
 
     {
         id: "solar-2",
         oSubject: "ph",
         oBanner: "./data/img/favicon.png",
         oSrc: "./data/3d/object/solar_system2.glb",
-        oTitle: "Sonnensystem (2)",
+        oTitle: "Sonnensystem",
         oSizeMultiplier: 7,
         oBackground: "transparent",
         oAudioStartAt: 10,
         oCopyright: "'Solar System : المجموعة الشمسية' (https://skfb.ly/YnDQ) by shooogp is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).",
+    
+        oMainTextColor: "white",
+        oMainBgColor: "rgba(98, 166, 14, 0.5)",
     },
 
     {
@@ -288,7 +324,75 @@ const database = [
         oBackground: "url('./data/3d/img/mars.jpg')",
         oAudioStartAt: 10,
         oCopyright: "'Curiosity Mars rover' (https://skfb.ly/oTPHp) by Cybertron B-127 is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).\nFoto von RDNE Stock project: https://www.pexels.com/de-de/foto/wuste-trocken-felsen-konzept-8474500/",
+    
+        oMainTextColor: "white",
+        oMainBgColor: "rgba(98, 166, 14, 0.5)",
     },
+
+    {
+        id: "tectonic-1",
+        oTitle: "Plattentektonik",
+        oDescription: "Erkundet die Plattentektonik, bei der zwei Kontinentalplatten aufeinandertreffen",
+        oSubject: "er",
+        oFsk: 0,
+
+        oBanner: "./data/3d/img/tectonic1.png",
+        oSrc: "./data/3d/object/tectonic_plates_animated.glb",
+        oCopyright: "'tectonic plates Animated' (https://skfb.ly/ptRST) by Syafani is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).",
+        oSizeMultiplier: 6,
+        oBackground: "none",
+        oBackgroundSrc: "",
+
+        oMainTextColor: "white",
+        oMainBgColor: "rgba(98, 166, 14, 0.5)",
+
+        oAudioId: 3,
+    },
+
+    {
+        id: "mars-1",
+        oTitle: "Mars",
+        oDescription: "Erkunde den Mars",
+        oSubject: "ph",
+        oFsk: 0,
+
+        oBanner: "./data/3d/img/mars.png",
+        oSrc: "./data/3d/object/mars.glb",
+        oCopyright: "'Mars' (https://skfb.ly/oyCyK) by JanesBT is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).",
+        oSizeMultiplier: 6,
+        oBackground: "#2d2d2dff",
+        oBackgroundSrc: "",
+
+        oMainTextColor: "white",
+        oMainBgColor: "rgba(98, 166, 14, 0.5)",
+
+        oAudioId: 4,
+    },
+
+
+    /*
+    {
+        id: "tectonic-2",
+        oTitle: "Plattentektonik (aufeinander)",
+        oDescription: "Erkundet die Plattentektonik",
+        oSubject: "er",
+        oFsk: 0,
+
+        oBanner: "./data/3d/img/tectonic2.png",
+        oSrc: "./data/3d/object/moving_tectonic_plates.glb",
+        oCopyright: "'Moving Tectonic Plates' (https://skfb.ly/oSw8D) by eugenek818 is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).",
+        oSizeMultiplier: 6,
+        oBackground: "none",
+        oBackgroundSrc: "",
+
+        oMainTextColor: "white",
+        oMainBgColor: "rgba(98, 166, 14, 0.5)",
+
+        oAudioId: 3,
+    },
+    */
+
+    
 ];
 
 
@@ -311,6 +415,12 @@ const audioDatabase = [
         aSrc: "./data/music/birds-forrest-457845.mp3",
         aStartAt: 0,
         aCopyright: "Sound Effect by <a href='https://pixabay.com/users/u_thlvfy3fsc-53936441/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=457845'>u_thlvfy3fsc</a> from <a href='https://pixabay.com/sound-effects//?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=457845'>Pixabay</a>",
+    },
+    {
+        id: 4,
+        aSrc: "./data/music/the_mountain-space-438391.mp3",
+        aStartAt: 0,
+        aCopyright: "Music by <a href='https://pixabay.com/users/the_mountain-3616498/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=438391'>Dmitrii Kolesnikov</a> from <a href='https://pixabay.com/music//?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=438391'>Pixabay</a>",
     },
 
     
