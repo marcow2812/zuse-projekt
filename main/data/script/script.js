@@ -264,7 +264,7 @@ const database = [
     {
         id: "earth-2",
         oTitle: "Cartoon Erdkugel",
-        oDescription: "Ein Rundflug über unsere Erde",
+        oDescription: "Entdecke unseren 4,5 Millionen Jahre alten Planeten - die Erde.<br>Mit seinen 7 Kontinenten bedeckt sie rund 510 Millionen Quadratkilometer. Rund 71% der Oberfläche sind mit Wasser bedeckt, was einer Fläche von 361 Millionen Quadratkilometern entspricht.<br>Erlebe einen Rundflug über den blauen Planeten.",
         oSubject: "er",
         oFsk: 0,
 

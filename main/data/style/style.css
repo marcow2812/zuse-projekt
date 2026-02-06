@@ -285,7 +285,7 @@ header img
 .menu
 {
     text-align: center;
-    background-color: white; /* rgb(242, 242, 242, 0.5) */
+    background-color: rgb(255, 255, 255, 0.6); /* rgb(242, 242, 242, 0.5) */
     /* border: 1px solid #E6E6E6; */
     position: absolute;
     width: 85%;
