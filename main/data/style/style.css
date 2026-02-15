@@ -1,8 +1,8 @@
 :root
 {
-    --green: #62A60E;
-      --green-light: #E6FFE6; /* D8FFD8 */
-      --green-dark: #579210;
+    --main: #62A60E; /* Gelb: #ffbc0d        Zuse-grün: #62A60E */
+      --main-light: #E6FFE6; /* D8FFD8 */
+      --main-dark: #579210;
     --red: #a60e0e;
       --red-light: #ffe6e6;
     --gray: gray;
@@ -28,7 +28,7 @@
 ::selection
 {
   color: white;
-  background: var(--green);
+  background: var(--main);
 }
 
 html, body
@@ -61,7 +61,7 @@ html, body
 
 a
 {
-  color: var(--green);
+  color: var(--main);
 }
 
 /*
@@ -99,6 +99,12 @@ model-viewer#move-model {
     pointer-events: none;
 }
 
+.viewer-container {
+    position: relative; /* Wichtig für die Positionierung des Buttons */
+    width: 100%;
+    height: 100%;
+}
+
 model-viewer#ar-model
 {
   border: 2px solid var(--gray-light);
@@ -114,11 +120,28 @@ model-viewer#ar-model
     margin-bottom: 15px;
 }
 
+#startStopAnimationBtn
+{
+  position: absolute;
+    top: 10px; /* Kleiner Abstand vom oberen Rand */
+    left: 50%;
+    transform: translateX(-50%); /* Schiebt den Button genau in die Mitte */
+    z-index: 100; /* Stellt sicher, dass der Button über dem Modell liegt */
+
+  padding: 4px 10px;
+  font-size: 13px;
+  color: white;
+  background-color: rgb(62, 62, 62);
+  border: none;
+  border-radius: 100px;
+  cursor: pointer;
+}
+
 #loadingPage
 {
     width: 100%;
     height: 100%;
-    background-color: var(--green);
+    background-color: var(--main);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -235,6 +258,7 @@ header img
     padding: 4px 26px 4px 12px;
     border-radius: 100px;
     box-sizing: border-box;
+    font-weight: bold;
 }
 
 .info-button {
@@ -247,7 +271,7 @@ header img
     
     border: none;
     border-radius: 50%;
-    background-color: var(--green);
+    background-color: var(--main);
     color: white;
 
     font-weight: bold;
@@ -261,7 +285,7 @@ header img
 
 /* Hover-Effekt (optional) */
 .info-button:hover {
-    background-color: var(--green-dark);
+    background-color: var(--main-dark);
 }
 
 
@@ -306,19 +330,19 @@ header img
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: var(--green);
+  background-color: var(--main);
   border-radius: 50%;
   padding: 8px;
   color: white;
   cursor: pointer;
   border: none;
 
-  box-shadow: 0 0 0px var(--green);
+  box-shadow: 0 0 0px var(--main);
   transition: box-shadow 0.3s ease, border-color 0.3s ease;
 }
 .menu .menuBtn:hover
 {
-  box-shadow: 0 0 16px var(--green);
+  box-shadow: 0 0 16px var(--main);
 }
 
 .menu .settingBtn
@@ -328,7 +352,7 @@ header img
 
   aspect-ratio: 1 / 1;
   display: flex;
-  background-color: var(--green);
+  background-color: var(--main);
   border-radius: 50%;
   padding: 8px;
   color: white;
@@ -387,7 +411,7 @@ header img
 
 
 .sidenav .closebtn {
-  color: var(--green);
+  color: var(--main);
   position: absolute;
   top: 10px;
   right: 25px;
@@ -457,9 +481,9 @@ header img
 
 .icon-green
 {
-  color: var(--green);
-  background-color: var(--green-light);
-  border: 1px solid var(--green);
+  color: var(--main);
+  background-color: var(--main-light);
+  border: 1px solid var(--main);
 }
 .icon-red
 {
@@ -483,6 +507,7 @@ header img
   background-color: rgb(0,0,0); /* Fallback color */
   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 
+  
 }
 
 /* Modal Content */
@@ -493,6 +518,9 @@ header img
   margin: auto;
   padding: 0;
   border: 1px solid #888;
+
+  border-radius: 11px;
+
   width: 90%;
   max-width: 500px;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
@@ -519,8 +547,9 @@ header img
 {
   font-weight: bold;
   padding: 12px 14px;
-  background-color: var(--green);
+  background-color: var(--main);
   color: white;
+  border-radius: 10px 10px 0px 0px;
 }
 
 .modal-body
@@ -533,7 +562,7 @@ header img
   padding: 8px 12px;
   border-radius: 3px;
   color: white;
-  background-color: var(--green);
+  background-color: var(--main);
   border: none;
   cursor: pointer;
   margin: 3px;
@@ -541,7 +570,7 @@ header img
 
 .btn:hover
 {
-  background-color: var(--green-dark);
+  background-color: var(--main-dark);
 }
 
 .icon-text-container
@@ -558,7 +587,7 @@ header img
 {
   width: 28px;
   height: auto;
-  color: var(--green);
+  color: var(--main);
   flex-shrink: 0;
 }
 
@@ -771,6 +800,8 @@ header img
             max-height: 80vh;          /* Begrenzt die Höhe auf 80% des Sichtfeldes */
     overflow-y: auto;          /* Zeigt Scrollbar nur an, wenn der Inhalt zu lang ist */
     overflow-x: hidden;
+
+
         }
 
 #qr-container {
@@ -835,9 +866,9 @@ header img
 .subject-box-new:hover {
   transform: scale(1.06); 
   z-index: 10; 
-  background: linear-gradient(to right, var(--green), #7acf12);
+  background: linear-gradient(to right, var(--main), #7acf12);
   color: white;
-  box-shadow: 0 0 6px var(--green);
+  box-shadow: 0 0 6px var(--main);
 }
 
 .subject-box-new svg
@@ -969,7 +1000,7 @@ header img
 
 #searchInput:focus
 {
-  border-bottom-color: var(--green);
+  border-bottom-color: var(--main);
   outline: none;
 }
 
@@ -987,7 +1018,7 @@ header img
 
 .categoryFilter:focus
 {
-  border-bottom-color: var(--green);
+  border-bottom-color: var(--main);
   outline: none;
 }
 
@@ -1126,7 +1157,7 @@ header img
 .bottom-modal-header {
   border-radius: 8px 8px 0px 0px;
   padding: 2px 16px;
-  background-color: var(--green);
+  background-color: var(--main);
   color: white;
 }
 
@@ -1292,6 +1323,25 @@ header img
   display: inline-block;
 }
 
+#bottom-modal-description
+{
+  margin: 20px 0px;
+  border: 1px solid #cccccc;
+  padding: 10px;
+  border-radius: 8px;
+  background-color: #fafafa;
+}
+
+.cross-reference 
+{
+  text-decoration: underline;
+  color: var(--main);
+  cursor: pointer;
+  font-weight: bold;
+}
+
+
+
 #wwm-box
 {
     position: absolute;
@@ -1359,3 +1409,84 @@ text-align: center;
     box-sizing: border-box;
 cursor: pointer;
 }
+
+
+
+
+
+
+
+.hotspot {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: none;
+    background-color: var(--main, #007bff); /* Nutzt Blau als Fallback */
+    color: white;
+
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    position: relative;
+    padding: 0;
+
+    
+  }
+
+  .hotspot:hover
+  {
+    background-color: var(--main-dark);
+  }
+
+  /* Das "i" im Kreis */
+  .hotspot::before {
+    content: "?";
+  }
+
+  /* Die Infobox (Annotation) */
+  .annotation {
+    display: none; /* Standardmäßig versteckt */
+    background-color: white;
+    color: #333;
+    position: absolute;
+    left: calc(100% + 10px); /* Rechts neben dem Hotspot */
+    top: 50%;
+    transform: translateY(-50%);
+    border-radius: 8px;
+    padding: 12px;
+    width: 150px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    font-family: sans-serif;
+    font-size: 12px;
+    pointer-events: auto; /* Erlaubt Klicks in der Box */
+    z-index: 10;
+
+    border: 1px solid #cccccc;
+  }
+
+  /* Sichtbarkeit steuern: Wenn der Hotspot angeklickt/fokussiert wird */
+  .hotspot:focus .annotation,
+  .hotspot:active .annotation {
+    display: block;
+  }
+
+  /*
+
+  .annotation::after {
+    content: "";
+    position: absolute;
+    right: 100%;
+    top: 50%;
+    margin-top: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent white transparent transparent;
+  }
+
+  :not(:defined) > * {
+    display: none;
+  }
+  */

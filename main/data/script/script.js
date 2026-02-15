@@ -102,6 +102,22 @@ const database = [
         oMainBgColor: "rgba(98, 166, 14, 0.5)",
 
         oAudioId: 3,
+
+        oHotspots: `
+        <button class="hotspot" slot="hotspot-visor" data-position="0 1.75 0.35" data-normal="0 0 1">
+    <div class="annotation">
+      <strong>Visier-Info</strong><br>
+      Dies ist das goldbeschichtete Visier des Astronauten.
+    </div>
+  </button>
+
+  <button class="hotspot" slot="hotspot-visor" data-position="0 1 0.35" data-normal="0 0 1">
+    <div class="annotation">
+      <strong>Visier-Info</strong><br>
+      Dies ist das goldbeschichtete Visier des Astronauten.
+    </div>
+  </button>
+        `,
     },
     {
         id: "cat-1",
@@ -121,6 +137,8 @@ const database = [
         oMainBgColor: "rgba(98, 166, 14, 0.5)",
 
         oAudioId: 3,
+
+        oHotspots: ``,
     },
     {
         id: "dog-1",
@@ -140,6 +158,8 @@ const database = [
         oMainBgColor: "rgba(98, 166, 14, 0.5)",
 
         oAudioId: 3,
+
+        oHotspots: ``,
     },
     {
         id: "fish-1",
@@ -159,6 +179,8 @@ const database = [
         oMainBgColor: "rgba(98, 166, 14, 0.5)",
 
         oAudioId: 3,
+
+        oHotspots: ``,
     },
 
 
@@ -184,6 +206,8 @@ const database = [
         oMainBgColor: "rgba(98, 166, 14, 0.5)",
 
         oAudioId: 1,
+
+        oHotspots: ``,
     },
 
     /*
@@ -244,6 +268,8 @@ const database = [
     
         oMainTextColor: "white",
         oMainBgColor: "rgba(98, 166, 14, 0.5)",
+
+        oHotspots: ``,
     },
     
     {
@@ -259,12 +285,14 @@ const database = [
     
         oMainTextColor: "white",
         oMainBgColor: "rgba(98, 166, 14, 0.5)",
+
+        oHotspots: ``,
     
     },
     {
         id: "earth-2",
         oTitle: "Cartoon Erdkugel",
-        oDescription: "Entdecke unseren 4,5 Millionen Jahre alten Planeten - die Erde.<br>Mit seinen 7 Kontinenten bedeckt sie rund 510 Millionen Quadratkilometer. Rund 71% der Oberfläche sind mit Wasser bedeckt, was einer Fläche von 361 Millionen Quadratkilometern entspricht.<br>Erlebe einen Rundflug über den blauen Planeten.",
+        oDescription: `Entdecke unseren 4,5 Millionen Jahre alten Planeten - die Erde.<br>Mit seinen 7 Kontinenten bedeckt sie rund 510 Millionen Quadratkilometer. Rund 71% der Oberfläche sind mit Wasser bedeckt, was einer Fläche von 361 Millionen Quadratkilometern entspricht.<br>Erlebe einen Rundflug über den blauen Planeten.<br>Der Nachbarplanet im <a class='cross-reference' onclick="setCrossReferenceObject('solar-2')">Sonnensystem</a> ist der <a class='cross-reference' onclick="setCrossReferenceObject('mars-1')">Mars</a>.`,
         oSubject: "er",
         oFsk: 0,
 
@@ -279,6 +307,8 @@ const database = [
         oMainBgColor: "rgba(98, 166, 14, 0.5)",
 
         oAudioId: 3,
+
+        oHotspots: ``,
     },
 
 
@@ -306,12 +336,55 @@ const database = [
         oSrc: "./data/3d/object/solar_system2.glb",
         oTitle: "Sonnensystem",
         oSizeMultiplier: 7,
-        oBackground: "transparent",
-        oAudioStartAt: 10,
+        oBackground: "black",
+
         oCopyright: "'Solar System : المجموعة الشمسية' (https://skfb.ly/YnDQ) by shooogp is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).",
     
         oMainTextColor: "white",
         oMainBgColor: "rgba(98, 166, 14, 0.5)",
+
+        oHotspots: `
+
+        <button class="hotspot" slot="hotspot-18" data-surface="17 0 615 616 617 0.353 0.031 0.616" data-visibility-attribute="visible">
+        <div class="annotation">Sonne</div>
+    </button>
+
+
+        <button class="hotspot" slot="hotspot-8" data-surface="16 0 162 163 164 0.089 0.601 0.310" data-visibility-attribute="visible">
+        <div class="annotation">Merkur</div>
+    </button>
+
+    <button class="hotspot" slot="hotspot-10" data-surface="15 0 4015 4016 4017 0.518 0.169 0.313" data-visibility-attribute="visible">
+        <div class="annotation">Venus</div>
+    </button>
+
+    <button class="hotspot" slot="hotspot-11" data-surface="13 0 30 31 32 0.475 0.387 0.138" data-visibility-attribute="visible">
+        <div class="annotation">Erde</div>
+    </button>
+
+    <button class="hotspot" slot="hotspot-12" data-surface="12 0 3155 3156 3157 0.021 0.482 0.497" data-visibility-attribute="visible">
+        <div class="annotation">Mars</div>
+    </button>
+
+    <button class="hotspot" slot="hotspot-14" data-surface="11 0 3175 3177 3178 0.046 0.759 0.195" data-visibility-attribute="visible">
+        <div class="annotation">Jupiter</div>
+    </button>
+
+    <button class="hotspot" slot="hotspot-15" data-surface="10 0 2547 2549 2550 0.000 0.419 0.580" data-visibility-attribute="visible">
+        <div class="annotation">Saturn</div>
+    </button>
+
+    <button class="hotspot" slot="hotspot-16" data-surface="9 0 659 661 662 0.211 0.162 0.628" data-visibility-attribute="visible">
+        <div class="annotation">Uranus</div>
+    </button>
+
+    <button class="hotspot" slot="hotspot-17" data-surface="8 0 959 960 961 0.035 0.202 0.762" data-visibility-attribute="visible">
+        <div class="annotation">Neptun</div>
+    </button>
+
+    
+
+        `,
     },
 
     {
@@ -322,11 +395,14 @@ const database = [
         oTitle: "Mars Rover",
         oSizeMultiplier: 4,
         oBackground: "url('./data/3d/img/mars.jpg')",
-        oAudioStartAt: 10,
         oCopyright: "'Curiosity Mars rover' (https://skfb.ly/oTPHp) by Cybertron B-127 is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).\nFoto von RDNE Stock project: https://www.pexels.com/de-de/foto/wuste-trocken-felsen-konzept-8474500/",
     
         oMainTextColor: "white",
         oMainBgColor: "rgba(98, 166, 14, 0.5)",
+
+        oHotspots: ``,
+
+        oAudioId: null,
     },
 
     {
@@ -347,12 +423,14 @@ const database = [
         oMainBgColor: "rgba(98, 166, 14, 0.5)",
 
         oAudioId: 3,
+
+        oHotspots: ``,
     },
 
     {
         id: "mars-1",
         oTitle: "Mars",
-        oDescription: "Erkunde den Mars",
+        oDescription: `Erkunde den Mars<br>Der rote Planet ist der zweite Planet in unserem <a class='cross-reference' onclick="setCrossReferenceObject('solar-2')">Sonnensystem</a>.`,
         oSubject: "ph",
         oFsk: 0,
 
@@ -367,6 +445,8 @@ const database = [
         oMainBgColor: "rgba(98, 166, 14, 0.5)",
 
         oAudioId: 4,
+
+        oHotspots: ``,
     },
 
 
@@ -694,6 +774,7 @@ function setDegByMarker(marker, x, y, z)
 
             //           Drehung nach rechts oder links (im/gegen Uhrzeigersinn)
             //              nach vorne und hinten neigen (auf einen zu/von einem weg)
+            
             rotateObject(invertedZ, 0, 0);
 
             break;
@@ -975,8 +1056,19 @@ function getObjectTitle(parameter)
     return database.find(u => u.id === parameter).oTitle;
 }
 
+function setCrossReferenceObject(id)
+{
+    document.getElementById('myBottomModal').style.display="none";
+    setObject(id);
+    openCurrentObjectMenu();
+}
+
+
+
 function setObject(objectIdParameter)
 {
+
+    
 
     /* Zusatzfunktion für Zuse Tatort */
     
@@ -1036,6 +1128,28 @@ function setObject(objectIdParameter)
         <div class="hotspot-info">Hammer</div>
     </button>`;
     }
+    /*
+    else if (objectIdParameter == "newton-1")
+    {
+        document.getElementById("ar-model").innerHTML = `
+        <button class="hotspot" slot="hotspot-visor" data-position="0 1.75 0.35" data-normal="0 0 1">
+    <div class="annotation">
+      <strong>Visier-Info</strong><br>
+      Dies ist das goldbeschichtete Visier des Astronauten.
+    </div>
+  </button>
+
+  <button class="hotspot" slot="hotspot-visor" data-position="0 1 0.35" data-normal="0 0 1">
+    <div class="annotation">
+      <strong>Visier-Info</strong><br>
+      Dies ist das goldbeschichtete Visier des Astronauten.
+    </div>
+  </button>
+    `;
+
+
+    }
+    */
     else
     {
         document.getElementById("ar-model").innerHTML = "";
@@ -1124,13 +1238,23 @@ function setObject(objectIdParameter)
 
     var audioId = database.find(u => u.id === objectId).oAudioId;
 
+    if (audioId != null)
+    {
+        setAudioPlayTime(audioDatabase.find(u => u.id === audioId).aStartAt);
+        document.getElementById("audioPlayer").src = audioDatabase.find(u => u.id === audioId).aSrc;
+    }
+    else
+    {
+        document.getElementById("audioPlayer").src = null;
+    }
+    
+
     // console.warn(audioId);
 
     //console.warn(audioDatabase.find(u => u.id === audioId).aStartAt);
     //console.warn(audioDatabase.find(u => u.id === audioId).aSrc);
 
-    setAudioPlayTime(audioDatabase.find(u => u.id === audioId).aStartAt);
-    document.getElementById("audioPlayer").src = audioDatabase.find(u => u.id === audioId).aSrc;
+    
 
 
 
@@ -1156,6 +1280,8 @@ function setObject(objectIdParameter)
     {
         model.style.backgroundColor = database.find(u => u.id === objectId).oBackground;
     }    
+
+    document.getElementById("ar-model").innerHTML = database.find(u => u.id === objectId).oHotspots;
     
 }
 
@@ -1294,3 +1420,4 @@ function setWebcamSize(x, y)
 
 }
 */
+

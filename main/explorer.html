@@ -67,10 +67,14 @@
                 <a href="javascript:void(0)" class="closebtn" onclick="closeObjectMenu()">&times;</a>
                     <div class="sidenav-container">
 
+                        <!--
                         <span class="beta-span">Beta-Version</span>
+                        -->
 
-                        <h3>Objektübersicht</h3>
 
+                        <h3>Objektmenü</h3>
+
+                        
 
 
                         <div class="filter-bar" align="center">
@@ -167,6 +171,7 @@
                                     <button class="btn" onclick="copyQrCodeUrl()">Link kopieren</button>
                                 </div>
 
+                                <!--
 
                                 <div class="slideshow-container">
                                     <div class="mySlides">
@@ -249,6 +254,8 @@
                                     captionText.innerHTML = dots[slideIndex-1].alt;
                                     }
                                     </script>
+
+                                -->
 
                             </div>
                         </div>
@@ -734,8 +741,12 @@
 
       <button class="btn" onclick="setFullscreenForObject('ar-model')">Vollbild</button>
 
+      
+
+
       <button class="btn" onclick="document.getElementById('myBottomModal').style.display='none';shareObjectByQrCode()">Objekt teilen</button>
     
+      <div class="viewer-container">
         <model-viewer
                 id="ar-model"
                 
@@ -757,6 +768,12 @@
 
 
             </model-viewer>
+
+            <button id="startStopAnimationBtn" onclick="toggleAnimation()">Anhalten</button>
+
+        </div>
+
+            
 
             
 
@@ -911,12 +928,32 @@ window.onclick = function(event)
             <script>
                 const model = document.getElementById("move-model");
 
+                
                 function rotateObject(x, y, z)
                 {
-                    model.orientation = `${x}deg ${y}deg ${z}deg`;
+                    // (Funktioniert) model.orientation = `${x}deg ${y}deg ${z}deg`;
                     // model.cameraOrbit = `${x}deg ${y}deg ${z}deg`;
 
+                    model.orientation = `${x}deg ${y}deg ${z}deg`;
+
                 }
+
+
+
+// Umschalten (Toggle)
+function toggleAnimation()
+{
+    if (document.getElementById("ar-model").paused) {
+        
+        document.getElementById("startStopAnimationBtn").innerHTML = "Anhalten";
+        document.getElementById("ar-model").play();
+    } else {
+        document.getElementById("startStopAnimationBtn").innerHTML = "Fortsetzen";
+        document.getElementById("ar-model").pause();
+    }
+}
+                    
+
             </script>
 
             <script>
