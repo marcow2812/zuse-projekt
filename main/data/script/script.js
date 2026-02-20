@@ -87,7 +87,7 @@ const database = [
     {
         id: "bird-1",
         oTitle: "Vogel",
-        oDescription: "Ein oranger Vogel",
+        oDescription: "Ein oranger Vogel im Wald",
         oSubject: "bi",
         oFsk: 0,
 
@@ -103,21 +103,7 @@ const database = [
 
         oAudioId: 3,
 
-        oHotspots: `
-        <button class="hotspot" slot="hotspot-visor" data-position="0 1.75 0.35" data-normal="0 0 1">
-    <div class="annotation">
-      <strong>Visier-Info</strong><br>
-      Dies ist das goldbeschichtete Visier des Astronauten.
-    </div>
-  </button>
-
-  <button class="hotspot" slot="hotspot-visor" data-position="0 1 0.35" data-normal="0 0 1">
-    <div class="annotation">
-      <strong>Visier-Info</strong><br>
-      Dies ist das goldbeschichtete Visier des Astronauten.
-    </div>
-  </button>
-        `,
+        oHotspots: ``,
     },
     {
         id: "cat-1",
@@ -143,7 +129,7 @@ const database = [
     {
         id: "dog-1",
         oTitle: "Hund",
-        oDescription: "Ein lebendiger Hund",
+        oDescription: "Ein Hund - der beste Freund des Menschen",
         oSubject: "bi",
         oFsk: 0,
 
@@ -164,7 +150,7 @@ const database = [
     {
         id: "fish-1",
         oTitle: "Koi",
-        oDescription: "Ein lebendiger Koi",
+        oDescription: "Koi ist die japanische Bezeichnung für 'Karpfen' und beschreibt eine Zuchtform des Karpfens",
         oSubject: "bi",
         oFsk: 0,
 
@@ -178,7 +164,7 @@ const database = [
         oMainTextColor: "white",
         oMainBgColor: "rgba(98, 166, 14, 0.5)",
 
-        oAudioId: 3,
+        oAudioId: 5,
 
         oHotspots: ``,
     },
@@ -191,7 +177,7 @@ const database = [
     {
         id: "newton-1",
         oTitle: "Kugelstoßpendel",
-        oDescription: "Eine Erfindung von Newton",
+        oDescription: "Bei dem Kugelstoßpendel (auch Kugelpendel genannt) handelt es sich um eine Erfindung von Newton.<br>Es besteht aus einer geraden Reihe gleicher elastischer Kugeln, jede an zwei gleichen Fäden (bifilar) so aufgehängt, dass sie von ihren Nachbarkugeln gerade berührt wird und nur in Richtung zu ihren Nachbarkugeln schwingen kann. Alle Kugeln bilden Pendel gleicher Masse und Pendellänge und vorgegebenem Bewegungspfad.",
         oSubject: "ph",
         oFsk: 0,
 
@@ -278,6 +264,8 @@ const database = [
         oBanner: "./data/3d/img/earth-1.webp",
         oSrc: "./data/3d/object/earth-9.glb",
         oTitle: "Erdkugel",
+        oDescription: `Entdecke unseren 4,5 Millionen Jahre alten Planeten - die Erde.<br>Mit seinen 7 Kontinenten bedeckt sie rund 510 Millionen Quadratkilometer. Rund 71% der Oberfläche sind mit Wasser bedeckt, was einer Fläche von 361 Millionen Quadratkilometern entspricht.<br>Erlebe einen Rundflug über den blauen Planeten.<br>Der Nachbarplanet im <a class='cross-reference' onclick="setCrossReferenceObject('solar-2')">Sonnensystem</a> ist der <a class='cross-reference' onclick="setCrossReferenceObject('mars-1')">Mars</a>.`,
+
         oSizeMultiplier: 4,
         oBackground: "black",
         oAudioStartAt: 1.5,
@@ -335,6 +323,7 @@ const database = [
         oBanner: "./data/img/favicon.png",
         oSrc: "./data/3d/object/solar_system2.glb",
         oTitle: "Sonnensystem",
+        oDescription: `Das Sonnensystem ist das Planetensystem, in dem sich die Erde befindet. Es besteht aus der Sonne, acht sie umkreisenden Planeten (von innen nach außen: Merkur, Venus, Erde, Mars, Jupiter, Saturn, Uranus und Neptun), deren natürlichen Satelliten, den Zwergplaneten, anderen Kleinkörpern (Kometen, Asteroiden und Meteoroiden) und aus unzähligen Gas- und Staubteilchen, die durch die Anziehungskraft der Sonne an diese gebunden sind.`,
         oSizeMultiplier: 7,
         oBackground: "black",
 
@@ -393,6 +382,7 @@ const database = [
         oBanner: "./data/3d/img/mars-rover1.png",
         oSrc: "./data/3d/object/mars-rover.glb",
         oTitle: "Mars Rover",
+        oDescription: `Ein Mars-Rover wird bei Einsätzen auf dem Mars und anderen Planeten zur Aufklärung eingesetzt.`,
         oSizeMultiplier: 4,
         oBackground: "url('./data/3d/img/mars.jpg')",
         oCopyright: "'Curiosity Mars rover' (https://skfb.ly/oTPHp) by Cybertron B-127 is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).\nFoto von RDNE Stock project: https://www.pexels.com/de-de/foto/wuste-trocken-felsen-konzept-8474500/",
@@ -430,7 +420,7 @@ const database = [
     {
         id: "mars-1",
         oTitle: "Mars",
-        oDescription: `Erkunde den Mars<br>Der rote Planet ist der zweite Planet in unserem <a class='cross-reference' onclick="setCrossReferenceObject('solar-2')">Sonnensystem</a>.`,
+        oDescription: `Erkunde den Mars.<br>Der rote Planet ist der zweite Planet in unserem <a class='cross-reference' onclick="setCrossReferenceObject('solar-2')">Sonnensystem</a>.`,
         oSubject: "ph",
         oFsk: 0,
 
@@ -502,6 +492,15 @@ const audioDatabase = [
         aStartAt: 0,
         aCopyright: "Music by <a href='https://pixabay.com/users/the_mountain-3616498/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=438391'>Dmitrii Kolesnikov</a> from <a href='https://pixabay.com/music//?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=438391'>Pixabay</a>",
     },
+    {
+        id: 5,
+        aSrc: "./data/music/liecio-water-bubbles-257594.mp3",
+        aStartAt: 0,
+        aCopyright: "Sound Effect by <a href='https://pixabay.com/users/liecio-3298866/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=257594'>LIECIO</a> from <a href='https://pixabay.com/sound-effects//?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=257594'>Pixabay</a>",
+    },
+
+
+    
 
     
 ];
@@ -524,7 +523,7 @@ console.log(database.length);
 
 function loadThePage()
 {
-    setObject("newton-1");
+    setObject("bird-1");
 
     getParameter();
 
