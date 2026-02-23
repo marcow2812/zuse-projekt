@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Web AR - Image Tracking (NFT)</title>
+    <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
+</head>
+
+<body style="margin: 0px; overflow: hidden;">
+    <a-scene
+        vr-mode-ui="enabled: false;"
+        renderer="logarithmicDepthBuffer: true;"
+        embedded
+        arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false;">
+
+        <a-nft
+            type="nft"
+            url="data/geldschein/geldschein"
+            smooth="true"
+            smoothCount="10"
+            smoothTolerance=".01"
+            smoothThreshold="5">
+            
+            <a-box 
+                position="0 0 0" 
+                scale="150 150 150" 
+                material="color: #EF2D5E; opacity: 0.8;">
+            </a-box>
+            
+        </a-nft>
+
+        <a-entity camera></a-entity>
+    </a-scene>
+
+
+    <script>
+        const nft = document.querySelector('a-nft');
+        nft.addEventListener('markerFound', () => {
+            console.log("Gefunden!");
+            document.body.style.backgroundColor = "rgba(0, 255, 0, 0.3)";
+        });
+        nft.addEventListener('markerLost', () => {
+            console.log("Verloren!");
+            document.body.style.backgroundColor = "transparent";
+        });
+    </script>
+
+<!--
+<script>
+    window.addEventListener('deviceorientation', (event) => {
+  const compass = event.alpha; // Himmelsrichtung in Grad
+  const tiltFB = event.beta;   // Neigung vorne/hinten
+  const tiltLR = event.gamma;  // Neigung links/rechts
+
+  console.log(`Ausrichtung: ${compass.toFixed(2)}°`);
+});
+</script>
+-->
+
+</body>
+</html>
