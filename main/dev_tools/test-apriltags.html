@@ -37,7 +37,6 @@
 
         <a-assets>
             <img id="bild1" src="https://img.icons8.com/color/512/google-logo.png">
-            <img id="bild2" src="https://img.icons8.com/color/512/apple-logo.png">
         </a-assets>
 
         <a-marker preset="hiro" id="marker-hiro">
@@ -46,9 +45,48 @@
             <a-box position="0 0.5 0" material="opacity: 0.5; color: #4CC3D9;" scale="0.5 0.5 0.5"></a-box>
         </a-marker>
 
+        <!--
         <a-marker type="barcode" value="5" id="marker-5">
-            <a-image src="#bild2" position="0 0 0" rotation="-90 0 0" width="1" height="1"></a-image>
+            <a-image src="../data/img/luftaufnahme.jpg" position="0 0 0" rotation="-90 0 0" width="1" height="1"></a-image>
             <a-sphere position="0 0.5 0" radius="0.4" color="#EF2D5E"></a-sphere>
+        </a-marker>
+        -->
+
+
+        <a-marker type="barcode" value="1" id="marker-1">
+            
+            <!--
+            <a-entity
+        geometry="primitive: ring; radiusInner: 0.5; radiusOuter: 0.8;"
+        rotation="-90 0 0"
+        position="0 0.01 0"
+        material="shader: flat; 
+                  color: #ff0000; 
+                  transparent: true; 
+                  opacity: 0.5; 
+                  side: double;
+                  depthWrite: false;">
+    </a-entity>
+    -->
+
+
+            <a-image src="../data/img/luftaufnahme.jpg" position="0 0.02 0" rotation="-90 0 0" width="1" height="1"></a-image>
+            <a-sphere id="test-sphere" position="0 0.5 0" radius="0.4" color="#FFFFFF"></a-sphere>
+        </a-marker>
+
+        <a-marker type="barcode" value="2" id="marker-2">
+            <a-image src="../data/img/favicon.png" position="0 0.02 0" rotation="-90 0 0" width="1" height="1"></a-image>
+            <a-sphere position="0 0.5 0" radius="0.4" color="#FFFFFF"></a-sphere>
+        </a-marker>
+
+        <a-marker type="barcode" value="3" id="marker-3">
+            <a-image src="../data/img/marco.png" position="0 0.02 0" rotation="-90 0 0" width="1" height="1"></a-image>
+            <a-sphere position="0 0.5 0" radius="0.4" color="#FFFFFF"></a-sphere>
+        </a-marker>
+
+        <a-marker type="barcode" value="4" id="marker-4">
+            <a-image src="../data/img/konrad-zuse-wikipedia.png" position="0 0.02 0" rotation="-90 0 0" width="1" height="1"></a-image>
+            <a-sphere position="0 0.5 0" radius="0.4" color="#FFFFFF"></a-sphere>
         </a-marker>
 
         <a-entity camera></a-entity>
@@ -72,5 +110,45 @@
             overlay.innerHTML = "Status: Suche Marker...";
         });
     </script>
+
+
+<script>
+    const markerHiro = document.querySelector('#marker-1');
+
+// Funktion, die kontinuierlich die Werte ausliest
+function updateRotation() {
+    if (markerHiro.object3D.visible) {
+        // Die Rotation wird in Radiant geliefert, wir wandeln sie in Grad um
+        const rotation = markerHiro.object3D.rotation;
+        
+        const rotX = THREE.MathUtils.radToDeg(rotation.x);
+        const rotY = THREE.MathUtils.radToDeg(rotation.y);
+        const rotZ = THREE.MathUtils.radToDeg(rotation.z);
+
+        // Anzeige im Overlay (oder Konsole)
+        overlay.innerHTML = `
+            X (Neigung vorne/hinten): ${rotX.toFixed(0)}°<br>
+            Y (Drehung im/gegen Uhrz.): ${rotY.toFixed(0)}°<br>
+            Z (Neigung links/rechts): ${rotZ.toFixed(0)}°
+        `;
+
+        if (rotX > 40 && rotX < 140)
+        {
+            document.getElementById("test-sphere").setAttribute('color', 'red');
+        }
+        else
+        {
+            document.getElementById("test-sphere").setAttribute('color', '#4CC3D9');
+        }
+
+    }
+    requestAnimationFrame(updateRotation);
+}
+
+// Starte die Überwachung
+updateRotation();
+</script>
+
+
 </body>
 </html>
