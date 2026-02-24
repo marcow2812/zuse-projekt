@@ -82,6 +82,221 @@ const database = [
     },
     */
 
+    {
+        id: "sonne-ro",
+        oTitle: "Sonne",
+        oDescription: "(Beschreibung folgt)",
+        oSubject: "ph",
+        oFsk: 0,
+
+        oBanner: "./data/3d/img/sonne-ro.jpg",
+        oSrc: "./data/3d/object/sonne-ro.glb",
+        oCopyright: `"Sun" (https://skfb.ly/6U8EY) by PatelDev is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).`,
+        oSizeMultiplier: 6,
+        oBackground: "black",
+        oBackgroundSrc: "",
+
+        oMainTextColor: "white",
+        oMainBgColor: "rgba(98, 166, 14, 0.5)",
+
+        oAudioId: 3,
+
+        oHotspots: ``,
+    },
+    {
+        id: "merkur-ro",
+        oTitle: "Merkur",
+        oDescription: "(Beschreibung folgt)",
+        oSubject: "ph",
+        oFsk: 0,
+
+        oBanner: "./data/3d/img/merkur-ro.jpg",
+        oSrc: "./data/3d/object/merkur-ro.glb",
+        oCopyright: `"Mercury (planet)" (https://skfb.ly/6yuRD) by SebastianSosnowski is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).`,
+        oSizeMultiplier: 6,
+        oBackground: "black",
+        oBackgroundSrc: "",
+
+        oMainTextColor: "white",
+        oMainBgColor: "rgba(98, 166, 14, 0.5)",
+
+        oAudioId: 3,
+
+        oHotspots: ``,
+    },
+    {
+        id: "venus-ro",
+        oTitle: "Venus",
+        oDescription: "(Beschreibung folgt)",
+        oSubject: "ph",
+        oFsk: 0,
+
+        oBanner: "./data/3d/img/venus-ro.jpg",
+        oSrc: "./data/3d/object/venus-ro.glb",
+        oCopyright: `"Venus" (https://skfb.ly/ITvT) by kongle is licensed under Creative Commons Attribution-ShareAlike (http://creativecommons.org/licenses/by-sa/4.0/).`,
+        oSizeMultiplier: 6,
+        oBackground: "black",
+        oBackgroundSrc: "",
+
+        oMainTextColor: "white",
+        oMainBgColor: "rgba(98, 166, 14, 0.5)",
+
+        oAudioId: 3,
+
+        oHotspots: ``,
+    },
+    {
+        id: "erde-ro",
+        oTitle: "Erde",
+        oDescription: "(Beschreibung folgt)",
+        oSubject: "ph",
+        oFsk: 0,
+
+        oBanner: "./data/3d/img/erde-ro.jpg",
+        oSrc: "./data/3d/object/erde-ro.glb",
+        oCopyright: `"Earth" (https://skfb.ly/6U8BH) by PatelDev is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).`,
+        oSizeMultiplier: 6,
+        oBackground: "black",
+        oBackgroundSrc: "",
+
+        oMainTextColor: "white",
+        oMainBgColor: "rgba(98, 166, 14, 0.5)",
+
+        oAudioId: 3,
+
+        oHotspots: ``,
+    },
+    {
+        id: "mars-ro",
+        oTitle: "Mars",
+        oDescription: `(Beschreibung folgt)`,
+        oSubject: "ph",
+        oFsk: 0,
+
+        oBanner: "./data/3d/img/mars-ro.png",
+        oSrc: "./data/3d/object/mars-ro.glb",
+        oCopyright: "'Mars' (https://skfb.ly/oyCyK) by JanesBT is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).",
+        oSizeMultiplier: 6,
+        oBackground: "#2d2d2dff",
+        oBackgroundSrc: "",
+
+        oMainTextColor: "white",
+        oMainBgColor: "rgba(98, 166, 14, 0.5)",
+
+        oAudioId: 4,
+
+        oHotspots: ``,
+    },
+    {
+        id: "jupiter-ro",
+        oTitle: "Jupiter",
+        oDescription: "(Beschreibung folgt)",
+        oSubject: "ph",
+        oFsk: 0,
+
+        oBanner: "./data/3d/img/jupiter-ro.png",
+        oSrc: "./data/3d/object/jupiter-ro.glb",
+        oCopyright: `"Realistic Jupiter" (https://skfb.ly/oKT8Y) by Shady Tex is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).`,
+        oSizeMultiplier: 6,
+        oBackground: "black",
+        oBackgroundSrc: "",
+
+        oMainTextColor: "white",
+        oMainBgColor: "rgba(98, 166, 14, 0.5)",
+
+        oAudioId: 3,
+
+        oHotspots: ``,
+    },
+    {
+        id: "saturn-ro",
+        oTitle: "Saturn",
+        oDescription: "(Beschreibung folgt)",
+        oSubject: "ph",
+        oFsk: 0,
+
+        oBanner: "./data/3d/img/saturn-ro.jpg",
+        oSrc: "./data/3d/object/saturn-ro.glb",
+        oCopyright: `"Saturn" (https://skfb.ly/onNus) by PatelDev is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).`,
+        oSizeMultiplier: 6,
+        oBackground: "black",
+        oBackgroundSrc: "",
+
+        oMainTextColor: "white",
+        oMainBgColor: "rgba(98, 166, 14, 0.5)",
+
+        oAudioId: 3,
+
+        oHotspots: ``,
+    },
+    {
+        id: "uranus-ro",
+        oTitle: "Uranus",
+        oDescription: "(Beschreibung folgt)",
+        oSubject: "ph",
+        oFsk: 0,
+
+        oBanner: "./data/3d/img/uranus-ro.png",
+        oSrc: "./data/3d/object/uranus-ro.glb",
+        oCopyright: `"Uranus" (https://skfb.ly/6TwIN) by Akshat is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).`,
+        oSizeMultiplier: 6,
+        oBackground: "black",
+        oBackgroundSrc: "",
+
+        oMainTextColor: "white",
+        oMainBgColor: "rgba(98, 166, 14, 0.5)",
+
+        oAudioId: 3,
+
+        oHotspots: ``,
+    },
+    {
+        id: "neptun-ro",
+        oTitle: "Neptun",
+        oDescription: "(Beschreibung folgt)",
+        oSubject: "ph",
+        oFsk: 0,
+
+        oBanner: "./data/3d/img/neptun-ro.png",
+        oSrc: "./data/3d/object/neptun-ro.glb",
+        oCopyright: `"Neptune" (https://skfb.ly/IUFS) by kongle is licensed under Creative Commons Attribution-ShareAlike (http://creativecommons.org/licenses/by-sa/4.0/).`,
+        oSizeMultiplier: 6,
+        oBackground: "black",
+        oBackgroundSrc: "",
+
+        oMainTextColor: "white",
+        oMainBgColor: "rgba(98, 166, 14, 0.5)",
+
+        oAudioId: 3,
+
+        oHotspots: ``,
+    },
+    {
+        id: "pluto-ro",
+        oTitle: "Pluto",
+        oDescription: "(Beschreibung folgt)",
+        oSubject: "ph",
+        oFsk: 0,
+
+        oBanner: "./data/3d/img/pluto-ro.jpg",
+        oSrc: "./data/3d/object/pluto-ro.glb",
+        oCopyright: `"Pluto" (https://skfb.ly/6TwJE) by Akshat is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).`,
+        oSizeMultiplier: 6,
+        oBackground: "black",
+        oBackgroundSrc: "",
+
+        oMainTextColor: "white",
+        oMainBgColor: "rgba(98, 166, 14, 0.5)",
+
+        oAudioId: 3,
+
+        oHotspots: ``,
+    },
+
+
+
+
+
     
 
     {
@@ -259,7 +474,7 @@ const database = [
     },
     
     {
-        id: "earth-1",
+        id: "earth-pixel",
         oSubject: "er",
         oBanner: "./data/3d/img/earth-1.webp",
         oSrc: "./data/3d/object/earth-9.glb",
@@ -417,27 +632,7 @@ const database = [
         oHotspots: ``,
     },
 
-    {
-        id: "mars-1",
-        oTitle: "Mars",
-        oDescription: `Erkunde den Mars.<br>Der rote Planet ist der zweite Planet in unserem <a class='cross-reference' onclick="setCrossReferenceObject('solar-2')">Sonnensystem</a>.`,
-        oSubject: "ph",
-        oFsk: 0,
-
-        oBanner: "./data/3d/img/mars.png",
-        oSrc: "./data/3d/object/mars.glb",
-        oCopyright: "'Mars' (https://skfb.ly/oyCyK) by JanesBT is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).",
-        oSizeMultiplier: 6,
-        oBackground: "#2d2d2dff",
-        oBackgroundSrc: "",
-
-        oMainTextColor: "white",
-        oMainBgColor: "rgba(98, 166, 14, 0.5)",
-
-        oAudioId: 4,
-
-        oHotspots: ``,
-    },
+    
 
 
     /*
