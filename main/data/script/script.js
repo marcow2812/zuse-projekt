@@ -89,7 +89,7 @@ const database = [
         oSubject: "ph",
         oFsk: 0,
 
-        oBanner: "./data/3d/img/sonne-ro.jpg",
+        oBanner: "./data/3d/img/sonne-ro.png",
         oSrc: "./data/3d/object/sonne-ro.glb",
         oCopyright: `"Sun" (https://skfb.ly/6U8EY) by PatelDev is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).`,
         oSizeMultiplier: 6,
@@ -110,7 +110,7 @@ const database = [
         oSubject: "ph",
         oFsk: 0,
 
-        oBanner: "./data/3d/img/merkur-ro.jpg",
+        oBanner: "./data/3d/img/merkur-ro.png",
         oSrc: "./data/3d/object/merkur-ro.glb",
         oCopyright: `"Mercury (planet)" (https://skfb.ly/6yuRD) by SebastianSosnowski is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).`,
         oSizeMultiplier: 6,
@@ -131,7 +131,7 @@ const database = [
         oSubject: "ph",
         oFsk: 0,
 
-        oBanner: "./data/3d/img/venus-ro.jpg",
+        oBanner: "./data/3d/img/venus-ro.png",
         oSrc: "./data/3d/object/venus-ro.glb",
         oCopyright: `"Venus" (https://skfb.ly/ITvT) by kongle is licensed under Creative Commons Attribution-ShareAlike (http://creativecommons.org/licenses/by-sa/4.0/).`,
         oSizeMultiplier: 6,
@@ -152,7 +152,7 @@ const database = [
         oSubject: "ph",
         oFsk: 0,
 
-        oBanner: "./data/3d/img/erde-ro.jpg",
+        oBanner: "./data/3d/img/erde-ro.png",
         oSrc: "./data/3d/object/erde-ro.glb",
         oCopyright: `"Earth" (https://skfb.ly/6U8BH) by PatelDev is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).`,
         oSizeMultiplier: 6,
@@ -215,7 +215,7 @@ const database = [
         oSubject: "ph",
         oFsk: 0,
 
-        oBanner: "./data/3d/img/saturn-ro.jpg",
+        oBanner: "./data/3d/img/saturn-ro.png",
         oSrc: "./data/3d/object/saturn-ro.glb",
         oCopyright: `"Saturn" (https://skfb.ly/onNus) by PatelDev is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).`,
         oSizeMultiplier: 6,
@@ -278,7 +278,7 @@ const database = [
         oSubject: "ph",
         oFsk: 0,
 
-        oBanner: "./data/3d/img/pluto-ro.jpg",
+        oBanner: "./data/3d/img/pluto-ro.png",
         oSrc: "./data/3d/object/pluto-ro.glb",
         oCopyright: `"Pluto" (https://skfb.ly/6TwJE) by Akshat is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).`,
         oSizeMultiplier: 6,
@@ -829,11 +829,8 @@ function setMenuFromDatabase(numberOfObjects)
                     </svg>
                 </div>
 
-                <div class="icon-copyright" onclick="getCopyright('${database[i].id}')">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-c-circle-fill" viewBox="0 0 16 16">
-                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.146 4.992c.961 0 1.641.633 1.729 1.512h1.295v-.088c-.094-1.518-1.348-2.572-3.03-2.572-2.068 0-3.269 1.377-3.269 3.638v1.073c0 2.267 1.178 3.603 3.27 3.603 1.675 0 2.93-1.02 3.029-2.467v-.093H9.875c-.088.832-.75 1.418-1.729 1.418-1.224 0-1.927-.891-1.927-2.461v-1.06c0-1.583.715-2.503 1.927-2.503"/>
-                    </svg>
-                </div>
+
+
 
                 <img src="${database[i].oBanner}">
 
@@ -845,6 +842,16 @@ function setMenuFromDatabase(numberOfObjects)
         `;
         
     }
+
+    /*
+
+                    <div class="icon-copyright" onclick="getCopyright('${database[i].id}')">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-c-circle-fill" viewBox="0 0 16 16">
+                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.146 4.992c.961 0 1.641.633 1.729 1.512h1.295v-.088c-.094-1.518-1.348-2.572-3.03-2.572-2.068 0-3.269 1.377-3.269 3.638v1.073c0 2.267 1.178 3.603 3.27 3.603 1.675 0 2.93-1.02 3.029-2.467v-.093H9.875c-.088.832-.75 1.418-1.729 1.418-1.224 0-1.927-.891-1.927-2.461v-1.06c0-1.583.715-2.503 1.927-2.503"/>
+                    </svg>
+                </div>
+
+    */
 
     document.getElementById("subject-container-new").innerHTML = innerHtmlOfMenu;
 }
@@ -908,6 +915,10 @@ function getCopyright(id)
 
 async function checkInternetConnection()
 {
+
+    /*
+
+
     var headerIcon = document.getElementById("header-icon-connection");
 
     if (navigator.onLine)
@@ -924,6 +935,8 @@ async function checkInternetConnection()
         headerIcon.classList.remove("icon-green");
         headerIcon.classList.add("icon-red");
     }
+
+    */
 
     /*
     try
@@ -1575,6 +1588,51 @@ function setFullscreenForObject(id)
     }
 
 }
+
+
+function openAiMenu()
+{
+    alert("Die KI-Funktion befindet sich derzeit noch in der Entwicklungsphase.");
+}
+
+
+function shareObjectByLink(source)
+{
+    var title = database.find(u => u.id === objectId).oTitle;
+    switch (source)
+    {
+        case "whatsapp":
+            //console.log("whatsapp://send?text=" + objectId + " mit dem AR-Cube entdecken!\n" + standardUrl + objectId);
+            window.open("whatsapp://send?text=" + title + " mit dem AR-Cube entdecken!\n" + standardUrl + objectId);
+            //window.open("https://api.whatsapp.com/send?phone=whatsappphonenumber&text=urlencodedtext");
+            break;
+        case "linkedin":
+            window.open("https://www.linkedin.com/sharing/share-offsite/?url=" + standardUrl + objectId);
+            break;
+        case "twitter-x":
+            window.open("https://twitter.com/intent/tweet?text=" + title + " mit dem AR-Cube entdecken!&url=" + standardUrl + objectId);
+            break;
+        case "facebook":
+            window.open("https://www.facebook.com/sharer/sharer.php?u=" + standardUrl + objectId);
+            break;
+        case "mail":
+            window.open("mailto:?subject=AR-Cube&body=" + title + " mit dem AR-Cube entdecken\n" + standardUrl + objectId);
+            break;
+        case "url":
+            copyQrCodeUrl();
+            break;
+        case "image":
+            downloadPNG();
+            break;
+
+
+        
+        default:
+            console.error("Ungültige Quelle");
+            break;
+    }
+}
+
 
 /*
 function setWebcamSize(x, y)
