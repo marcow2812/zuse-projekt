@@ -773,12 +773,20 @@ function getParameter()
 
     if (objectId != null)
     {
-        console.log("Parameter: " + objectId);
-        setObject(objectId);
+
+        if (database.find(u => u.id === objectId))
+        {
+            console.log("[OK] Parameter gültig: " + objectId);
+            setObject(objectId);
+        }
+        else
+        {
+            console.log("[ERROR] Parameter ungültig: " + objectId);
+        }      
     }
     else
     {
-        console.log("Kein Parameter");
+        console.log("[LOG] Kein Parameter übergeben");
     }
 }
 
@@ -1040,7 +1048,16 @@ function openWelcomeModal()
 function closeWelcomeModal()
 {
     document.getElementById("welcomeModal").style.display = "none";
-    openInfoModal();
+    if (localStorage.getItem("hintClosed") === "true")
+    {
+        openMaintenanceModal();
+        //document.getElementById("deineHinweisBoxId").style.display = "none";
+    }
+    else
+    {
+        openInfoModal();
+    }
+    
 }
 
 
@@ -1052,6 +1069,8 @@ function openInfoModal()
 function closeInfoModal()
 {
     document.getElementById("infoModal").style.display = "none";
+    localStorage.setItem("hintClosed", "true");
+
     openMaintenanceModal();
 }
 
