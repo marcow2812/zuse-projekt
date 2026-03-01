@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Das Sonnensystem</title>
+    <!--<link href="https://fonts.googleapis.com/css?family=Major+Mono+Display" rel="stylesheet">-->
+    <!--<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css">-->
+    <style>
+        /* Grundkonfiguration */
+body { 
+  background: #000000;
+  color: #fff;
+  margin: 0;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 190px);
+  grid-gap: 40px;
+  justify-content: center;
+  font-family: "Major Mono Display", monospace;
+  margin-top: 20px;
+  margin-bottom: 60px;
+}
+
+/* Karten-Styling */
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+/* Planet-Logik mit Variablen aus dem HTML */
+.planet__atmosphere {
+  height: 190px;
+  width: 190px;
+  position: relative;
+  background: radial-gradient(circle at 30% 50%, rgba(255,255,255,.3) 0%, rgba(255,255,255,0) 65%);
+  border-radius: 100px;
+  overflow: hidden;
+  box-shadow: inset 10px 0px 12px -2px rgba(255,255,255,.2), 
+              inset -70px 0px 50px 0px black,
+              -5px 0px 10px -4px var(--p-color);
+}
+
+.planet__surface {
+  position: absolute; 
+  height: 100%;
+  width: 100%; 
+  z-index: -1;
+  background-size: cover;
+  background-image: var(--p-image);
+  transform: rotate(var(--p-tilt)) scale(1.2);
+  animation: planetRotate calc(var(--p-day) * 0.1s) linear infinite;
+}
+
+/* Die Achsen-Linie hinter dem Planeten */
+.card__planet::before {
+  content: '';
+  position: absolute;
+  height: 190px;
+  z-index: -2;
+  left: 50%;
+  top: 0%;
+  border-left: 1px dashed rgba(255,255,255,.25);
+  transform: rotate(var(--p-tilt)) scale(1.2);
+}
+
+/* Spezialfall Sonne */
+.card--sun .planet__atmosphere {
+  box-shadow: 0px 0px 10px 0px var(--p-color), 
+              0px 0px 100px -2px var(--p-color); /* Glühen statt Schatten */
+}
+
+/* Icons & Info */
+.tilt__icon {
+  transform: rotate(var(--p-tilt));
+  color: var(--p-color);
+  margin: 0 5px;
+}
+
+.info__title { text-align: center; font-size: 24px; margin: 15px 0; }
+.info__form { display: flex; flex-direction: column; width: 100%; }
+.info__item { display: flex; align-items: flex-end; margin-bottom: 8px; font-size: 12px; }
+.info__label { font-size: 10px; color: #888; }
+.info__line { flex: 1; margin: 0 5px; border-bottom: 1px dashed rgba(255,255,255,.3); }
+.info__detail { min-width: 60px; text-align: right; }
+
+/* Rotation Animation */
+@keyframes planetRotate {
+  0% { background-position: 0% center; }
+  100% { background-position: -200% center; }
+}
+    </style>
+</head>
+<body>
+
+  
+  
+
+    <article class="card card--sun" style="--p-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/332937/sun.jpg); --p-tilt: 0deg; --p-day: 600; --p-color: #cc9f4c;">
+    <div class="card__planet"><div class="planet__atmosphere"><div class="planet__surface"></div></div></div>
+    <div class="card__info">
+      <h2 class="info__title">Sonne</h2>
+      <div class="info__form">
+        <div class="info__item"><label class="info__label">Neigung</label><span class="info__line"></span><i class="tilt__icon fas fa-long-arrow-alt-right"></i><span class="info__detail">0°</span></div>
+        <div class="info__item"><label class="info__label">Tag</label><span class="info__line"></span><span class="info__detail">~600 Stunden</span></div>
+        <div class="info__item"><label class="info__label">Jahr</label><span class="info__line"></span><span class="info__detail">0 Tage</span></div>
+      </div>
+    </div>
+  </article>
+
+  <article class="card" style="--p-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/332937/mercury2.jpg); --p-tilt: 0.034deg; --p-day: 1407.6; --p-color: #999999;">
+    <div class="card__planet"><div class="planet__atmosphere"><div class="planet__surface"></div></div></div>
+    <div class="card__info">
+      <h2 class="info__title">Merkur</h2>
+      <div class="info__form">
+        <div class="info__item"><label class="info__label">Neigung</label><span class="info__line"></span><i class="tilt__icon fas fa-long-arrow-alt-right"></i><span class="info__detail">0.034°</span></div>
+        <div class="info__item"><label class="info__label">Tag</label><span class="info__line"></span><span class="info__detail">1,407 Stunden</span></div>
+        <div class="info__item"><label class="info__label">Jahr</label><span class="info__line"></span><span class="info__detail">88 Tage</span></div>
+      </div>
+    </div>
+  </article>
+
+  <article class="card" style="--p-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/332937/venus2.jpg); --p-tilt: 177.3deg; --p-day: 5832.5; --p-color: #e8cda2;">
+    <div class="card__planet"><div class="planet__atmosphere"><div class="planet__surface"></div></div></div>
+    <div class="card__info">
+      <h2 class="info__title">Venus</h2>
+      <div class="info__form">
+        <div class="info__item"><label class="info__label">Neigung</label><span class="info__line"></span><i class="tilt__icon fas fa-long-arrow-alt-right"></i><span class="info__detail">177.3°</span></div>
+        <div class="info__item"><label class="info__label">Tag</label><span class="info__line"></span><span class="info__detail">5,832 Stunden</span></div>
+        <div class="info__item"><label class="info__label">Jahr</label><span class="info__line"></span><span class="info__detail">224.7 Tage</span></div>
+      </div>
+    </div>
+  </article>
+
+  <article class="card" style="--p-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/332937/earth.jpg); --p-tilt: 23.26deg; --p-day: 23.9; --p-color: #b3caff;">
+    <div class="card__planet"><div class="planet__atmosphere"><div class="planet__surface"></div></div></div>
+    <div class="card__info">
+      <h2 class="info__title">Erde</h2>
+      <div class="info__form">
+        <div class="info__item"><label class="info__label">Neigung</label><span class="info__line"></span><i class="tilt__icon fas fa-long-arrow-alt-right"></i><span class="info__detail">23.26°</span></div>
+        <div class="info__item"><label class="info__label">Tag</label><span class="info__line"></span><span class="info__detail">23.9 Stunden</span></div>
+        <div class="info__item"><label class="info__label">Jahr</label><span class="info__line"></span><span class="info__detail">365.2 Tage</span></div>
+      </div>
+    </div>
+  </article>
+
+  <article class="card" style="--p-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/332937/mars.jpg); --p-tilt: 25.2deg; --p-day: 24.6; --p-color: #c07158;">
+    <div class="card__planet"><div class="planet__atmosphere"><div class="planet__surface"></div></div></div>
+    <div class="card__info">
+      <h2 class="info__title">Mars</h2>
+      <div class="info__form">
+        <div class="info__item"><label class="info__label">Neigung</label><span class="info__line"></span><i class="tilt__icon fas fa-long-arrow-alt-right"></i><span class="info__detail">25.2°</span></div>
+        <div class="info__item"><label class="info__label">Tag</label><span class="info__line"></span><span class="info__detail">24.6 Stunden</span></div>
+        <div class="info__item"><label class="info__label">Jahr</label><span class="info__line"></span><span class="info__detail">687 Tage</span></div>
+      </div>
+    </div>
+  </article>
+
+  <article class="card" style="--p-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/332937/jupiter.jpg); --p-tilt: 3.1deg; --p-day: 9.9; --p-color: #c9b5a4;">
+    <div class="card__planet"><div class="planet__atmosphere"><div class="planet__surface"></div></div></div>
+    <div class="card__info">
+      <h2 class="info__title">Jupiter</h2>
+      <div class="info__form">
+        <div class="info__item"><label class="info__label">Neigung</label><span class="info__line"></span><i class="tilt__icon fas fa-long-arrow-alt-right"></i><span class="info__detail">3.1°</span></div>
+        <div class="info__item"><label class="info__label">Tag</label><span class="info__line"></span><span class="info__detail">9.9 Stunden</span></div>
+        <div class="info__item"><label class="info__label">Jahr</label><span class="info__line"></span><span class="info__detail">4,331 Tage</span></div>
+      </div>
+    </div>
+  </article>
+
+  <article class="card" style="--p-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/332937/saturn.jpg); --p-tilt: 26.7deg; --p-day: 10.7; --p-color: #f0e2c4;">
+    <div class="card__planet"><div class="planet__atmosphere"><div class="planet__surface"></div></div></div>
+    <div class="card__info">
+      <h2 class="info__title">Saturn</h2>
+      <div class="info__form">
+        <div class="info__item"><label class="info__label">Neigung</label><span class="info__line"></span><i class="tilt__icon fas fa-long-arrow-alt-right"></i><span class="info__detail">26.7°</span></div>
+        <div class="info__item"><label class="info__label">Tag</label><span class="info__line"></span><span class="info__detail">10.7 Stunden</span></div>
+        <div class="info__item"><label class="info__label">Jahr</label><span class="info__line"></span><span class="info__detail">10,747 Tage</span></div>
+      </div>
+    </div>
+  </article>
+
+  <article class="card" style="--p-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/332937/uranus2.jpg); --p-tilt: 97.8deg; --p-day: 17.2; --p-color: #b8d8e1;">
+    <div class="card__planet"><div class="planet__atmosphere"><div class="planet__surface"></div></div></div>
+    <div class="card__info">
+      <h2 class="info__title">Uranus</h2>
+      <div class="info__form">
+        <div class="info__item"><label class="info__label">Neigung</label><span class="info__line"></span><i class="tilt__icon fas fa-long-arrow-alt-right"></i><span class="info__detail">97.8°</span></div>
+        <div class="info__item"><label class="info__label">Tag</label><span class="info__line"></span><span class="info__detail">17.2 Stunden</span></div>
+        <div class="info__item"><label class="info__label">Jahr</label><span class="info__line"></span><span class="info__detail">30,589 Tage</span></div>
+      </div>
+    </div>
+  </article>
+
+  <article class="card" style="--p-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/332937/neptune.jpg); --p-tilt: 28.3deg; --p-day: 16.1; --p-color: #5e73bb;">
+    <div class="card__planet"><div class="planet__atmosphere"><div class="planet__surface"></div></div></div>
+    <div class="card__info">
+      <h2 class="info__title">Neptune</h2>
+      <div class="info__form">
+        <div class="info__item"><label class="info__label">Neigung</label><span class="info__line"></span><i class="tilt__icon fas fa-long-arrow-alt-right"></i><span class="info__detail">28.3°</span></div>
+        <div class="info__item"><label class="info__label">Tag</label><span class="info__line"></span><span class="info__detail">16.1 Stunden</span></div>
+        <div class="info__item"><label class="info__label">Jahr</label><span class="info__line"></span><span class="info__detail">59,800 Tage</span></div>
+      </div>
+    </div>
+  </article>
+
+  <article class="card" style="--p-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/332937/pluto.jpg); --p-tilt: 122.5deg; --p-day: 153.3; --p-color: #c3b6aa;">
+    <div class="card__planet"><div class="planet__atmosphere"><div class="planet__surface"></div></div></div>
+    <div class="card__info">
+      <h2 class="info__title">Pluto</h2>
+      <div class="info__form">
+        <div class="info__item"><label class="info__label">Neigung</label><span class="info__line"></span><i class="tilt__icon fas fa-long-arrow-alt-right"></i><span class="info__detail">122.5°</span></div>
+        <div class="info__item"><label class="info__label">Tag</label><span class="info__line"></span><span class="info__detail">153.3 Stunden</span></div>
+        <div class="info__item"><label class="info__label">Jahr</label><span class="info__line"></span><span class="info__detail">90,560 Tage</span></div>
+      </div>
+    </div>
+  </article>
+
+
+  
+
+
+</body>
+</html>
