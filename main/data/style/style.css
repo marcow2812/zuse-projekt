@@ -275,7 +275,7 @@ header
     position: absolute;
     width: 80%;
     max-width: 220px;
-    top: 50px;
+    top: 40px;
     left: 50%;
     transform: translateX(-50%);
     padding: 4px 26px 4px 12px;
@@ -332,15 +332,19 @@ header
 
 .menu
 {
+
+  background-color: rgba(255, 255, 255, 0.5);
+
+
   z-index: 4;
 
     text-align: center;
-    background-color: rgb(255, 255, 255, 0.6); /* rgb(242, 242, 242, 0.5) */
+    /* background-color: rgb(255, 255, 255, 0.6); */ /* rgb(242, 242, 242, 0.5) */
     /* border: 1px solid #E6E6E6; */
     position: absolute;
     width: 85%;
     max-width: 320px;
-    bottom: 20px;
+    bottom: 10px;
     left: 50%;
     transform: translateX(-50%);
     padding: 2px;
@@ -366,10 +370,12 @@ header
   box-shadow: 0 0 0px var(--main);
   transition: box-shadow 0.3s ease, border-color 0.3s ease;
 }
+/*
 .menu .menuBtn:hover
 {
   box-shadow: 0 0 16px var(--main);
 }
+*/
 
 .menu .settingBtn
 {
@@ -970,7 +976,7 @@ header
 
 }
 .subject-box-new:hover {
-  transform: scale(1.06); 
+  transform: scale(1.04); 
   z-index: 10; 
   background: linear-gradient(to right, var(--main), #7acf12);
   color: white;
@@ -1364,8 +1370,37 @@ header
 }
   */
 
-.panel {
 
+#important-facts
+{
+  font-size: 14px;
+
+  margin-top: 15px;
+  margin-bottom: 25px;
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+  padding-bottom: 6px;
+}
+
+.fact
+{
+  background-color: #f5f5f5;
+  color: #7d7d7d;
+  border-radius: 100px;
+  padding: 5px 10px;
+display: inline-block;
+margin-right: 6px;
+cursor: pointer;
+border: 0.5px solid #d4d4d4;
+}
+
+
+
+
+.panel {
+  font-size: 10px;
 
   margin-top: 15px;
   margin-bottom: 20px;
@@ -1459,17 +1494,23 @@ header
 
 #subject-badge
 {
-  font-size: 14px;
+  font-size: 12px;
   background-color: rgba(34, 197, 94, 0.10);
   color: rgb(34 197 94);
   border: 1px rgb(34 197 94) solid;
   line-height: 20px;
-  padding: 3px 10px;
+  padding: 1px 8px;
   cursor: pointer;
   border-radius: 100px;
   outline: none;
 
   display: inline-block;
+  transition: background-color 0.15s ease;
+}
+#subject-badge:hover
+{
+  color: white;
+  background-color: rgb(34 197 94);
 }
 
 #bottom-modal-description
@@ -1639,3 +1680,77 @@ cursor: pointer;
     display: none;
   }
   */
+
+
+
+
+.urlsidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.urlsidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.urlsidenav a:hover {
+  color: #f1f1f1;
+}
+
+.urlsidenav .urlclosebtn {
+  position: absolute;
+  top: 0;
+  right: 10px;
+  font-size: 40px;
+  margin-left: 50px;
+}
+
+.urlsidenav iframe
+{
+  width: 100%;
+  height: 100vh;
+  border: none;
+  border-radius: 8px;
+}
+
+@media screen and (max-height: 450px) {
+  .urlsidenav {padding-top: 15px;}
+  .urlsidenav a {font-size: 18px;}
+}
+
+.subject-panel
+{
+  color: white;
+  background-color: rgb(23, 153, 23);
+  display: block;
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: none;
+  width: 180px;
+  cursor: pointer;
+  margin-right: 10px;
+  flex-shrink: 0;
+}
+
+.subject-panel .title
+{
+  font-size: 22px;
+  font-weight: bold;
+}
+.subject-panel .teacher
+{
+  font-size: 14px;
+}

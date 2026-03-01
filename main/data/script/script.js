@@ -93,7 +93,7 @@ const database = [
         oSrc: "./data/3d/object/sonne-ro.glb",
         oCopyright: `"Sun" (https://skfb.ly/6U8EY) by PatelDev is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).`,
         oSizeMultiplier: 6,
-        oBackground: "black",
+        oBackground: "none",
         oBackgroundSrc: "",
 
         oMainTextColor: "white",
@@ -102,6 +102,11 @@ const database = [
         oAudioId: 3,
 
         oHotspots: ``,
+        oFacts: `
+        <div class="fact">Typ: Stern</div>
+        <div class="fact">4,57 Mrd. Jahre</div>
+        <div class="fact">⌀ 1,4 Mio. km</div>
+        `,
     },
     {
         id: "merkur-ro",
@@ -114,7 +119,7 @@ const database = [
         oSrc: "./data/3d/object/merkur-ro.glb",
         oCopyright: `"Mercury (planet)" (https://skfb.ly/6yuRD) by SebastianSosnowski is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).`,
         oSizeMultiplier: 6,
-        oBackground: "black",
+        oBackground: "none",
         oBackgroundSrc: "",
 
         oMainTextColor: "white",
@@ -123,6 +128,11 @@ const database = [
         oAudioId: 3,
 
         oHotspots: ``,
+        oFacts: `
+        <div class="fact">Typ: Planet</div>
+        <div class="fact">4,5 Mrd. Jahre</div>
+        <div class="fact">⌀ 4880 km</div>
+        `,
     },
     {
         id: "venus-ro",
@@ -135,7 +145,7 @@ const database = [
         oSrc: "./data/3d/object/venus-ro.glb",
         oCopyright: `"Venus" (https://skfb.ly/ITvT) by kongle is licensed under Creative Commons Attribution-ShareAlike (http://creativecommons.org/licenses/by-sa/4.0/).`,
         oSizeMultiplier: 6,
-        oBackground: "black",
+        oBackground: "none",
         oBackgroundSrc: "",
 
         oMainTextColor: "white",
@@ -144,6 +154,11 @@ const database = [
         oAudioId: 3,
 
         oHotspots: ``,
+        oFacts: `
+        <div class="fact">Typ: Planet</div>
+        <div class="fact">4,5 Mrd. Jahre</div>
+        <div class="fact">⌀ 12104 km</div>
+        `,
     },
     {
         id: "erde-ro",
@@ -156,7 +171,7 @@ const database = [
         oSrc: "./data/3d/object/erde-ro.glb",
         oCopyright: `"Earth" (https://skfb.ly/6U8BH) by PatelDev is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).`,
         oSizeMultiplier: 6,
-        oBackground: "black",
+        oBackground: "none",
         oBackgroundSrc: "",
 
         oMainTextColor: "white",
@@ -165,6 +180,11 @@ const database = [
         oAudioId: 3,
 
         oHotspots: ``,
+        oFacts: `
+        <div class="fact">Typ: Planet</div>
+        <div class="fact">4,54 Mrd. Jahre</div>
+        <div class="fact">⌀ 12700 km</div>
+        `,
     },
     {
         id: "mars-ro",
@@ -177,7 +197,7 @@ const database = [
         oSrc: "./data/3d/object/mars-ro.glb",
         oCopyright: "'Mars' (https://skfb.ly/oyCyK) by JanesBT is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).",
         oSizeMultiplier: 6,
-        oBackground: "#2d2d2dff",
+        oBackground: "none",
         oBackgroundSrc: "",
 
         oMainTextColor: "white",
@@ -186,6 +206,11 @@ const database = [
         oAudioId: 4,
 
         oHotspots: ``,
+        oFacts: `
+        <div class="fact">Typ: Planet</div>
+        <div class="fact">4,5 Mrd. Jahre</div>
+        <div class="fact">⌀ 6794 km</div>
+        `,
     },
     {
         id: "jupiter-ro",
@@ -198,7 +223,7 @@ const database = [
         oSrc: "./data/3d/object/jupiter-ro.glb",
         oCopyright: `"Realistic Jupiter" (https://skfb.ly/oKT8Y) by Shady Tex is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).`,
         oSizeMultiplier: 6,
-        oBackground: "black",
+        oBackground: "none",
         oBackgroundSrc: "",
 
         oMainTextColor: "white",
@@ -207,6 +232,11 @@ const database = [
         oAudioId: 3,
 
         oHotspots: ``,
+        oFacts: `
+        <div class="fact">Typ: Planet</div>
+        <div class="fact">4,5 Mrd. Jahre</div>
+        <div class="fact">⌀ 142976 km</div>
+        `,
     },
     {
         id: "saturn-ro",
@@ -219,7 +249,7 @@ const database = [
         oSrc: "./data/3d/object/saturn-ro.glb",
         oCopyright: `"Saturn" (https://skfb.ly/onNus) by PatelDev is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).`,
         oSizeMultiplier: 6,
-        oBackground: "black",
+        oBackground: "none",
         oBackgroundSrc: "",
 
         oMainTextColor: "white",
@@ -228,6 +258,11 @@ const database = [
         oAudioId: 3,
 
         oHotspots: ``,
+        oFacts: `
+        <div class="fact">Typ: Planet</div>
+        <div class="fact">4,5 Mrd. Jahre</div>
+        <div class="fact">⌀ 120536 km</div>
+        `,
     },
     {
         id: "uranus-ro",
@@ -240,7 +275,7 @@ const database = [
         oSrc: "./data/3d/object/uranus-ro.glb",
         oCopyright: `"Uranus" (https://skfb.ly/6TwIN) by Akshat is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).`,
         oSizeMultiplier: 6,
-        oBackground: "black",
+        oBackground: "none",
         oBackgroundSrc: "",
 
         oMainTextColor: "white",
@@ -249,6 +284,11 @@ const database = [
         oAudioId: 3,
 
         oHotspots: ``,
+        oFacts: `
+        <div class="fact">Typ: Planet</div>
+        <div class="fact">4,5 Mrd. Jahre</div>
+        <div class="fact">⌀ 51118 km</div>
+        `,
     },
     {
         id: "neptun-ro",
@@ -261,7 +301,7 @@ const database = [
         oSrc: "./data/3d/object/neptun-ro.glb",
         oCopyright: `"Neptune" (https://skfb.ly/IUFS) by kongle is licensed under Creative Commons Attribution-ShareAlike (http://creativecommons.org/licenses/by-sa/4.0/).`,
         oSizeMultiplier: 6,
-        oBackground: "black",
+        oBackground: "none",
         oBackgroundSrc: "",
 
         oMainTextColor: "white",
@@ -270,6 +310,11 @@ const database = [
         oAudioId: 3,
 
         oHotspots: ``,
+        oFacts: `
+        <div class="fact">Typ: Planet</div>
+        <div class="fact">4,5 Mrd. Jahre</div>
+        <div class="fact">⌀ 49528 km</div>
+        `,
     },
     {
         id: "pluto-ro",
@@ -282,7 +327,7 @@ const database = [
         oSrc: "./data/3d/object/pluto-ro.glb",
         oCopyright: `"Pluto" (https://skfb.ly/6TwJE) by Akshat is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).`,
         oSizeMultiplier: 6,
-        oBackground: "black",
+        oBackground: "none",
         oBackgroundSrc: "",
 
         oMainTextColor: "white",
@@ -291,6 +336,11 @@ const database = [
         oAudioId: 3,
 
         oHotspots: ``,
+        oFacts: `
+        <div class="fact">Typ: Zwergplanet</div>
+        <div class="fact">4,5 Mrd. Jahre</div>
+        <div class="fact">⌀ 2374 km</div>
+        `,
     },
 
 
@@ -548,46 +598,41 @@ const database = [
         oMainBgColor: "rgba(98, 166, 14, 0.5)",
 
         oHotspots: `
+            <button class="hotspot" slot="hotspot-18" data-surface="17 0 615 616 617 0.353 0.031 0.616" data-visibility-attribute="visible">
+                <div class="annotation">Sonne</div>
+            </button>
 
-        <button class="hotspot" slot="hotspot-18" data-surface="17 0 615 616 617 0.353 0.031 0.616" data-visibility-attribute="visible">
-        <div class="annotation">Sonne</div>
-    </button>
+            <button class="hotspot" slot="hotspot-8" data-surface="16 0 162 163 164 0.089 0.601 0.310" data-visibility-attribute="visible">
+                <div class="annotation">Merkur</div>
+            </button>
 
+            <button class="hotspot" slot="hotspot-10" data-surface="15 0 4015 4016 4017 0.518 0.169 0.313" data-visibility-attribute="visible">
+                <div class="annotation">Venus</div>
+            </button>
 
-        <button class="hotspot" slot="hotspot-8" data-surface="16 0 162 163 164 0.089 0.601 0.310" data-visibility-attribute="visible">
-        <div class="annotation">Merkur</div>
-    </button>
+            <button class="hotspot" slot="hotspot-11" data-surface="13 0 30 31 32 0.475 0.387 0.138" data-visibility-attribute="visible">
+                <div class="annotation">Erde</div>
+            </button>
 
-    <button class="hotspot" slot="hotspot-10" data-surface="15 0 4015 4016 4017 0.518 0.169 0.313" data-visibility-attribute="visible">
-        <div class="annotation">Venus</div>
-    </button>
+            <button class="hotspot" slot="hotspot-12" data-surface="12 0 3155 3156 3157 0.021 0.482 0.497" data-visibility-attribute="visible">
+                <div class="annotation">Mars</div>
+            </button>
 
-    <button class="hotspot" slot="hotspot-11" data-surface="13 0 30 31 32 0.475 0.387 0.138" data-visibility-attribute="visible">
-        <div class="annotation">Erde</div>
-    </button>
+            <button class="hotspot" slot="hotspot-14" data-surface="11 0 3175 3177 3178 0.046 0.759 0.195" data-visibility-attribute="visible">
+                <div class="annotation">Jupiter</div>
+            </button>
 
-    <button class="hotspot" slot="hotspot-12" data-surface="12 0 3155 3156 3157 0.021 0.482 0.497" data-visibility-attribute="visible">
-        <div class="annotation">Mars</div>
-    </button>
+            <button class="hotspot" slot="hotspot-15" data-surface="10 0 2547 2549 2550 0.000 0.419 0.580" data-visibility-attribute="visible">
+                <div class="annotation">Saturn</div>
+            </button>
 
-    <button class="hotspot" slot="hotspot-14" data-surface="11 0 3175 3177 3178 0.046 0.759 0.195" data-visibility-attribute="visible">
-        <div class="annotation">Jupiter</div>
-    </button>
+            <button class="hotspot" slot="hotspot-16" data-surface="9 0 659 661 662 0.211 0.162 0.628" data-visibility-attribute="visible">
+                <div class="annotation">Uranus</div>
+            </button>
 
-    <button class="hotspot" slot="hotspot-15" data-surface="10 0 2547 2549 2550 0.000 0.419 0.580" data-visibility-attribute="visible">
-        <div class="annotation">Saturn</div>
-    </button>
-
-    <button class="hotspot" slot="hotspot-16" data-surface="9 0 659 661 662 0.211 0.162 0.628" data-visibility-attribute="visible">
-        <div class="annotation">Uranus</div>
-    </button>
-
-    <button class="hotspot" slot="hotspot-17" data-surface="8 0 959 960 961 0.035 0.202 0.762" data-visibility-attribute="visible">
-        <div class="annotation">Neptun</div>
-    </button>
-
-    
-
+            <button class="hotspot" slot="hotspot-17" data-surface="8 0 959 960 961 0.035 0.202 0.762" data-visibility-attribute="visible">
+                <div class="annotation">Neptun</div>
+            </button>
         `,
     },
 
@@ -693,11 +738,6 @@ const audioDatabase = [
         aStartAt: 0,
         aCopyright: "Sound Effect by <a href='https://pixabay.com/users/liecio-3298866/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=257594'>LIECIO</a> from <a href='https://pixabay.com/sound-effects//?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=257594'>Pixabay</a>",
     },
-
-
-    
-
-    
 ];
 
 /*
@@ -836,9 +876,6 @@ function setMenuFromDatabase(numberOfObjects)
                         <path d="M12 9h2V8h-2z"/>
                     </svg>
                 </div>
-
-
-
 
                 <img src="${database[i].oBanner}">
 
@@ -1103,16 +1140,7 @@ function closeMaintenanceModal()
 }
 
 
-/**
- * 1. Berechnet die tatsächlichen Bildschirmkoordinaten eines Punktes (x, y) 
- * basierend auf den internen Canvas-Koordinaten.
- * Dies berücksichtigt die Skalierung und Zentrierung des Canvas.
- */
-/**
- * 1. Berechnet die tatsächlichen Bildschirmkoordinaten eines Punktes (x, y) 
- * basierend auf den internen Canvas-Koordinaten.
- * Dies berücksichtigt die Skalierung und Zentrierung des Canvas.
- */
+
 function mapCanvasToScreen(canvasX, canvasY) {
     const canvasElement = document.getElementById('canvas');
     
@@ -1224,7 +1252,7 @@ function positionModelOnMarker(markers) {
                 modelViewer.style.display = "none";
                 isMarkerVisible = false;
                 markerLostTimeout = null;
-            }, 600); // 400ms Toleranzzeit gegen Flackern
+            }, 20000); // 400ms Toleranzzeit gegen Flackern
         }
     }
 }
@@ -1561,6 +1589,9 @@ function openCurrentObjectMenu()
     document.getElementById("subject-badge").innerHTML = subjectName;
     
     document.getElementById("bottom-modal-description").innerHTML = database.find(u => u.id === objectId).oDescription;
+
+    document.getElementById("important-facts").innerHTML = database.find(u => u.id === objectId).oFacts;
+
     document.getElementById("copyright-accordion").innerHTML = database.find(u => u.id === objectId).oCopyright;
 
     // Audio abspielen?
