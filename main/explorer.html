@@ -755,6 +755,29 @@
             
             -->
 
+
+            <div id="move-html" class="flip-box">
+                <div class="flip-box-inner">
+                    <div class="flip-box-front">
+                        <!--
+                        <p>1 ....... 1,008</p>
+                        <h2>H</h2>
+                        <p>Wasserstoff</p>
+                        -->
+                        <img style="border-radius:8px;width:100%;height:100%" src="https://www.chemie-azubis.de/fileadmin/user_upload/elemente/Wasserstoff_Element.png">
+                    </div>
+                    <div class="flip-box-back">
+                        <!--
+                        <h2>Back Side</h2>
+                        -->
+                        <img style="border-radius:8px;width:100%;height:100%" src="https://upload.wikimedia.org/wikipedia/commons/1/12/Bohr_model.jpg">
+                    </div>
+                </div>
+            </div>
+
+
+
+
             <model-viewer
                 id="move-model"
                 
@@ -796,6 +819,8 @@
                 </button>
 
             </model-viewer>
+
+            
 
             
 
@@ -1022,8 +1047,8 @@ window.onclick = function(event)
 
 
                 <button class="menuBtn" onclick="openObjectMenu()">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-grid" viewBox="0 0 16 16">
-                        <path d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5zM2.5 2a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5zm6.5.5A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5zM1 10.5A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5zm6.5.5A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5z"/>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-grid-fill" viewBox="0 0 16 16">
+                        <path d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5zm8 0A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5zm-8 8A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5zm8 0A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5z"/>
                     </svg>
                 </button>
 
@@ -1061,14 +1086,17 @@ window.onclick = function(event)
 
 
 
-// Umschalten (Toggle)
+
 function toggleAnimation()
 {
-    if (document.getElementById("ar-model").paused) {
+    if (document.getElementById("ar-model").paused)
+    {
         
         document.getElementById("startStopAnimationBtn").innerHTML = "Anhalten";
         document.getElementById("ar-model").play();
-    } else {
+    }
+    else
+    {
         document.getElementById("startStopAnimationBtn").innerHTML = "Fortsetzen";
         document.getElementById("ar-model").pause();
     }
@@ -1192,8 +1220,10 @@ async function startTheWebcam() {
     closeWelcomeModal();
 }
 
-function stopWebcam() {
-    if (webcamStream) {
+function stopWebcam()
+{
+    if (webcamStream)
+    {
         webcamStream.getTracks().forEach(track => track.stop());
         webcamStream = null;
     }
@@ -1203,7 +1233,8 @@ function stopWebcam() {
 }
 
 
-function enterAR() {
+function enterAR()
+{
     stopWebcam();
 
     const arModel = document.getElementById("ar-model");
@@ -1279,6 +1310,7 @@ arModel.addEventListener("ar-status", (event) => {
                     if (model)
                     {
                         model.style.display = 'none'; 
+                        document.getElementById("move-html").style.display = "none";
                     }
                                     
                     if (!markerVisible) return;
@@ -1359,7 +1391,16 @@ arModel.addEventListener("ar-status", (event) => {
                 const deltaY = y1 - y0;
                 const sideLength = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
 
-                setObjectSize(sideLength.toFixed(2));
+                
+
+                if (marker.id >= 1 && marker.id <= 6)
+                {
+                    setObjectSize(sideLength.toFixed(2));
+                }
+                else if (marker.id == 7)
+                {
+                    setHTMLSize(sideLength.toFixed(2));
+                }
 
                 
                 // === MODELL-POSITIONIERUNG UND SICHTBARKEIT ===
@@ -1375,6 +1416,10 @@ arModel.addEventListener("ar-status", (event) => {
                 {
                     //positionModelOnMarker(centerX, centerY);
                     positionModelOnMarker(markers);
+                }
+                else if (marker.id == 7)
+                {
+                    positionHTMLOnMarker(markers);
                 }
 
                 
@@ -1442,6 +1487,8 @@ arModel.addEventListener("ar-status", (event) => {
                     document.getElementById("bottomCopyright").style.display = "block";
                 }
 
+                
+
 
 
             }); // Ende markers.forEach
@@ -1455,6 +1502,8 @@ arModel.addEventListener("ar-status", (event) => {
     if (!anyMarkerDetected) {
         handleMarkerLost(); // Setzt model.style.display = 'none'
     }
+
+
 
     requestAnimationFrame(tick);
 }

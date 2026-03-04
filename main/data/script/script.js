@@ -8,8 +8,12 @@ var timeoutCheckInternetConnection = 30000;
 // Standard-URL für QR-Code-Erstellung
 var standardUrl = "https://marcow2812.github.io/zuse-projekt/main/explorer.html?o="; 
 
-var markerLostTimeout;
+var markerLostTimeout = null;
 var isMarkerVisible = false;
+
+// NEU: Für das HTML Element (move-html)
+var htmlLostTimeout = null; 
+var isHtmlVisible = false;
 
 
 // Wartungsarbeiten
@@ -1205,9 +1209,75 @@ function positionModelOnMarker(canvasX, canvasY) {
 }
     */
 
-function positionModelOnMarker(markers) {
+function positionModelOnMarker(markers)
+{
+
     // Die ID muss exakt mit der ID im HTML übereinstimmen: "move-model"
     var modelViewer = document.getElementById("move-model");
+    var canvas = document.getElementById("canvas");
+
+    // Sicherheitscheck: Wenn eines der Elemente nicht existiert, Funktion abbrechen
+    if (!modelViewer || !canvas) {
+        console.error("Fehler: move-model oder canvas nicht gefunden!");
+        return;
+    }
+
+    if (markers && markers.length > 0)
+    {
+        // --- MARKER GEFUNDEN ---
+        
+        // Falls ein Ausblend-Timer läuft, stoppen wir ihn sofort
+        if (markerLostTimeout)
+        {
+            clearTimeout(markerLostTimeout);
+            markerLostTimeout = null;
+        }
+
+        isMarkerVisible = true;
+
+        // 1. Mittelpunkt des Markers berechnen
+        var centerX = (markers[0].corners[0].x + markers[0].corners[1].x + markers[0].corners[2].x + markers[0].corners[3].x) / 4;
+        var centerY = (markers[0].corners[0].y + markers[0].corners[1].y + markers[0].corners[2].y + markers[0].corners[3].y) / 4;
+
+        // 2. Skalierung und Position des Canvas berechnen
+        const rect = canvas.getBoundingClientRect();
+        const scaleX = rect.width / canvas.width;
+        const scaleY = rect.height / canvas.height;
+
+        // 3. Position auf dem Bildschirm berechnen
+        const screenX = rect.left + (centerX * scaleX);
+        const screenY = rect.top + (centerY * scaleY);
+
+        // 4. Position zuweisen und anzeigen
+        modelViewer.style.display = "block";
+        modelViewer.style.left = screenX + "px";
+        modelViewer.style.top = screenY + "px";
+        modelViewer.style.transform = "translate(-50%, -50%)";
+
+    }
+    else
+    {
+        if (isMarkerVisible && !markerLostTimeout)
+        {
+            markerLostTimeout = setTimeout(function()
+            {
+                modelViewer.style.display = "none";
+                isMarkerVisible = false;
+                markerLostTimeout = null;
+            }, 600); // 600ms Toleranzzeit gegen Flackern
+        }
+    }
+}
+
+
+
+/*
+function positionHTMLOnMarker(markers)
+{
+
+
+    // Die ID muss exakt mit der ID im HTML übereinstimmen: "move-model"
+    var modelViewer = document.getElementById("move-html");
     var canvas = document.getElementById("canvas");
 
     // Sicherheitscheck: Wenn eines der Elemente nicht existiert, Funktion abbrechen
@@ -1255,7 +1325,167 @@ function positionModelOnMarker(markers) {
             }, 20000); // 400ms Toleranzzeit gegen Flackern
         }
     }
+}*/
+
+
+/*
+function positionHTMLOnMarker(markers) {
+    var modelViewer = document.getElementById("move-html");
+    var canvas = document.getElementById("canvas");
+
+    if (!modelViewer || !canvas) {
+        console.error("Fehler: move-html oder canvas nicht gefunden!");
+        return;
+    }
+
+    if (markers && markers.length > 0)
+    {
+        // --- MARKER GEFUNDEN ---
+        if (markerLostTimeout) {
+            clearTimeout(markerLostTimeout);
+            markerLostTimeout = null;
+        }
+        isMarkerVisible = true;
+
+        // 1. Mittelpunkt berechnen
+        var centerX = (markers[0].corners[0].x + markers[0].corners[1].x + markers[0].corners[2].x + markers[0].corners[3].x) / 4;
+        var centerY = (markers[0].corners[0].y + markers[0].corners[1].y + markers[0].corners[2].y + markers[0].corners[3].y) / 4;
+
+        // 2. WINKEL BERECHNEN (Neu für die Drehung)
+        // Wir berechnen den Winkel zwischen Ecke 0 und Ecke 1 (obere Kante des Markers)
+        var dx = markers[0].corners[1].x - markers[0].corners[0].x;
+        var dy = markers[0].corners[1].y - markers[0].corners[0].y;
+        var angle = Math.atan2(dy, dx) * (180 / Math.PI); // Umrechnung in Grad
+
+        // 3. Skalierung und Position berechnen
+        const rect = canvas.getBoundingClientRect();
+        const scaleX = rect.width / canvas.width;
+        const scaleY = rect.height / canvas.height;
+
+        const screenX = rect.left + (centerX * scaleX);
+        const screenY = rect.top + (centerY * scaleY);
+
+        // 4. Position UND Drehung zuweisen
+        modelViewer.style.display = "block";
+        modelViewer.style.left = screenX + "px";
+        modelViewer.style.top = screenY + "px";
+        
+        // WICHTIG: translate(-50%, -50%) muss erhalten bleiben, damit das Element zentriert bleibt
+        // Wir fügen rotate(Xdeg) hinzu
+        modelViewer.style.transform = "translate(-50%, -50%) rotate(" + angle + "deg)";
+
+    } else {
+        // --- TIMEOUT LOGIK (wie bisher) ---
+        if (isMarkerVisible && !markerLostTimeout)
+        {
+            markerLostTimeout = setTimeout(function() {
+                modelViewer.style.display = "none";
+                isMarkerVisible = false;
+                markerLostTimeout = null;
+            }, 500); // Hinweis: 20000 war in deinem Text 20 Sek., ich habe es auf 600ms angepasst
+        }
+    }
 }
+*/
+
+/*
+function positionHTMLOnMarker(markers) {
+    var modelViewer = document.getElementById("move-html");
+    var canvas = document.getElementById("canvas");
+
+    if (!modelViewer || !canvas) return;
+
+    if (markers && markers.length > 0) {
+        // --- MARKER GEFUNDEN ---
+        
+        // Nutze hier htmlLostTimeout
+        if (htmlLostTimeout) {
+            clearTimeout(htmlLostTimeout);
+            htmlLostTimeout = null;
+        }
+        isHtmlVisible = true;
+
+        // ... Deine Berechnungen für Position und Drehung ...
+        var centerX = (markers[0].corners[0].x + markers[0].corners[1].x + markers[0].corners[2].x + markers[0].corners[3].x) / 4;
+        var centerY = (markers[0].corners[0].y + markers[0].corners[1].y + markers[0].corners[2].y + markers[0].corners[3].y) / 4;
+        var dx = markers[0].corners[1].x - markers[0].corners[0].x;
+        var dy = markers[0].corners[1].y - markers[0].corners[0].y;
+        var angle = Math.atan2(dy, dx) * (180 / Math.PI);
+
+        const rect = canvas.getBoundingClientRect();
+        const scaleX = rect.width / canvas.width;
+        const scaleY = rect.height / canvas.height;
+
+        modelViewer.style.display = "block";
+        modelViewer.style.left = (rect.left + (centerX * scaleX)) + "px";
+        modelViewer.style.top = (rect.top + (centerY * scaleY)) + "px";
+        modelViewer.style.transform = "translate(-50%, -50%) rotate(" + angle + "deg)";
+
+    } else {
+        // --- MARKER NICHT GEFUNDEN ---
+        
+        // Nutze hier isHtmlVisible und htmlLostTimeout
+        if (isHtmlVisible && !htmlLostTimeout) {
+            htmlLostTimeout = setTimeout(function() {
+                modelViewer.style.display = "none";
+                isHtmlVisible = false;
+                htmlLostTimeout = null;
+            }, 500); // 500ms statt 20000!
+        }
+    }
+}
+*/
+
+function positionHTMLOnMarker(markers) {
+    var modelViewer = document.getElementById("move-html");
+    var canvas = document.getElementById("canvas");
+
+    if (!modelViewer || !canvas) return;
+
+    if (markers && markers.length > 0) {
+        // --- MARKER GEFUNDEN ---
+        
+        // 1. WICHTIG: Timer stoppen, falls er läuft
+        if (htmlLostTimeout) {
+            clearTimeout(htmlLostTimeout);
+            htmlLostTimeout = null;
+        }
+        
+        // 2. WICHTIG: Status auf true setzen, damit das else-Statement später weiß, dass es aktiv werden muss
+        isHtmlVisible = true;
+
+        // Position und Drehung berechnen
+        var centerX = (markers[0].corners[0].x + markers[0].corners[1].x + markers[0].corners[2].x + markers[0].corners[3].x) / 4;
+        var centerY = (markers[0].corners[0].y + markers[0].corners[1].y + markers[0].corners[2].y + markers[0].corners[3].y) / 4;
+        
+        var dx = markers[0].corners[1].x - markers[0].corners[0].x;
+        var dy = markers[0].corners[1].y - markers[0].corners[0].y;
+        var angle = Math.atan2(dy, dx) * (180 / Math.PI);
+
+        const rect = canvas.getBoundingClientRect();
+        const scaleX = rect.width / canvas.width;
+        const scaleY = rect.height / canvas.height;
+
+        // Anzeigen und Transformieren
+        modelViewer.style.display = "block";
+        modelViewer.style.left = (rect.left + (centerX * scaleX)) + "px";
+        modelViewer.style.top = (rect.top + (centerY * scaleY)) + "px";
+        modelViewer.style.transform = "translate(-50%, -50%) rotate(" + angle + "deg)";
+
+    } else {
+        // --- MARKER VERLOREN ---
+        
+        // Dieser Block wird nur ausgeführt, wenn isHtmlVisible oben auf true gesetzt wurde
+        if (isHtmlVisible && !htmlLostTimeout) {
+            htmlLostTimeout = setTimeout(function() {
+                modelViewer.style.display = "none"; // Hier verschwindet es endlich!
+                isHtmlVisible = false; // Zurücksetzen für den nächsten Scan
+                htmlLostTimeout = null;
+            }, 500); // 0.5 Sekunden Toleranz gegen Flackern
+        }
+    }
+}
+
 
 
 
@@ -1610,6 +1840,12 @@ function setObjectSize(pixelSize)
     document.getElementById("move-model").style.height = (pixelSize * database.find(u => u.id === objectId).oSizeMultiplier) + "px";
 }
 
+function setHTMLSize(pixelSize)
+{
+    document.getElementById("move-html").style.width = (pixelSize * 2) + "px";
+    document.getElementById("move-html").style.height = (pixelSize * 2) + "px";
+}
+
 function getContactInformation(parameter)
 {
     if (parameter == null)
@@ -1629,11 +1865,16 @@ function setFullscreenForObject(id)
 {
     var elem = document.getElementById(id);
 
-    if (elem.requestFullscreen) {
+    if (elem.requestFullscreen)
+    {
         elem.requestFullscreen();
-    } else if (elem.webkitRequestFullscreen) { /* Safari */
+    }
+    else if (elem.webkitRequestFullscreen)
+    { /* Safari */
         elem.webkitRequestFullscreen();
-    } else if (elem.msRequestFullscreen) { /* IE11 */
+    }
+    else if (elem.msRequestFullscreen)
+    { /* IE11 */
         elem.msRequestFullscreen();
     }
 
