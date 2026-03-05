@@ -1162,11 +1162,65 @@ function toggleAnimation()
 
                 var audioDelay = 2000; // 2 Sekunden Verzögerung (kein Marker erkannt)
 
-                const imagesById = {
-                    10: "./data/img/konrad-zuse-wikipedia.png",
-                    11: "./data/img/overlay.png",
-                    12: "./data/img/konrad-zuse-wikipedia.png",
-                };
+
+
+                let imagesById = {};
+
+                
+
+                setTimeout(setImagesForImagesById, 2000);
+
+
+                function setImagesForImagesById()
+                {
+
+                    console.log("Auswertung ergibt: " + getCurrentObjectSrcStatus());
+
+                        if (getCurrentObjectSrcStatus() == 1)
+                        {
+                            // Keine MarkerIMGs vorhanden, nur Standard
+                            imagesById = {
+                                1: "",
+                                2: "",
+                                3: "",
+                                4: "",
+                                5: "",
+                                6: "",
+                                
+                                10: "./data/img/konrad-zuse-wikipedia.png",
+                                11: "./data/img/overlay.png",
+                                12: "./data/img/konrad-zuse-wikipedia.png",
+                            };
+                        }
+                        else
+                        {
+                            imagesById = {
+                                1: getMarkerImgByCurrentObjectId(1),
+                                2: getMarkerImgByCurrentObjectId(2),
+                                3: getMarkerImgByCurrentObjectId(3),
+                                4: getMarkerImgByCurrentObjectId(4),
+                                5: getMarkerImgByCurrentObjectId(5),
+                                6: getMarkerImgByCurrentObjectId(6),
+
+                                10: "./data/img/konrad-zuse-wikipedia.png",
+                                11: "./data/img/overlay.png",
+                                12: "./data/img/konrad-zuse-wikipedia.png",
+                            };
+                        }
+
+
+                        console.log(imagesById);
+
+                    
+
+                }
+                
+
+                
+
+
+
+                
 
                 const imageCache = {};
 

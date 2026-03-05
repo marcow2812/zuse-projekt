@@ -29,69 +29,16 @@ var maintenanceEndTime = "12:00";
 // Derzeitig gewähltes Objekt
 var objectId;
 
+
 // Objekt-Datenbank
-
-/* 
--------------------------------------------------
-
-Weitere Objekte:
-- Rätselaufgabe (Tag der offenen Tür Hünfeld)
-- Periodensystem der Elemente (einzelne Elemente)
-- Sonnensystem / einzelne Planeten
-
--------------------------------------------------
-*/
-
 const database = [
-    /*
-    {
-        id: "mystery",
-        oTitle: "Zuse Tatort",
-        oDescription: "Willkommen zum Tag der offenen Tür 2026 an der Konrad-Zuse-Schule Hünfeld!<br><br>Wir haben einen kleinen Tatort nachgebaut und insgesamt <b>6 Beweisspuren</b> versteckt. Könnt ihr alle finden?",
-        oSubject: "zu",
-        oFsk: 0,
-
-        oBanner: "./data/img/ecube/CrimeScene_green_top_big.png",
-        oSrc: "https://www.cbnb.de/3dobjects/zuse-tatort.glb",
-        oCopyright: "Copyright: Zusammengestellt durch Marco Weber, 2026<br>Verwendete Objekte:<br>Boden: Laminate Floor 03: https://polyhaven.com/a/laminate_floor_03 Pokal: 3D model by <a href='https://pixabay.com/users/jeremywoodsster-25048718/?utm_source=link-attribution&utm_medium=referral&utm_campaign=object3d&utm_content=2440'>jeremywoodsster</a> from <a href='https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=object3d&utm_content=2440'>Pixabay</a> Sofa: 3D model by <a href='https://pixabay.com/users/pixelmotion4096-32809140/?utm_source=link-attribution&utm_medium=referral&utm_campaign=object3d&utm_content=2656'>Pixelmotion4096</a> from <a href='https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=object3d&utm_content=2656'>Pixabay</a> Tresor: 3D model by <a href='https://pixabay.com/users/pixelmotion4096-32809140/?utm_source=link-attribution&utm_medium=referral&utm_campaign=object3d&utm_content=2653'>Pixelmotion4096</a> from <a href='https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=object3d&utm_content=2653'>Pixabay</a> Zauberwürfel: 3D model by <a href='https://pixabay.com/users/pixelmotion4096-32809140/?utm_source=link-attribution&utm_medium=referral&utm_campaign=object3d&utm_content=78'>Pixelmotion4096</a> from <a href='https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=object3d&utm_content=78'>Pixabay</a> Mülleimer: 3D model by <a href='https://pixabay.com/users/soykhaler-6351521/?utm_source=link-attribution&utm_medium=referral&utm_campaign=object3d&utm_content=1967'>Diego Ortiz</a> from <a href='https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=object3d&utm_content=1967'>Pixabay</a> Weißes Regal (Hochkant): 3D model by <a href='https://pixabay.com/users/quaternius_cc0-51322708/?utm_source=link-attribution&utm_medium=referral&utm_campaign=object3d&utm_content=1327'>Quaternius_CC0</a> from <a href='https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=object3d&utm_content=1327'>Pixabay</a> Stehlampe: 3D model by <a href='https://pixabay.com/users/quaternius_cc0-51322708/?utm_source=link-attribution&utm_medium=referral&utm_campaign=object3d&utm_content=1146'>Quaternius_CC0</a> from <a href='https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=object3d&utm_content=1146'>Pixabay</a> Hammer: 3D model by <a href='https://pixabay.com/users/plaggy_cc0-51322723/?utm_source=link-attribution&utm_medium=referral&utm_campaign=object3d&utm_content=531'>Plaggy_CC0</a> from <a href='https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=object3d&utm_content=531'>Pixabay</a> Schraubenzieher: 3D model by <a href='https://pixabay.com/users/plaggy_cc0-51322723/?utm_source=link-attribution&utm_medium=referral&utm_campaign=object3d&utm_content=591'>Plaggy_CC0</a> from <a href='https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=object3d&utm_content=591'>Pixabay</a> Zeitung: 3D model by <a href='https://pixabay.com/users/mastertux-470906/?utm_source=link-attribution&utm_medium=referral&utm_campaign=object3d&utm_content=1545'>MasterTux</a> from <a href='https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=object3d&utm_content=1545'>Pixabay</a> Hand: 3D model by <a href='https://pixabay.com/users/pixelmotion4096-32809140/?utm_source=link-attribution&utm_medium=referral&utm_campaign=object3d&utm_content=1949'>Pixelmotion4096</a> from <a href='https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=object3d&utm_content=1949'>Pixabay</a> Stuhl: 3D model by <a href='https://pixabay.com/users/quaternius_cc0-51322708/?utm_source=link-attribution&utm_medium=referral&utm_campaign=object3d&utm_content=1192'>Quaternius_CC0</a> from <a href='https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=object3d&utm_content=1192'>Pixabay</a> Uhr: 3D model by <a href='https://pixabay.com/users/arunangshubanerjee-29054022/?utm_source=link-attribution&utm_medium=referral&utm_campaign=object3d&utm_content=2041'>Arunangshu Banerjee</a> from <a href='https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=object3d&utm_content=2041'>Pixabay</a> Regal-Tisch: 3D model by <a href='https://pixabay.com/users/quaternius_cc0-51322708/?utm_source=link-attribution&utm_medium=referral&utm_campaign=object3d&utm_content=1330'>Quaternius_CC0</a> from <a href='https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=object3d&utm_content=1330'>Pixabay</a> Bücher: 3D model by <a href='https://pixabay.com/users/pixelmotion4096-32809140/?utm_source=link-attribution&utm_medium=referral&utm_campaign=object3d&utm_content=2639'>Pixelmotion4096</a> from <a href='https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=object3d&utm_content=2639'>Pixabay</a> Tasse: 3D model by <a href='https://pixabay.com/users/mastertux-470906/?utm_source=link-attribution&utm_medium=referral&utm_campaign=object3d&utm_content=209'>MasterTux</a> from <a href='https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=object3d&utm_content=209'>Pixabay</a> Croissant: 3D model by <a href='https://pixabay.com/users/-promptplay--51430280/?utm_source=link-attribution&utm_medium=referral&utm_campaign=object3d&utm_content=1721'>-PromptPlay-</a> from <a href='https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=object3d&utm_content=1721'>Pixabay</a> Klavier: 3D model by <a href='https://pixabay.com/users/manseok_kim-1005494/?utm_source=link-attribution&utm_medium=referral&utm_campaign=object3d&utm_content=2114'>manseok Kim</a> from <a href='https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=object3d&utm_content=2114'>Pixabay</a> Teppich: 3D model by <a href='https://pixabay.com/users/quaternius_cc0-51322708/?utm_source=link-attribution&utm_medium=referral&utm_campaign=object3d&utm_content=793'>Quaternius_CC0</a> from <a href='https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=object3d&utm_content=793'>Pixabay</a> Blumentopf: 3D model by <a href='https://pixabay.com/users/plaggy_cc0-51322723/?utm_source=link-attribution&utm_medium=referral&utm_campaign=object3d&utm_content=573'>Plaggy_CC0</a> from <a href='https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=object3d&utm_content=573'>Pixabay</a> Kaktus: 3D model by <a href='https://pixabay.com/users/quaternius_cc0-51322708/?utm_source=link-attribution&utm_medium=referral&utm_campaign=object3d&utm_content=771'>Quaternius_CC0</a> from <a href='https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=object3d&utm_content=771'>Pixabay</a> Teller: 3D model by <a href='https://pixabay.com/users/plaggy_cc0-51322723/?utm_source=link-attribution&utm_medium=referral&utm_campaign=object3d&utm_content=578'>Plaggy_CC0</a> from <a href='https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=object3d&utm_content=578'>Pixabay</a> Karton: 3D model by <a href='https://pixabay.com/users/tiny_planet_friends_3d-52823822/?utm_source=link-attribution&utm_medium=referral&utm_campaign=object3d&utm_content=2960'>TWIN REBEL</a> from <a href='https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=object3d&utm_content=2960'>Pixabay</a> Hamster: 3D model by <a href='https://pixabay.com/users/bsmercantile5-50929094/?utm_source=link-attribution&utm_medium=referral&utm_campaign=object3d&utm_content=2267'>BSmercantile5</a> from <a href='https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=object3d&utm_content=2267'>Pixabay</a> Deckenlampe: 3D model by <a href='https://pixabay.com/users/quaternius_cc0-51322708/?utm_source=link-attribution&utm_medium=referral&utm_campaign=object3d&utm_content=1143'>Quaternius_CC0</a> from <a href='https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=object3d&utm_content=1143'>Pixabay</a>",
-        oSizeMultiplier: 3,
-        oBackground: "#f2f2f2",
-        oBackgroundSrc: "",
-
-        oMainTextColor: "white",
-        oMainBgColor: "rgba(98, 166, 14, 0.5)",
-
-        oAudioSrc: "./data/music/night-before-dawn-129272.mp3",
-        oAudioCopyright: "Music by <a href='https://pixabay.com/users/sweet_kr-27931391/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=129272'>Artur Buriak</a> from <a href='https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=129272'>Pixabay</a>",
-        oAudioStartAt: 2.0,
-    },
-    {
-        id: "wwm",
-        oTitle: "Zuse - Wer wird Millionär",
-        oDescription: "Willkommen zum Tag der offenen Tür 2026 an der Konrad-Zuse-Schule Hünfeld!",
-        oSubject: "zu",
-        oFsk: 0,
-
-        oBanner: "./data/img/ecube/CrimeScene_green_top_big.png",
-        oSrc: "",
-        oCopyright: "Copyright: Zusammengestellt durch Marco Weber",
-        oSizeMultiplier: 3,
-        oBackground: "transparent",
-        oBackgroundSrc: "",
-
-        oMainTextColor: "white",
-        oMainBgColor: "rgba(46, 65, 168, 0.8)",
-
-        oAudioId: 1,
-    },
-    */
-
     {
         id: "sonne-ro",
         oTitle: "Sonne",
         oDescription: "(Beschreibung folgt)",
         oSubject: "ph",
         oFsk: 0,
+        oType: "3d",
 
         oBanner: "./data/3d/img/sonne-ro.png",
         oSrc: "./data/3d/object/sonne-ro.glb",
@@ -108,6 +55,7 @@ const database = [
         oHotspots: ``,
         oFacts: `
         <div class="fact">Typ: Stern</div>
+        <div class="fact">Astronomisches Symbol: ☉</div>
         <div class="fact">4,57 Mrd. Jahre</div>
         <div class="fact">⌀ 1,4 Mio. km</div>
         `,
@@ -118,6 +66,7 @@ const database = [
         oDescription: "(Beschreibung folgt)",
         oSubject: "ph",
         oFsk: 0,
+        oType: "3d",
 
         oBanner: "./data/3d/img/merkur-ro.png",
         oSrc: "./data/3d/object/merkur-ro.glb",
@@ -134,6 +83,7 @@ const database = [
         oHotspots: ``,
         oFacts: `
         <div class="fact">Typ: Planet</div>
+        <div class="fact">Astronomisches Symbol: ☿</div>
         <div class="fact">4,5 Mrd. Jahre</div>
         <div class="fact">⌀ 4880 km</div>
         `,
@@ -144,6 +94,7 @@ const database = [
         oDescription: "(Beschreibung folgt)",
         oSubject: "ph",
         oFsk: 0,
+        oType: "3d",
 
         oBanner: "./data/3d/img/venus-ro.png",
         oSrc: "./data/3d/object/venus-ro.glb",
@@ -160,6 +111,7 @@ const database = [
         oHotspots: ``,
         oFacts: `
         <div class="fact">Typ: Planet</div>
+        <div class="fact">Astronomisches Symbol: ♀</div>
         <div class="fact">4,5 Mrd. Jahre</div>
         <div class="fact">⌀ 12104 km</div>
         `,
@@ -170,6 +122,7 @@ const database = [
         oDescription: "(Beschreibung folgt)",
         oSubject: "ph",
         oFsk: 0,
+        oType: "3d",
 
         oBanner: "./data/3d/img/erde-ro.png",
         oSrc: "./data/3d/object/erde-ro.glb",
@@ -186,6 +139,7 @@ const database = [
         oHotspots: ``,
         oFacts: `
         <div class="fact">Typ: Planet</div>
+        <div class="fact">Astronomisches Symbol: 🜨</div>
         <div class="fact">4,54 Mrd. Jahre</div>
         <div class="fact">⌀ 12700 km</div>
         `,
@@ -196,6 +150,7 @@ const database = [
         oDescription: `(Beschreibung folgt)`,
         oSubject: "ph",
         oFsk: 0,
+        oType: "3d",
 
         oBanner: "./data/3d/img/mars-ro.png",
         oSrc: "./data/3d/object/mars-ro.glb",
@@ -212,6 +167,7 @@ const database = [
         oHotspots: ``,
         oFacts: `
         <div class="fact">Typ: Planet</div>
+        <div class="fact">Astronomisches Symbol: ♂</div>
         <div class="fact">4,5 Mrd. Jahre</div>
         <div class="fact">⌀ 6794 km</div>
         `,
@@ -222,6 +178,7 @@ const database = [
         oDescription: "(Beschreibung folgt)",
         oSubject: "ph",
         oFsk: 0,
+        oType: "3d",
 
         oBanner: "./data/3d/img/jupiter-ro.png",
         oSrc: "./data/3d/object/jupiter-ro.glb",
@@ -238,6 +195,7 @@ const database = [
         oHotspots: ``,
         oFacts: `
         <div class="fact">Typ: Planet</div>
+        <div class="fact">Astronomisches Symbol: ♃</div>
         <div class="fact">4,5 Mrd. Jahre</div>
         <div class="fact">⌀ 142976 km</div>
         `,
@@ -248,6 +206,7 @@ const database = [
         oDescription: "(Beschreibung folgt)",
         oSubject: "ph",
         oFsk: 0,
+        oType: "3d",
 
         oBanner: "./data/3d/img/saturn-ro.png",
         oSrc: "./data/3d/object/saturn-ro.glb",
@@ -264,6 +223,7 @@ const database = [
         oHotspots: ``,
         oFacts: `
         <div class="fact">Typ: Planet</div>
+        <div class="fact">Astronomisches Symbol: ♄</div>
         <div class="fact">4,5 Mrd. Jahre</div>
         <div class="fact">⌀ 120536 km</div>
         `,
@@ -274,6 +234,7 @@ const database = [
         oDescription: "(Beschreibung folgt)",
         oSubject: "ph",
         oFsk: 0,
+        oType: "3d",
 
         oBanner: "./data/3d/img/uranus-ro.png",
         oSrc: "./data/3d/object/uranus-ro.glb",
@@ -290,6 +251,7 @@ const database = [
         oHotspots: ``,
         oFacts: `
         <div class="fact">Typ: Planet</div>
+        <div class="fact">Astronomisches Symbol: ⛢ ♅</div>
         <div class="fact">4,5 Mrd. Jahre</div>
         <div class="fact">⌀ 51118 km</div>
         `,
@@ -300,6 +262,7 @@ const database = [
         oDescription: "(Beschreibung folgt)",
         oSubject: "ph",
         oFsk: 0,
+        oType: "3d",
 
         oBanner: "./data/3d/img/neptun-ro.png",
         oSrc: "./data/3d/object/neptun-ro.glb",
@@ -316,6 +279,7 @@ const database = [
         oHotspots: ``,
         oFacts: `
         <div class="fact">Typ: Planet</div>
+        <div class="fact">Astronomisches Symbol: ♆</div>
         <div class="fact">4,5 Mrd. Jahre</div>
         <div class="fact">⌀ 49528 km</div>
         `,
@@ -326,6 +290,7 @@ const database = [
         oDescription: "(Beschreibung folgt)",
         oSubject: "ph",
         oFsk: 0,
+        oType: "3d",
 
         oBanner: "./data/3d/img/pluto-ro.png",
         oSrc: "./data/3d/object/pluto-ro.glb",
@@ -342,16 +307,12 @@ const database = [
         oHotspots: ``,
         oFacts: `
         <div class="fact">Typ: Zwergplanet</div>
+        <div class="fact">Astronomisches Symbol: ⯓♇</div>
         <div class="fact">4,5 Mrd. Jahre</div>
         <div class="fact">⌀ 2374 km</div>
         `,
     },
 
-
-
-
-
-    
 
     {
         id: "bird-1",
@@ -359,6 +320,7 @@ const database = [
         oDescription: "Ein oranger Vogel im Wald",
         oSubject: "bi",
         oFsk: 0,
+        oType: "3d",
 
         oBanner: "./data/3d/img/bird.png",
         oSrc: "./data/3d/object/bird_orange.glb",
@@ -380,6 +342,7 @@ const database = [
         oDescription: "Eine lebendige Katze",
         oSubject: "bi",
         oFsk: 0,
+        oType: "3d",
 
         oBanner: "./data/3d/img/cat.png",
         oSrc: "./data/3d/object/an_animated_cat.glb",
@@ -401,6 +364,7 @@ const database = [
         oDescription: "Ein Hund - der beste Freund des Menschen",
         oSubject: "bi",
         oFsk: 0,
+        oType: "3d",
 
         oBanner: "./data/3d/img/dog.png",
         oSrc: "./data/3d/object/dog_puppy.glb",
@@ -422,6 +386,7 @@ const database = [
         oDescription: "Koi ist die japanische Bezeichnung für 'Karpfen' und beschreibt eine Zuchtform des Karpfens",
         oSubject: "bi",
         oFsk: 0,
+        oType: "3d",
 
         oBanner: "./data/3d/img/fish.png",
         oSrc: "./data/3d/object/koi_fish.glb",
@@ -439,16 +404,13 @@ const database = [
     },
 
 
-
-
-
-
     {
         id: "newton-1",
         oTitle: "Kugelstoßpendel",
         oDescription: "Bei dem Kugelstoßpendel (auch Kugelpendel genannt) handelt es sich um eine Erfindung von Newton.<br>Es besteht aus einer geraden Reihe gleicher elastischer Kugeln, jede an zwei gleichen Fäden (bifilar) so aufgehängt, dass sie von ihren Nachbarkugeln gerade berührt wird und nur in Richtung zu ihren Nachbarkugeln schwingen kann. Alle Kugeln bilden Pendel gleicher Masse und Pendellänge und vorgegebenem Bewegungspfad.",
         oSubject: "ph",
         oFsk: 0,
+        oType: "3d",
 
         oBanner: "./data/img/favicon.png",
         oSrc: "./data/3d/object/newtons_cradle.glb",
@@ -465,52 +427,13 @@ const database = [
         oHotspots: ``,
     },
 
-    /*
-    {
-        id: "heart-1",
-        oTitle: "Rotes Herz",
-        oDescription: "Rote Herzen symbolisieren in vielen Kulturen ein Zeichen von Liebe",
-        oSubject: "bi",
-        oFsk: 0,
-
-        oBanner: "./data/3d/img/heart-1.webp",
-        oSrc: "./data/3d/object/heart-23.glb",
-        oCopyright: "3D model by <a href='https://pixabay.com/users/blendertimer-9538909/?utm_source=link-attribution&utm_medium=referral&utm_campaign=object3d&utm_content=23'>Daniel Roberts</a> from <a href='https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=object3d&utm_content=23'>Pixabay</a>",
-        oSizeMultiplier: 3,
-        oBackground: "rgb(255, 179, 179, 0.3)",
-        oBackgroundSrc: "",
-
-        oMainTextColor: "white",
-        oMainBgColor: "rgba(98, 166, 14, 0.5)",
-
-        oAudioId: 2,
-    },
-
-    {
-        id: "disco-1",
-        oTitle: "Disco-Kugel",
-        oDescription: "Hier sehen Sie eine Disco-Kugel",
-        oSubject: "bi",
-        oFsk: 0,
-
-        oBanner: "./data/3d/img/disco-1.webp",
-        oSrc: "./data/3d/object/disco-ball-2730.glb",
-        oCopyright: "3D model by <a href='https://pixabay.com/users/lyocrypt-50042056/?utm_source=link-attribution&utm_medium=referral&utm_campaign=object3d&utm_content=2730'>NaxiLyo Crypt</a> from <a href='https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=object3d&utm_content=2730'>Pixabay</a>",
-        oSizeMultiplier: 3,
-        oBackground: "transparent",
-        oBackgroundSrc: "",
-
-        oMainTextColor: "white",
-        oMainBgColor: "rgba(98, 166, 14, 0.5)",
-
-        oAudioId: 2,
-    },
-    */
 
     {
         id: "atom-1",
         oTitle: "Aufbau eines Atoms",
         oDescription: "Atome sind die Bausteine, aus denen alle festen, flüssigen und gasförmigen Stoffe bestehen. <br> Sie bestehen aus Protonen, Neutronen und Elektronen.",
+
+        oType: "3d",
 
         oSubject: "ch",
         oBanner: "./data/img/favicon.png",
@@ -535,6 +458,8 @@ const database = [
         oTitle: "Erdkugel",
         oDescription: `Entdecke unseren 4,5 Millionen Jahre alten Planeten - die Erde.<br>Mit seinen 7 Kontinenten bedeckt sie rund 510 Millionen Quadratkilometer. Rund 71% der Oberfläche sind mit Wasser bedeckt, was einer Fläche von 361 Millionen Quadratkilometern entspricht.<br>Erlebe einen Rundflug über den blauen Planeten.<br>Der Nachbarplanet im <a class='cross-reference' onclick="setCrossReferenceObject('solar-2')">Sonnensystem</a> ist der <a class='cross-reference' onclick="setCrossReferenceObject('mars-1')">Mars</a>.`,
 
+        oType: "3d",
+
         oSizeMultiplier: 4,
         oBackground: "black",
         oAudioStartAt: 1.5,
@@ -552,6 +477,7 @@ const database = [
         oDescription: `Entdecke unseren 4,5 Millionen Jahre alten Planeten - die Erde.<br>Mit seinen 7 Kontinenten bedeckt sie rund 510 Millionen Quadratkilometer. Rund 71% der Oberfläche sind mit Wasser bedeckt, was einer Fläche von 361 Millionen Quadratkilometern entspricht.<br>Erlebe einen Rundflug über den blauen Planeten.<br>Der Nachbarplanet im <a class='cross-reference' onclick="setCrossReferenceObject('solar-2')">Sonnensystem</a> ist der <a class='cross-reference' onclick="setCrossReferenceObject('mars-1')">Mars</a>.`,
         oSubject: "er",
         oFsk: 0,
+        oType: "3d",
 
         oBanner: "./data/3d/img/earth2.png",
         oSrc: "./data/3d/object/earth_cartoon.glb",
@@ -569,23 +495,6 @@ const database = [
     },
 
 
-    /*
-    {
-        id: "solar-1",
-        oSubject: "ph",
-        oBanner: "./data/img/favicon.png",
-        oSrc: "./data/3d/object/solar_system1.glb",
-        oTitle: "Sonnensystem (1)",
-        oSizeMultiplier: 4,
-        oBackground: "black",
-        oAudioStartAt: 10,
-        oCopyright: "'Solar system' (https://skfb.ly/oKYnC) by dannzjs is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).",
-    
-        oMainTextColor: "white",
-        oMainBgColor: "rgba(98, 166, 14, 0.5)",
-    },
-    */
-
     {
         id: "solar-2",
         oSubject: "ph",
@@ -595,6 +504,7 @@ const database = [
         oDescription: `Das Sonnensystem ist das Planetensystem, in dem sich die Erde befindet. Es besteht aus der Sonne, acht sie umkreisenden Planeten (von innen nach außen: Merkur, Venus, Erde, Mars, Jupiter, Saturn, Uranus und Neptun), deren natürlichen Satelliten, den Zwergplaneten, anderen Kleinkörpern (Kometen, Asteroiden und Meteoroiden) und aus unzähligen Gas- und Staubteilchen, die durch die Anziehungskraft der Sonne an diese gebunden sind.`,
         oSizeMultiplier: 7,
         oBackground: "black",
+        oType: "3d",
 
         oCopyright: "'Solar System : المجموعة الشمسية' (https://skfb.ly/YnDQ) by shooogp is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).",
     
@@ -651,6 +561,8 @@ const database = [
         oBackground: "url('./data/3d/img/mars.jpg')",
         oCopyright: "'Curiosity Mars rover' (https://skfb.ly/oTPHp) by Cybertron B-127 is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).\nFoto von RDNE Stock project: https://www.pexels.com/de-de/foto/wuste-trocken-felsen-konzept-8474500/",
     
+        oType: "3d",
+
         oMainTextColor: "white",
         oMainBgColor: "rgba(98, 166, 14, 0.5)",
 
@@ -665,6 +577,7 @@ const database = [
         oDescription: "Erkundet die Plattentektonik, bei der zwei Kontinentalplatten aufeinandertreffen",
         oSubject: "er",
         oFsk: 0,
+        oType: "3d",
 
         oBanner: "./data/3d/img/tectonic1.png",
         oSrc: "./data/3d/object/tectonic_plates_animated.glb",
@@ -681,20 +594,24 @@ const database = [
         oHotspots: ``,
     },
 
-    
 
 
-    /*
+
+
+
+
+
     {
-        id: "tectonic-2",
-        oTitle: "Plattentektonik (aufeinander)",
-        oDescription: "Erkundet die Plattentektonik",
-        oSubject: "er",
+        id: "img-grid",
+        oTitle: "Bilderwand",
+        oDescription: "(Beschreibung folgt)",
+        oSubject: "zu",
         oFsk: 0,
+        oType: "img",
 
-        oBanner: "./data/3d/img/tectonic2.png",
-        oSrc: "./data/3d/object/moving_tectonic_plates.glb",
-        oCopyright: "'Moving Tectonic Plates' (https://skfb.ly/oSw8D) by eugenek818 is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).",
+        oBanner: "./data/img/favicon.png",
+        oSrc: null,
+        oCopyright: "Ohne Copyright",
         oSizeMultiplier: 6,
         oBackground: "none",
         oBackgroundSrc: "",
@@ -702,11 +619,48 @@ const database = [
         oMainTextColor: "white",
         oMainBgColor: "rgba(98, 166, 14, 0.5)",
 
-        oAudioId: 3,
-    },
-    */
+        oAudioId: 1,
 
-    
+        oHotspots: ``,
+
+        oMarkerImg1: "./data/img/diashow/img1.png",
+        oMarkerImg2: "./data/img/diashow/img2.png",
+        oMarkerImg3: "./data/img/diashow/img3.png",
+        oMarkerImg4: "./data/img/diashow/img4.png",
+        oMarkerImg5: "./data/img/diashow/img5.png",
+        oMarkerImg6: "./data/img/diashow/img6.png",
+    },
+    {
+        id: "planeten-grid",
+        oTitle: "Planeten entdecken",
+        oDescription: "(Beschreibung folgt)",
+        oSubject: "zu",
+        oFsk: 0,
+        oType: "img",
+
+        oBanner: "./data/img/favicon.png",
+        oSrc: null,
+        oCopyright: "Ohne Copyright",
+        oSizeMultiplier: 6,
+        oBackground: "none",
+        oBackgroundSrc: "",
+
+        oMainTextColor: "white",
+        oMainBgColor: "rgba(98, 166, 14, 0.5)",
+
+        oAudioId: 1,
+
+        oHotspots: ``,
+
+        oMarkerImg1: "./data/3d/img/venus-ro.png",
+        oMarkerImg2: "./data/3d/img/erde-ro.png",
+        oMarkerImg3: "./data/3d/img/mars-ro.png",
+        oMarkerImg4: "./data/3d/img/jupiter-ro.png",
+        oMarkerImg5: "./data/3d/img/neptun-ro.png",
+        oMarkerImg6: "./data/3d/img/uranus-ro.png",
+    },
+
+
 ];
 
 
@@ -757,6 +711,46 @@ console.log(database.find(u => u.id === "atom-1").oTitle);
 
 console.log(database.length);
 */
+
+
+function getCurrentObjectId()
+{
+    return objectId;
+}
+function getCurrentObjectSrcStatus()
+{
+    if (!objectId)
+    {
+        return 0; 
+    }
+
+    var foundObject = database.find(u => u.id === objectId);
+
+    if (foundObject && foundObject.oSrc != null && foundObject.oSrc !== "")
+    {
+        return 1; // Quelle vorhanden
+    }
+    else
+    {
+        return 0; // Keine Quelle oder Objekt nicht gefunden
+    }
+}
+function getMarkerImgByCurrentObjectId(markerSite)
+{
+    //alert(objectId);
+    //alert(database.find(u => u.id === objectId).oMarkerImg1);
+
+    const currentObject = database.find(u => u.id === objectId);
+
+    if (!currentObject) {
+        console.warn("Objekt mit ID '" + objectId + "' wurde in der Datenbank nicht gefunden.");
+        return ""; // Oder ein Standard-Platzhalterbild
+    }
+
+    const propertyName = "oMarkerImg" + markerSite;
+
+    return currentObject[propertyName] || "";
+}
 
 
 
@@ -1552,6 +1546,9 @@ function setCrossReferenceObject(id)
 function setObject(objectIdParameter)
 {
 
+    // Bilder für einzelne Seiten laden
+    //setImagesForImagesById();
+
     
 
     /* Zusatzfunktion für Zuse Tatort */
@@ -1651,6 +1648,41 @@ function setObject(objectIdParameter)
         imagesById[1] = "";
         imagesById[2] = "";
     }
+
+/*
+    if (getCurrentObjectSrcStatus() == 0)
+                        {
+                            // Keine MarkerIMGs vorhanden, nur Standard
+                            imagesById = {
+                                10: "./data/img/konrad-zuse-wikipedia.png",
+                                11: "./data/img/overlay.png",
+                                12: "./data/img/konrad-zuse-wikipedia.png",
+                            };
+                        }
+                        else
+                        {
+                            imagesById = {
+                                1: getMarkerImgByCurrentObjectId(1),
+                                2: getMarkerImgByCurrentObjectId(2),
+                                3: getMarkerImgByCurrentObjectId(3),
+                                4: getMarkerImgByCurrentObjectId(4),
+                                5: getMarkerImgByCurrentObjectId(5),
+                                6: getMarkerImgByCurrentObjectId(6),
+
+                                10: "./data/img/konrad-zuse-wikipedia.png",
+                                11: "./data/img/overlay.png",
+                                12: "./data/img/konrad-zuse-wikipedia.png",
+                            };
+                        }
+*/
+
+
+
+
+
+
+
+    
 
     objectId = objectIdParameter;
 
