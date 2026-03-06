@@ -603,7 +603,7 @@ const database = [
 
     {
         id: "img-grid",
-        oTitle: "Bilderwand",
+        oTitle: "img-grid",
         oDescription: "(Beschreibung folgt)",
         oSubject: "zu",
         oFsk: 0,
@@ -632,7 +632,7 @@ const database = [
     },
     {
         id: "planeten-grid",
-        oTitle: "Planeten entdecken",
+        oTitle: "planeten-grid",
         oDescription: "(Beschreibung folgt)",
         oSubject: "zu",
         oFsk: 0,
