@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text-zu-Sprache mit Fehlerdiagnose</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; background-color: #f0f2f5; margin: 0; }
+        .container { background: white; padding: 2.5rem; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); text-align: center; width: 450px; }
+        textarea { width: 100%; height: 120px; margin-bottom: 1rem; padding: 12px; border: 1px solid #ddd; border-radius: 8px; resize: none; font-size: 0.95rem; box-sizing: border-box; }
+        button { background-color: #007bff; color: white; border: none; padding: 12px 24px; border-radius: 6px; cursor: pointer; font-size: 1rem; transition: background 0.3s; width: 100%; }
+        button:hover { background-color: #0056b3; }
+        #errorLog { margin-top: 1.5rem; padding: 10px; border-radius: 6px; font-size: 0.85rem; text-align: left; display: none; }
+        .error-msg { background-color: #fdeaea; color: #b71c1c; border: 1px solid #f5c2c7; }
+        .success-msg { background-color: #e8f5e9; color: #2e7d32; border: 1px solid #c8e6c9; display: block !important; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Lokale Sprachausgabe</h2>
+    <textarea id="textInput">Hallo! Dies ist ein Testlauf. Wenn du das hörst, funktioniert alles einwandfrei.</textarea>
+    
+    <button id="speakBtn">Text vorlesen</button>
+
+    <div id="errorLog"></div>
+</div>
+
+<script>
+    const textInput = document.getElementById('textInput');
+    const speakBtn = document.getElementById('speakBtn');
+    const errorLog = document.getElementById('errorLog');
+
+    function logStatus(message, isError = true) {
+        errorLog.innerText = message;
+        errorLog.className = isError ? 'error-msg' : 'success-msg';
+        errorLog.style.display = 'block';
+    }
+
+    function checkSystemVoices() {
+        const voices = window.speechSynthesis.getVoices();
+        if (voices.length === 0) {
+            logStatus("Warnung: Keine System-Stimmen gefunden. Bitte Seite neu laden oder Browser-Einstellungen prüfen.");
+        } else {
+            logStatus(voices.length + " Stimmen geladen und bereit.", false);
+        }
+    }
+
+    // Wichtig: Stimmen werden oft verzögert geladen
+    window.speechSynthesis.onvoiceschanged = checkSystemVoices;
+    setTimeout(checkSystemVoices, 500); // Sicherheits-Check nach 0.5s
+
+    function speakText() {
+        // Log leeren bei neuem Versuch
+        errorLog.style.display = 'none';
+
+        if (!('speechSynthesis' in window)) {
+            logStatus("Fehler: Dein Browser unterstützt die Web Speech API überhaupt nicht.");
+            return;
+        }
+
+        const text = textInput.value.trim();
+        if (!text) {
+            logStatus("Fehler: Bitte gib einen Text ein.");
+            return;
+        }
+
+        // Eventuelle laufende Sprachausgabe stoppen
+        window.speechSynthesis.cancel();
+
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = 'de-DE';
+
+        // Erfolgskontrolle
+        utterance.onstart = () => {
+            logStatus("Wiedergabe läuft...", false);
+        };
+
+        // Fehlerkontrolle
+        utterance.onerror = (event) => {
+            console.error(event);
+            let detail = event.error;
+            
+            if (detail === 'synthesis-failed') {
+                detail = "Synthese fehlgeschlagen (Häufig: Fehlendes Sprachpaket im Betriebssystem oder Browser-Blockade).";
+            } else if (detail === 'not-allowed') {
+                detail = "Nicht erlaubt (Der Browser blockiert die Audioausgabe ohne vorherigen Klick).";
+            }
+
+            logStatus("Fehler-Code: " + detail);
+        };
+
+        utterance.onend = () => {
+            logStatus("Wiedergabe beendet.", false);
+        };
+
+        window.speechSynthesis.speak(utterance);
+    }
+
+    speakBtn.addEventListener('click', speakText);
+</script>
+
+</body>
+</html>
