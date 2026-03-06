@@ -1425,11 +1425,11 @@ arModel.addEventListener("ar-status", (event) => {
 
                 if (marker.id >= 1 && marker.id <= 6)
                 {
-                    setObjectSize(sideLength.toFixed(2));
+                    setObjectSize(sideLength.toFixed(0));
                 }
                 else if (marker.id == 7)
                 {
-                    setHTMLSize(sideLength.toFixed(2));
+                    setHTMLSize(sideLength.toFixed(0));
                 }
 
                 
@@ -1470,7 +1470,7 @@ arModel.addEventListener("ar-status", (event) => {
                 const R = pose.bestRotation;
                 const T = pose.bestTranslation;
                 const e = rotationMatrixToEuler(R);
-                setDegByMarker(marker.id, e.x.toFixed(1), e.y.toFixed(1), e.z.toFixed(1));
+                setDegByMarker(marker.id, e.x.toFixed(0), e.y.toFixed(0), e.z.toFixed(0));
 
                 // Marker rot umranden (Debug)
                 /*

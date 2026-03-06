@@ -609,7 +609,7 @@ const database = [
         oFsk: 0,
         oType: "img",
 
-        oBanner: "./data/img/favicon.png",
+        oBanner: "./data/img/overlay.png",
         oSrc: null,
         oCopyright: "Ohne Copyright",
         oSizeMultiplier: 6,
@@ -638,7 +638,7 @@ const database = [
         oFsk: 0,
         oType: "img",
 
-        oBanner: "./data/img/favicon.png",
+        oBanner: "./data/img/overlay.png",
         oSrc: null,
         oCopyright: "Ohne Copyright",
         oSizeMultiplier: 6,
