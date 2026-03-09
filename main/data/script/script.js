@@ -901,55 +901,6 @@ function setMenuFromDatabase(numberOfObjects)
 
 
 
-/*
-function setCanvasSize()
-{
-    var canvas = document.getElementById("canvas");
-    var canvasQuotient = canvas.height / canvas.width;
-
-    console.log("C-W: " + canvas.width + " C-H: " + canvas.height + " Q: " + canvasQuotient);
-
-    let w = window.innerWidth;
-    let h = window.innerHeight;
-    console.log("W-W: " + w + " W-H: " + h);
-
-    var x = ((w - canvas.width) * canvasQuotient);
-
-    console.log(x);
-
-    if ((x + canvas.height) <= h)
-    {
-        console.log("Canvas volle Höhe");
-
-        canvas.style.height = h+"px";
-        canvas.style.width = "auto";
-
-        // canvas.style.left = "px";
-    }
-    else
-    {
-        console.log("Canvas volle Breite");
-
-        // canvas.style.width = "100%";
-        canvas.style.width = w+"px";
-        canvas.style.height = "auto";
-    }
-}
-*/
-
-/*
-var closeValue = 0;
-function checkCloseOption()
-{
-    closeValue = closeValue + 1;
-    if (closeValue >= numberOfPermissions)
-    {
-        // Alles erlaubt
-        closeWelcomeModal();
-    }
-}
-    */
-
 function getCopyright(id)
 {
     alert(database.find(u => u.id === id).oCopyright);
@@ -1013,7 +964,7 @@ async function checkInternetConnection()
 function setDegByMarker(marker, x, y, z)
 {
 
-    const invertedZ = (360 - parseFloat(z)) % 360; 
+    const invertedZ = (360 - parseFloat(z)) % 360;
 
 
     // console.log("Auswertung: " + marker)

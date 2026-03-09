@@ -75,19 +75,64 @@
                         <h3>Kursübersicht</h3>
 
                         <div style="display: flex; overflow-x: auto; width: 100%; gap: 15px">
+                            <div style="display: flex; flex-shrink: 0; overflow: hidden;">
 
-                            <div style="display: flex; flex-shrink: 0; border-radius: 9px; overflow: hidden; border: 1px solid #ddd;">
-                                <div class="subject-panel">
+                                <div class="subject-panel" style="background-color: rgb(42, 194, 42);" onclick="showBioLM()">
+                                    <span class="title">Biologie</span><br>
+                                    <span class="teacher">L. M.</span>
+                                </div>
+
+                                
+                                
+                                <div class="subject-panel" onclick="showPhysikKR()">
                                     <span class="title">Physik</span><br>
                                     <span class="teacher">K. R.</span>
                                 </div>
 
-                                <div style="font-size:12px; width: 150px; background-color: white; color: #333; padding: 10px; display: flex; align-items: center;">
-                                    <a onclick="openNav('./data/subpages/solarsystem.html')" style="cursor:pointer">Animiertes Sonnensystem</a>
-                                </div>
+                                
+
                             </div>
+                        </div>
+
+                        <script>
+                            function showBioLM()
+                            {
+                                document.getElementById('bio-kurs-l-m').style.display='block';
+                                document.getElementById('physik-kurs-k-r').style.display='none';
+                            }
+                            function showPhysikKR()
+                            {
+                                document.getElementById('physik-kurs-k-r').style.display='block';
+                                document.getElementById('bio-kurs-l-m').style.display='none';
+                            }
+                        </script>
+
+                        <div id="bio-kurs-l-m" style="display:none;padding:15px;border-radius:8px;border:1px solid #ddd;margin-top:10px">
+                            
+                            <a style="cursor:pointer">Gruppe 1 - Aufgabenstellung (ohne Funktion)</a>
+                            <br><br>
+                            <a style="cursor:pointer">Gruppe 1 - Objekt (ohne Funktion)</a>
+                            <br><br>
+                            <a style="cursor:pointer">Gruppe 2 - Aufgabenstellung (ohne Funktion)</a>
+                            <br><br>
+                            <a style="cursor:pointer">Gruppe 2 - Objekt (ohne Funktion)</a>
+                            <br><br>
+                            <a style="cursor:pointer">Gruppe 3 - Aufgabenstellung (ohne Funktion)</a>
+                            <br><br>
+                            <a style="cursor:pointer">Gruppe 3 - Objekt (ohne Funktion)</a>
+                            <br><br>
+                            <a style="cursor:pointer">Gruppe 4 - Aufgabenstellung (ohne Funktion)</a>
+                            <br><br>
+                            <a style="cursor:pointer">Gruppe 4 - Objekt (ohne Funktion)</a>
 
                         </div>
+
+                        <div id="physik-kurs-k-r" style="display:none;padding:15px;border-radius:8px;border:1px solid #ddd;margin-top:10px">
+                        
+                            <a onclick="openNav('./data/subpages/solarsystem.html')" style="cursor:pointer">Drehung der Planeten im Sonnensystem</a>
+
+                        </div>
+
 
 
                         <div id="urlSidenav" class="urlsidenav">
