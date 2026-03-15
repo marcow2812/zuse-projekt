@@ -108,28 +108,64 @@
                         </script>
 
                         <div id="bio-kurs-l-m" style="display:none;padding:15px;border-radius:8px;border:1px solid #ddd;margin-top:10px">
+
+                            <a style="cursor:pointer" onclick="setObject('klimawandel-hotspots')">Hotspots des Klimawandels</a>
+                            <br><br>
                             
-                            <a style="cursor:pointer">Gruppe 1 - Aufgabenstellung (ohne Funktion)</a>
+                            <a style="cursor:pointer">Gruppe 1 - Aufgabenstellung</a>
+                            <br>
+                            <a style="cursor:pointer">Gruppe 1 - Material</a>
                             <br><br>
-                            <a style="cursor:pointer">Gruppe 1 - Objekt (ohne Funktion)</a>
+
+                            <a style="cursor:pointer">Gruppe 2 - Aufgabenstellung</a>
+                            <br>
+                            <a style="cursor:pointer">Gruppe 2 - Material</a>
                             <br><br>
-                            <a style="cursor:pointer">Gruppe 2 - Aufgabenstellung (ohne Funktion)</a>
+
+                            <a style="cursor:pointer">Gruppe 3 - Aufgabenstellung</a>
+                            <br>
+                            <a style="cursor:pointer">Gruppe 3 - Material</a>
                             <br><br>
-                            <a style="cursor:pointer">Gruppe 2 - Objekt (ohne Funktion)</a>
+
+                            <a style="cursor:pointer">Gruppe 4 - Aufgabenstellung</a>
+                            <br>
+                            <a style="cursor:pointer">Gruppe 4 - Material</a>
                             <br><br>
-                            <a style="cursor:pointer">Gruppe 3 - Aufgabenstellung (ohne Funktion)</a>
-                            <br><br>
-                            <a style="cursor:pointer">Gruppe 3 - Objekt (ohne Funktion)</a>
-                            <br><br>
-                            <a style="cursor:pointer">Gruppe 4 - Aufgabenstellung (ohne Funktion)</a>
-                            <br><br>
-                            <a style="cursor:pointer">Gruppe 4 - Objekt (ohne Funktion)</a>
+
+                            <a style="cursor:pointer">Gruppe 5 - Aufgabenstellung</a>
+                            <br>
+                            <a style="cursor:pointer">Gruppe 5 - Material</a>
 
                         </div>
 
                         <div id="physik-kurs-k-r" style="display:none;padding:15px;border-radius:8px;border:1px solid #ddd;margin-top:10px">
                         
                             <a onclick="openNav('./data/subpages/solarsystem.html')" style="cursor:pointer">Drehung der Planeten im Sonnensystem</a>
+                            <br><br>
+
+                            <a style="cursor:pointer" onclick="setObject('solar-2')">Unser Sonnensystem</a>
+                            <br><br>
+
+                            <a style="cursor:pointer" onclick="setObject('sonne-ro')">Sonne</a>
+                            <br>
+                            <a style="cursor:pointer" onclick="setObject('merkur-ro')">Merkur</a>
+                            <br>
+                            <a style="cursor:pointer" onclick="setObject('venus-ro')">Venus</a>
+                            <br>
+                            <a style="cursor:pointer" onclick="setObject('erde-ro')">Erde</a>
+                            <br>
+                            <a style="cursor:pointer" onclick="setObject('mars-ro')">Mars</a>
+                            <br>
+                            <a style="cursor:pointer" onclick="setObject('jupiter-ro')">Jupiter</a>
+                            <br>
+                            <a style="cursor:pointer" onclick="setObject('saturn-ro')">Saturn</a>
+                            <br>
+                            <a style="cursor:pointer" onclick="setObject('uranus-ro')">Uranus</a>
+                            <br>
+                            <a style="cursor:pointer" onclick="setObject('neptun-ro')">Neptun</a>
+                            <br>
+                            <a style="cursor:pointer" onclick="setObject('pluto-ro')">Pluto</a>
+                            
 
                         </div>
 
@@ -493,6 +529,8 @@
                     </div>
                     <div class="modal-body">
 
+                        
+
                         <span>Zugriff auf die Kamera erlauben</span>
                         <br><br>
                         <div align="center">
@@ -820,6 +858,20 @@
                 </div>
             </div>
 
+            <div id="all-html">
+                <div id="site1" style="display:none"></div>
+                <div id="site2" style="display:none"></div>
+                <div id="site3" style="display:none"></div>
+                <div id="site4" style="display:none"></div>
+                <div id="site5" style="display:none"></div>
+                <div id="site6" style="display:none"></div>
+            </div>
+
+            <script>
+                document.getElementById("all-html").addEventListener("mouseover", () => {
+  console.log("Hover");
+});
+            </script>
 
 
 
@@ -942,6 +994,8 @@
             <button id="startStopAnimationBtn" onclick="toggleAnimation()">Anhalten</button>
 
         </div>
+
+       
 
         <p>Wichtige Fakten:</p>
 
@@ -1099,11 +1153,15 @@ window.onclick = function(event)
                 function rotateObject(x, y, z)
                 {
                     // (Funktioniert) model.orientation = `${x}deg ${y}deg ${z}deg`;
-                    // model.cameraOrbit = `${x}deg ${y}deg ${z}deg`;
+                    //model.cameraOrbit = `${x}deg ${y}deg ${z}deg`;
 
                     model.orientation = `${x}deg ${y}deg ${z}deg`;
 
                 }
+
+                
+
+                
 
 
 
@@ -1386,6 +1444,7 @@ arModel.addEventListener("ar-status", (event) => {
                     {
                         model.style.display = 'none'; 
                         document.getElementById("move-html").style.display = "none";
+                        document.getElementById("all-html").style.display = "none";
                     }
                                     
                     if (!markerVisible) return;
@@ -1467,10 +1526,24 @@ arModel.addEventListener("ar-status", (event) => {
                 const sideLength = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
 
                 
+                //console.log(marker.id);
+                if (getCurrentObjectType() == "img")
+                {
+                    document.getElementById("all-html").style.display = "block";
+                    setAllHTMLOnMarker(marker.id);    
+                }
+                else
+                {
+                    document.getElementById("all-html").style.display = "none";
+                }
+                
+
 
                 if (marker.id >= 1 && marker.id <= 6)
                 {
                     setObjectSize(sideLength.toFixed(0));
+
+                    setAllHTMLSize(sideLength.toFixed(0));
                 }
                 else if (marker.id == 7)
                 {
@@ -1489,8 +1562,19 @@ arModel.addEventListener("ar-status", (event) => {
                 // Überprüfung: Marker-ID 10, dann kein 3D-Objekt
                 if (marker.id >= 1 && marker.id <= 6)
                 {
+                    if (getCurrentObjectType() == "img")
+                    {
+                        
+                        positionAllHTMLOnMarker(markers);
+                    }
+                    else
+                    {
+                        positionModelOnMarker(markers);
+                    }
                     //positionModelOnMarker(centerX, centerY);
-                    positionModelOnMarker(markers);
+
+                    //
+                    
                 }
                 else if (marker.id == 7)
                 {

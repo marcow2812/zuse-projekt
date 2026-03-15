@@ -27,11 +27,182 @@ var maintenanceStartTime = "08:00";
 var maintenanceEndTime = "12:00";
 
 // Derzeitig gewähltes Objekt
-var objectId;
+var objectId = "bird-1";
 
 
 // Objekt-Datenbank
 const database = [
+    {
+        id: "klimawandel-hotspots",
+        oTitle: "Klimawandel Hotspots",
+        oDescription: "Klimazonen sind große Gebiete der Erde, in denen das Klima über sehr lange Zeit relativ gleich bleibt. In Summe kann man die Erde in fünf große Klimazonen einteilen: die polare Zone, die subpolare Zone, die gemäßigte Zone, die subtropische Zone und die tropische Zone.<br><br>Die Auswirkungen des Klimawandels sind an vielen Orten auf der Welt deutlich sichtbar.",
+        oSubject: "bi",
+        oFsk: 0,
+        oType: "3d",
+
+        oBanner: "./data/3d/img/klimawandel-hotspots.png",
+        oSrc: "./data/3d/object/klimawandel-hotspots.glb",
+        oCopyright: `"Earth" (https://skfb.ly/6U8BH) by PatelDev is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).`,
+        oSizeMultiplier: 9,
+        oBackground: "none",
+        oBackgroundSrc: "",
+
+        oMainTextColor: "white",
+        oMainBgColor: "rgba(98, 166, 14, 0.5)",
+
+        oAudioId: 3,
+
+        
+        oHotspots: `
+
+
+        <button class="hotspot" slot="hotspot-1" data-position="0.8518005228693186m 0.6623990549342257m -0.28355473118138796m" data-normal="0.7680588463993542m 0.5833445558022308m -0.26418693700406853m" data-visibility-attribute="visible">
+        <div class="annotation">Mediterranes Becken – häufigere Hitzewellen, Waldbrände und Wasserknappheit</div>
+    </button><button class="hotspot" slot="hotspot-3" data-position="0.7608529917507858m 0.8005489768074671m -0.16574414546848096m" data-normal="0.6854824597476196m 0.7134771259618361m -0.1451350684968714m" data-visibility-attribute="visible">
+        <div class="annotation">Lagune von Venedig – häufigere Überschwemmungen durch steigenden Meeresspiegel</div>
+    </button><button class="hotspot" slot="hotspot-4" data-position="0.8125386461948105m 0.7657221071054678m -0.004280058235139418m" data-normal="0.7348410221361323m 0.6781792054271665m -0.009035347923647524m" data-visibility-attribute="visible">
+        <div class="annotation">Pyrenäen – Rückgang vieler kleiner Gletscher</div>
+    </button><button class="hotspot" slot="hotspot-5" data-position="1.0202849057863006m 0.38463744348240747m -0.22826295520175574m" data-normal="0.9177493006860667m 0.3463766292613922m -0.19431791423271214m" data-visibility-attribute="visible">
+        <div class="annotation">Sahel – zunehmende Dürren und Desertifikation</div>
+    </button><button class="hotspot" slot="hotspot-6" data-position="1.050937318864629m 0.2586522680701989m -0.261865831698228m" data-normal="0.9469135790536249m 0.229694684724895m -0.22493338038847363m" data-visibility-attribute="visible">
+        <div class="annotation">Tschadsee – stark geschrumpfter See durch Trockenheit und Nutzung</div>
+    </button><button class="hotspot" slot="hotspot-7" data-position="0.8840895320513783m -0.6123796567532291m -0.29535086489785484m" data-normal="0.7941890212368802m -0.5428063396684968m -0.27317590699491545m" data-visibility-attribute="visible">
+        <div class="annotation">Kapstadt – extreme Wasserknappheit und Dürren</div>
+    </button><button class="hotspot" slot="hotspot-8" data-position="0.8963759515404993m -0.039269140568151055m -0.6587921020491978m" data-normal="0.809878860105198m -0.03662697974959556m -0.5854525568388338m" data-visibility-attribute="visible">
+        <div class="annotation">Kilimandscharo – schmelzende Gletscher auf dem Gipfel</div>
+    </button><button class="hotspot" slot="hotspot-9" data-position="0.1204082508549859m 0.5371773176020773m -0.9693996286530661m" data-normal="0.1180411849637506m 0.47976195677782046m -0.8694220744155685m" data-visibility-attribute="visible">
+        <div class="annotation">Himalaya – rasch schmelzende Hochgebirgsgletscher</div>
+    </button><button class="hotspot" slot="hotspot-10" data-position="0.1300315882075603m 0.47786035458313497m -0.9984028553208869m" data-normal="0.12244513342785693m 0.41424662563001774m -0.9018907486242324m" data-visibility-attribute="visible">
+        <div class="annotation">Gangesdelta – Überschwemmungen und steigender Meeresspiegel</div>
+    </button><button class="hotspot" slot="hotspot-11" data-position="-0.3182375640421568m -0.11765678966989929m -1.0602481612211725m" data-normal="-0.2768655669402852m -0.10949603951860096m -0.9546497133360359m" data-visibility-attribute="visible">
+        <div class="annotation">Jakarta – Stadt sinkt zusätzlich zum Meeresspiegelanstieg</div>
+    </button><button class="hotspot" slot="hotspot-12" data-position="0.0202578795437738m 0.42361084213071953m -1.030305483631122m" data-normal="0.011434501782511734m 0.36920801032812395m -0.9292764374923825m" data-visibility-attribute="visible">
+        <div class="annotation">Sundarbans – Verlust von Mangroven durch steigendes Meerwasser</div>
+    </button><button class="hotspot" slot="hotspot-13" data-position="0.3933482030233632m 0.7993826468231531m -0.6734043504575296m" data-normal="0.35278971680851434m 0.7134765975715338m -0.6053846384175238m" data-visibility-attribute="visible">
+        <div class="annotation">Aralsee – extreme Austrocknung eines ehemals großen Sees</div>
+    </button><button class="hotspot" slot="hotspot-14" data-position="-0.022874959904133532m 0.5652164833481345m 0.9608308608174106m" data-normal="-0.01064362002705227m 0.5010513426935694m 0.8653521048322994m" data-visibility-attribute="visible">
+        <div class="annotation">Küste von Louisiana – Küstenverlust und steigender Meeresspiegel</div>
+    </button><button class="hotspot" slot="hotspot-15" data-position="-0.430289205512291m 1.0148361005148812m 0.19311933293542244m" data-normal="-0.38068113118497443m 0.9081131541869991m 0.17439144346058966m" data-visibility-attribute="visible">
+        <div class="annotation">Alaska – tauender Permafrost und Küstenerosion</div>
+    </button><button class="hotspot" slot="hotspot-16" data-position="-0.3636024935700504m 0.6308427616299115m 0.8449437392347221m" data-normal="-0.3255701467800775m 0.5632575575154691m 0.7594372939402613m" data-visibility-attribute="visible">
+        <div class="annotation">Colorado-River-Becken – sinkende Wasserstände und Dürren</div>
+    </button><button class="hotspot" slot="hotspot-17" data-position="0.40163957776604287m -0.37560039430417264m 0.9688485944941804m" data-normal="0.37285052725684514m -0.3233752804521431m 0.869718869702613m" data-visibility-attribute="visible">
+        <div class="annotation">Anden – Rückgang vieler Andengletscher</div>
+    </button><button class="hotspot" slot="hotspot-20" data-position="0.5294146950920114m -0.3771090158532781m 0.9046881070755398m" data-normal="0.4764452736837093m -0.32337631157988644m 0.817574254911102m" data-visibility-attribute="visible">
+        <div class="annotation">Pantanal – stärkere Dürren und Waldbrände</div>
+    </button><button class="hotspot" slot="hotspot-21" data-position="-1.103791756358442m -0.13061205265376652m -0.06181290880569759m" data-normal="-0.992112475630425m -0.10950481377292402m -0.06100435606599511m" data-visibility-attribute="visible">
+        <div class="annotation">Tuvalu – Inseln bedroht durch Meeresspiegelanstieg</div>
+    </button><button class="hotspot" slot="hotspot-22" data-position="-1.095517166942515m 0.10976100458682425m -0.16489692898490943m" data-normal="-0.9837155793078224m 0.08526568070821153m -0.15821953962908952m" data-visibility-attribute="visible">
+        <div class="annotation">Kiribati – häufige Überflutungen und Versalzung von Böden</div>
+    </button><button class="hotspot" slot="hotspot-23" data-position="-0.6891659846987037m -0.747122446795006m -0.4616661707760602m" data-normal="-0.6195050865954191m -0.6599555363503098m -0.42505545252705235m" data-visibility-attribute="visible">
+        <div class="annotation">Tasmanien – zunehmende Waldbrände und veränderte Ökosysteme</div>
+    </button>
+
+    `,
+
+
+        
+        oFacts: `
+        <div class="fact"><u><b>Europa</b></u></div>
+        <div class="fact">Mediterranes Becken</div>
+        <div class="fact">Lagune von Venedig</div>
+        <div class="fact">Pyrenäen</div>
+
+        <div class="fact"><u><b>Afrika</b></u></div>
+        <div class="fact">Sahel</div>
+        <div class="fact">Tschadsee</div>
+        <div class="fact">Kapstadt</div>
+        <div class="fact">Kilimandscharo</div>
+
+        <div class="fact"><u><b>Asien</b></u></div>
+        <div class="fact">Himalaya</div>
+        <div class="fact">Gangesdelta</div>
+        <div class="fact">Jakarta</div>
+        <div class="fact">Sundarbans</div>
+        <div class="fact">Aralsee</div>
+
+        <div class="fact"><u><b>Nordamerika</b></u></div>
+        <div class="fact">Küste von Louisiana</div>
+        <div class="fact">Alaska</div>
+        <div class="fact">Colorado-River-Becken</div>
+
+        <div class="fact"><u><b>Südamerika</b></u></div>
+        <div class="fact">Anden</div>
+        <div class="fact">Pantanal</div>
+
+        <div class="fact"><u><b>Ozeanien und Pazifik</b></u></div>
+        <div class="fact">Tuvalu</div>
+        <div class="fact">Kiribati</div>
+        <div class="fact">Tasmanien</div>
+        `,
+    },
+
+    {
+        id: "mcd-aufgaben",
+        oTitle: "Aufgabenstellung",
+        oDescription: "Bearbeitet die auf dem Würfel hinterlegten Aufgaben",
+        oSubject: "bi",
+        oFsk: 0,
+        oType: "img",
+
+        oBanner: "./data/3d/img/steckbrief.png",
+        oSrc: "",
+        oCopyright: "Ohne Copyright",
+        oSizeMultiplier: 6,
+        oBackground: "none",
+        oBackgroundSrc: "",
+
+        oMainTextColor: "white",
+        oMainBgColor: "rgba(98, 166, 14, 0.5)",
+
+        oAudioId: null,
+
+        oHotspots: ``,
+
+        oMarker1: `<div class="frame-text-div">Erstellt einen Steckbrief über die verschiedenen Klimazonen der Erde</div>`,
+
+        oMarker2: `<iframe class="yt-iframe" id="yt-iframe" width="100%" height="100%" src="https://www.youtube.com/embed/9Al8ZjPiqWg?si=Hbd5nDCJ0hpyMj_k" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+        oMarker3: `<img width="100%" src="https://blog.assets.studyflix.de/wp-content/uploads/2021/09/WordPress_Klimazonen-3-1024x576.jpg">`,
+        oMarker4: `<div class="frame-text-div">Aufgabenstellung folgt</div>`,
+        oMarker5: `<div class="frame-text-div">Aufgabenstellung folgt</div>`,
+        oMarker6: `<div class="frame-text-div">Aufgabenstellung folgt</div>`,
+        
+    },
+    {
+        id: "5-klimazonen",
+        oTitle: "Die 5 Klimazonen",
+        oDescription: "Auf jeder Seite des Würfels findet ihr eine andere Klimazone",
+        oSubject: "bi",
+        oFsk: 0,
+        oType: "img",
+
+        oBanner: "./data/3d/img/steckbrief.png",
+        oSrc: "",
+        oCopyright: "Ohne Copyright",
+        oSizeMultiplier: 6,
+        oBackground: "none",
+        oBackgroundSrc: "",
+
+        oMainTextColor: "white",
+        oMainBgColor: "rgba(98, 166, 14, 0.5)",
+
+        oAudioId: null,
+
+        oHotspots: ``,
+
+        oMarker1: `<div class="frame-text-div">Die 5 Klimazonen der Erde</div>`,
+
+        oMarker2: `<img width="100%" src="https://blog.assets.studyflix.de/wp-content/uploads/2021/09/WordPress_PolareZone-1-1024x576.jpg">`,
+        oMarker3: `<img width="100%" src="https://blog.assets.studyflix.de/wp-content/uploads/2021/09/WordPress_SubpolareZone-1-1024x576.jpg">`,
+        oMarker4: `<img width="100%" src="https://blog.assets.studyflix.de/wp-content/uploads/2021/09/WordPress_gem%C3%A4%C3%9FigteZone-1-1024x576.jpg">`,
+        oMarker5: `<img width="100%" src="https://blog.assets.studyflix.de/wp-content/uploads/2021/09/WordPress_SubtropischeZone-1-1024x576.jpg">`,
+        oMarker6: `<img width="100%" src="https://blog.assets.studyflix.de/wp-content/uploads/2021/09/WordPress_TropischeZone-1-1024x576.jpg">`,
+    },
+
+
+
+
+
     {
         id: "sonne-ro",
         oTitle: "Sonne",
@@ -365,11 +536,12 @@ const database = [
         oSubject: "bi",
         oFsk: 0,
         oType: "3d",
+        
 
         oBanner: "./data/3d/img/dog.png",
         oSrc: "./data/3d/object/dog_puppy.glb",
         oCopyright: "'Dog Puppy' (https://skfb.ly/oRKH6) by kenchoo is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).",
-        oSizeMultiplier: 8,
+        oSizeMultiplier: 10,
         oBackground: "transparent",
         oBackgroundSrc: "",
 
@@ -604,7 +776,7 @@ const database = [
     {
         id: "img-grid",
         oTitle: "img-grid",
-        oDescription: "(Beschreibung folgt)",
+        oDescription: "Zuse intern",
         oSubject: "zu",
         oFsk: 0,
         oType: "img",
@@ -633,7 +805,7 @@ const database = [
     {
         id: "planeten-grid",
         oTitle: "planeten-grid",
-        oDescription: "(Beschreibung folgt)",
+        oDescription: "Zuse intern",
         oSubject: "zu",
         oFsk: 0,
         oType: "img",
@@ -658,6 +830,36 @@ const database = [
         oMarkerImg4: "./data/3d/img/jupiter-ro.png",
         oMarkerImg5: "./data/3d/img/neptun-ro.png",
         oMarkerImg6: "./data/3d/img/uranus-ro.png",
+    },
+
+    {
+        id: "all-html",
+        oTitle: "all-html",
+        oDescription: "Zuse intern",
+        oSubject: "zu",
+        oFsk: 0,
+        oType: "img",
+
+        oBanner: "./data/img/overlay.png",
+        oSrc: "",
+        oCopyright: "Ohne Copyright",
+        oSizeMultiplier: 6,
+        oBackground: "none",
+        oBackgroundSrc: "",
+
+        oMainTextColor: "white",
+        oMainBgColor: "rgba(98, 166, 14, 0.5)",
+
+        oAudioId: 1,
+
+        oHotspots: ``,
+
+        oMarker1: `<iframe class="yt-iframe" id="yt-iframe" width="100%" height="100%" src="https://www.youtube.com/embed/9Al8ZjPiqWg?si=Hbd5nDCJ0hpyMj_k" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+        oMarker2: `<iframe class="yt-iframe" style="width:100%;height:100%" src="https://www.youtube-nocookie.com/embed/KuVCd5VZKyE?si=nmvtbbzE_m1lKcmj" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+        oMarker3: `<img style='border-radius:8px;width:100%;height:100%' src='https://de.schubu.org/images/geo/level_5/53-Breitenparallele-Klimazonen-dpr2.webp'>`,
+        oMarker4: `<iframe class="yt-iframe" src="https://de.schubu.org/p53/klima" width="100%" height="100%"></iframe>`,
+        oMarker5: `<img style='border-radius:8px;width:100%;height:100%' src='https://www.chemie-azubis.de/fileadmin/user_upload/elemente/Wasserstoff_Element.png'>`,
+        oMarker6: `<img style='border-radius:8px;width:100%;height:100%' src='https://www.chemie-azubis.de/fileadmin/user_upload/elemente/Wasserstoff_Element.png'>`,
     },
 
 
@@ -717,6 +919,11 @@ function getCurrentObjectId()
 {
     return objectId;
 }
+function getCurrentObjectType()
+{
+    return database.find(u => u.id === objectId).oType;
+}
+
 function getCurrentObjectSrcStatus()
 {
     if (!objectId)
@@ -792,7 +999,7 @@ function loadThePage()
     {
         document.getElementById("loadingPage").style.display = "none";
         document.getElementById("main").style.display = "block";
-    }, 3500)
+    }, 2000)
 
     /*
     console.log(imagesById);
@@ -825,7 +1032,12 @@ function getParameter()
     else
     {
         console.log("[LOG] Kein Parameter übergeben");
+        objectId = "bird-1";
     }
+
+
+    setObject(objectId);
+    
 }
 
 function getStandardUrl()
@@ -1381,8 +1593,130 @@ function positionHTMLOnMarker(markers) {
 }
 */
 
-function positionHTMLOnMarker(markers) {
+function positionHTMLOnMarker(markers)
+{
     var modelViewer = document.getElementById("move-html");
+    var canvas = document.getElementById("canvas");
+
+    if (!modelViewer || !canvas) return;
+
+    if (markers && markers.length > 0) {
+        // --- MARKER GEFUNDEN ---
+        
+        // 1. WICHTIG: Timer stoppen, falls er läuft
+        if (htmlLostTimeout) {
+            clearTimeout(htmlLostTimeout);
+            htmlLostTimeout = null;
+        }
+        
+        // 2. WICHTIG: Status auf true setzen, damit das else-Statement später weiß, dass es aktiv werden muss
+        isHtmlVisible = true;
+
+        // Position und Drehung berechnen
+        var centerX = (markers[0].corners[0].x + markers[0].corners[1].x + markers[0].corners[2].x + markers[0].corners[3].x) / 4;
+        var centerY = (markers[0].corners[0].y + markers[0].corners[1].y + markers[0].corners[2].y + markers[0].corners[3].y) / 4;
+        
+        var dx = markers[0].corners[1].x - markers[0].corners[0].x;
+        var dy = markers[0].corners[1].y - markers[0].corners[0].y;
+        var angle = Math.atan2(dy, dx) * (180 / Math.PI);
+
+        const rect = canvas.getBoundingClientRect();
+        const scaleX = rect.width / canvas.width;
+        const scaleY = rect.height / canvas.height;
+
+        // Anzeigen und Transformieren
+        modelViewer.style.display = "block";
+        modelViewer.style.left = (rect.left + (centerX * scaleX)) + "px";
+        modelViewer.style.top = (rect.top + (centerY * scaleY)) + "px";
+        modelViewer.style.transform = "translate(-50%, -50%) rotate(" + angle + "deg)";
+
+    } else {
+        // --- MARKER VERLOREN ---
+        
+        // Dieser Block wird nur ausgeführt, wenn isHtmlVisible oben auf true gesetzt wurde
+        if (isHtmlVisible && !htmlLostTimeout) {
+            htmlLostTimeout = setTimeout(function() {
+                modelViewer.style.display = "none"; // Hier verschwindet es endlich!
+                isHtmlVisible = false; // Zurücksetzen für den nächsten Scan
+                htmlLostTimeout = null;
+            }, 500); // 0.5 Sekunden Toleranz gegen Flackern
+        }
+    }
+}
+
+
+function setAllHTMLOnMarker(marker)
+{
+    switch (marker)
+    {
+        case 1:
+            document.getElementById("site1").style.display = "block";
+
+            document.getElementById("site2").style.display = "none";
+            document.getElementById("site3").style.display = "none";
+            document.getElementById("site4").style.display = "none";
+            document.getElementById("site5").style.display = "none";
+            document.getElementById("site6").style.display = "none";
+            //document.getElementById("all-html").innerHTML = database.find(u => u.id === "all-html").oMarker1;
+            break;
+        case 2:
+            document.getElementById("site2").style.display = "block";
+
+            document.getElementById("site1").style.display = "none";
+            document.getElementById("site3").style.display = "none";
+            document.getElementById("site4").style.display = "none";
+            document.getElementById("site5").style.display = "none";
+            document.getElementById("site6").style.display = "none";
+            //console.log(database.find(u => u.id === "all-html").oMarker2);
+            //document.getElementById("all-html").innerHTML = database.find(u => u.id === "all-html").oMarker2;
+            break;
+        case 3:
+            document.getElementById("site3").style.display = "block";
+
+            document.getElementById("site1").style.display = "none";
+            document.getElementById("site2").style.display = "none";
+            document.getElementById("site4").style.display = "none";
+            document.getElementById("site5").style.display = "none";
+            document.getElementById("site6").style.display = "none";
+            //document.getElementById("all-html").innerHTML = database.find(u => u.id === "all-html").oMarker3;
+            break;
+        case 4:
+            document.getElementById("site4").style.display = "block";
+
+            document.getElementById("site1").style.display = "none";
+            document.getElementById("site2").style.display = "none";
+            document.getElementById("site3").style.display = "none";
+            document.getElementById("site5").style.display = "none";
+            document.getElementById("site6").style.display = "none";
+            //document.getElementById("all-html").innerHTML = database.find(u => u.id === "all-html").oMarker4;
+            break;
+        case 5:
+            document.getElementById("site5").style.display = "block";
+
+            document.getElementById("site1").style.display = "none";
+            document.getElementById("site2").style.display = "none";
+            document.getElementById("site3").style.display = "none";
+            document.getElementById("site4").style.display = "none";
+            document.getElementById("site6").style.display = "none";
+            //document.getElementById("all-html").innerHTML = database.find(u => u.id === "all-html").oMarker5;
+            break;
+        case 6:
+            document.getElementById("site6").style.display = "block";
+
+            document.getElementById("site1").style.display = "none";
+            document.getElementById("site2").style.display = "none";
+            document.getElementById("site3").style.display = "none";
+            document.getElementById("site4").style.display = "none";
+            document.getElementById("site5").style.display = "none";
+            //document.getElementById("all-html").innerHTML = database.find(u => u.id === "all-html").oMarker6;
+            break;
+    }
+    
+}
+
+function positionAllHTMLOnMarker(markers)
+{
+    var modelViewer = document.getElementById("all-html");
     var canvas = document.getElementById("canvas");
 
     if (!modelViewer || !canvas) return;
@@ -1496,6 +1830,34 @@ function setCrossReferenceObject(id)
 
 function setObject(objectIdParameter)
 {
+
+
+console.log(getCurrentObjectType());
+
+    if (getCurrentObjectType() == "img")
+    {
+    
+
+            document.getElementById("site1").innerHTML = database.find(u => u.id === objectId).oMarker1;
+            
+            document.getElementById("site2").innerHTML = database.find(u => u.id === objectId).oMarker2;
+            
+            document.getElementById("site3").innerHTML = database.find(u => u.id === objectId).oMarker3;
+            
+            document.getElementById("site4").innerHTML = database.find(u => u.id === objectId).oMarker4;
+
+            document.getElementById("site5").innerHTML = database.find(u => u.id === objectId).oMarker5;
+            
+            document.getElementById("site6").innerHTML = database.find(u => u.id === objectId).oMarker6;
+
+
+    }
+
+
+
+
+
+
 
     // Bilder für einzelne Seiten laden
     //setImagesForImagesById();
@@ -1693,6 +2055,10 @@ function setObject(objectIdParameter)
     model.style.backgroundColor = "transparent";
     model.style.backgroundImage = "none";
 
+    console.log("Objekt-ID: " + objectId);
+    console.log(database.find(u => u.id === objectId).oTitle);
+    console.log(database.find(u => u.id === objectId).oSrc);
+
     // Zuweisung und Anwendung
     model.src = ""; // Zurücksetzen für Ladebild
     model.src = database.find(u => u.id === objectId).oSrc;
@@ -1749,6 +2115,8 @@ function setObject(objectIdParameter)
     }    
 
     document.getElementById("ar-model").innerHTML = database.find(u => u.id === objectId).oHotspots;
+
+    document.getElementById("move-model").innerHTML = database.find(u => u.id === objectId).oHotspots;
     
 }
 
@@ -1828,6 +2196,29 @@ function setHTMLSize(pixelSize)
     document.getElementById("move-html").style.width = (pixelSize * 2) + "px";
     document.getElementById("move-html").style.height = (pixelSize * 2) + "px";
 }
+
+function setAllHTMLSize(pixelSize)
+{
+    document.getElementById("all-html").style.width = (pixelSize * database.find(u => u.id === objectId).oSizeMultiplier) + "px";
+    document.getElementById("all-html").style.height = (pixelSize * database.find(u => u.id === objectId).oSizeMultiplier) + "px";
+
+    document.querySelectorAll('.yt-iframe').forEach(function(element)
+    {
+        element.style.width = "100%";
+        // Höhe mit aspect-ratio: 1 / 1 zugewiesen
+    });
+
+    /*
+    document.querySelectorAll('.yt-iframe').forEach(function(element)
+    {
+        element.style.width = (pixelSize * 4) + "px";
+        element.style.height = (pixelSize * 4) + "px";
+    });
+    */
+}
+
+
+
 
 function getContactInformation(parameter)
 {

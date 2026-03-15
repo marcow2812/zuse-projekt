@@ -81,6 +81,25 @@ model-viewer#move-model
 }
 */
 
+
+
+#all-html
+{
+  container-type: inline-size;
+  background-color: transparent;
+    position: fixed; 
+    width: 150px;
+    height: 150px;
+    display: none;
+    margin: 0;
+    z-index: 10;
+    padding: 0px;
+    pointer-events: auto !important;
+}
+
+
+
+
 #move-html {
 
     position: fixed; 
@@ -96,6 +115,9 @@ model-viewer#move-model
     /*pointer-events: none;*/
 
 }
+
+
+
 
 .flip-box {
   background-color: transparent;
@@ -457,7 +479,7 @@ header
   cursor: pointer;
   border: none;
 
-  background-color: white;
+  background-color: #e0ffe0;
   color: var(--main);
 }
 
@@ -476,7 +498,7 @@ header
   border: none;
 
   color: #a40ea4; /* a4590e*/
-  background-color: white;
+  background-color: #ffdaff;
 }
 
 
@@ -880,6 +902,25 @@ header
   background-position: right bottom;
 }
 
+.yt-iframe
+{
+  aspect-ratio: 1 / 1;
+}
+
+.frame-text-div
+{
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color:#62A60E;
+  text-align: center;
+  color:white;
+  
+  font-size: 10cqw;
+  padding: 7%;
+}
 
 
 
@@ -1719,15 +1760,15 @@ cursor: pointer;
     top: 50%;
     transform: translateY(-50%);
     border-radius: 8px;
-    padding: 12px;
+    padding: 8px;
     width: 150px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     font-family: sans-serif;
     font-size: 12px;
     pointer-events: auto; /* Erlaubt Klicks in der Box */
-    z-index: 10;
+    z-index: 15;
 
-    border: 1px solid #cccccc;
+    /*border: 1px solid #cccccc;*/
   }
 
   /* Sichtbarkeit steuern: Wenn der Hotspot angeklickt/fokussiert wird */
