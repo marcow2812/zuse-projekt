@@ -138,6 +138,40 @@ const database = [
     },
 
     {
+        id: "klimazonen-erde",
+        oTitle: "Klimazonen",
+        oDescription: "Klimazonen sind große Gebiete der Erde, in denen das Klima über sehr lange Zeit relativ gleich bleibt. In Summe kann man die Erde in fünf große Klimazonen einteilen: die polare Zone, die subpolare Zone, die gemäßigte Zone, die subtropische Zone und die tropische Zone.<br><br>Die Auswirkungen des Klimawandels sind an vielen Orten auf der Welt deutlich sichtbar.",
+        oSubject: "bi",
+        oFsk: 0,
+        oType: "3d",
+
+        oBanner: "./data/3d/img/klimazonen-erde.png",
+        oSrc: "./data/3d/object/klimazonen-erde.glb",
+        oCopyright: `"Earth" (https://skfb.ly/6U8BH) by PatelDev is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).`,
+        oSizeMultiplier: 9,
+        oBackground: "none",
+        oBackgroundSrc: "",
+
+        oMainTextColor: "white",
+        oMainBgColor: "rgba(98, 166, 14, 0.5)",
+
+        oAudioId: 3,
+
+        
+        oHotspots: ``,
+
+
+        
+        oFacts: `
+        <div class="fact">Polare Zone</div>
+        <div class="fact">Subpolare Zone</div>
+        <div class="fact">Gemäßigte Zone</div>
+        <div class="fact">Subtropische Zone</div>
+        <div class="fact">Tropische Zone</div>
+        `,
+    },
+
+    {
         id: "mcd-aufgaben",
         oTitle: "Aufgabenstellung",
         oDescription: "Bearbeitet die auf dem Würfel hinterlegten Aufgaben",
