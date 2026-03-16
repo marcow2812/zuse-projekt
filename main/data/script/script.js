@@ -172,17 +172,17 @@ const database = [
     },
 
     {
-        id: "mcd-aufgaben",
-        oTitle: "Aufgabenstellung",
-        oDescription: "Bearbeitet die auf dem Würfel hinterlegten Aufgaben",
+        id: "steckbriefe-klimazonen",
+        oTitle: "Steckbriefe Klimazonen",
+        oDescription: "Verwendet die auf dem Würfel hinterlegten PDFs zum Ausfüllen eures Booklets.",
         oSubject: "bi",
         oFsk: 0,
         oType: "img",
 
-        oBanner: "./data/3d/img/steckbrief.png",
+        oBanner: "./data/3d/img/klimazonen.png",
         oSrc: "",
         oCopyright: "Ohne Copyright",
-        oSizeMultiplier: 6,
+        oSizeMultiplier: 9,
         oBackground: "none",
         oBackgroundSrc: "",
 
@@ -193,13 +193,12 @@ const database = [
 
         oHotspots: ``,
 
-        oMarker1: `<div class="frame-text-div">Erstellt einen Steckbrief über die verschiedenen Klimazonen der Erde</div>`,
-
-        oMarker2: `<iframe class="yt-iframe" id="yt-iframe" width="100%" height="100%" src="https://www.youtube.com/embed/9Al8ZjPiqWg?si=Hbd5nDCJ0hpyMj_k" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
-        oMarker3: `<img width="100%" src="https://blog.assets.studyflix.de/wp-content/uploads/2021/09/WordPress_Klimazonen-3-1024x576.jpg">`,
-        oMarker4: `<div class="frame-text-div">Aufgabenstellung folgt</div>`,
-        oMarker5: `<div class="frame-text-div">Aufgabenstellung folgt</div>`,
-        oMarker6: `<div class="frame-text-div">Aufgabenstellung folgt</div>`,
+        oMarker1: `<iframe class="yt-iframe" width="100%" height="100%" src="./data/3d/pdf/Wuerfelseite_1.pdf"></iframe>`,
+        oMarker2: `<iframe class="yt-iframe" width="100%" height="100%" src="./data/3d/pdf/Wuerfelseite_2.pdf"></iframe>`,
+        oMarker3: `<iframe class="yt-iframe" width="100%" height="100%" src="./data/3d/pdf/Wuerfelseite_3.pdf"></iframe>`,
+        oMarker4: `<iframe class="yt-iframe" width="100%" height="100%" src="./data/3d/pdf/Wuerfelseite_4.pdf"></iframe>`,
+        oMarker5: `<iframe class="yt-iframe" width="100%" height="100%" src="./data/3d/pdf/Wuerfelseite_5.pdf"></iframe>`,
+        oMarker6: `<iframe class="yt-iframe" width="100%" height="100%" src="./data/3d/pdf/Wuerfelseite_6.pdf"></iframe>`,
         
     },
     {
