@@ -182,7 +182,7 @@ const database = [
         oBanner: "./data/3d/img/klimazonen.png",
         oSrc: "",
         oCopyright: "Ohne Copyright",
-        oSizeMultiplier: 9,
+        oSizeMultiplier: 8,
         oBackground: "none",
         oBackgroundSrc: "",
 
@@ -193,12 +193,12 @@ const database = [
 
         oHotspots: ``,
 
-        oMarker1: `<iframe class="yt-iframe" width="100%" height="100%" src="./data/3d/pdf/Wuerfelseite_1.pdf"></iframe>`,
-        oMarker2: `<iframe class="yt-iframe" width="100%" height="100%" src="./data/3d/pdf/Wuerfelseite_2.pdf"></iframe>`,
-        oMarker3: `<iframe class="yt-iframe" width="100%" height="100%" src="./data/3d/pdf/Wuerfelseite_3.pdf"></iframe>`,
-        oMarker4: `<iframe class="yt-iframe" width="100%" height="100%" src="./data/3d/pdf/Wuerfelseite_4.pdf"></iframe>`,
-        oMarker5: `<iframe class="yt-iframe" width="100%" height="100%" src="./data/3d/pdf/Wuerfelseite_5.pdf"></iframe>`,
-        oMarker6: `<iframe class="yt-iframe" width="100%" height="100%" src="./data/3d/pdf/Wuerfelseite_6.pdf"></iframe>`,
+        oMarker1: `<iframe class="yt-iframe" width="100%" height="100%" src="./data/3d/pdf/WS1.html"></iframe>`,
+        oMarker2: `<iframe class="yt-iframe" width="100%" height="100%" src="./data/3d/pdf/WS2.html"></iframe>`,
+        oMarker3: `<iframe class="yt-iframe" width="100%" height="100%" src="./data/3d/pdf/WS3.html"></iframe>`,
+        oMarker4: `<iframe class="yt-iframe" width="100%" height="100%" src="./data/3d/pdf/WS4.html"></iframe>`,
+        oMarker5: `<iframe class="yt-iframe" width="100%" height="100%" src="./data/3d/pdf/WS5.html"></iframe>`,
+        oMarker6: `<iframe class="yt-iframe" width="100%" height="100%" src="./data/3d/pdf/WS6.html"></iframe>`,
         
     },
     {
