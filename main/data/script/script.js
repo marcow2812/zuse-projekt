@@ -1,4 +1,3 @@
-/*    INSTANZVARIABLEN    */
 // Anzahl zu erlaubender Berechtigungen
 var numberOfPermissions = 2;
 // Höhe: Menü für Objekte
@@ -801,11 +800,7 @@ const database = [
 
 
 
-
-
-
-
-
+/*
     {
         id: "img-grid",
         oTitle: "img-grid",
@@ -894,7 +889,7 @@ const database = [
         oMarker5: `<img style='border-radius:8px;width:100%;height:100%' src='https://www.chemie-azubis.de/fileadmin/user_upload/elemente/Wasserstoff_Element.png'>`,
         oMarker6: `<img style='border-radius:8px;width:100%;height:100%' src='https://www.chemie-azubis.de/fileadmin/user_upload/elemente/Wasserstoff_Element.png'>`,
     },
-
+*/
 
 ];
 
@@ -933,19 +928,6 @@ const audioDatabase = [
     },
 ];
 
-/*
-{ id: "city-1", oBanner: "./data/img/favicon.png", oSrc: "./data/3d/city_pack_5.glb", oTitle: "Stadt", oSizeMultiplier: 4, oBackground: "#e6e6e6", oAudioStartAt: 1.5, oCopyright: "" },
-    { id: "davinci-1", oBanner: "./data/img/favicon.png", oSrc: "./data/3d/da_vinci_code_cryptex.glb", oTitle: "Da Vinci Cryptex", oSizeMultiplier: 3, oBackground: "transparent", oAudioStartAt: 1.5, oCopyright: "" },
-    { id: "enigma-1", oBanner: "./data/img/favicon.png", oSrc: "./data/3d/enigma_machine_1934.glb", oTitle: "Enigma", oSizeMultiplier: 3, oBackground: "url('./data/img/favicon.png')", oAudioStartAt: 1.5, oCopyright: "" },
-*/
-
-/*
-console.log(database[0]);
-console.log(database[0].oTitle);
-console.log(database.find(u => u.id === "atom-1").oTitle);
-
-console.log(database.length);
-*/
 
 
 function getCurrentObjectId()
@@ -977,21 +959,15 @@ function getCurrentObjectSrcStatus()
 }
 function getMarkerImgByCurrentObjectId(markerSite)
 {
-    //alert(objectId);
-    //alert(database.find(u => u.id === objectId).oMarkerImg1);
-
     const currentObject = database.find(u => u.id === objectId);
-
-    if (!currentObject) {
+    if (!currentObject)
+    {
         console.warn("Objekt mit ID '" + objectId + "' wurde in der Datenbank nicht gefunden.");
-        return ""; // Oder ein Standard-Platzhalterbild
+        return "";
     }
-
     const propertyName = "oMarkerImg" + markerSite;
-
     return currentObject[propertyName] || "";
 }
-
 
 
 function loadThePage()
@@ -1006,27 +982,9 @@ function loadThePage()
 
     openWelcomeModal();
 
+    document.getElementById("categoryFilter").addEventListener("change", filterObjects);
 
-    // 🟢 JETZT erst Listener setzen
-    document.getElementById("categoryFilter")
-        .addEventListener("change", filterObjects);
-
-    document.getElementById("searchInput")
-        .addEventListener("input", filterObjects);
-
-
-
-    /*
-    var valueForInnerHtml = "";
-
-    for (i = 0; i < 12; i++)
-    {
-        valueForInnerHtml = valueForInnerHtml + "<p>This is great</p>";
-    }oImg
-
-    document.getElementById("testInnerHtml").innerHTML = valueForInnerHtml;
-    */
-
+    document.getElementById("searchInput").addEventListener("input", filterObjects);
 
     setTimeout(function()
     {
@@ -1034,15 +992,7 @@ function loadThePage()
         document.getElementById("main").style.display = "block";
     }, 2000)
 
-    /*
-    console.log(imagesById);
-    imagesById[19] = "./data/img/overlay.png";
-    console.log(imagesById);
-    */
-
 }
-
-/* --- GETTER-METHODEN --- */
 
 function getParameter()
 {
@@ -1078,34 +1028,17 @@ function getStandardUrl()
     return standardUrl;
 }
 
-/* --- SETTER-METHODEN --- */
-
 function shareObjectByQrCode()
 {
     generateQrCode(objectId);
 }
 
-
 function setMenuFromDatabase(numberOfObjects)
 {
     var innerHtmlOfMenu = "";
-    /* var runForThisNumber;
-
-    if (numberOfObjects <= database.length)
-    {
-        runForThisNumber = numberOfObjects;
-    }
-    else
-    {
-        runForThisNumber = database.length;
-    } */
 
     for (i = 0; i < database.length; i++)
     {
-
-
-
-        /* innerHtmlOfMenu = innerHtmlOfMenu + "<div class='subject-box-new' onclick='setObject('heart-1')'><div class='subject-box-image-container'><div class='icon-qrcode' onclick='generateQrCode('heart-1')'><svg xmlns='http://www.w3.org/2000/svg' fill='currentColor' class='bi bi-qr-code-scan' viewBox='0 0 16 16'><path d='M0 .5A.5.5 0 0 1 .5 0h3a.5.5 0 0 1 0 1H1v2.5a.5.5 0 0 1-1 0zm12 0a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0V1h-2.5a.5.5 0 0 1-.5-.5M.5 12a.5.5 0 0 1 .5.5V15h2.5a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5v-3a.5.5 0 0 1 .5-.5m15 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1 0-1H15v-2.5a.5.5 0 0 1 .5-.5M4 4h1v1H4z'/><path d='M7 2H2v5h5zM3 3h3v3H3zm2 8H4v1h1z'/><path d='M7 9H2v5h5zm-4 1h3v3H3zm8-6h1v1h-1z'/><path d='M9 2h5v5H9zm1 1v3h3V3zM8 8v2h1v1H8v1h2v-2h1v2h1v-1h2v-1h-3V8zm2 2H9V9h1zm4 2h-1v1h-2v1h3zm-4 2v-1H8v1z'/><path d='M12 9h2V8h-2z'/></svg></div><div class='icon-copyright'><svg xmlns='http://www.w3.org/2000/svg' fill='currentColor' class='bi bi-c-circle-fill' viewBox='0 0 16 16'><path d='M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.146 4.992c.961 0 1.641.633 1.729 1.512h1.295v-.088c-.094-1.518-1.348-2.572-3.03-2.572-2.068 0-3.269 1.377-3.269 3.638v1.073c0 2.267 1.178 3.603 3.27 3.603 1.675 0 2.93-1.02 3.029-2.467v-.093H9.875c-.088.832-.75 1.418-1.729 1.418-1.224 0-1.927-.891-1.927-2.461v-1.06c0-1.583.715-2.503 1.927-2.503'/></svg></div><img src='./data/3d/img/heart-1.webp'></div><div class='subject-box-title'>Rotes Herz</div></div>"; */
         innerHtmlOfMenu = innerHtmlOfMenu + `
         <div class="subject-box-new" onclick="setObject('${database[i].id}')" data-category="${database[i].oSubject}" data-title="${database[i].oTitle}">
             <div class="subject-box-image-container">
@@ -1119,148 +1052,56 @@ function setMenuFromDatabase(numberOfObjects)
                         <path d="M12 9h2V8h-2z"/>
                     </svg>
                 </div>
-
                 <img src="${database[i].oBanner}">
-
             </div>
             <!-- <div class="subject-box-title"> -->
                 <span class="objectTitle">${database[i].oTitle}</span>
             <!-- </div> -->
         </div>
         `;
-        
     }
-
-    /*
-
-                    <div class="icon-copyright" onclick="getCopyright('${database[i].id}')">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-c-circle-fill" viewBox="0 0 16 16">
-                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.146 4.992c.961 0 1.641.633 1.729 1.512h1.295v-.088c-.094-1.518-1.348-2.572-3.03-2.572-2.068 0-3.269 1.377-3.269 3.638v1.073c0 2.267 1.178 3.603 3.27 3.603 1.675 0 2.93-1.02 3.029-2.467v-.093H9.875c-.088.832-.75 1.418-1.729 1.418-1.224 0-1.927-.891-1.927-2.461v-1.06c0-1.583.715-2.503 1.927-2.503"/>
-                    </svg>
-                </div>
-
-    */
-
     document.getElementById("subject-container-new").innerHTML = innerHtmlOfMenu;
 }
-
-
 
 function getCopyright(id)
 {
     alert(database.find(u => u.id === id).oCopyright);
 }
 
-
 async function checkInternetConnection()
 {
-
-    /*
-
-
-    var headerIcon = document.getElementById("header-icon-connection");
-
-    if (navigator.onLine)
-    {
-        // Online
-        // console.log("Online");
-        headerIcon.classList.remove("icon-red");
-        headerIcon.classList.add("icon-green");
-    }
-    else
-    {
-        // Offline
-        // console.log("Offline");
-        headerIcon.classList.remove("icon-green");
-        headerIcon.classList.add("icon-red");
-    }
-
-    */
-
-    /*
-    try
-    {
-        const response = await fetch("./data/img/1pixel.png");
-        if (response.status >= 200 && response.status < 300)
-        {
-            console.log("Online");
-            headerIcon.classList.remove("icon-red");
-            headerIcon.classList.add("icon-green");
-        }
-        else
-        {
-            console.log("Offline oder Datei nicht gefunden");
-            headerIcon.classList.remove("icon-green");
-            headerIcon.classList.add("icon-red");
-        }
-    }
-    catch (err)
-    {
-        console.log("Offline (Fetch Fehler)", err);
-        headerIcon.classList.remove("icon-green");
-        headerIcon.classList.add("icon-red");
-    }
-    */
-
-    setTimeout(checkInternetConnection, timeoutCheckInternetConnection);
+    /* setTimeout(checkInternetConnection, timeoutCheckInternetConnection); */
 }
-
 
 function setDegByMarker(marker, x, y, z)
 {
-
     const invertedZ = (360 - parseFloat(z)) % 360;
 
-
-    // console.log("Auswertung: " + marker)
     switch (marker)
     {
         case 1:
-            // fertig
-
-            //           Drehung nach rechts oder links (im/gegen Uhrzeigersinn)
-            //              nach vorne und hinten neigen (auf einen zu/von einem weg)
-            
             rotateObject(invertedZ, 0, 0);
-
             break;
         case 2:
-            // Fehler, dreht sich nur hin und her
-            // rotateObject(0, -90, 0);
             rotateObject(0, -90, 0);
-
             break;
         case 3:
-            // fertig
-            
             rotateObject(0, invertedZ, -90);
-
             break;
         case 4:
-            // fertig
-
             rotateObject(0, -invertedZ, 90);
-
             break;
         case 5:
-            // fertig
-
             rotateObject(-invertedZ, 0, 180);
-
             break;
         case 6:
             // Fehler, wie bei Marker 2
-
             rotateObject(0, 90, 0);
-
             break;
         default:
             console.log("Anderer Marker");
     }
-
-    // console.log(marker+"\nx: " + x + "\ny: " + y + "\nz: " + z);
 }
-
 
 function openObjectMenu()
 {
@@ -1270,8 +1111,6 @@ function closeObjectMenu()
 {
     document.getElementById("mySidenav").style.height = "0%";
 }
-
-
 function openWelcomeModal()
 {
     document.getElementById("welcomeModal").style.display = "block";
@@ -1282,32 +1121,26 @@ function closeWelcomeModal()
     if (localStorage.getItem("hintClosed") === "true")
     {
         openMaintenanceModal();
-        //document.getElementById("deineHinweisBoxId").style.display = "none";
     }
     else
     {
         openInfoModal();
     }
-    
 }
-
 
 function openInfoModal()
 {
-    // setCanvasSize();
     document.getElementById("infoModal").style.display = "block";
 }
 function closeInfoModal()
 {
     document.getElementById("infoModal").style.display = "none";
     localStorage.setItem("hintClosed", "true");
-
     openMaintenanceModal();
 }
 
 function openMaintenanceModal()
 {
-
     if (maintenanceStatus == 2)
     {
         // Geplant
@@ -1318,14 +1151,11 @@ function openMaintenanceModal()
         // Derzeit
         document.getElementById("maintenance-info").innerHTML = `Wegen laufenden Wartungsarbeiten bis <b>${maintenanceEndTime}</b> Uhr können einige Funktionen nur eingeschränkt verfügbar sein.`;
     }
-
     if (maintenanceStatus != 0)
     {
         setServerAnimation();
         document.getElementById("maintenanceModal").style.display = "block";
     }
-    
-        
 }
 
 function closeMaintenanceModal()
@@ -1333,90 +1163,48 @@ function closeMaintenanceModal()
     document.getElementById("maintenanceModal").style.display = "none";
 }
 
-
-
-function mapCanvasToScreen(canvasX, canvasY) {
+/* Anfang KI-generierter Bereich */
+function mapCanvasToScreen(canvasX, canvasY)
+{
     const canvasElement = document.getElementById('canvas');
-    
-    // Sicherheitspuffer
-    if (!canvasElement || canvasElement.width === 0 || canvasElement.height === 0) {
+
+    if (!canvasElement || canvasElement.width === 0 || canvasElement.height === 0)
+    {
         return { x: 0, y: 0 };
     }
 
-    // NEU: getBoundingClientRect liefert die tatsächliche gerenderte Größe und Position
     const rect = canvasElement.getBoundingClientRect();
 
-    // 1. Aktuelle skalierte Abmessungen in Bildschirm-Pixeln
     const scaledW = rect.width;
     const scaledH = rect.height;
 
-    // 2. Interne (unskalierte) Abmessungen (aus canvas.width/height Attributen)
     const internalW = canvasElement.width;
     const internalH = canvasElement.height;
     
-    // 3. Skalierungsfaktor berechnen
-    // Der Marker-Punkt muss mit diesem Faktor skaliert werden
     const scaleFactor = scaledW / internalW;
 
-    // 4. Offset des skalierten Canvas zur linken/oberen Kante des Viewports
-    // rect.left und rect.top liefern den exakten Abstand vom Viewport-Rand.
     const offsetX = rect.left;
     const offsetY = rect.top;
 
-    // 5. Finales Ergebnis: Skalierter Canvas-Punkt plus Offset
     const screenX = offsetX + (canvasX * scaleFactor);
     const screenY = offsetY + (canvasY * scaleFactor);
 
     return { x: screenX, y: screenY };
 }
 
-
-/**
- * 2. Positioniert das 3D-Modell (model-viewer) auf dem Bildschirm.
- * Zentriert das Modell um die übergebenen Canvas-Koordinaten.
- */
-
-/*
-function positionModelOnMarker(canvasX, canvasY) {
-    const model = document.getElementById('move-model');
-    
-    if (!model) return;
-
-    const screenCoords = mapCanvasToScreen(canvasX, canvasY);
-
-    // Dimensionen des <model-viewer> abrufen, um es zu zentrieren
-    const modelWidth = model.offsetWidth;
-    const modelHeight = model.offsetHeight;
-
-    // Position des Modells so setzen, dass dessen Mitte auf den Marker-Koordinaten liegt
-    const finalX = screenCoords.x - (modelWidth / 2);
-    const finalY = screenCoords.y - (modelHeight / 2);
-
-    // CSS-Position anwenden
-    model.style.left = `${finalX}px`;
-    model.style.top = `${finalY}px`;
-    model.style.display = 'block'; // Modell anzeigen
-}
-    */
-
 function positionModelOnMarker(markers)
 {
-
-    // Die ID muss exakt mit der ID im HTML übereinstimmen: "move-model"
     var modelViewer = document.getElementById("move-model");
     var canvas = document.getElementById("canvas");
 
-    // Sicherheitscheck: Wenn eines der Elemente nicht existiert, Funktion abbrechen
-    if (!modelViewer || !canvas) {
+    if (!modelViewer || !canvas)
+    {
         console.error("Fehler: move-model oder canvas nicht gefunden!");
         return;
     }
 
     if (markers && markers.length > 0)
     {
-        // --- MARKER GEFUNDEN ---
-        
-        // Falls ein Ausblend-Timer läuft, stoppen wir ihn sofort
         if (markerLostTimeout)
         {
             clearTimeout(markerLostTimeout);
@@ -1443,7 +1231,6 @@ function positionModelOnMarker(markers)
         modelViewer.style.left = screenX + "px";
         modelViewer.style.top = screenY + "px";
         modelViewer.style.transform = "translate(-50%, -50%)";
-
     }
     else
     {
@@ -1454,150 +1241,31 @@ function positionModelOnMarker(markers)
                 modelViewer.style.display = "none";
                 isMarkerVisible = false;
                 markerLostTimeout = null;
-            }, 600); // 600ms Toleranzzeit gegen Flackern
+            }, 600);
         }
     }
 }
+/* Ende KI-generierter Bereich */
 
-
-
-/*
 function positionHTMLOnMarker(markers)
 {
-
-
-    // Die ID muss exakt mit der ID im HTML übereinstimmen: "move-model"
     var modelViewer = document.getElementById("move-html");
     var canvas = document.getElementById("canvas");
 
-    // Sicherheitscheck: Wenn eines der Elemente nicht existiert, Funktion abbrechen
-    if (!modelViewer || !canvas) {
-        console.error("Fehler: move-model oder canvas nicht gefunden!");
-        return;
-    }
-
-    if (markers && markers.length > 0) {
-        // --- MARKER GEFUNDEN ---
-        
-        // Falls ein Ausblend-Timer läuft, stoppen wir ihn sofort
-        if (markerLostTimeout) {
-            clearTimeout(markerLostTimeout);
-            markerLostTimeout = null;
-        }
-        isMarkerVisible = true;
-
-        // 1. Mittelpunkt des Markers berechnen
-        var centerX = (markers[0].corners[0].x + markers[0].corners[1].x + markers[0].corners[2].x + markers[0].corners[3].x) / 4;
-        var centerY = (markers[0].corners[0].y + markers[0].corners[1].y + markers[0].corners[2].y + markers[0].corners[3].y) / 4;
-
-        // 2. Skalierung und Position des Canvas berechnen
-        const rect = canvas.getBoundingClientRect();
-        const scaleX = rect.width / canvas.width;
-        const scaleY = rect.height / canvas.height;
-
-        // 3. Position auf dem Bildschirm berechnen
-        const screenX = rect.left + (centerX * scaleX);
-        const screenY = rect.top + (centerY * scaleY);
-
-        // 4. Position zuweisen und anzeigen
-        modelViewer.style.display = "block";
-        modelViewer.style.left = screenX + "px";
-        modelViewer.style.top = screenY + "px";
-        modelViewer.style.transform = "translate(-50%, -50%)";
-
-    } else {
-
-        if (isMarkerVisible && !markerLostTimeout) {
-            markerLostTimeout = setTimeout(function() {
-                modelViewer.style.display = "none";
-                isMarkerVisible = false;
-                markerLostTimeout = null;
-            }, 20000); // 400ms Toleranzzeit gegen Flackern
-        }
-    }
-}*/
-
-
-/*
-function positionHTMLOnMarker(markers) {
-    var modelViewer = document.getElementById("move-html");
-    var canvas = document.getElementById("canvas");
-
-    if (!modelViewer || !canvas) {
-        console.error("Fehler: move-html oder canvas nicht gefunden!");
-        return;
-    }
+    if (!modelViewer || !canvas) return;
 
     if (markers && markers.length > 0)
     {
-        // --- MARKER GEFUNDEN ---
-        if (markerLostTimeout) {
-            clearTimeout(markerLostTimeout);
-            markerLostTimeout = null;
-        }
-        isMarkerVisible = true;
-
-        // 1. Mittelpunkt berechnen
-        var centerX = (markers[0].corners[0].x + markers[0].corners[1].x + markers[0].corners[2].x + markers[0].corners[3].x) / 4;
-        var centerY = (markers[0].corners[0].y + markers[0].corners[1].y + markers[0].corners[2].y + markers[0].corners[3].y) / 4;
-
-        // 2. WINKEL BERECHNEN (Neu für die Drehung)
-        // Wir berechnen den Winkel zwischen Ecke 0 und Ecke 1 (obere Kante des Markers)
-        var dx = markers[0].corners[1].x - markers[0].corners[0].x;
-        var dy = markers[0].corners[1].y - markers[0].corners[0].y;
-        var angle = Math.atan2(dy, dx) * (180 / Math.PI); // Umrechnung in Grad
-
-        // 3. Skalierung und Position berechnen
-        const rect = canvas.getBoundingClientRect();
-        const scaleX = rect.width / canvas.width;
-        const scaleY = rect.height / canvas.height;
-
-        const screenX = rect.left + (centerX * scaleX);
-        const screenY = rect.top + (centerY * scaleY);
-
-        // 4. Position UND Drehung zuweisen
-        modelViewer.style.display = "block";
-        modelViewer.style.left = screenX + "px";
-        modelViewer.style.top = screenY + "px";
-        
-        // WICHTIG: translate(-50%, -50%) muss erhalten bleiben, damit das Element zentriert bleibt
-        // Wir fügen rotate(Xdeg) hinzu
-        modelViewer.style.transform = "translate(-50%, -50%) rotate(" + angle + "deg)";
-
-    } else {
-        // --- TIMEOUT LOGIK (wie bisher) ---
-        if (isMarkerVisible && !markerLostTimeout)
-        {
-            markerLostTimeout = setTimeout(function() {
-                modelViewer.style.display = "none";
-                isMarkerVisible = false;
-                markerLostTimeout = null;
-            }, 500); // Hinweis: 20000 war in deinem Text 20 Sek., ich habe es auf 600ms angepasst
-        }
-    }
-}
-*/
-
-/*
-function positionHTMLOnMarker(markers) {
-    var modelViewer = document.getElementById("move-html");
-    var canvas = document.getElementById("canvas");
-
-    if (!modelViewer || !canvas) return;
-
-    if (markers && markers.length > 0) {
-        // --- MARKER GEFUNDEN ---
-        
-        // Nutze hier htmlLostTimeout
         if (htmlLostTimeout) {
             clearTimeout(htmlLostTimeout);
             htmlLostTimeout = null;
         }
+        
         isHtmlVisible = true;
 
-        // ... Deine Berechnungen für Position und Drehung ...
         var centerX = (markers[0].corners[0].x + markers[0].corners[1].x + markers[0].corners[2].x + markers[0].corners[3].x) / 4;
         var centerY = (markers[0].corners[0].y + markers[0].corners[1].y + markers[0].corners[2].y + markers[0].corners[3].y) / 4;
+        
         var dx = markers[0].corners[1].x - markers[0].corners[0].x;
         var dy = markers[0].corners[1].y - markers[0].corners[0].y;
         var angle = Math.atan2(dy, dx) * (180 / Math.PI);
@@ -1611,72 +1279,20 @@ function positionHTMLOnMarker(markers) {
         modelViewer.style.top = (rect.top + (centerY * scaleY)) + "px";
         modelViewer.style.transform = "translate(-50%, -50%) rotate(" + angle + "deg)";
 
-    } else {
-        // --- MARKER NICHT GEFUNDEN ---
-        
-        // Nutze hier isHtmlVisible und htmlLostTimeout
-        if (isHtmlVisible && !htmlLostTimeout) {
-            htmlLostTimeout = setTimeout(function() {
+    }
+    else
+    {
+        if (isHtmlVisible && !htmlLostTimeout)
+        {
+            htmlLostTimeout = setTimeout(function()
+            {
                 modelViewer.style.display = "none";
                 isHtmlVisible = false;
                 htmlLostTimeout = null;
-            }, 500); // 500ms statt 20000!
+            }, 500);
         }
     }
 }
-*/
-
-function positionHTMLOnMarker(markers)
-{
-    var modelViewer = document.getElementById("move-html");
-    var canvas = document.getElementById("canvas");
-
-    if (!modelViewer || !canvas) return;
-
-    if (markers && markers.length > 0) {
-        // --- MARKER GEFUNDEN ---
-        
-        // 1. WICHTIG: Timer stoppen, falls er läuft
-        if (htmlLostTimeout) {
-            clearTimeout(htmlLostTimeout);
-            htmlLostTimeout = null;
-        }
-        
-        // 2. WICHTIG: Status auf true setzen, damit das else-Statement später weiß, dass es aktiv werden muss
-        isHtmlVisible = true;
-
-        // Position und Drehung berechnen
-        var centerX = (markers[0].corners[0].x + markers[0].corners[1].x + markers[0].corners[2].x + markers[0].corners[3].x) / 4;
-        var centerY = (markers[0].corners[0].y + markers[0].corners[1].y + markers[0].corners[2].y + markers[0].corners[3].y) / 4;
-        
-        var dx = markers[0].corners[1].x - markers[0].corners[0].x;
-        var dy = markers[0].corners[1].y - markers[0].corners[0].y;
-        var angle = Math.atan2(dy, dx) * (180 / Math.PI);
-
-        const rect = canvas.getBoundingClientRect();
-        const scaleX = rect.width / canvas.width;
-        const scaleY = rect.height / canvas.height;
-
-        // Anzeigen und Transformieren
-        modelViewer.style.display = "block";
-        modelViewer.style.left = (rect.left + (centerX * scaleX)) + "px";
-        modelViewer.style.top = (rect.top + (centerY * scaleY)) + "px";
-        modelViewer.style.transform = "translate(-50%, -50%) rotate(" + angle + "deg)";
-
-    } else {
-        // --- MARKER VERLOREN ---
-        
-        // Dieser Block wird nur ausgeführt, wenn isHtmlVisible oben auf true gesetzt wurde
-        if (isHtmlVisible && !htmlLostTimeout) {
-            htmlLostTimeout = setTimeout(function() {
-                modelViewer.style.display = "none"; // Hier verschwindet es endlich!
-                isHtmlVisible = false; // Zurücksetzen für den nächsten Scan
-                htmlLostTimeout = null;
-            }, 500); // 0.5 Sekunden Toleranz gegen Flackern
-        }
-    }
-}
-
 
 function setAllHTMLOnMarker(marker)
 {
@@ -1690,7 +1306,6 @@ function setAllHTMLOnMarker(marker)
             document.getElementById("site4").style.display = "none";
             document.getElementById("site5").style.display = "none";
             document.getElementById("site6").style.display = "none";
-            //document.getElementById("all-html").innerHTML = database.find(u => u.id === "all-html").oMarker1;
             break;
         case 2:
             document.getElementById("site2").style.display = "block";
@@ -1700,8 +1315,6 @@ function setAllHTMLOnMarker(marker)
             document.getElementById("site4").style.display = "none";
             document.getElementById("site5").style.display = "none";
             document.getElementById("site6").style.display = "none";
-            //console.log(database.find(u => u.id === "all-html").oMarker2);
-            //document.getElementById("all-html").innerHTML = database.find(u => u.id === "all-html").oMarker2;
             break;
         case 3:
             document.getElementById("site3").style.display = "block";
@@ -1711,7 +1324,6 @@ function setAllHTMLOnMarker(marker)
             document.getElementById("site4").style.display = "none";
             document.getElementById("site5").style.display = "none";
             document.getElementById("site6").style.display = "none";
-            //document.getElementById("all-html").innerHTML = database.find(u => u.id === "all-html").oMarker3;
             break;
         case 4:
             document.getElementById("site4").style.display = "block";
@@ -1721,7 +1333,6 @@ function setAllHTMLOnMarker(marker)
             document.getElementById("site3").style.display = "none";
             document.getElementById("site5").style.display = "none";
             document.getElementById("site6").style.display = "none";
-            //document.getElementById("all-html").innerHTML = database.find(u => u.id === "all-html").oMarker4;
             break;
         case 5:
             document.getElementById("site5").style.display = "block";
@@ -1731,7 +1342,6 @@ function setAllHTMLOnMarker(marker)
             document.getElementById("site3").style.display = "none";
             document.getElementById("site4").style.display = "none";
             document.getElementById("site6").style.display = "none";
-            //document.getElementById("all-html").innerHTML = database.find(u => u.id === "all-html").oMarker5;
             break;
         case 6:
             document.getElementById("site6").style.display = "block";
@@ -1741,7 +1351,6 @@ function setAllHTMLOnMarker(marker)
             document.getElementById("site3").style.display = "none";
             document.getElementById("site4").style.display = "none";
             document.getElementById("site5").style.display = "none";
-            //document.getElementById("all-html").innerHTML = database.find(u => u.id === "all-html").oMarker6;
             break;
     }
     
@@ -1754,19 +1363,16 @@ function positionAllHTMLOnMarker(markers)
 
     if (!modelViewer || !canvas) return;
 
-    if (markers && markers.length > 0) {
-        // --- MARKER GEFUNDEN ---
-        
-        // 1. WICHTIG: Timer stoppen, falls er läuft
-        if (htmlLostTimeout) {
+    if (markers && markers.length > 0)
+    {
+        if (htmlLostTimeout)
+        {
             clearTimeout(htmlLostTimeout);
             htmlLostTimeout = null;
         }
-        
-        // 2. WICHTIG: Status auf true setzen, damit das else-Statement später weiß, dass es aktiv werden muss
+
         isHtmlVisible = true;
 
-        // Position und Drehung berechnen
         var centerX = (markers[0].corners[0].x + markers[0].corners[1].x + markers[0].corners[2].x + markers[0].corners[3].x) / 4;
         var centerY = (markers[0].corners[0].y + markers[0].corners[1].y + markers[0].corners[2].y + markers[0].corners[3].y) / 4;
         
@@ -1778,53 +1384,48 @@ function positionAllHTMLOnMarker(markers)
         const scaleX = rect.width / canvas.width;
         const scaleY = rect.height / canvas.height;
 
-        // Anzeigen und Transformieren
         modelViewer.style.display = "block";
         modelViewer.style.left = (rect.left + (centerX * scaleX)) + "px";
         modelViewer.style.top = (rect.top + (centerY * scaleY)) + "px";
         modelViewer.style.transform = "translate(-50%, -50%) rotate(" + angle + "deg)";
 
-    } else {
-        // --- MARKER VERLOREN ---
-        
-        // Dieser Block wird nur ausgeführt, wenn isHtmlVisible oben auf true gesetzt wurde
-        if (isHtmlVisible && !htmlLostTimeout) {
-            htmlLostTimeout = setTimeout(function() {
-                modelViewer.style.display = "none"; // Hier verschwindet es endlich!
-                isHtmlVisible = false; // Zurücksetzen für den nächsten Scan
+    }
+    else
+    {
+        if (isHtmlVisible && !htmlLostTimeout)
+        {
+            htmlLostTimeout = setTimeout(function()
+            {
+                modelViewer.style.display = "none";
+                isHtmlVisible = false;
                 htmlLostTimeout = null;
-            }, 500); // 0.5 Sekunden Toleranz gegen Flackern
+            }, 500);
         }
     }
 }
 
-
-
-
-
-
-// Hides the model when the marker is lost (already mentioned in previous steps)
-function handleMarkerLost() {
+function handleMarkerLost()
+{
     const model = document.getElementById('move-model');
-    if (model) {
+    if (model)
+    {
         model.style.display = 'none';
     }
 }
 
-/**
- * Konvertiert Pixel-Koordinaten in normalisierte Koordinaten für den POSIT-Algorithmus.
- */
-function normalize(corners, width, height) {
+/* Anfang KI-generierter Bereich */
+function normalize(corners, width, height)
+{
     var halfWidth = width / 2;
     var halfHeight = height / 2;
 
     var normalized = [];
 
-    for (var i = 0; i < 4; i++) {
+    for (var i = 0; i < 4; i++)
+    {
         var x = corners[i].x;
         var y = corners[i].y;
 
-        // Verschiebt den Nullpunkt in die Mitte des Canvas und skaliert auf den Bereich [-1, 1]
         normalized[i] = {
             x: (x - halfWidth) / halfWidth,
             y: (y - halfHeight) / halfHeight
@@ -1833,10 +1434,7 @@ function normalize(corners, width, height) {
 
     return normalized;
 }
-
-
-
-
+/* Ende KI-generierter Bereich */
 
 
 var oSrc;
@@ -1847,8 +1445,6 @@ var oAudioStartAt;
 
 function getObjectTitle(parameter)
 {
-    /* setObject(parameter);
-    return oTitle; */
     return database.find(u => u.id === parameter).oTitle;
 }
 
@@ -1859,45 +1455,20 @@ function setCrossReferenceObject(id)
     openCurrentObjectMenu();
 }
 
-
-
 function setObject(objectIdParameter)
 {
-
-
-console.log(getCurrentObjectType());
+    console.log(getCurrentObjectType());
 
     if (getCurrentObjectType() == "img")
     {
-    
-
-            document.getElementById("site1").innerHTML = database.find(u => u.id === objectId).oMarker1;
-            
-            document.getElementById("site2").innerHTML = database.find(u => u.id === objectId).oMarker2;
-            
-            document.getElementById("site3").innerHTML = database.find(u => u.id === objectId).oMarker3;
-            
-            document.getElementById("site4").innerHTML = database.find(u => u.id === objectId).oMarker4;
-
-            document.getElementById("site5").innerHTML = database.find(u => u.id === objectId).oMarker5;
-            
-            document.getElementById("site6").innerHTML = database.find(u => u.id === objectId).oMarker6;
-
-
+        document.getElementById("site1").innerHTML = database.find(u => u.id === objectId).oMarker1;
+        document.getElementById("site2").innerHTML = database.find(u => u.id === objectId).oMarker2;
+        document.getElementById("site3").innerHTML = database.find(u => u.id === objectId).oMarker3;
+        document.getElementById("site4").innerHTML = database.find(u => u.id === objectId).oMarker4;
+        document.getElementById("site5").innerHTML = database.find(u => u.id === objectId).oMarker5;
+        document.getElementById("site6").innerHTML = database.find(u => u.id === objectId).oMarker6;
     }
-
-
-
-
-
-
-
-    // Bilder für einzelne Seiten laden
-    //setImagesForImagesById();
-
     
-
-    /* Zusatzfunktion für Zuse Tatort */
     
     if (objectIdParameter == "mystery")
     {
@@ -1955,28 +1526,28 @@ console.log(getCurrentObjectType());
         <div class="hotspot-info">Hammer</div>
     </button>`;
     }
-    /*
+    
     else if (objectIdParameter == "newton-1")
     {
         document.getElementById("ar-model").innerHTML = `
         <button class="hotspot" slot="hotspot-visor" data-position="0 1.75 0.35" data-normal="0 0 1">
-    <div class="annotation">
-      <strong>Visier-Info</strong><br>
-      Dies ist das goldbeschichtete Visier des Astronauten.
-    </div>
-  </button>
+        <div class="annotation">
+        <strong>Visier-Info</strong><br>
+        Dies ist das goldbeschichtete Visier des Astronauten.
+        </div>
+    </button>
 
-  <button class="hotspot" slot="hotspot-visor" data-position="0 1 0.35" data-normal="0 0 1">
-    <div class="annotation">
-      <strong>Visier-Info</strong><br>
-      Dies ist das goldbeschichtete Visier des Astronauten.
-    </div>
-  </button>
-    `;
+    <button class="hotspot" slot="hotspot-visor" data-position="0 1 0.35" data-normal="0 0 1">
+        <div class="annotation">
+        <strong>Visier-Info</strong><br>
+        Dies ist das goldbeschichtete Visier des Astronauten.
+        </div>
+    </button>
+        `;
 
 
     }
-    */
+    
     else
     {
         document.getElementById("ar-model").innerHTML = "";
@@ -1994,97 +1565,13 @@ console.log(getCurrentObjectType());
         imagesById[1] = "";
         imagesById[2] = "";
     }
-
-/*
-    if (getCurrentObjectSrcStatus() == 0)
-                        {
-                            // Keine MarkerIMGs vorhanden, nur Standard
-                            imagesById = {
-                                10: "./data/img/konrad-zuse-wikipedia.png",
-                                11: "./data/img/overlay.png",
-                                12: "./data/img/konrad-zuse-wikipedia.png",
-                            };
-                        }
-                        else
-                        {
-                            imagesById = {
-                                1: getMarkerImgByCurrentObjectId(1),
-                                2: getMarkerImgByCurrentObjectId(2),
-                                3: getMarkerImgByCurrentObjectId(3),
-                                4: getMarkerImgByCurrentObjectId(4),
-                                5: getMarkerImgByCurrentObjectId(5),
-                                6: getMarkerImgByCurrentObjectId(6),
-
-                                10: "./data/img/konrad-zuse-wikipedia.png",
-                                11: "./data/img/overlay.png",
-                                12: "./data/img/konrad-zuse-wikipedia.png",
-                            };
-                        }
-*/
-
-
-
-
-
-
-
-    
-
+        
     objectId = objectIdParameter;
 
-    closeObjectMenu(); // Wenn von Menü aufgerufen
+    closeObjectMenu();
 
     var model = document.getElementById("move-model");
 
-    /*
-    switch (objectId)
-    {
-        case "heart-1":
-            oSrc = "./data/3d/heart-23.glb";
-            oTitle = "Rotes Herz";
-            oSizeMultiplier = 3;
-            oBackground = "rgb(255, 179, 179, 0.3)";
-            oAudioStartAt = 5;
-            break;
-        case "disco-1":
-            oSrc = "./data/3d/disco-ball-2730.glb";
-            oTitle = "Disco-Kugel";
-            oSizeMultiplier = 3;
-            oBackground = "transparent";
-            oAudioStartAt = 1.5;
-            break;
-        case "atom-1":
-            oSrc = "./data/3d/atom.glb";
-            oTitle = "Aufbau eines Atoms";
-            oSizeMultiplier = 4;
-            oBackground = "black";
-            oAudioStartAt = 5;
-            break;
-        case "city-1":
-            oSrc = "./data/3d/city_pack_5.glb";
-            oTitle = "Stadt";
-            oSizeMultiplier = 4;
-            oBackground = "#e6e6e6";
-            oAudioStartAt = 5;
-            break;
-        case "davinci-1":
-            oSrc = "./data/3d/da_vinci_code_cryptex.glb";
-            oTitle = "Da Vinci Cryptex";
-            oSizeMultiplier = 3;
-            oBackground = "transparent";
-            oAudioStartAt = 5;
-            break;
-        case "enigma-1":
-            oSrc = "./data/3d/enigma_machine_1934.glb";
-            oTitle = "Enigma";
-            oSizeMultiplier = 3;
-            oBackground = "url('./data/img/favicon.png')"; // black
-            oAudioStartAt = 5;
-            break;
-    }
-    */
-
-    // Werte auf Standard zurücksetzen
     model.style.backgroundColor = "transparent";
     model.style.backgroundImage = "none";
 
@@ -2092,15 +1579,9 @@ console.log(getCurrentObjectType());
     console.log(database.find(u => u.id === objectId).oTitle);
     console.log(database.find(u => u.id === objectId).oSrc);
 
-    // Zuweisung und Anwendung
-    model.src = ""; // Zurücksetzen für Ladebild
+    model.src = "";
     model.src = database.find(u => u.id === objectId).oSrc;
     document.getElementById("objectTitle").innerHTML = database.find(u => u.id === objectId).oTitle;
-    
-
-
-    // setAudioPlayTime(database.find(u => u.id === objectId).oAudioStartAt);
-    // document.getElementById("audioPlayer").src = database.find(u => u.id === objectId).oAudioSrc;
 
     var audioId = database.find(u => u.id === objectId).oAudioId;
 
@@ -2115,28 +1596,13 @@ console.log(getCurrentObjectType());
     }
     
 
-    // console.warn(audioId);
-
-    //console.warn(audioDatabase.find(u => u.id === audioId).aStartAt);
-    //console.warn(audioDatabase.find(u => u.id === audioId).aSrc);
-
-    
-
-
-
     document.getElementById("title").style.backgroundColor = "rgba(98, 166, 14, 0.5)";
     document.getElementById("title").style.borderColor = "rgba(98, 166, 14, 0.5)";
     document.getElementById("title").style.color = "white";
 
     document.getElementById("title").style.backgroundColor = database.find(u => u.id === objectId).oMainBgColor;
     document.getElementById("title").style.borderColor = database.find(u => u.id === objectId).oMainBgColor;
-    document.getElementById("title").style.color = database.find(u => u.id === objectId).oMainTextColor;
-    
-    // variable.includes("url(")
-
-
-
-    
+    document.getElementById("title").style.color = database.find(u => u.id === objectId).oMainTextColor;   
 
     if (database.find(u => u.id === objectId).oBackground.includes("url("))
     {
@@ -2161,7 +1627,7 @@ function openCurrentObjectMenu()
     arModel.style.backgroundColor = "transparent";
     arModel.style.backgroundImage = "none";
 
-    arModel.src = database.find(u => u.id === objectId).oSrc; // objectId = Instanzvariable
+    arModel.src = database.find(u => u.id === objectId).oSrc;
     if (database.find(u => u.id === objectId).oBackground.includes("url("))
     {
         arModel.style.backgroundImage = database.find(u => u.id === objectId).oBackground;
@@ -2208,18 +1674,11 @@ function openCurrentObjectMenu()
 
     document.getElementById("copyright-accordion").innerHTML = database.find(u => u.id === objectId).oCopyright;
 
-    // Audio abspielen?
-
-    
-
     document.getElementById("myBottomModal").style.display = "block";
 }
 
 function setObjectSize(pixelSize)
 {
-    // console.log(pixelSize);
-    // console.log(objectId);
-
     document.getElementById("move-model").style.width = (pixelSize * database.find(u => u.id === objectId).oSizeMultiplier) + "px";
     document.getElementById("move-model").style.height = (pixelSize * database.find(u => u.id === objectId).oSizeMultiplier) + "px";
 }
@@ -2240,18 +1699,7 @@ function setAllHTMLSize(pixelSize)
         element.style.width = "100%";
         // Höhe mit aspect-ratio: 1 / 1 zugewiesen
     });
-
-    /*
-    document.querySelectorAll('.yt-iframe').forEach(function(element)
-    {
-        element.style.width = (pixelSize * 4) + "px";
-        element.style.height = (pixelSize * 4) + "px";
-    });
-    */
 }
-
-
-
 
 function getContactInformation(parameter)
 {
@@ -2277,22 +1725,21 @@ function setFullscreenForObject(id)
         elem.requestFullscreen();
     }
     else if (elem.webkitRequestFullscreen)
-    { /* Safari */
+    {
+        /* Safari */
         elem.webkitRequestFullscreen();
     }
     else if (elem.msRequestFullscreen)
-    { /* IE11 */
+    {
+        /* IE11 */
         elem.msRequestFullscreen();
     }
-
 }
-
 
 function openAiMenu()
 {
     alert("Die KI-Funktion befindet sich derzeit noch in der Entwicklungsphase.");
 }
-
 
 function shareObjectByLink(source)
 {
@@ -2322,52 +1769,9 @@ function shareObjectByLink(source)
         case "image":
             downloadPNG();
             break;
-
-
-        
         default:
             console.error("Ungültige Quelle");
             break;
     }
 }
-
-
-/*
-function setWebcamSize(x, y)
-{
-    //console.log("Webcam width: " + x);
-    //console.log("Webcam height: " + y);
-
-    let ww = window.innerWidth;
-    let wh = window.innerHeight;
-    //console.log(ww);
-    //console.log(wh);
-
-    // x = Webcame width
-    // y = Webcame height
-    // ww = Fenster width
-    // wh = Fenster height
-
-    w1 = ww / x;
-    w2 = wh / y;
-    console.log(w1);
-    console.log(w2);
-
-    
-    if (w1 >= w2)
-    {
-        // w1 >= w2
-        console.log("Fall 1");
-        document.getElementById("canvas").style.width = "100%";
-    }
-    else
-    {
-        // w2 > w1
-        console.log("Fall 2");
-        document.getElementById("canvas").style.height = wh;
-    }
-        
-
-}
-*/
 

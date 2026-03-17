@@ -35,62 +35,36 @@
     </head>
     <body onload="loadThePage()">
 
-        <!-- Audio-Element -->
         <audio id="audioPlayer"></audio>
 
-        <!-- Lade-Animation -->
         <div id="loadingPage">
-
-                <div class="loader"></div>
-
+            <div class="loader"></div>
         </div>
 
         <!-- Anfang Main-Container -->
         <div id="main">
 
             <header>
-
                 <img class="logo-zuse" src="./data/img/zuse_logo_small.png">
-
                 <img class="logo-ecube" src="./data/img/ecube/ECube_green_top_small.png">
-
                 <img class="logo-mps" src="./data/img/mps.jpg">
-
-                <!--
-                <img id="header-pfp" src="./data/img/marco.png">
-                -->
-
             </header>
 
             <!-- Anfang Menü zur Objektauswahl -->
             <div id="mySidenav" class="sidenav">
-
                 <a href="javascript:void(0)" class="closebtn" onclick="closeObjectMenu()">&times;</a>
                     <div class="sidenav-container">
-
-                        <!--
-                        <span class="beta-span">Beta-Version</span>
-                        -->
-
                         <h3>Kursübersicht</h3>
-
                         <div style="display: flex; overflow-x: auto; width: 100%; gap: 15px">
                             <div style="display: flex; flex-shrink: 0; overflow: hidden;">
-
                                 <div class="subject-panel" style="background-color: rgb(42, 194, 42);" onclick="showBioLM()">
-                                    <span class="title">Biologie</span><br>
+                                    <span class="title">Gesellschaftslehre</span><br>
                                     <span class="teacher">L. M.</span>
                                 </div>
-
-                                
-                                
                                 <div class="subject-panel" onclick="showPhysikKR()">
                                     <span class="title">Physik</span><br>
                                     <span class="teacher">K. R.</span>
                                 </div>
-
-                                
-
                             </div>
                         </div>
 
@@ -165,11 +139,8 @@
                             <a style="cursor:pointer" onclick="setObject('neptun-ro')">Neptun</a>
                             <br>
                             <a style="cursor:pointer" onclick="setObject('pluto-ro')">Pluto</a>
-                            
 
                         </div>
-
-
 
                         <div id="urlSidenav" class="urlsidenav">
                             <a href="javascript:void(0)" class="urlclosebtn" onclick="closeNav()">&times;</a>
@@ -178,26 +149,21 @@
                         </div>
 
                         <script>
-                        function openNav(url) {
-                            document.getElementById("urlIframe").src = url;
-                        document.getElementById("urlSidenav").style.width = "100%";
-                        }
-
-                        function closeNav() {
-                        document.getElementById("urlSidenav").style.width = "0";
-                        }
+                            function openNav(url)
+                            {
+                                document.getElementById("urlIframe").src = url;
+                                document.getElementById("urlSidenav").style.width = "100%";
+                            }
+                            function closeNav()
+                            {
+                                document.getElementById("urlSidenav").style.width = "0";
+                            }
                         </script>
-
 
                         <h3>Objektmenü</h3>
 
-                        
-
-
                         <div class="filter-bar" align="center">
                             <div class="form-row">
-
-
                                 <div class="search-container">
                                     <select class="categoryFilter" id="categoryFilter">
                                         <option value="all">Alle Kategorien</option>
@@ -207,103 +173,68 @@
                                         <option value="ch">Chemie</option>
                                         <option value="er">Erdkunde</option>
                                     </select>
-                                
                                     <input type="text" id="searchInput" placeholder="Suchbegriff eingeben...">
                                 </div>
-
-
                             </div>
                         </div>
 
-
-
-
-                        <div id="subject-container-new" class="subject-container-new">
-
-                            <!-- Ergänzt durch JS -->
-
-                        </div>
+                        <div id="subject-container-new" class="subject-container-new"></div>
 
                         <div align="center" style="margin-top:35px">
                             <img class="logo-zuse" src="./data/img/zuse_logo_small.png">
-
                             <img class="logo-ecube" src="./data/img/ecube/ECube_green_top_small.png">
-
                             <img class="logo-mps" src="./data/img/mps.jpg">
                         </div>
-                        
-
-
+                       
                         <script>
                             const categoryFilter = document.getElementById("categoryFilter");
                             const searchInput = document.getElementById("searchInput");
                             const items = document.querySelectorAll(".subject-box-new");
 
-                            function filterObjects() {
-                        const selectedCategory = document.getElementById("categoryFilter").value;
-                        const searchText = document.getElementById("searchInput").value.toLowerCase();
-
-                        const items = document.querySelectorAll(".subject-box-new");
-
-                        items.forEach(item => {
-                            const itemCategory = item.dataset.category;
-                            const itemTitle = item.dataset.title.toLowerCase();
-
-                            const matchesCategory =
-                                selectedCategory === "all" || itemCategory === selectedCategory;
-
-                            const matchesSearch =
-                                itemTitle.includes(searchText);
-
-                            item.style.display = (matchesCategory && matchesSearch) ? "flex" : "none";
-                        });
-                    }
-
+                            function filterObjects()
+                            {
+                                const selectedCategory = document.getElementById("categoryFilter").value;
+                                const searchText = document.getElementById("searchInput").value.toLowerCase();
+                                const items = document.querySelectorAll(".subject-box-new");
+                                items.forEach(item => {
+                                    const itemCategory = item.dataset.category;
+                                    const itemTitle = item.dataset.title.toLowerCase();
+                                    const matchesCategory =
+                                        selectedCategory === "all" || itemCategory === selectedCategory;
+                                    const matchesSearch =
+                                        itemTitle.includes(searchText);
+                                    item.style.display = (matchesCategory && matchesSearch) ? "flex" : "none";
+                                });
+                            }
 
                             categoryFilter.addEventListener("change", filterObjects);
                             searchInput.addEventListener("input", filterObjects);
-                        </script>
-
-
-
-                        <script>
+  
                             const audioElement = document.getElementById("audioPlayer");
                             audioElement.loop = true;
 
-                            // Audio abspielen
                             function playAudio()
                             {
                                 audioElement.play();
                             }
-
-                            // Audio pausieren
                             function pauseAudio()
                             {
                                 audioElement.currentTime = (audioElement.currentTime - 1.5);
                                 audioElement.pause();
                             }
-
                             function setAudioPlayTime(seconds)
                             {
                                 audioElement.currentTime = seconds;
                             }
                         </script>
 
-
-
-                        <!-- Overlay -->
                         <div class="overlay" id="overlay" onclick="document.getElementById('overlay').style.display = 'none'">
                             <div class="overlay-content" onclick="event.stopPropagation()">
-
-                                
                                 <div align="center">
                                     <span style="font-size:20px" id="qrCodeObjectTitle">...</span>
                                     <div id="qr-container"></div>
-
                                     <input id="qr-share-link" disabled>
-
                                     <br><br>
-                                    
                                     <button class="share-btn whatsapp" onclick="shareObjectByLink('whatsapp')" title="Über Whatsapp teilen">
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-whatsapp" viewBox="0 0 16 16">
                                             <path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"/>
@@ -341,101 +272,9 @@
                                             <path d="M9.293 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.707A1 1 0 0 0 13.707 4L10 .293A1 1 0 0 0 9.293 0M9.5 3.5v-2l3 3h-2a1 1 0 0 1-1-1m-1 4v3.793l1.146-1.147a.5.5 0 0 1 .708.708l-2 2a.5.5 0 0 1-.708 0l-2-2a.5.5 0 0 1 .708-.708L7.5 11.293V7.5a.5.5 0 0 1 1 0"/>
                                         </svg>
                                     </button>
-
-
-                                    
-
                                 </div>
-
-                                <!--
-
-                                <div class="slideshow-container">
-                                    <div class="mySlides">
-                                        <img src="./data/img/marker/marker_1.png">
-                                    </div>
-
-                                    <div class="mySlides">
-                                        <img src="./data/img/marker/marker_4.png">
-                                    </div>
-
-                                    <div class="mySlides">
-                                        <img src="./data/img/marker/marker_3.png">
-                                    </div>
-                                        
-                                    <div class="mySlides">
-                                        <img src="./data/img/marker/marker_5.png">
-                                    </div>
-
-                                    <div class="mySlides">
-                                        <img src="./data/img/marker/marker_2.png">
-                                    </div>
-                                        
-                                    <div class="mySlides">
-                                        <img src="./data/img/marker/marker_6.png">
-                                    </div>
-
-
-                                    <div align=center>
-                                    <div class="caption-slideshow-container">
-                                        <p id="caption"></p>
-                                    </div>
-                                    
-
-                                    <div class="row">
-                                        <div class="column">
-                                        <img class="demo cursor" src="./data/img/marker/marker_1.png" style="width:100%;border-radius:0px 0px 0px 8px" onclick="currentSlide(1)" alt="Ansicht von vorne">
-                                        </div>
-                                        <div class="column">
-                                        <img class="demo cursor" src="./data/img/marker/marker_4.png" style="width:100%" onclick="currentSlide(2)" alt="Ansicht von links">
-                                        </div>
-                                        <div class="column">
-                                        <img class="demo cursor" src="./data/img/marker/marker_3.png" style="width:100%" onclick="currentSlide(3)" alt="Ansicht von rechts">
-                                        </div>
-                                        <div class="column">
-                                        <img class="demo cursor" src="./data/img/marker/marker_5.png" style="width:100%" onclick="currentSlide(4)" alt="Ansicht von hinten">
-                                        </div>
-                                        <div class="column">
-                                        <img class="demo cursor" src="./data/img/marker/marker_2.png" style="width:100%" onclick="currentSlide(5)" alt="Ansicht von unten">
-                                        </div>    
-                                        <div class="column">
-                                        <img class="demo cursor" src="./data/img/marker/marker_6.png" style="width:100%;border-radius:0px 0px 8px 0px" onclick="currentSlide(6)" alt="Ansicht von oben">
-                                        </div>
-                                    </div>
-                                    </div>
-                                    </div>
-
-                                    <script>
-                                    let slideIndex = 1;
-                                    showSlides(slideIndex);
-
-                                    function currentSlide(n) {
-                                    showSlides(slideIndex = n);
-                                    }
-
-                                    function showSlides(n) {
-                                    let i;
-                                    let slides = document.getElementsByClassName("mySlides");
-                                    let dots = document.getElementsByClassName("demo");
-                                    let captionText = document.getElementById("caption");
-                                    if (n > slides.length) {slideIndex = 1}
-                                    if (n < 1) {slideIndex = slides.length}
-                                    for (i = 0; i < slides.length; i++) {
-                                        slides[i].style.display = "none";
-                                    }
-                                    for (i = 0; i < dots.length; i++) {
-                                        dots[i].className = dots[i].className.replace(" active-img", "");
-                                    }
-                                    slides[slideIndex-1].style.display = "block";
-                                    dots[slideIndex-1].className += " active-img";
-                                    captionText.innerHTML = dots[slideIndex-1].alt;
-                                    }
-                                    </script>
-
-                                -->
-
                             </div>
                         </div>
-
 
                         <script>
                             var UrlOfQrCode;
@@ -443,13 +282,12 @@
                             function generateQrCode(parameter)
                             {
                                 const text = getStandardUrl() + parameter;
-
                                 UrlOfQrCode = text;
-
                                 const container = document.getElementById('qr-container');
                                 container.innerHTML = "";
 
-                                if (!text) {
+                                if (!text)
+                                {
                                     alert("Bitte Text oder URL eingeben.");
                                     return;
                                 }
@@ -463,19 +301,14 @@
                                 });
 
                                 container.appendChild(svgNode);
-
                                 document.getElementById("qrCodeObjectTitle").innerHTML = getObjectTitle(parameter) + " teilen...";
-
                                 document.getElementById("qr-share-link").value = text;
-
                                 document.getElementById("overlay").style.display = "block";
                             }
-
                             function copyQrCodeUrl()
                             {
                                 navigator.clipboard.writeText(UrlOfQrCode);
                             }
-
                             function downloadPNG()
                             {
                                 const svg = document.querySelector("#qr-container svg");
@@ -513,106 +346,80 @@
                                 img.src = url;
                             }
                         </script>
-
                     </div>
-                    
             </div>
             <!-- Ende Menü zur Objektauswahl -->
 
-            <!-- The Modal -->
             <div id="welcomeModal" class="modal">
-
-                <!-- Modal content -->
                 <div class="modal-content">
                     <div class="modal-header">
                     <span>Berechtigungen</span>
                     </div>
                     <div class="modal-body">
-
-                        
-
                         <span>Zugriff auf die Kamera erlauben</span>
                         <br><br>
                         <div align="center">
                             <button class="btn" id="cameraAccessBtn" onclick="startTheWebcam()">Zugriff erlauben</button>
                         </div>
-                    
                     </div>
                 </div>
-
             </div>
 
             <div id="infoModal" class="modal">
-
-            <!-- Modal content -->
-            <div class="modal-content">
-                <div class="modal-header">
-                <span>Hinweis</span>
-                </div>
-                <div class="modal-body">
-
-                    <div class="icon-text-container">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-hand-index-thumb" viewBox="0 0 16 16">
-                            <path d="M6.75 1a.75.75 0 0 1 .75.75V8a.5.5 0 0 0 1 0V5.467l.086-.004c.317-.012.637-.008.816.027.134.027.294.096.448.182.077.042.15.147.15.314V8a.5.5 0 0 0 1 0V6.435l.106-.01c.316-.024.584-.01.708.04.118.046.3.207.486.43.081.096.15.19.2.259V8.5a.5.5 0 1 0 1 0v-1h.342a1 1 0 0 1 .995 1.1l-.271 2.715a2.5 2.5 0 0 1-.317.991l-1.395 2.442a.5.5 0 0 1-.434.252H6.118a.5.5 0 0 1-.447-.276l-1.232-2.465-2.512-4.185a.517.517 0 0 1 .809-.631l2.41 2.41A.5.5 0 0 0 6 9.5V1.75A.75.75 0 0 1 6.75 1M8.5 4.466V1.75a1.75 1.75 0 1 0-3.5 0v6.543L3.443 6.736A1.517 1.517 0 0 0 1.07 8.588l2.491 4.153 1.215 2.43A1.5 1.5 0 0 0 6.118 16h6.302a1.5 1.5 0 0 0 1.302-.756l1.395-2.441a3.5 3.5 0 0 0 .444-1.389l.271-2.715a2 2 0 0 0-1.99-2.199h-.581a5 5 0 0 0-.195-.248c-.191-.229-.51-.568-.88-.716-.364-.146-.846-.132-1.158-.108l-.132.012a1.26 1.26 0 0 0-.56-.642 2.6 2.6 0 0 0-.738-.288c-.31-.062-.739-.058-1.05-.046zm2.094 2.025"/>
-                        </svg>
-                        Verdecke keine sichtbaren Seiten mit deinen Händen
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <span>Hinweis</span>
                     </div>
+                    <div class="modal-body">
 
-                    <div class="icon-text-container">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-arrows-fullscreen" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd" d="M5.828 10.172a.5.5 0 0 0-.707 0l-4.096 4.096V11.5a.5.5 0 0 0-1 0v3.975a.5.5 0 0 0 .5.5H4.5a.5.5 0 0 0 0-1H1.732l4.096-4.096a.5.5 0 0 0 0-.707m4.344 0a.5.5 0 0 1 .707 0l4.096 4.096V11.5a.5.5 0 1 1 1 0v3.975a.5.5 0 0 1-.5.5H11.5a.5.5 0 0 1 0-1h2.768l-4.096-4.096a.5.5 0 0 1 0-.707m0-4.344a.5.5 0 0 0 .707 0l4.096-4.096V4.5a.5.5 0 1 0 1 0V.525a.5.5 0 0 0-.5-.5H11.5a.5.5 0 0 0 0 1h2.768l-4.096 4.096a.5.5 0 0 0 0 .707m-4.344 0a.5.5 0 0 1-.707 0L1.025 1.732V4.5a.5.5 0 0 1-1 0V.525a.5.5 0 0 1 .5-.5H4.5a.5.5 0 0 1 0 1H1.732l4.096 4.096a.5.5 0 0 1 0 .707"/>
-                        </svg>
-                        Vermeide ruckartige Bewegungen
+                        <div class="icon-text-container">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-hand-index-thumb" viewBox="0 0 16 16">
+                                <path d="M6.75 1a.75.75 0 0 1 .75.75V8a.5.5 0 0 0 1 0V5.467l.086-.004c.317-.012.637-.008.816.027.134.027.294.096.448.182.077.042.15.147.15.314V8a.5.5 0 0 0 1 0V6.435l.106-.01c.316-.024.584-.01.708.04.118.046.3.207.486.43.081.096.15.19.2.259V8.5a.5.5 0 1 0 1 0v-1h.342a1 1 0 0 1 .995 1.1l-.271 2.715a2.5 2.5 0 0 1-.317.991l-1.395 2.442a.5.5 0 0 1-.434.252H6.118a.5.5 0 0 1-.447-.276l-1.232-2.465-2.512-4.185a.517.517 0 0 1 .809-.631l2.41 2.41A.5.5 0 0 0 6 9.5V1.75A.75.75 0 0 1 6.75 1M8.5 4.466V1.75a1.75 1.75 0 1 0-3.5 0v6.543L3.443 6.736A1.517 1.517 0 0 0 1.07 8.588l2.491 4.153 1.215 2.43A1.5 1.5 0 0 0 6.118 16h6.302a1.5 1.5 0 0 0 1.302-.756l1.395-2.441a3.5 3.5 0 0 0 .444-1.389l.271-2.715a2 2 0 0 0-1.99-2.199h-.581a5 5 0 0 0-.195-.248c-.191-.229-.51-.568-.88-.716-.364-.146-.846-.132-1.158-.108l-.132.012a1.26 1.26 0 0 0-.56-.642 2.6 2.6 0 0 0-.738-.288c-.31-.062-.739-.058-1.05-.046zm2.094 2.025"/>
+                            </svg>
+                            Verdecke keine sichtbaren Seiten mit deinen Händen
+                        </div>
+                        <div class="icon-text-container">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-arrows-fullscreen" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M5.828 10.172a.5.5 0 0 0-.707 0l-4.096 4.096V11.5a.5.5 0 0 0-1 0v3.975a.5.5 0 0 0 .5.5H4.5a.5.5 0 0 0 0-1H1.732l4.096-4.096a.5.5 0 0 0 0-.707m4.344 0a.5.5 0 0 1 .707 0l4.096 4.096V11.5a.5.5 0 1 1 1 0v3.975a.5.5 0 0 1-.5.5H11.5a.5.5 0 0 1 0-1h2.768l-4.096-4.096a.5.5 0 0 1 0-.707m0-4.344a.5.5 0 0 0 .707 0l4.096-4.096V4.5a.5.5 0 1 0 1 0V.525a.5.5 0 0 0-.5-.5H11.5a.5.5 0 0 0 0 1h2.768l-4.096 4.096a.5.5 0 0 0 0 .707m-4.344 0a.5.5 0 0 1-.707 0L1.025 1.732V4.5a.5.5 0 0 1-1 0V.525a.5.5 0 0 1 .5-.5H4.5a.5.5 0 0 1 0 1H1.732l4.096 4.096a.5.5 0 0 1 0 .707"/>
+                            </svg>
+                            Vermeide ruckartige Bewegungen
+                        </div>
+                        <div class="icon-text-container">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-sun-fill" viewBox="0 0 16 16">
+                                <path d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8M8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0m0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13m8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5M3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8m10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0m-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0m9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707M4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708"/>
+                            </svg>
+                            Sorge für eine gute Beleuchtung
+                        </div>
+                        <div class="icon-text-container">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-badge-vr-fill" viewBox="0 0 16 16">
+                                <path d="M9.673 5.933v1.938h1.033c.66 0 1.068-.316 1.068-.95 0-.64-.422-.988-1.05-.988z"/>
+                                <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm5.937 7 1.99-5.999H6.61L5.277 9.708H5.22L3.875 5.001H2.5L4.508 11zM8.5 5.001V11h1.173V8.763h1.064L11.787 11h1.327L11.91 8.583C12.455 8.373 13 7.779 13 6.9c0-1.147-.773-1.9-2.105-1.9H8.5z"/>
+                            </svg>
+                            Die angezeigten Objekte sind nur virtuell vorhanden
+                        </div>
+                        <div class="icon-text-container">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-incognito" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="m4.736 1.968-.892 3.269-.014.058C2.113 5.568 1 6.006 1 6.5 1 7.328 4.134 8 8 8s7-.672 7-1.5c0-.494-1.113-.932-2.83-1.205l-.014-.058-.892-3.27c-.146-.533-.698-.849-1.239-.734C9.411 1.363 8.62 1.5 8 1.5s-1.411-.136-2.025-.267c-.541-.115-1.093.2-1.239.735m.015 3.867a.25.25 0 0 1 .274-.224c.9.092 1.91.143 2.975.143a30 30 0 0 0 2.975-.143.25.25 0 0 1 .05.498c-.918.093-1.944.145-3.025.145s-2.107-.052-3.025-.145a.25.25 0 0 1-.224-.274M3.5 10h2a.5.5 0 0 1 .5.5v1a1.5 1.5 0 0 1-3 0v-1a.5.5 0 0 1 .5-.5m-1.5.5q.001-.264.085-.5H2a.5.5 0 0 1 0-1h3.5a1.5 1.5 0 0 1 1.488 1.312 3.5 3.5 0 0 1 2.024 0A1.5 1.5 0 0 1 10.5 9H14a.5.5 0 0 1 0 1h-.085q.084.236.085.5v1a2.5 2.5 0 0 1-5 0v-.14l-.21-.07a2.5 2.5 0 0 0-1.58 0l-.21.07v.14a2.5 2.5 0 0 1-5 0zm8.5-.5h2a.5.5 0 0 1 .5.5v1a1.5 1.5 0 0 1-3 0v-1a.5.5 0 0 1 .5-.5"/>
+                            </svg>
+                            Sie bleiben anonym! Ihr Kamerabild wird nicht geteilt
+                        </div>
+                        
+                        <div align="center">
+                            <button class="btn" onclick="closeInfoModal()">Verstanden</button>
+                        </div>
+                        
                     </div>
-
-                    <div class="icon-text-container">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-sun-fill" viewBox="0 0 16 16">
-                            <path d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8M8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0m0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13m8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5M3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8m10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0m-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0m9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707M4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708"/>
-                        </svg>
-                        Sorge für eine gute Beleuchtung
-                    </div>
-
-                    <div class="icon-text-container">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-badge-vr-fill" viewBox="0 0 16 16">
-                            <path d="M9.673 5.933v1.938h1.033c.66 0 1.068-.316 1.068-.95 0-.64-.422-.988-1.05-.988z"/>
-                            <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm5.937 7 1.99-5.999H6.61L5.277 9.708H5.22L3.875 5.001H2.5L4.508 11zM8.5 5.001V11h1.173V8.763h1.064L11.787 11h1.327L11.91 8.583C12.455 8.373 13 7.779 13 6.9c0-1.147-.773-1.9-2.105-1.9H8.5z"/>
-                        </svg>
-                        Die angezeigten Objekte sind nur virtuell vorhanden
-                    </div>
-
-                    <div class="icon-text-container">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-incognito" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd" d="m4.736 1.968-.892 3.269-.014.058C2.113 5.568 1 6.006 1 6.5 1 7.328 4.134 8 8 8s7-.672 7-1.5c0-.494-1.113-.932-2.83-1.205l-.014-.058-.892-3.27c-.146-.533-.698-.849-1.239-.734C9.411 1.363 8.62 1.5 8 1.5s-1.411-.136-2.025-.267c-.541-.115-1.093.2-1.239.735m.015 3.867a.25.25 0 0 1 .274-.224c.9.092 1.91.143 2.975.143a30 30 0 0 0 2.975-.143.25.25 0 0 1 .05.498c-.918.093-1.944.145-3.025.145s-2.107-.052-3.025-.145a.25.25 0 0 1-.224-.274M3.5 10h2a.5.5 0 0 1 .5.5v1a1.5 1.5 0 0 1-3 0v-1a.5.5 0 0 1 .5-.5m-1.5.5q.001-.264.085-.5H2a.5.5 0 0 1 0-1h3.5a1.5 1.5 0 0 1 1.488 1.312 3.5 3.5 0 0 1 2.024 0A1.5 1.5 0 0 1 10.5 9H14a.5.5 0 0 1 0 1h-.085q.084.236.085.5v1a2.5 2.5 0 0 1-5 0v-.14l-.21-.07a2.5 2.5 0 0 0-1.58 0l-.21.07v.14a2.5 2.5 0 0 1-5 0zm8.5-.5h2a.5.5 0 0 1 .5.5v1a1.5 1.5 0 0 1-3 0v-1a.5.5 0 0 1 .5-.5"/>
-                        </svg>
-                        Sie bleiben anonym! Ihr Kamerabild wird nicht geteilt
-                    </div>
-                    
-                    <div align="center">
-                        <button class="btn" onclick="closeInfoModal()">Verstanden</button>
-                    </div>
-                    
                 </div>
             </div>
 
-            </div>
 
-            <!-- The Modal -->
             <div id="maintenanceModal" class="modal">
-
-                <!-- Modal content -->
                 <div class="modal-content">
                     <div class="modal-header">
                     <span>Wartungsarbeiten</span>
                     </div>
                     <div class="modal-body">
-
                         <div class="maintenance-row">
-
-
-
-
-
-
                         <div class="server">
                             <div class="disk">
                                 <div class="line"></div>
@@ -628,127 +435,85 @@
                             </div>
                         </div>
 
-        <script>
+                        <script>
+                            const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms)); 
+                            async function setServerAnimation()
+                            {
+                                setL1();
+                                await sleep(800);
+                                setL3();
+                                await sleep(1300);
+                                setL2();
+                            }
 
-            const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms)); 
-
-            async function setServerAnimation()
-            {
-                setL1();
-                await sleep(800);
-                setL3();
-                await sleep(1300);
-                setL2();
-            }
-
-            var off = "#cccccc";
-            var on = "#62A60E";
-
-            async function setL1()
-            {
-                var l = document.getElementById("light1");
-                while (true)
-                {
-                    await sleep(80);
-                    l.style.backgroundColor = on;
-                    await sleep(60);
-                    l.style.backgroundColor = off;
-                }
-            }
-
-            async function setL2()
-            {
-                var l = document.getElementById("light2");
-                while (true)
-                {
-                    await sleep(70);
-                    l.style.backgroundColor = on;
-                    await sleep(80);
-                    l.style.backgroundColor = off;
-                }
-            }
-
-            async function setL3()
-            {
-                var l = document.getElementById("light3");
-                while (true)
-                {
-                    await sleep(90);
-                    l.style.backgroundColor = on;
-                    await sleep(60);
-                    l.style.backgroundColor = off;
-                }
-            }
-
-        </script>
-
-
-
-
-
-                            <div id="maintenance-info">
-                                <!-- Ergänzt durch JS -->
-                            </div>
-
+                            var off = "#cccccc";
+                            var on = "#62A60E";
+                            async function setL1()
+                            {
+                                var l = document.getElementById("light1");
+                                while (true)
+                                {
+                                    await sleep(80);
+                                    l.style.backgroundColor = on;
+                                    await sleep(60);
+                                    l.style.backgroundColor = off;
+                                }
+                            }
+                            async function setL2()
+                            {
+                                var l = document.getElementById("light2");
+                                while (true)
+                                {
+                                    await sleep(70);
+                                    l.style.backgroundColor = on;
+                                    await sleep(80);
+                                    l.style.backgroundColor = off;
+                                }
+                            }
+                            async function setL3()
+                            {
+                                var l = document.getElementById("light3");
+                                while (true)
+                                {
+                                    await sleep(90);
+                                    l.style.backgroundColor = on;
+                                    await sleep(60);
+                                    l.style.backgroundColor = off;
+                                }
+                            }
+                        </script>
+                            <div id="maintenance-info"></div>
                         </div>
-
                         <br><br>
-
                         <div align="center">
                             <button class="btn" onclick="closeMaintenanceModal()">Verstanden</button>
                         </div>
-                    
                     </div>
                 </div>
-
             </div>
 
-            <!-- The Modal -->
             <div id="settingModal" class="modal">
-
-                <!-- Modal content -->
                 <div class="modal-content">
                     <div class="modal-header">
                     <span>Einstellungen</span>
                     </div>
                     <div class="modal-body">
-
-                        <!--
-
-                        <span id="header-icon-connection" class="header-icon connection">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-wifi" viewBox="0 0 16 16">
-                                <path d="M15.384 6.115a.485.485 0 0 0-.047-.736A12.44 12.44 0 0 0 8 3C5.259 3 2.723 3.882.663 5.379a.485.485 0 0 0-.048.736.52.52 0 0 0 .668.05A11.45 11.45 0 0 1 8 4c2.507 0 4.827.802 6.716 2.164.205.148.49.13.668-.049"/>
-                                <path d="M13.229 8.271a.482.482 0 0 0-.063-.745A9.46 9.46 0 0 0 8 6c-1.905 0-3.68.56-5.166 1.526a.48.48 0 0 0-.063.745.525.525 0 0 0 .652.065A8.46 8.46 0 0 1 8 7a8.46 8.46 0 0 1 4.576 1.336c.206.132.48.108.653-.065m-2.183 2.183c.226-.226.185-.605-.1-.75A6.5 6.5 0 0 0 8 9c-1.06 0-2.062.254-2.946.704-.285.145-.326.524-.1.75l.015.015c.16.16.407.19.611.09A5.5 5.5 0 0 1 8 10c.868 0 1.69.201 2.42.56.203.1.45.07.61-.091zM9.06 12.44c.196-.196.198-.52-.04-.66A2 2 0 0 0 8 11.5a2 2 0 0 0-1.02.28c-.238.14-.236.464-.04.66l.706.706a.5.5 0 0 0 .707 0l.707-.707z"/>
-                            </svg>
-                        </span>
-
-                        <br><br>
-
-                        -->
-                        
-
                         <select class="categoryFilter" id="cubesizeFilter" onclick="setCubeSize()">
                             <option value="2">Kleiner Würfel (2cm)</option>
                             <option value="5" selected>Standard-Würfel (5cm)</option>
                             <option value="20">Großer Würfel (20cm)</option>
                         </select>
-
                         <br><br>
                         <a href="./data/fileadmin/DIN_A4-Faltmuster.pdf">DIN A4-Faltmuster.pdf (625 KB)</a>
-
                         <br><br>
-
                         <div align="center">
                             <button class="btn" id="cameraAccessBtn" onclick="document.getElementById('settingModal').style.display='none'">Speichern</button>
                         </div>
-                    
                     </div>
                 </div>
-
             </div>
 
-            <!-- ERGÄNZT -->
-
+            <!-- Anfang Versuchscontainer -->
             <div id="wwm-box">
                 <div id="wwm-frage">
                     Wofür gibt es einen Oscar?
@@ -784,75 +549,17 @@
                     </div>
                 </div>
             </div>
-
+            <!-- Ende Versuchscontainer -->
 
             <video id="video" autoplay playsinline style="display:none;"></video>
             <canvas id="canvas"></canvas>
 
-            
-
-            <!-- ar-button -->
-            <!-- <button slot="ar-button">In AR ansehen</button> -->
-
-            <!-- ar-modes="webxr scene-viewer quick-look" -->
-
-            <!-- placement="floor"
-                Wert	Bedeutung
-                floor	Objekt steht auf dem Boden (Standard)
-                wall	Objekt wird an Wänden platziert
-                auto	System entscheidet -->
-
-            <!--
-            Automatische Skalierung:
-                ar-scale="auto"
-
-            Skalierung:
-                scale="1 1 1"
-
-            Verhindern:
-                ar-scale="fixed"
-             -->
-
-            
-
-
-            <!-- ar-modes="webxr scene-viewer" 
-             placement="floor" -->
-
-
-            <!--
-            
-            Entfernt:
-
-            ar
-            placement="floor"
-            ar-modes="scene-viewer webxr quick-look"
-            touch-action="pan-y"
-            camera-controls
-            
-            -->
-
-            <!--
-            
-            poster="./data/img/favicon.png"
-            
-            -->
-
-
             <div id="move-html" class="flip-box">
                 <div class="flip-box-inner">
                     <div class="flip-box-front">
-                        <!--
-                        <p>1 ....... 1,008</p>
-                        <h2>H</h2>
-                        <p>Wasserstoff</p>
-                        -->
                         <img style="border-radius:8px;width:100%;height:100%" src="https://www.chemie-azubis.de/fileadmin/user_upload/elemente/Wasserstoff_Element.png">
                     </div>
                     <div class="flip-box-back">
-                        <!--
-                        <h2>Back Side</h2>
-                        -->
                         <img style="border-radius:8px;width:100%;height:100%" src="https://upload.wikimedia.org/wikipedia/commons/1/12/Bohr_model.jpg">
                     </div>
                 </div>
@@ -867,868 +574,591 @@
                 <div id="site6" style="display:none"></div>
             </div>
 
+            <!-- Anfang Debugging -->
             <script>
                 document.getElementById("all-html").addEventListener("mouseover", () => {
-  console.log("Hover");
-});
+                    console.log("Hover");
+                });
             </script>
-
-
+            <!-- Ende Debugging -->
 
             <model-viewer
                 id="move-model"
-                
                 environment-image="neutral"
                 alt="3D Modell"
                 interaction-prompt="none"
                 interaction-prompt-threshold="0"
-
                 autoplay
-
                 loading="eager"
-                
                 shadow-intensity="0.5">
-
-                
-
             </model-viewer>
-
-            
-
-            
-
-            <!--
-            auto-rotate
-            auto-rotate-delay="0"
-            rotation-per-second="45deg"
-            exposure="1.2"
-
-
-            orientation="xdeg ydeg zdeg"	Dreht das Objekt selbst
-            camera-orbit="angleY angleX radius"	Steuert die Kamera
-            camera-target="x y z"	Zielpunkt der Kamera
-            camera-controls	Aktiviert Maus/Touch-Steuerung
-            disable-pan	Nur drehen/zoomen, kein Schwenken
-
-            environment-image="neutral"	Umgebungslicht
-            exposure="1.0"	Helligkeit
-            shadow-intensity="1"	Schattenstärke
-            shadow-softness="0–1"	Weiche Schatten
-
-            auto-rotate	Automatische Rotation
-            rotation-per-second="30deg"	Geschwindigkeit der Auto-Rotation
-            auto-rotate-delay="0"	Verzögerung bis zur Rotation
-            animation-name="Idle"	GLB-Animation starten
-            animation-loop	Loop aktivieren
-
-            interaction-prompt="none"	Entfernt die Finger-/Hilfsanzeige
-            interaction-prompt-threshold="0"	Prompt erscheint nie
-            touch-action="none"	Touch deaktivieren
-
-            src="file.glb"	3D-Modell
-            poster="bild.webp"	Ladebild
-            reveal="interaction"	Modell erst bei Interaktion laden
-            loading="lazy"	Lazy Loading
-            -->
-
-
-
-
-
-
 
             <div id="myBottomModal" class="bottom-modal">
+                <div class="bottom-modal-content">
+                    <div class="bottom-modal-header">
+                        <span class="bottom-close">&times;</span>
+                        <h3 id="bottom-modal-title">...</h3>
+                    </div>
+                    <div class="bottom-modal-body">
+                        <div id="subject-badge">...</div>
+                        <p id="bottom-modal-description">...</p>
 
-  <!-- Modal content -->
-  <div class="bottom-modal-content">
-    <div class="bottom-modal-header">
-      <span class="bottom-close">&times;</span>
-      <h3 id="bottom-modal-title">...</h3>
-    </div>
-    <div class="bottom-modal-body">
+                        <button class="btn" onclick="setFullscreenForObject('ar-model')">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" fill="currentColor" class="bi bi-arrows-fullscreen" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M5.828 10.172a.5.5 0 0 0-.707 0l-4.096 4.096V11.5a.5.5 0 0 0-1 0v3.975a.5.5 0 0 0 .5.5H4.5a.5.5 0 0 0 0-1H1.732l4.096-4.096a.5.5 0 0 0 0-.707m4.344 0a.5.5 0 0 1 .707 0l4.096 4.096V11.5a.5.5 0 1 1 1 0v3.975a.5.5 0 0 1-.5.5H11.5a.5.5 0 0 1 0-1h2.768l-4.096-4.096a.5.5 0 0 1 0-.707m0-4.344a.5.5 0 0 0 .707 0l4.096-4.096V4.5a.5.5 0 1 0 1 0V.525a.5.5 0 0 0-.5-.5H11.5a.5.5 0 0 0 0 1h2.768l-4.096 4.096a.5.5 0 0 0 0 .707m-4.344 0a.5.5 0 0 1-.707 0L1.025 1.732V4.5a.5.5 0 0 1-1 0V.525a.5.5 0 0 1 .5-.5H4.5a.5.5 0 0 1 0 1H1.732l4.096 4.096a.5.5 0 0 1 0 .707"/>
+                            </svg>
+                        </button>
+                        <button class="btn" onclick="document.getElementById('myBottomModal').style.display='none';shareObjectByQrCode()">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" fill="currentColor" class="bi bi-share-fill" viewBox="0 0 16 16">
+                                <path d="M11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.5 2.5 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5"/>
+                            </svg>
+                        </button>
+        
+                        <div class="viewer-container">
+                            <model-viewer
+                                id="ar-model"
+                                environment-image="neutral"
+                                alt="3D Modell"
+                                interaction-prompt="none"
+                                interaction-prompt-threshold="0"
+                                autoplay
+                                ar
+                                placement="floor"
+                                ar-modes="scene-viewer webxr quick-look"
+                                touch-action="pan-y"
+                                camera-controls
+                                loading="eager"
+                                shadow-intensity="0.5"                
+                                poster="./data/img/favicon.png">
+                            </model-viewer>
+                            <button id="startStopAnimationBtn" onclick="toggleAnimation()">Anhalten</button>
+                        </div>
 
-        <div id="subject-badge">...</div>
+                        <p>Wichtige Fakten:</p>
 
-      <p id="bottom-modal-description">...</p>
+                        <div id="important-facts"></div>
 
-      
+                        <div class="panel">
+                            <span id="copyright-accordion"></span>
+                        </div>
 
-      <button class="btn" onclick="setFullscreenForObject('ar-model')">
-        <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" fill="currentColor" class="bi bi-arrows-fullscreen" viewBox="0 0 16 16">
-            <path fill-rule="evenodd" d="M5.828 10.172a.5.5 0 0 0-.707 0l-4.096 4.096V11.5a.5.5 0 0 0-1 0v3.975a.5.5 0 0 0 .5.5H4.5a.5.5 0 0 0 0-1H1.732l4.096-4.096a.5.5 0 0 0 0-.707m4.344 0a.5.5 0 0 1 .707 0l4.096 4.096V11.5a.5.5 0 1 1 1 0v3.975a.5.5 0 0 1-.5.5H11.5a.5.5 0 0 1 0-1h2.768l-4.096-4.096a.5.5 0 0 1 0-.707m0-4.344a.5.5 0 0 0 .707 0l4.096-4.096V4.5a.5.5 0 1 0 1 0V.525a.5.5 0 0 0-.5-.5H11.5a.5.5 0 0 0 0 1h2.768l-4.096 4.096a.5.5 0 0 0 0 .707m-4.344 0a.5.5 0 0 1-.707 0L1.025 1.732V4.5a.5.5 0 0 1-1 0V.525a.5.5 0 0 1 .5-.5H4.5a.5.5 0 0 1 0 1H1.732l4.096 4.096a.5.5 0 0 1 0 .707"/>
-        </svg>
-      </button>
+                        <script>
+                            var found = 0;
+                            var toFind = 6;
 
-      
-
-
-      <button class="btn" onclick="document.getElementById('myBottomModal').style.display='none';shareObjectByQrCode()">
-        <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" fill="currentColor" class="bi bi-share-fill" viewBox="0 0 16 16">
-  <path d="M11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.5 2.5 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5"/>
-</svg>
-      </button>
-    
-      <div class="viewer-container">
-        <model-viewer
-                id="ar-model"
-                
-                environment-image="neutral"
-                alt="3D Modell"
-                interaction-prompt="none"
-                interaction-prompt-threshold="0"
-
-                autoplay
-
-                ar
-                placement="floor"
-                ar-modes="scene-viewer webxr quick-look"
-                touch-action="pan-y"
-                camera-controls
-                loading="eager"
-                shadow-intensity="0.5"                
-                poster="./data/img/favicon.png">
-
-
-            </model-viewer>
-
-            <button id="startStopAnimationBtn" onclick="toggleAnimation()">Anhalten</button>
-
-        </div>
-
-       
-
-        <p>Wichtige Fakten:</p>
-
-        <div id="important-facts">
-            <!-- Durch JS ergänzt -->
-        </div>
-
+                            function foundHint(id)
+                            {
+                                document.getElementById(id).disabled = true;
+                                if (found < toFind)
+                                {
+                                    found ++;
+                                    console.log(found+" von " + toFind + " gefunden");
+                                }
+                                if (found == toFind)
+                                {
+                                    console.log("Gewonnen! Alle gefunden!");
+                                    alert("Alle Beweise gefunden! Gute Arbeit!");
+                                }
+                            }
             
+                            const modelViewer = document.querySelector("#model");
+                            let activeInfoBox = null;
 
-            
-
-            <!--
-            <button class="btn" onclick="enterAR()">(BETA) Webcame stoppen (vor AR-Modus)</button>
-
-            <button class="btn" onclick="startTheWebcam()">(BETA) Webcame weiter (nach AR-Modus)</button>
-            -->
-
-
-            <div class="panel">
-                <span id="copyright-accordion"></span>
+                            function showHotspotInfobox(buttonElement)
+                            {
+                                const infoBox = buttonElement.querySelector('.hotspot-info');
+                                if (infoBox.classList.contains('active-hotspot')) {
+                                    infoBox.classList.remove('active-hotspot');
+                                    activeInfoBox = null;
+                                    return;
+                                }
+                                infoBox.classList.add('active-hotspot');
+                                activeInfoBox = infoBox;
+                            }
+                        </script>
+                    </div>
+                </div>
             </div>
 
-
-                        
-
-
-
             <script>
-    var found = 0;
-    var toFind = 6;
-
-    function foundHint(id)
-    {
-        document.getElementById(id).disabled = true;
-   
-        if (found < toFind)
-        {
-            found ++;
-            console.log(found+" von " + toFind + " gefunden");
-        }
-
-        if (found == toFind)
-        {
-            console.log("Gewonnen! Alle gefunden!");
-            alert("Alle Beweise gefunden! Gute Arbeit!");
-        }
-        
-    }
-</script>
-
-<script>
-        
-    const modelViewer = document.querySelector("#model");
-
-
-    /* Hotspot-Infoboxen */
-
-    let activeInfoBox = null;
-
-    function showHotspotInfobox(buttonElement)
-    {
-        const infoBox = buttonElement.querySelector('.hotspot-info');
-
-        if (infoBox.classList.contains('active-hotspot')) {
-            infoBox.classList.remove('active-hotspot');
-            activeInfoBox = null;
-            return;
-        }
-
-        infoBox.classList.add('active-hotspot');
-        activeInfoBox = infoBox;
-    }
-
-</script>
-
-            
-
-
-
-
-    </div>
-  </div>
-
-</div>
-
-<script>
-
-var modal = document.getElementById("myBottomModal");
-
-var span = document.getElementsByClassName("bottom-close")[0];
-
-span.onclick = function()
-{
-  modal.style.display = "none";
-}
-
-window.onclick = function(event)
-{
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-}
-
-</script>
-
-
-
-
+                var modal = document.getElementById("myBottomModal");
+                var span = document.getElementsByClassName("bottom-close")[0];
+                span.onclick = function()
+                {
+                    modal.style.display = "none";
+                }
+                window.onclick = function(event)
+                {
+                    if (event.target == modal)
+                    {
+                        modal.style.display = "none";
+                    }
+                }
+            </script>
 
             <div id="title">
                 <span id="objectTitle">...</span>
                 <button class="info-button" onclick="openCurrentObjectMenu()">i</button>
             </div>
 
-            <!-- Bottom-Menü -->
             <div class="menu">
-
                 <button class="settingBtn" onclick="document.getElementById('settingModal').style.display='block'">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-gear" viewBox="0 0 16 16">
                         <path d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492M5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0"/>
                         <path d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115z"/>
                     </svg>
                 </button>
-
-
                 <button class="menuBtn" onclick="openObjectMenu()">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-grid-fill" viewBox="0 0 16 16">
                         <path d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5zm8 0A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5zm-8 8A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5zm8 0A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5z"/>
                     </svg>
                 </button>
-
                 <button class="aiBtn" onclick="openAiMenu()">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-openai" viewBox="0 0 16 16">
                         <path d="M14.949 6.547a3.94 3.94 0 0 0-.348-3.273 4.11 4.11 0 0 0-4.4-1.934A4.1 4.1 0 0 0 8.423.2 4.15 4.15 0 0 0 6.305.086a4.1 4.1 0 0 0-1.891.948 4.04 4.04 0 0 0-1.158 1.753 4.1 4.1 0 0 0-1.563.679A4 4 0 0 0 .554 4.72a3.99 3.99 0 0 0 .502 4.731 3.94 3.94 0 0 0 .346 3.274 4.11 4.11 0 0 0 4.402 1.933c.382.425.852.764 1.377.995.526.231 1.095.35 1.67.346 1.78.002 3.358-1.132 3.901-2.804a4.1 4.1 0 0 0 1.563-.68 4 4 0 0 0 1.14-1.253 3.99 3.99 0 0 0-.506-4.716m-6.097 8.406a3.05 3.05 0 0 1-1.945-.694l.096-.054 3.23-1.838a.53.53 0 0 0 .265-.455v-4.49l1.366.778q.02.011.025.035v3.722c-.003 1.653-1.361 2.992-3.037 2.996m-6.53-2.75a2.95 2.95 0 0 1-.36-2.01l.095.057L5.29 12.09a.53.53 0 0 0 .527 0l3.949-2.246v1.555a.05.05 0 0 1-.022.041L6.473 13.3c-1.454.826-3.311.335-4.15-1.098m-.85-6.94A3.02 3.02 0 0 1 3.07 3.949v3.785a.51.51 0 0 0 .262.451l3.93 2.237-1.366.779a.05.05 0 0 1-.048 0L2.585 9.342a2.98 2.98 0 0 1-1.113-4.094zm11.216 2.571L8.747 5.576l1.362-.776a.05.05 0 0 1 .048 0l3.265 1.86a3 3 0 0 1 1.173 1.207 2.96 2.96 0 0 1-.27 3.2 3.05 3.05 0 0 1-1.36.997V8.279a.52.52 0 0 0-.276-.445m1.36-2.015-.097-.057-3.226-1.855a.53.53 0 0 0-.53 0L6.249 6.153V4.598a.04.04 0 0 1 .019-.04L9.533 2.7a3.07 3.07 0 0 1 3.257.139c.474.325.843.778 1.066 1.303.223.526.289 1.103.191 1.664zM5.503 8.575 4.139 7.8a.05.05 0 0 1-.026-.037V4.049c0-.57.166-1.127.476-1.607s.752-.864 1.275-1.105a3.08 3.08 0 0 1 3.234.41l-.096.054-3.23 1.838a.53.53 0 0 0-.265.455zm.742-1.577 1.758-1 1.762 1v2l-1.755 1-1.762-1z"/>
                     </svg>
                 </button>
-
-
-
             </div>
 
             <div id="bottomCopyright" style="display:none;position:absolute; bottom:0px;right: 0px;background-color:white;color:black">
                 Copyright: Wolfgang Hunscher, Dortmund, CC BY-SA 3.0 <http://creativecommons.org/licenses/by-sa/3.0/>, via Wikimedia Commons
             </div>
 
-            
-
         </div>
         <!-- Ende Main-Container -->
 
-            <script>
-                const model = document.getElementById("move-model");
+        <script>
+            const model = document.getElementById("move-model");
 
                 
-                function rotateObject(x, y, z)
+            function rotateObject(x, y, z)
+            {
+                // (Funktioniert) model.orientation = `${x}deg ${y}deg ${z}deg`;
+                //model.cameraOrbit = `${x}deg ${y}deg ${z}deg`;
+                model.orientation = `${x}deg ${y}deg ${z}deg`;
+            }
+
+            function toggleAnimation()
+            {
+                if (document.getElementById("ar-model").paused)
                 {
-                    // (Funktioniert) model.orientation = `${x}deg ${y}deg ${z}deg`;
-                    //model.cameraOrbit = `${x}deg ${y}deg ${z}deg`;
-
-                    model.orientation = `${x}deg ${y}deg ${z}deg`;
-
-                }
-
-                
-
-                
-
-
-
-
-function toggleAnimation()
-{
-    if (document.getElementById("ar-model").paused)
-    {
-        
-        document.getElementById("startStopAnimationBtn").innerHTML = "Anhalten";
-        document.getElementById("ar-model").play();
-    }
-    else
-    {
-        document.getElementById("startStopAnimationBtn").innerHTML = "Fortsetzen";
-        document.getElementById("ar-model").pause();
-    }
-}
                     
-
-            </script>
-
-            <script>
-
-                let detectorForMarker = null;
-                let posit = null;
-
-                let markerSize = 5;
-
-                function setCubeSize()
+                    document.getElementById("startStopAnimationBtn").innerHTML = "Anhalten";
+                    document.getElementById("ar-model").play();
+                }
+                else
                 {
-                    console.log(document.getElementById("cubesizeFilter").value);
-                    markerSize = document.getElementById("cubesizeFilter").value;
-                    console.log(markerSize);
+                    document.getElementById("startStopAnimationBtn").innerHTML = "Fortsetzen";
+                    document.getElementById("ar-model").pause();
+                }
+            }
+
+            let detectorForMarker = null;
+            let posit = null;
+
+            let markerSize = 5;
+
+            function setCubeSize()
+            {
+               console.log(document.getElementById("cubesizeFilter").value);
+                markerSize = document.getElementById("cubesizeFilter").value;
+                console.log(markerSize);
+            }
+
+            /* Anfang KI-generierter Bereich */
+            function rotationMatrixToEuler(R)
+            {
+                const radToDeg = 180 / Math.PI;
+
+                const sy = Math.sqrt(R[0][0] * R[0][0] + R[1][0] * R[1][0]); 
+
+                const isSingular = sy < 1e-6; 
+
+                let x, y, z;
+
+                if (!isSingular)
+                {
+                    x = Math.atan2(R[2][1], R[2][2]);
+                    y = Math.atan2(-R[2][0], sy);
+                    z = Math.atan2(R[1][0], R[0][0]);
+                }
+                else
+                {
+                    x = Math.atan2(-R[1][2], R[1][1]); 
+                    y = Math.atan2(-R[2][0], sy);
+                    z = 0;
                 }
 
-                function rotationMatrixToEuler(R)
+                // Umrechnung in Grad
+                let xDeg = x * radToDeg;
+                let yDeg = y * radToDeg;
+                let zDeg = z * radToDeg;
+
+                // Negative Werte in positive umwandeln (0 - 360)
+                if (xDeg < 0) xDeg += 360;
+                if (yDeg < 0) yDeg += 360;
+                if (zDeg < 0) zDeg += 360;
+
+                return { 
+                    x: xDeg, 
+                    y: yDeg, 
+                    z: zDeg 
+                };
+            }
+            /* Ende KI-generierter Bereich */
+
+            var audioDelay = 2000;
+            let imagesById = {};
+
+            setTimeout(setImagesForImagesById, 2000);
+
+            function setImagesForImagesById()
+            {
+                console.log("Auswertung ergibt: " + getCurrentObjectSrcStatus());
+
+                if (getCurrentObjectSrcStatus() == 1)
                 {
-                    const radToDeg = 180 / Math.PI;
-
-                    const sy = Math.sqrt(R[0][0] * R[0][0] + R[1][0] * R[1][0]); 
-
-                    const isSingular = sy < 1e-6; 
-
-                    let x, y, z;
-
-                    if (!isSingular)
-                    {
-                        x = Math.atan2(R[2][1], R[2][2]);
-                        y = Math.atan2(-R[2][0], sy);
-                        z = Math.atan2(R[1][0], R[0][0]);
-                    }
-                    else
-                    {
-                        x = Math.atan2(-R[1][2], R[1][1]); 
-                        y = Math.atan2(-R[2][0], sy);
-                        z = 0;
-                    }
-
-                    // Umrechnung in Grad
-                    let xDeg = x * radToDeg;
-                    let yDeg = y * radToDeg;
-                    let zDeg = z * radToDeg;
-
-                    // Negative Werte in positive umwandeln (0 - 360)
-                    if (xDeg < 0) xDeg += 360;
-                    if (yDeg < 0) yDeg += 360;
-                    if (zDeg < 0) zDeg += 360;
-
-                    return { 
-                        x: xDeg, 
-                        y: yDeg, 
-                        z: zDeg 
+                    imagesById = {
+                        1: "",
+                        2: "",
+                        3: "",
+                        4: "",
+                        5: "",
+                        6: "",
+                                
+                        10: "./data/img/konrad-zuse-wikipedia.png",
+                        11: "./data/img/overlay.png",
+                        12: "./data/img/konrad-zuse-wikipedia.png",
                     };
                 }
-
-
-                var audioDelay = 2000; // 2 Sekunden Verzögerung (kein Marker erkannt)
-
-
-
-                let imagesById = {};
-
-                
-
-                setTimeout(setImagesForImagesById, 2000);
-
-
-                function setImagesForImagesById()
-                {
-
-                    console.log("Auswertung ergibt: " + getCurrentObjectSrcStatus());
-
-                        if (getCurrentObjectSrcStatus() == 1)
-                        {
-                            // Keine MarkerIMGs vorhanden, nur Standard
-                            imagesById = {
-                                1: "",
-                                2: "",
-                                3: "",
-                                4: "",
-                                5: "",
-                                6: "",
-                                
-                                10: "./data/img/konrad-zuse-wikipedia.png",
-                                11: "./data/img/overlay.png",
-                                12: "./data/img/konrad-zuse-wikipedia.png",
-                            };
-                        }
-                        else
-                        {
-                            imagesById = {
-                                1: getMarkerImgByCurrentObjectId(1),
-                                2: getMarkerImgByCurrentObjectId(2),
-                                3: getMarkerImgByCurrentObjectId(3),
-                                4: getMarkerImgByCurrentObjectId(4),
-                                5: getMarkerImgByCurrentObjectId(5),
-                                6: getMarkerImgByCurrentObjectId(6),
-
-                                10: "./data/img/konrad-zuse-wikipedia.png",
-                                11: "./data/img/overlay.png",
-                                12: "./data/img/konrad-zuse-wikipedia.png",
-                            };
-                        }
-
-
-                        console.log(imagesById);
-
-                    
-
-                }
-                
-
-                
-
-
-
-                
-
-                const imageCache = {};
-
-                function getImageForId(id)
-                {
-                    if (!imagesById[id]) return imageCache[0]; // return null (kein Bild)
-
-                    if (imageCache[id]) return imageCache[id];
-
-                    const img = new Image();
-                    img.src = imagesById[id];
-                    imageCache[id] = img;
-
-                    return img;
-                }
-
-
-                let markerVisible = false;
-                let lastSeenTime = 0;
-                let stopTimeout = null;
-
-
-                const video = document.getElementById("video");
-
-                /*
-                video.addEventListener('loadedmetadata', () => {
-                    setWebcamSize(video.videoWidth, video.videoHeight);
-                });
-                */
-
-
-                const canvas = document.getElementById("canvas");
-                const ctx = canvas.getContext('2d', { willReadFrequently: true });
-
-                let webcamStream = null;
-
-async function startTheWebcam() {
-    try {
-        webcamStream = await navigator.mediaDevices.getUserMedia({
-            video: { facingMode: "environment" },
-            audio: false
-        });
-
-        video.srcObject = webcamStream;
-        await video.play();
-
-        console.log("Webcam gestartet");
-    } catch (err) {
-        console.error("Webcam-Fehler:", err);
-    }
-    closeWelcomeModal();
-}
-
-function stopWebcam()
-{
-    if (webcamStream)
-    {
-        webcamStream.getTracks().forEach(track => track.stop());
-        webcamStream = null;
-    }
-
-    video.srcObject = null;
-    console.log("Webcam gestoppt");
-}
-
-
-function enterAR()
-{
-    stopWebcam();
-
-    const arModel = document.getElementById("ar-model");
-    arModel.activateAR();
-}
-
-const arModel = document.getElementById("ar-model");
-
-arModel.addEventListener("ar-status", (event) => {
-    const status = event.detail.status;
-
-    console.log("AR-Status:", status);
-
-    if (status === "not-presenting") {
-        // Webcam starten
-        startTheWebcam();
-    }
-});
-
-
-
-
-                // ArUco-Detector
-                const detector = new AR.Detector();
-
-                function drawOverlay(ctx, image, corners)
-                {
-                    // corners = Array von 4 Punkten [{x,y}, ...] im Uhrzeigersinn: TL, TR, BR, BL
-                    const [tl, tr, br, bl] = corners;
-
-                    const w = image.width;
-                    const h = image.height;
-
-                    ctx.save();
-                    
-                    const dx1 = tr.x - tl.x;
-                    const dy1 = tr.y - tl.y;
-                    const dx2 = bl.x - tl.x;
-                    const dy2 = bl.y - tl.y;
-
-                    ctx.setTransform(
-                        dx1 / w, dy1 / w,
-                        dx2 / h, dy2 / h,
-                        tl.x, tl.y
-                    );
-
-                    ctx.drawImage(image, 0, 0);
-                    ctx.restore();
-                }
-
-                function handleMarkerDetected()
-                {
-                    if (markerVisible) return;
-
-                    markerVisible = true;
-                    lastSeenTime = performance.now();
-
-                    if (stopTimeout) {
-                        clearTimeout(stopTimeout);
-                        stopTimeout = null;
-                    }
-
-                    playAudio();
-                }
-
-
-
-
-
-                function handleMarkerLost()
-                {
-                    const model = document.getElementById('move-model');
-                    if (model)
-                    {
-                        model.style.display = 'none'; 
-                        document.getElementById("move-html").style.display = "none";
-                        document.getElementById("all-html").style.display = "none";
-                    }
-                                    
-                    if (!markerVisible) return;
-
-                    markerVisible = false;
-
-                    stopTimeout = setTimeout(() => {
-                        if (!markerVisible) {
-                            pauseAudio();
-                        }
-                    }, audioDelay);
-                }
-
-
-
-
-
-                function tick()
-                {
-    // 1. Initialprüfung auf den Detector
-    if (!detectorForMarker)
-    {
-        requestAnimationFrame(tick);
-        return;
-    }
-
-    // Status-Variable, um zu verfolgen, ob ein positionierender Marker gefunden wurde
-    let anyMarkerDetected = false; 
-
-    // 2. Video-Bereitschaft prüfen und Canvas/POSIT-Initialisierung durchführen
-    if (video.readyState === video.HAVE_ENOUGH_DATA) {
-        
-        // Korrigiert: Nur einmalig Canvas-Größe und POSIT initialisieren, wenn nötig
-        if (canvas.width !== video.videoWidth || posit === null)
-        {
-            canvas.width = video.videoWidth;
-            canvas.height = video.videoHeight;
-            
-            // POSIT nur initialisieren, wenn die Größe bekannt ist und es noch nicht geschehen ist
-            if (posit === null && canvas.width > 0)
-            {
-                posit = new POS.Posit(markerSize, canvas.width);
-                console.log("POSIT initialisiert mit Breite: " + canvas.width);
-            }
-        }
-        
-        // 3. Frame auf Canvas zeichnen
-        ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
-
-        /*
-        ctx.filter = "brightness(120%) contrast(130%) grayscale(100%)";
-        ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
-        ctx.filter = "none"; // Filter wieder zurücksetzen
-        */
-
-        // 4. Marker-Erkennung (NUR EINMAL AUFRUFEN)
-        const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-        const markers = detectorForMarker.detect(imageData);
-
-        if (markers.length > 0) {
-            
-            // 5. Verarbeitung JEDES erkannten Markers (EINZELNE SCHLEIFE)
-            markers.forEach(marker => {
-                
-                const corners = marker.corners;
-
-
-
-
-                // Koordinaten der ersten beiden Ecken (c0 und c1)
-                const x0 = corners[0].x;
-                const y0 = corners[0].y;
-                const x1 = corners[1].x;
-                const y1 = corners[1].y;
-
-                // Berechnung der Seitenlänge (in Pixel) mit dem Satz des Pythagoras
-                const deltaX = x1 - x0;
-                const deltaY = y1 - y0;
-                const sideLength = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
-
-                
-                //console.log(marker.id);
-                if (getCurrentObjectType() == "img")
-                {
-                    document.getElementById("all-html").style.display = "block";
-                    setAllHTMLOnMarker(marker.id);    
-                }
                 else
                 {
+                    imagesById = {
+                        1: getMarkerImgByCurrentObjectId(1),
+                        2: getMarkerImgByCurrentObjectId(2),
+                        3: getMarkerImgByCurrentObjectId(3),
+                        4: getMarkerImgByCurrentObjectId(4),
+                        5: getMarkerImgByCurrentObjectId(5),
+                        6: getMarkerImgByCurrentObjectId(6),
+
+                        10: "./data/img/konrad-zuse-wikipedia.png",
+                        11: "./data/img/overlay.png",
+                        12: "./data/img/konrad-zuse-wikipedia.png",
+                    };
+                }
+                console.log(imagesById);
+            }
+                
+            const imageCache = {};
+
+            /* Anfang KI-generierter Bereich */
+            function getImageForId(id)
+            {
+                if (!imagesById[id]) return imageCache[0];
+                if (imageCache[id]) return imageCache[id];
+
+                const img = new Image();
+                img.src = imagesById[id];
+                imageCache[id] = img;
+
+                return img;
+            }
+            /* Ende KI-generierter Bereich */
+
+            let markerVisible = false;
+            let lastSeenTime = 0;
+            let stopTimeout = null;
+            const video = document.getElementById("video");
+            const canvas = document.getElementById("canvas");
+            const ctx = canvas.getContext('2d', { willReadFrequently: true });
+            let webcamStream = null;
+
+            async function startTheWebcam()
+            {
+                try
+                {
+                    webcamStream = await navigator.mediaDevices.getUserMedia({
+                        video: { facingMode: "environment" },
+                        audio: false
+                    });
+
+                    video.srcObject = webcamStream;
+                    await video.play();
+
+                    console.log("Webcam gestartet");
+                }
+                catch (err)
+                {
+                    console.error("Webcam-Fehler:", err);
+                }
+                closeWelcomeModal();
+            }
+
+            function stopWebcam()
+            {
+                if (webcamStream)
+                {
+                    webcamStream.getTracks().forEach(track => track.stop());
+                    webcamStream = null;
+                }
+
+                video.srcObject = null;
+                console.log("Webcam gestoppt");
+            }
+
+            function enterAR()
+            {
+                stopWebcam();
+
+                const arModel = document.getElementById("ar-model");
+                arModel.activateAR();
+            }
+
+            const arModel = document.getElementById("ar-model");
+
+            arModel.addEventListener("ar-status", (event) => {
+                const status = event.detail.status;
+                console.log("AR-Status:", status);
+                if (status === "not-presenting")
+                {
+                    startTheWebcam();
+                }
+            });
+
+
+
+            /* Anfang KI-generierter Bereich, selbst angepasst */
+            // ArUco-Detector
+            const detector = new AR.Detector();
+
+            function drawOverlay(ctx, image, corners)
+            {
+                const [tl, tr, br, bl] = corners;
+                const w = image.width;
+                const h = image.height;
+                ctx.save();
+                const dx1 = tr.x - tl.x;
+                const dy1 = tr.y - tl.y;
+                const dx2 = bl.x - tl.x;
+                const dy2 = bl.y - tl.y;
+                ctx.setTransform(
+                    dx1 / w, dy1 / w,
+                    dx2 / h, dy2 / h,
+                    tl.x, tl.y
+                );
+                ctx.drawImage(image, 0, 0);
+                ctx.restore();
+            }
+
+            function handleMarkerDetected()
+            {
+                if (markerVisible) return;
+                markerVisible = true;
+                lastSeenTime = performance.now();
+                if (stopTimeout)
+                {
+                    clearTimeout(stopTimeout);
+                    stopTimeout = null;
+                }
+                playAudio();
+            }
+
+            function handleMarkerLost()
+            {
+                const model = document.getElementById('move-model');
+                if (model)
+                {
+                    model.style.display = 'none'; 
+                    document.getElementById("move-html").style.display = "none";
                     document.getElementById("all-html").style.display = "none";
                 }
-                
+                                 
+                if (!markerVisible) return;
 
+                markerVisible = false;
 
-                if (marker.id >= 1 && marker.id <= 6)
-                {
-                    setObjectSize(sideLength.toFixed(0));
-
-                    setAllHTMLSize(sideLength.toFixed(0));
-                }
-                else if (marker.id == 7)
-                {
-                    setHTMLSize(sideLength.toFixed(0));
-                }
-
-                
-                // === MODELL-POSITIONIERUNG UND SICHTBARKEIT ===
-                
-                // Position des 3D-Objekts setzen
-                const centerX = (corners[0].x + corners[1].x + corners[2].x + corners[3].x) / 4;
-                const centerY = (corners[0].y + corners[1].y + corners[2].y + corners[3].y) / 4;
-                
-                // positionModelOnMarker() positioniert das Modell und setzt display: 'block'
-
-                // Überprüfung: Marker-ID 10, dann kein 3D-Objekt
-                if (marker.id >= 1 && marker.id <= 6)
-                {
-                    if (getCurrentObjectType() == "img")
+                stopTimeout = setTimeout(() => {
+                    if (!markerVisible)
                     {
+                        pauseAudio();
+                    }
+                }, audioDelay);
+            }
+
+            function tick()
+            {
+                if (!detectorForMarker)
+                {
+                    requestAnimationFrame(tick);
+                    return;
+                }
+
+                let anyMarkerDetected = false; 
+
+                if (video.readyState === video.HAVE_ENOUGH_DATA)
+                {
+                    if (canvas.width !== video.videoWidth || posit === null)
+                    {
+                        canvas.width = video.videoWidth;
+                        canvas.height = video.videoHeight;
                         
-                        positionAllHTMLOnMarker(markers);
+                        if (posit === null && canvas.width > 0)
+                        {
+                            posit = new POS.Posit(markerSize, canvas.width);
+                            console.log("POSIT initialisiert mit Breite: " + canvas.width);
+                        }
                     }
-                    else
-                    {
-                        positionModelOnMarker(markers);
-                    }
-                    //positionModelOnMarker(centerX, centerY);
-
-                    //
                     
-                }
-                else if (marker.id == 7)
-                {
-                    positionHTMLOnMarker(markers);
-                }
+                    ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
 
-                
-                anyMarkerDetected = true; 
-                
-                // handleMarkerDetected() hier aufrufen, wenn bei JEDEM Marker etwas passieren soll (z.B. Musik)
-                // handleMarkerDetected(); 
+                    const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+                    const markers = detectorForMarker.detect(imageData);
 
-                handleMarkerDetected();
-                
-                // ===============================================
-                
-                // --- AR & POSIT BERECHNUNGEN (Ihr existierender Code) ---
-
-                // POSIT Pose Berechnung
-                const normalizedCorners = normalize(corners, canvas.width, canvas.height);
-                const pose = posit.pose(normalizedCorners);
-                const R = pose.bestRotation;
-                const T = pose.bestTranslation;
-                const e = rotationMatrixToEuler(R);
-                setDegByMarker(marker.id, e.x.toFixed(0), e.y.toFixed(0), e.z.toFixed(0));
-
-                // Marker rot umranden (Debug)
-                /*
-                ctx.strokeStyle = "red";
-                ctx.lineWidth = 3;
-                ctx.beginPath();
-                ctx.moveTo(corners[0].x, corners[0].y);
-                for (let i=1; i<corners.length; i++) ctx.lineTo(corners[i].x, corners[i].y);
-                ctx.closePath();
-                ctx.stroke();
-
-                // Debug-Linien (Gelb)
-                ctx.strokeStyle = "yellow";
-                ctx.lineWidth = 3;
-                ctx.beginPath();
-                corners.forEach((c, i) => {
-                    const next = corners[(i+1) % corners.length];
-                    ctx.moveTo(c.x, c.y);
-                    ctx.lineTo(next.x, next.y);
-                });
-                ctx.stroke();
-                */
-
-                // Sondercode für SH
-                /*
-                if (marker.id == 10 || marker.id == 11 || marker.id == 12 || marker.id == 19)
-                {
-                */
-                    // Overlay-Bild auf Marker zeichnen
-                    const img = getImageForId(marker.id);
-                    if (img && img.complete)
-                    {
-                        drawOverlay(ctx, img, corners);
+                    if (markers.length > 0) {
                         
+                        markers.forEach(marker => {
+                            
+                            const corners = marker.corners;
+
+                            const x0 = corners[0].x;
+                            const y0 = corners[0].y;
+                            const x1 = corners[1].x;
+                            const y1 = corners[1].y;
+
+                            const deltaX = x1 - x0;
+                            const deltaY = y1 - y0;
+                            const sideLength = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+
+                            if (getCurrentObjectType() == "img")
+                            {
+                                document.getElementById("all-html").style.display = "block";
+                                setAllHTMLOnMarker(marker.id);    
+                            }
+                            else
+                            {
+                                document.getElementById("all-html").style.display = "none";
+                            }
+
+                            if (marker.id >= 1 && marker.id <= 6)
+                            {
+                                setObjectSize(sideLength.toFixed(0));
+
+                                setAllHTMLSize(sideLength.toFixed(0));
+                            }
+                            else if (marker.id == 7)
+                            {
+                                setHTMLSize(sideLength.toFixed(0));
+                            }
+
+                            const centerX = (corners[0].x + corners[1].x + corners[2].x + corners[3].x) / 4;
+                            const centerY = (corners[0].y + corners[1].y + corners[2].y + corners[3].y) / 4;
+                            
+                            if (marker.id >= 1 && marker.id <= 6)
+                            {
+                                if (getCurrentObjectType() == "img")
+                                {
+                                    
+                                    positionAllHTMLOnMarker(markers);
+                                }
+                                else
+                                {
+                                    positionModelOnMarker(markers);
+                                }
+                            }
+                            else if (marker.id == 7)
+                            {
+                                positionHTMLOnMarker(markers);
+                            }
+
+                            anyMarkerDetected = true; 
+                            
+                            handleMarkerDetected();
+                            
+                            const normalizedCorners = normalize(corners, canvas.width, canvas.height);
+                            const pose = posit.pose(normalizedCorners);
+                            const R = pose.bestRotation;
+                            const T = pose.bestTranslation;
+                            const e = rotationMatrixToEuler(R);
+                            setDegByMarker(marker.id, e.x.toFixed(0), e.y.toFixed(0), e.z.toFixed(0));
+
+
+                            // Overlay-Bild auf Marker zeichnen
+                            const img = getImageForId(marker.id);
+                            if (img && img.complete)
+                            {
+                                drawOverlay(ctx, img, corners);
+                            }
+
+                            if (marker.id == 10 || marker.id == 11 || marker.id == 12 || marker.id == 19)
+                            {
+                                document.getElementById("bottomCopyright").style.display = "block";
+                            }
+                        }); 
                     }
-                /*}
-                else
-                {
-
-                }*/
-
-                if (marker.id == 10 || marker.id == 11 || marker.id == 12 || marker.id == 19)
-                {
-                    document.getElementById("bottomCopyright").style.display = "block";
-                }
-
-                
-
-
-
-            }); // Ende markers.forEach
-            
-        } // Ende if (markers.length > 0)
-
-    } 
+                } 
     
-    // 6. KORREKTE SICHTBARKEITSKONTROLLE (Das Ziel der Frage)
-    // Wenn am Ende des Ticks kein Marker zur Positionierung gefunden wurde:
-    if (!anyMarkerDetected) {
-        handleMarkerLost(); // Setzt model.style.display = 'none'
-    }
-
-
-
-    requestAnimationFrame(tick);
-}
+                if (!anyMarkerDetected)
+                {
+                    handleMarkerLost();
+                }
 
                 requestAnimationFrame(tick);
-
-                (async () => {
-
-                    detectorForMarker = new AR.Detector();
-                    // posit = new POS.Posit(markerSize, video.videoWidth);
-
-                    console.log("Tracking gestartet");
-                    posit = new POS.Posit(markerSize, canvas.width);
-                    tick();
-                })();
-
-
-
-                function getPerspectiveTransform(w, h, p1, p2, p3, p4) {
-    function solve(A, b) {
-        var n = A.length;
-        for (var i = 0; i < n; i++) {
-            var max = i;
-            for (var j = i + 1; j < n; j++) {
-                if (Math.abs(A[j][i]) > Math.abs(A[max][i])) max = j;
             }
-            var temp = A[i]; A[i] = A[max]; A[max] = temp;
-            var t = b[i]; b[i] = b[max]; b[max] = t;
-            for (var j = i + 1; j < n; j++) {
-                var factor = A[j][i] / A[i][i];
-                b[j] -= factor * b[i];
-                for (var k = i; k < n; k++) A[j][k] -= factor * A[i][k];
+
+            requestAnimationFrame(tick);
+
+            (async () => {
+                detectorForMarker = new AR.Detector();
+                console.log("Tracking gestartet");
+                posit = new POS.Posit(markerSize, canvas.width);
+                tick();
+            })();
+
+            function getPerspectiveTransform(w, h, p1, p2, p3, p4)
+            {
+                function solve(A, b)
+                {
+                    var n = A.length;
+                    for (var i = 0; i < n; i++) {
+                        var max = i;
+                        for (var j = i + 1; j < n; j++) {
+                            if (Math.abs(A[j][i]) > Math.abs(A[max][i])) max = j;
+                        }
+                        var temp = A[i]; A[i] = A[max]; A[max] = temp;
+                        var t = b[i]; b[i] = b[max]; b[max] = t;
+                        for (var j = i + 1; j < n; j++) {
+                            var factor = A[j][i] / A[i][i];
+                            b[j] -= factor * b[i];
+                            for (var k = i; k < n; k++) A[j][k] -= factor * A[i][k];
+                        }
+                    }
+                    var x = new Array(n);
+                    for (var i = n - 1; i >= 0; i--) {
+                        var sum = 0;
+                        for (var j = i + 1; j < n; j++) sum += A[i][j] * x[j];
+                        x[i] = (b[i] - sum) / A[i][i];
+                    }
+                    return x;
+                }
+
+                var A = [
+                    [0, 0, 1, 0, 0, 0, 0, 0], [w, 0, 1, 0, 0, 0, -p2.x * w, 0],
+                    [w, h, 1, 0, 0, 0, -p3.x * w, -p3.x * h], [0, h, 1, 0, 0, 0, 0, -p4.x * h],
+                    [0, 0, 0, 0, 0, 1, 0, 0], [0, 0, 0, w, 0, 1, -p2.y * w, 0],
+                    [0, 0, 0, w, h, 1, -p3.y * w, -p3.y * h], [0, 0, 0, 0, h, 1, 0, -p4.y * h]
+                ];
+                var b = [p1.x, p2.x, p3.x, p4.x, p1.y, p2.y, p3.y, p4.y];
+                var h_params = solve(A, b);
+                
+                return [
+                    h_params[0], h_params[3], 0, h_params[6],
+                    h_params[1], h_params[4], 0, h_params[7],
+                    0, 0, 1, 0,
+                    h_params[2], h_params[5], 0, 1
+                ];
             }
-        }
-        var x = new Array(n);
-        for (var i = n - 1; i >= 0; i--) {
-            var sum = 0;
-            for (var j = i + 1; j < n; j++) sum += A[i][j] * x[j];
-            x[i] = (b[i] - sum) / A[i][i];
-        }
-        return x;
-    }
-
-    var A = [
-        [0, 0, 1, 0, 0, 0, 0, 0], [w, 0, 1, 0, 0, 0, -p2.x * w, 0],
-        [w, h, 1, 0, 0, 0, -p3.x * w, -p3.x * h], [0, h, 1, 0, 0, 0, 0, -p4.x * h],
-        [0, 0, 0, 0, 0, 1, 0, 0], [0, 0, 0, w, 0, 1, -p2.y * w, 0],
-        [0, 0, 0, w, h, 1, -p3.y * w, -p3.y * h], [0, 0, 0, 0, h, 1, 0, -p4.y * h]
-    ];
-    var b = [p1.x, p2.x, p3.x, p4.x, p1.y, p2.y, p3.y, p4.y];
-    var h_params = solve(A, b);
-    
-    return [
-        h_params[0], h_params[3], 0, h_params[6],
-        h_params[1], h_params[4], 0, h_params[7],
-        0, 0, 1, 0,
-        h_params[2], h_params[5], 0, 1
-    ];
-}
-
-
-            </script>
-
-            
-
-
+            /* Ende KI-generierter Bereich, selbst angepasst */
+        </script>
 
     </body>
 </html>

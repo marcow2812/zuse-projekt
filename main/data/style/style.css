@@ -372,7 +372,8 @@ header
     top: 0;
     right: 0;
 
-    height: 100%;
+    height: 24px;
+    width: 24px;
     aspect-ratio: 1 / 1; /* sorgt für perfekte Kreisform */
     
     border: none;
@@ -1853,7 +1854,7 @@ cursor: pointer;
   padding: 10px 14px;
   border-radius: 8px;
   border: none;
-  width: 180px;
+  width: 190px;
   cursor: pointer;
   margin-right: 10px;
   flex-shrink: 0;
@@ -1861,7 +1862,7 @@ cursor: pointer;
 
 .subject-panel .title
 {
-  font-size: 22px;
+  font-size: 21px;
   font-weight: bold;
 }
 .subject-panel .teacher
