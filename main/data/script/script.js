@@ -1677,22 +1677,65 @@ function openCurrentObjectMenu()
     document.getElementById("myBottomModal").style.display = "block";
 }
 
+
+
+const threshold = 5;
+var oldPixelSize_setObjectSize = 0;
+
 function setObjectSize(pixelSize)
 {
-    document.getElementById("move-model").style.width = (pixelSize * database.find(u => u.id === objectId).oSizeMultiplier) + "px";
-    document.getElementById("move-model").style.height = (pixelSize * database.find(u => u.id === objectId).oSizeMultiplier) + "px";
+    console.log(pixelSize);
+
+    var difference = Math.abs(pixelSize - oldPixelSize_setObjectSize);
+
+    if (difference > threshold)
+    {
+        document.getElementById("move-model").style.width = (pixelSize * database.find(u => u.id === objectId).oSizeMultiplier) + "px";
+        document.getElementById("move-model").style.height = (pixelSize * database.find(u => u.id === objectId).oSizeMultiplier) + "px";
+
+        console.log("Verändert - " + oldPixelSize_setObjectSize + " zu " + pixelSize);
+
+        oldPixelSize_setObjectSize = pixelSize;
+    }
+    else
+    {
+        console.log("Nicht verändert - " + oldPixelSize_setObjectSize + " zu " + pixelSize);
+    }
 }
+
+
 
 function setHTMLSize(pixelSize)
 {
+    // Nur bei Marker 7
+    
     document.getElementById("move-html").style.width = (pixelSize * 2) + "px";
-    document.getElementById("move-html").style.height = (pixelSize * 2) + "px";
+    document.getElementById("move-html").style.height = (pixelSize * 2) + "px";   
 }
+
+var oldPixelSize_setAllHTMLSize = 0;
 
 function setAllHTMLSize(pixelSize)
 {
-    document.getElementById("all-html").style.width = (pixelSize * database.find(u => u.id === objectId).oSizeMultiplier) + "px";
-    document.getElementById("all-html").style.height = (pixelSize * database.find(u => u.id === objectId).oSizeMultiplier) + "px";
+
+    console.log(pixelSize);
+
+    var difference = Math.abs(pixelSize - oldPixelSize_setAllHTMLSize);
+
+    if (difference > threshold)
+    {
+        document.getElementById("all-html").style.width = (pixelSize * database.find(u => u.id === objectId).oSizeMultiplier) + "px";
+        document.getElementById("all-html").style.height = (pixelSize * database.find(u => u.id === objectId).oSizeMultiplier) + "px";
+
+        console.log("Verändert - " + oldPixelSize_setAllHTMLSize + " zu " + pixelSize);
+
+        oldPixelSize_setAllHTMLSize = pixelSize;
+    }
+    else
+    {
+        console.log("Nicht verändert - " + oldPixelSize_setAllHTMLSize + " zu " + pixelSize);
+    }
+
 
     document.querySelectorAll('.yt-iframe').forEach(function(element)
     {
@@ -1700,6 +1743,10 @@ function setAllHTMLSize(pixelSize)
         // Höhe mit aspect-ratio: 1 / 1 zugewiesen
     });
 }
+
+
+
+
 
 function getContactInformation(parameter)
 {
