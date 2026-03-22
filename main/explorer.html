@@ -985,6 +985,15 @@
                 }, audioDelay);
             }
 
+
+
+
+            // Variablen für div-Platzierung
+            var p1x = 0, p1y = 0, p2x = 0, p2y = 0, p3x = 0, p3y = 0, p4x = 0, p4y = 0;
+            const PixelThreshold = 13;
+
+
+
             function tick()
             {
                 if (!detectorForMarker)
@@ -1016,7 +1025,8 @@
 
                     if (markers.length > 0) {
                         
-                        markers.forEach(marker => {
+                        markers.forEach(marker =>
+                        {
                             
                             const corners = marker.corners;
 
@@ -1028,6 +1038,9 @@
                             const deltaX = x1 - x0;
                             const deltaY = y1 - y0;
                             const sideLength = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+
+
+
 
                             if (getCurrentObjectType() == "img")
                             {
@@ -1052,12 +1065,70 @@
 
                             const centerX = (corners[0].x + corners[1].x + corners[2].x + corners[3].x) / 4;
                             const centerY = (corners[0].y + corners[1].y + corners[2].y + corners[3].y) / 4;
+
+
+
                             
+
+                            function hasMoved(val1, val2)
+                            {
+                                return Math.abs(val1 - val2) > PixelThreshold;
+                            }
+
+
+
+                            var moved = 
+                                hasMoved(p1x, marker.corners[0].x) || hasMoved(p1y, marker.corners[0].y) ||
+                                hasMoved(p2x, marker.corners[1].x) || hasMoved(p2y, marker.corners[1].y) ||
+                                hasMoved(p3x, marker.corners[2].x) || hasMoved(p3y, marker.corners[2].y) ||
+                                hasMoved(p4x, marker.corners[3].x) || hasMoved(p4y, marker.corners[3].y);
+
+                            if (moved)
+                            {
+                                // Bewegung > 3 Pixel
+                                p1x = marker.corners[0].x;
+                                p1y = marker.corners[0].y;
+                                
+                                p2x = marker.corners[1].x;
+                                p2y = marker.corners[1].y;
+                                
+                                p3x = marker.corners[2].x;
+                                p3y = marker.corners[2].y;
+                                
+                                p4x = marker.corners[3].x;
+                                p4y = marker.corners[3].y;
+
+                                console.log("Position aktualisiert (Bewegung erkannt)");
+
+                                if (marker.id >= 1 && marker.id <= 6)
+                                {
+                                    if (getCurrentObjectType() == "img")
+                                    {
+                                        positionAllHTMLOnMarker(markers);
+                                    }
+                                    else
+                                    {
+                                        positionModelOnMarker(markers);
+                                    }
+                                }
+                                else if (marker.id == 7)
+                                {
+                                    positionHTMLOnMarker(markers);
+                                }
+                            } 
+                            else
+                            {
+                                console.log("Position nicht verändert");
+                            }
+
+                            
+
+
+                            /*
                             if (marker.id >= 1 && marker.id <= 6)
                             {
                                 if (getCurrentObjectType() == "img")
                                 {
-                                    
                                     positionAllHTMLOnMarker(markers);
                                 }
                                 else
@@ -1069,6 +1140,7 @@
                             {
                                 positionHTMLOnMarker(markers);
                             }
+                            */
 
                             anyMarkerDetected = true; 
                             

@@ -1684,7 +1684,7 @@ var oldPixelSize_setObjectSize = 0;
 
 function setObjectSize(pixelSize)
 {
-    console.log(pixelSize);
+    // console.log(pixelSize);
 
     var difference = Math.abs(pixelSize - oldPixelSize_setObjectSize);
 
@@ -1693,14 +1693,16 @@ function setObjectSize(pixelSize)
         document.getElementById("move-model").style.width = (pixelSize * database.find(u => u.id === objectId).oSizeMultiplier) + "px";
         document.getElementById("move-model").style.height = (pixelSize * database.find(u => u.id === objectId).oSizeMultiplier) + "px";
 
-        console.log("Verändert - " + oldPixelSize_setObjectSize + " zu " + pixelSize);
+        // console.log("Verändert - " + oldPixelSize_setObjectSize + " zu " + pixelSize);
 
         oldPixelSize_setObjectSize = pixelSize;
     }
+    /*
     else
     {
         console.log("Nicht verändert - " + oldPixelSize_setObjectSize + " zu " + pixelSize);
     }
+    */
 }
 
 
@@ -1718,7 +1720,7 @@ var oldPixelSize_setAllHTMLSize = 0;
 function setAllHTMLSize(pixelSize)
 {
 
-    console.log(pixelSize);
+    //console.log(pixelSize);
 
     var difference = Math.abs(pixelSize - oldPixelSize_setAllHTMLSize);
 
@@ -1727,14 +1729,16 @@ function setAllHTMLSize(pixelSize)
         document.getElementById("all-html").style.width = (pixelSize * database.find(u => u.id === objectId).oSizeMultiplier) + "px";
         document.getElementById("all-html").style.height = (pixelSize * database.find(u => u.id === objectId).oSizeMultiplier) + "px";
 
-        console.log("Verändert - " + oldPixelSize_setAllHTMLSize + " zu " + pixelSize);
+        //console.log("Verändert - " + oldPixelSize_setAllHTMLSize + " zu " + pixelSize);
 
         oldPixelSize_setAllHTMLSize = pixelSize;
     }
+    /*
     else
     {
         console.log("Nicht verändert - " + oldPixelSize_setAllHTMLSize + " zu " + pixelSize);
     }
+    */
 
 
     document.querySelectorAll('.yt-iframe').forEach(function(element)
