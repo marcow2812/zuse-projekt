@@ -32,6 +32,274 @@ var objectId = "bird-1";
 // Objekt-Datenbank
 const database = [
     {
+        id: "mcd-iceberg",
+        oTitle: "Eisberg",
+        oDescription: "",
+        oSubject: "bi",
+        oFsk: 0,
+        oType: "3d",
+
+        oBanner: "./data/3d/img/iceberg.png",
+        oSrc: "./data/3d/object/mcd-iceberg.glb",
+        oCopyright: `"Low Poly Iceberg Scene" (https://skfb.ly/osFWu) by zephyrin is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).`,
+        oSizeMultiplier: 7,
+        oBackground: "none",
+        oBackgroundSrc: "",
+
+        oMainTextColor: "white",
+        oMainBgColor: "rgba(98, 166, 14, 0.5)",
+
+        oAudioId: null,
+
+        oHotspots: ``,
+        oFacts: ``,
+    },
+
+    {
+        id: "mcd-garbage1",
+        oTitle: "Müll im Meer",
+        oDescription: "",
+        oSubject: "bi",
+        oFsk: 0,
+        oType: "3d",
+
+        oBanner: "./data/3d/img/garbage1.png",
+        oSrc: "./data/3d/object/mcd-garbage.glb",
+        oCopyright: `"Garbage" (https://skfb.ly/ozWnY) by s_ebo_l is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).`,
+        oSizeMultiplier: 7,
+        oBackground: "#393531",
+        oBackgroundSrc: "",
+
+        oMainTextColor: "white",
+        oMainBgColor: "rgba(98, 166, 14, 0.5)",
+
+        oAudioId: 3,
+
+        oHotspots: ``,
+        oFacts: ``,
+    },
+
+    {
+        id: "mcd-rubbish",
+        oTitle: "Müllberg",
+        oDescription: "",
+        oSubject: "bi",
+        oFsk: 0,
+        oType: "3d",
+
+        oBanner: "./data/3d/img/rubbish.png",
+        oSrc: "./data/3d/object/mcd-rubbish.glb",
+        oCopyright: `"Urban Trash (Garbage, Rubbish) - Photoscaned" (https://skfb.ly/opDIF) by Cathouse is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).`,
+        oSizeMultiplier: 7,
+        oBackground: "none",
+        oBackgroundSrc: "",
+
+        oMainTextColor: "white",
+        oMainBgColor: "rgba(98, 166, 14, 0.5)",
+
+        oAudioId: 3,
+
+        oHotspots: ``,
+        oFacts: ``,
+    },
+
+    {
+        id: "mcd-atmosphere",
+        oTitle: "Atmosphäre der Erde",
+        oDescription: "",
+        oSubject: "bi",
+        oFsk: 0,
+        oType: "3d",
+
+        oBanner: "./data/3d/img/atmosphere.png",
+        oSrc: "./data/3d/object/mcd-atmosphere.glb",
+        oCopyright: `"Earth with Mountains and Atmosphere" (https://skfb.ly/6RPOu) by CHRIS .capycoil is licensed under Creative Commons Attribution-ShareAlike (http://creativecommons.org/licenses/by-sa/4.0/).`,
+        oSizeMultiplier: 7,
+        oBackground: "black",
+        oBackgroundSrc: "",
+
+        oMainTextColor: "white",
+        oMainBgColor: "rgba(98, 166, 14, 0.5)",
+
+        oAudioId: 3,
+
+        oHotspots: ``,
+        oFacts: ``,
+    },
+
+    {
+        id: "mcd-duerre",
+        oTitle: "Dürre",
+        oDescription: "",
+        oSubject: "bi",
+        oFsk: 0,
+        oType: "3d",
+
+        oBanner: "./data/3d/img/duerre.png",
+        oSrc: "./data/3d/object/mcd-duerre.glb",
+        oCopyright: `"Lake Hefner Cove 10-7-2014" (https://skfb.ly/CvMq) by Matthew Schroyer is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).`,
+        oSizeMultiplier: 9,
+        oBackground: "none",
+        oBackgroundSrc: "",
+
+        oMainTextColor: "white",
+        oMainBgColor: "rgba(98, 166, 14, 0.5)",
+
+        oAudioId: 3,
+
+        oHotspots: ``,
+        oFacts: ``,
+    },
+
+    {
+        id: "mcd-gesunde-koralle",
+        oTitle: "Gesunde Koralle",
+        oDescription: "",
+        oSubject: "bi",
+        oFsk: 0,
+        oType: "3d",
+
+        oBanner: "./data/3d/img/gesunde-koralle.png",
+        oSrc: "./data/3d/object/mcd-gesunde-koralle.glb",
+        oCopyright: `"Rainbow Haven Reef - coral" (https://skfb.ly/pxGVy) by Brian Trepanier is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).`,
+        oSizeMultiplier: 9,
+        oBackground: "none",
+        oBackgroundSrc: "",
+
+        oMainTextColor: "white",
+        oMainBgColor: "rgba(98, 166, 14, 0.5)",
+
+        oAudioId: 3,
+
+        oHotspots: ``,
+        oFacts: ``,
+    },
+
+    {
+        id: "mcd-gestorbene-koralle",
+        oTitle: "Gestorbene Koralle",
+        oDescription: "",
+        oSubject: "bi",
+        oFsk: 0,
+        oType: "3d",
+
+        oBanner: "./data/3d/img/gestorbene-koralle.png",
+        oSrc: "./data/3d/object/mcd-gestorbene-koralle.glb",
+        oCopyright: `"Fossil coral 1" (https://skfb.ly/6VDr8) by Sara Carena is licensed under Creative Commons Attribution-NonCommercial (http://creativecommons.org/licenses/by-nc/4.0/).`,
+        oSizeMultiplier: 7,
+        oBackground: "none",
+        oBackgroundSrc: "",
+
+        oMainTextColor: "white",
+        oMainBgColor: "rgba(98, 166, 14, 0.5)",
+
+        oAudioId: 3,
+
+        oHotspots: ``,
+        oFacts: ``,
+    },
+
+    {
+        id: "mcd-beach-garbage",
+        oTitle: "Müll am Strand",
+        oDescription: "",
+        oSubject: "bi",
+        oFsk: 0,
+        oType: "3d",
+
+        oBanner: "./data/3d/img/beach-garbage.png",
+        oSrc: "./data/3d/object/mcd-beach-garbage.glb",
+        oCopyright: `"Beach full of garbage" (https://skfb.ly/6TSPp) by Kanisto is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).`,
+        oSizeMultiplier: 9,
+        oBackground: "none",
+        oBackgroundSrc: "",
+
+        oMainTextColor: "white",
+        oMainBgColor: "rgba(98, 166, 14, 0.5)",
+
+        oAudioId: 3,
+
+        oHotspots: ``,
+        oFacts: ``,
+    },
+
+    {
+        id: "mcd-glacier-wall",
+        oTitle: "Glätscher-Wand",
+        oDescription: "",
+        oSubject: "bi",
+        oFsk: 0,
+        oType: "3d",
+
+        oBanner: "./data/3d/img/glacier-wall.png",
+        oSrc: "./data/3d/object/mcd-glacier-wall.glb",
+        oCopyright: `"Svalbard Ausfonna Glacier Wall" (https://skfb.ly/6Swvn) by Sircher is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).`,
+        oSizeMultiplier: 9,
+        oBackground: "none",
+        oBackgroundSrc: "",
+
+        oMainTextColor: "white",
+        oMainBgColor: "rgba(98, 166, 14, 0.5)",
+
+        oAudioId: 3,
+
+        oHotspots: ``,
+        oFacts: ``,
+    },
+
+    {
+        id: "mcd-hurricane",
+        oTitle: "Hurrikan",
+        oDescription: "",
+        oSubject: "bi",
+        oFsk: 0,
+        oType: "3d",
+
+        oBanner: "./data/3d/img/hurricane.png",
+        oSrc: "./data/3d/object/mcd-hurricane.glb",
+        oCopyright: `"Hurricane Harvey Landfall" (https://skfb.ly/6UxWw) by The COMET Program is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).`,
+        oSizeMultiplier: 7,
+        oBackground: "none",
+        oBackgroundSrc: "",
+
+        oMainTextColor: "white",
+        oMainBgColor: "rgba(98, 166, 14, 0.5)",
+
+        oAudioId: 3,
+
+        oHotspots: ``,
+        oFacts: ``,
+    },
+
+    {
+        id: "mcd-flooding",
+        oTitle: "Überflutung",
+        oDescription: "",
+        oSubject: "bi",
+        oFsk: 0,
+        oType: "3d",
+
+        oBanner: "./data/3d/img/flooding.png",
+        oSrc: "./data/3d/object/mcd-flooding.glb",
+        oCopyright: `"Angel Mounds flooding 3" (https://skfb.ly/oDzor) by Advanced Visualization Lab - Indiana University is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).`,
+        oSizeMultiplier: 9,
+        oBackground: "none",
+        oBackgroundSrc: "",
+
+        oMainTextColor: "white",
+        oMainBgColor: "rgba(98, 166, 14, 0.5)",
+
+        oAudioId: 3,
+
+        oHotspots: ``,
+        oFacts: ``,
+    },
+
+
+
+    /* ------------------------------------------ */
+
+    {
         id: "klimawandel-hotspots",
         oTitle: "Klimawandel Hotspots",
         oDescription: "Klimazonen sind große Gebiete der Erde, in denen das Klima über sehr lange Zeit relativ gleich bleibt. In Summe kann man die Erde in fünf große Klimazonen einteilen: die polare Zone, die subpolare Zone, die gemäßigte Zone, die subtropische Zone und die tropische Zone.<br><br>Die Auswirkungen des Klimawandels sind an vielen Orten auf der Welt deutlich sichtbar.",
