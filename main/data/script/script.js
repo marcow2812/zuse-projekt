@@ -88,7 +88,7 @@ const database = [
         oType: "3d",
 
         oBanner: "./data/3d/img/rubbish.png",
-        oSrc: "./data/3d/object/mcd-rubbish.glb",
+        oSrc: "https://cbnb.de/3dobjects/mcd-rubbish.glb",
         oCopyright: `"Urban Trash (Garbage, Rubbish) - Photoscaned" (https://skfb.ly/opDIF) by Cathouse is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).`,
         oSizeMultiplier: 7,
         oBackground: "none",
@@ -136,7 +136,7 @@ const database = [
         oType: "3d",
 
         oBanner: "./data/3d/img/duerre.png",
-        oSrc: "./data/3d/object/mcd-duerre.glb",
+        oSrc: "https://cbnb.de/3dobjects/mcd-duerre.glb",
         oCopyright: `"Lake Hefner Cove 10-7-2014" (https://skfb.ly/CvMq) by Matthew Schroyer is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).`,
         oSizeMultiplier: 9,
         oBackground: "none",
@@ -184,7 +184,7 @@ const database = [
         oType: "3d",
 
         oBanner: "./data/3d/img/gestorbene-koralle.png",
-        oSrc: "./data/3d/object/mcd-gestorbene-koralle.glb",
+        oSrc: "https://cbnb.de/3dobjects/mcd-gestorbene-koralle.glb",
         oCopyright: `"Fossil coral 1" (https://skfb.ly/6VDr8) by Sara Carena is licensed under Creative Commons Attribution-NonCommercial (http://creativecommons.org/licenses/by-nc/4.0/).`,
         oSizeMultiplier: 7,
         oBackground: "none",
