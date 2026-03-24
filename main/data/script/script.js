@@ -225,7 +225,7 @@ const database = [
 
     {
         id: "mcd-glacier-wall",
-        oTitle: "Glätscher-Wand",
+        oTitle: "Gletscher-Wand",
         oDescription: "",
         oSubject: "bi",
         oFsk: 0,

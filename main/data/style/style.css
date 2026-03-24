@@ -1869,3 +1869,61 @@ cursor: pointer;
 {
   font-size: 14px;
 }
+
+
+/* --------------------------------- */
+
+
+/* The Modal (background) */
+.frameModal {
+  display: none; /* Wird per JS auf 'flex' statt 'block' gesetzt */
+  position: fixed; 
+  z-index: 1000; /* Sicherstellen, dass es über allem liegt */
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%; 
+  background-color: rgba(0,0,0,0.4); 
+  
+  /* Flexbox-Magie für die Zentrierung */
+  justify-content: center; /* Horizontal zentrieren */
+  align-items: center;     /* Vertikal zentrieren */
+}
+
+/* Modal Content/Box */
+.frameModal-content
+{
+  padding: 0px;
+  background-color: #fefefe;
+  /* max-width: 1800px; */ /* Optional: Damit es auf Riesenbildschirmen nicht zu breit wird */
+  margin: 0; /* Margin auto wird bei Flex-Zentrierung nicht mehr benötigt */
+  border-radius: 10px; /* Sieht meistens schöner aus */
+}
+
+.frameModal-content iframe
+{
+  display: block;
+    width: 100%;
+    height: 85vh;
+    border: none;
+    border-radius: 10px;
+    margin-bottom: 0px;
+}
+
+
+/* Add Zoom Animation */
+.animate
+{
+  -webkit-animation: animatezoom 0.5s;
+  animation: animatezoom 0.5s
+}
+
+@-webkit-keyframes animatezoom {
+  from {-webkit-transform: scale(0)} 
+  to {-webkit-transform: scale(1)}
+}
+  
+@keyframes animatezoom {
+  from {transform: scale(0)} 
+  to {transform: scale(1)}
+}

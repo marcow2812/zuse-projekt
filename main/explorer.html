@@ -83,32 +83,21 @@
 
                         <div id="bio-kurs-l-m" style="display:none;padding:15px;border-radius:8px;border:1px solid #ddd;margin-top:10px">
 
-                            <a style="cursor:pointer" onclick="setObject('klimawandel-hotspots')">Hotspots des Klimawandels</a>
+                            <a style="cursor:pointer" onclick="setIframe('./data/3d/pdf/Zonen_Aufgaben.pdf#page=1')">Aufgabenstellung - Tropische Zone</a>
                             <br><br>
-                            
-                            <a style="cursor:pointer">Gruppe 1 - Aufgabenstellung</a>
-                            <br>
-                            <a style="cursor:pointer">Gruppe 1 - Material</a>
+                            <a style="cursor:pointer" onclick="setIframe('./data/3d/pdf/Zonen_Aufgaben.pdf#page=2')">Aufgabenstellung - Subtropische Zone</a>
                             <br><br>
-
-                            <a style="cursor:pointer">Gruppe 2 - Aufgabenstellung</a>
-                            <br>
-                            <a style="cursor:pointer">Gruppe 2 - Material</a>
+                            <a style="cursor:pointer" onclick="setIframe('./data/3d/pdf/Zonen_Aufgaben.pdf#page=3')">Aufgabenstellung - Gemäßigte Zone</a>
+                            <br><br><br>
+                            <a style="cursor:pointer" onclick="setIframe('./data/3d/pdf/Was_ist_Klima_1.pdf')">Material 1 - Was ist Klima?</a>
                             <br><br>
-
-                            <a style="cursor:pointer">Gruppe 3 - Aufgabenstellung</a>
-                            <br>
-                            <a style="cursor:pointer">Gruppe 3 - Material</a>
+                            <a style="cursor:pointer" onclick="setIframe('./data/3d/pdf/Natuerliche_Ursachen_2.pdf')">Material 2 - Natürliche Ursachen des Klimawandels</a>
                             <br><br>
-
-                            <a style="cursor:pointer">Gruppe 4 - Aufgabenstellung</a>
-                            <br>
-                            <a style="cursor:pointer">Gruppe 4 - Material</a>
+                            <a style="cursor:pointer" onclick="setIframe('./data/3d/pdf/Anthropogene_Ursachen_3.pdf')">Material 3 - Anthropogene Ursachen</a>
                             <br><br>
-
-                            <a style="cursor:pointer">Gruppe 5 - Aufgabenstellung</a>
-                            <br>
-                            <a style="cursor:pointer">Gruppe 5 - Material</a>
+                            <a style="cursor:pointer" onclick="setIframe('./data/3d/pdf/Globale_Klimazonen_im_Wandel_4.pdf')">Material 4 - Globale Klimazonen im Wandel</a>
+                            <br><br>
+                            <a style="cursor:pointer" onclick="setIframe('./data/3d/pdf/Klimawandel_und_Oekosysteme_5.pdf')">Material 5 - Klimawandel und Ökosysteme</a>
 
                         </div>
 
@@ -683,9 +672,12 @@
             <script>
                 var modal = document.getElementById("myBottomModal");
                 var span = document.getElementsByClassName("bottom-close")[0];
+
                 span.onclick = function()
                 {
-                    modal.style.display = "none";
+                    console.log("Geklickt");
+
+                    document.getElementById("myBottomModal").style.display = "none";
                 }
                 window.onclick = function(event)
                 {
@@ -1230,6 +1222,34 @@
                 ];
             }
             /* Ende KI-generierter Bereich, selbst angepasst */
+        </script>
+
+        <div id="id01" class="frameModal">
+            <div id="frameModal-content" class="frameModal-content animate">
+                <iframe id="modalIframe"></iframe>
+            </div>
+        </div>
+
+        <script>
+
+            function setIframe(url)
+            {
+                document.getElementById("modalIframe").style.height = "85vh";
+                document.getElementById("frameModal-content").style.width = "95%";
+                document.getElementById("modalIframe").src = url;
+                document.getElementById("id01").style.display = "flex";
+            }
+
+
+            // Get the modal
+            var modal = document.getElementById('id01');
+
+            // When the user clicks anywhere outside of the modal, close it
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
         </script>
 
     </body>
