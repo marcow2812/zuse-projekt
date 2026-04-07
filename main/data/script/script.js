@@ -49,7 +49,7 @@ const database = [
         oMainTextColor: "white",
         oMainBgColor: "rgba(98, 166, 14, 0.5)",
 
-        oAudioId: null,
+        oAudioId: 0,
 
         oHotspots: ``,
         oFacts: ``,
@@ -90,14 +90,14 @@ const database = [
         oBanner: "./data/3d/img/rubbish.png",
         oSrc: "https://cbnb.de/3dobjects/mcd-rubbish.glb",
         oCopyright: `"Urban Trash (Garbage, Rubbish) - Photoscaned" (https://skfb.ly/opDIF) by Cathouse is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).`,
-        oSizeMultiplier: 7,
+        oSizeMultiplier: 14,
         oBackground: "none",
         oBackgroundSrc: "",
 
         oMainTextColor: "white",
         oMainBgColor: "rgba(98, 166, 14, 0.5)",
 
-        oAudioId: null,
+        oAudioId: 0,
 
         oHotspots: ``,
         oFacts: ``,
@@ -121,7 +121,7 @@ const database = [
         oMainTextColor: "white",
         oMainBgColor: "rgba(98, 166, 14, 0.5)",
 
-        oAudioId: null,
+        oAudioId: 0,
 
         oHotspots: ``,
         oFacts: ``,
@@ -138,14 +138,14 @@ const database = [
         oBanner: "./data/3d/img/duerre.png",
         oSrc: "https://cbnb.de/3dobjects/mcd-duerre.glb",
         oCopyright: `"Lake Hefner Cove 10-7-2014" (https://skfb.ly/CvMq) by Matthew Schroyer is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).`,
-        oSizeMultiplier: 9,
+        oSizeMultiplier: 16,
         oBackground: "none",
         oBackgroundSrc: "",
 
         oMainTextColor: "white",
         oMainBgColor: "rgba(98, 166, 14, 0.5)",
 
-        oAudioId: null,
+        oAudioId: 0,
 
         oHotspots: ``,
         oFacts: ``,
@@ -234,14 +234,14 @@ const database = [
         oBanner: "./data/3d/img/glacier-wall.png",
         oSrc: "./data/3d/object/mcd-glacier-wall.glb",
         oCopyright: `"Svalbard Ausfonna Glacier Wall" (https://skfb.ly/6Swvn) by Sircher is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).`,
-        oSizeMultiplier: 9,
+        oSizeMultiplier: 14,
         oBackground: "none",
         oBackgroundSrc: "",
 
         oMainTextColor: "white",
         oMainBgColor: "rgba(98, 166, 14, 0.5)",
 
-        oAudioId: null,
+        oAudioId: 0,
 
         oHotspots: ``,
         oFacts: ``,
@@ -258,14 +258,14 @@ const database = [
         oBanner: "./data/3d/img/hurricane.png",
         oSrc: "./data/3d/object/mcd-hurricane.glb",
         oCopyright: `"Hurricane Harvey Landfall" (https://skfb.ly/6UxWw) by The COMET Program is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).`,
-        oSizeMultiplier: 7,
+        oSizeMultiplier: 12,
         oBackground: "none",
         oBackgroundSrc: "",
 
         oMainTextColor: "white",
         oMainBgColor: "rgba(98, 166, 14, 0.5)",
 
-        oAudioId: null,
+        oAudioId: 0,
 
         oHotspots: ``,
         oFacts: ``,
@@ -282,14 +282,14 @@ const database = [
         oBanner: "./data/3d/img/flooding.png",
         oSrc: "./data/3d/object/mcd-flooding.glb",
         oCopyright: `"Angel Mounds flooding 3" (https://skfb.ly/oDzor) by Advanced Visualization Lab - Indiana University is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).`,
-        oSizeMultiplier: 9,
+        oSizeMultiplier: 12,
         oBackground: "none",
         oBackgroundSrc: "",
 
         oMainTextColor: "white",
         oMainBgColor: "rgba(98, 166, 14, 0.5)",
 
-        oAudioId: null,
+        oAudioId: 0,
 
         oHotspots: ``,
         oFacts: ``,
@@ -532,9 +532,49 @@ const database = [
         `,
     },
     {
-        id: "merkur-ro",
-        oTitle: "Merkur",
-        oDescription: "(Beschreibung folgt)",
+        id: "7ra-merkur-ro",
+        oTitle: "Merkur (7Ra)",
+        oDescription: `
+        <h1>Der Merkur</h1>
+
+        - der Sonnennächste
+        <br>
+        - kleinster und schnellster Planet
+        <br>
+        - Gesteinplanet
+
+        <br><br>
+
+        - zu etwa 70% aus einem riesigen Eisenkern
+        <br>
+        - teils flüssig
+        <br>
+        - Merkur hat keine Monde
+
+        <br><br>
+
+        - besitzt keine dichte Atmosphäre
+        <br>
+        - Erde passt etwa 18-mal in den Merkur
+        <br>
+        - 149,6 Mio. km. Aufgrund seiner elliptischen Bahn schwankt der Abstand zwischen 46 und 70 Mio. km
+
+        <br><br>
+
+        - Temperaturen auf der Tagseite auf bis zu +430° bis +450°
+        <br>
+        - Auf der Nachtseite fallen sie drastisch auf etwa -170° bis -180°
+        <br>
+        - Leben auf dem Merkur ist nach menschlichen Maßstäben extrem unwahrscheinlich
+
+        <br><br>
+
+        - er benötigt für einen vollständigen Umlauf um die Sonne lediglich 88 Erdtage 
+        <br>
+        - er benötigt ca. 1408 stunden um sich selbst
+        <br>
+        - erhielt seinen Namen aus der römischen Mythologie
+        `,
         oSubject: "ph",
         oFsk: 0,
         oType: "3d",
@@ -560,9 +600,159 @@ const database = [
         `,
     },
     {
-        id: "venus-ro",
-        oTitle: "Venus",
-        oDescription: "(Beschreibung folgt)",
+        id: "7rb-merkur-ro",
+        oTitle: "Merkur (7Rb)",
+        oDescription: `
+        <h1>Der Merkur</h1>
+        
+        -	Kleinster Planet im Sonnensystem
+        <br>
+        -	58 Millionen km von der Sonne entfernt
+        <br>
+        -	Durchmesser 4.480 km
+        <br>
+        -	88 Tage für ein Umlauf um die Sonne
+        <br>
+        -	Schnellster Planet in unserem Sonnensystem
+        <br>
+        -	Tagsüber bis zu 430°C
+        <br>
+        -	Nachtsüber bis zu -180°C
+        <br>
+        -	Er ist Felsiger Gesteinsplanet Kraterübersaten Oberfläche
+        <br>
+        -	Schwerkraft 3,7 m/s²
+        <br>
+        -	Merkur um sich selbst 58 Erdtage
+        <br>
+        -	Gott des Handels des Gewinns Reisende Diebe
+        <br>
+        -	Merkur besitzt keine nennenswerte Atmosphäre
+        
+        <br><br>
+
+        Im Vergleich von der Erde
+        <br>
+        -	Größe von Erde 6.371 km
+        <br>
+        -	Größe von Merkur 2.439,7 km
+        <br>
+        -	Erde Abstand von Sonne 149,6 Millionen km
+        <br>
+        -	Merkur Abstand von Sonne 58 Millionen km
+        <br>
+        -	Erde Umlauf um die Sonne dauert 365 Tage
+        <br>
+        -	Merkur Umlauf um die Sonne dauert 88 Erdtage
+        <br>
+        -	Erde um sich selbst 24 Stunden
+        <br>
+        -	Merkur um sich selbst 58 Erdtage
+        <br>
+        -	Erde durchschnittliche Temp. 15°C
+        <br>
+        -	Merkur durchschnittliche Temp. 430°C,-180°C
+        <br>
+        -	Schwerkraft von Erde 9,807 m/s²
+        <br>
+        -	Schwerkraft von Merkur 3,7 m/s²
+        <br>
+        -	Luftdruck von der Erde 1013,25 hPa
+        <br>
+        -	Merkur hat keine nennenswerte Atmosphäre
+        `,
+        oSubject: "ph",
+        oFsk: 0,
+        oType: "3d",
+
+        oBanner: "./data/3d/img/merkur-ro.png",
+        oSrc: "./data/3d/object/merkur-ro.glb",
+        oCopyright: `"Mercury (planet)" (https://skfb.ly/6yuRD) by SebastianSosnowski is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).`,
+        oSizeMultiplier: 6,
+        oBackground: "none",
+        oBackgroundSrc: "",
+
+        oMainTextColor: "white",
+        oMainBgColor: "rgba(98, 166, 14, 0.5)",
+
+        oAudioId: 3,
+
+        oHotspots: ``,
+        oFacts: `
+        <div class="fact">Typ: Planet</div>
+        <div class="fact">Astronomisches Symbol: ☿</div>
+        <div class="fact">4,5 Mrd. Jahre</div>
+        <div class="fact">⌀ 4880 km</div>
+        `,
+    },
+    {
+        id: "7ra-venus-ro",
+        oTitle: "Venus (7Ra)",
+        oDescription: `
+        <h1>Die Venus</h1>
+
+        1. Die Atmosphäre (Lufthülle)
+        <br>
+        - Die Luft um die Venus besteht fast nur aus Co2
+        <br>
+        - Es gibt Wolken aus Schwefelsäure 
+        <br>
+        - Die Atmosphäre ist sehr dicht und heiß
+
+        <br><br>
+
+        2. Oberfläche
+        <br>
+        - Oberfläche besteht aus Gestein,ähnlich wie auf  Erde
+        <br>
+        - Es gibt Vulkane,Berge und große Erdbeben
+ 
+        <br><br>
+
+        3. Monde
+        <br>
+        - Die Venus hat kein Mond
+
+        <br><br>
+
+        4. Größe im Verhältniss zur Erde
+        <br>
+        - Venus ist bisschen kleiner als Erde
+        <br>
+        - Venus ist etwa 95% so groß wie Erde 
+
+        <br><br>
+
+        5. Entfernung zur Sonne-Bezug zur Erde 
+        <br>
+        - Venus ist 108 Millionen km weit weg von Sonne 
+        <br>
+        - Venus ist ca. 0,72 mal so weit von der Sonne entfernt wie die Erde
+
+        <br><br>
+
+        6. Temperatur 
+        <br>
+        - ca. 460 grad Celsius (Durchschnittstemperatur)
+
+        <br><br>
+
+        7. Leben ?
+        <br>
+        - Nein, man kann auf dem Planeten nicht leben
+
+        <br><br>
+
+        8. Umlauf um Sonne
+        <br>
+        - Die Venus umkreist Sonne in ca. 224.7 Erdtagen
+
+        <br><br>
+
+        9. Umlauf um sich selbst 
+        <br>
+        -
+        `,
         oSubject: "ph",
         oFsk: 0,
         oType: "3d",
@@ -588,9 +778,108 @@ const database = [
         `,
     },
     {
-        id: "erde-ro",
-        oTitle: "Erde",
-        oDescription: "(Beschreibung folgt)",
+        id: "7rb-venus-ro",
+        oTitle: "Venus (7Rb)",
+        oDescription: `
+        <h1>Die Venus</h1>
+        Daten
+
+        <br><br>
+
+        -	Durchschnittstemperatur: 460 Grad
+        <br>
+        -	Abstand zur Sonne: 108 Millionen Kilometer
+        <br>
+        -	Typ: Gesteinsplanet
+        <br>
+        -	Jahresdauer: 224,7Erdtage
+        <br>
+        -	Tagesdauer: 243Erdtage
+        <br>
+        -	Wasserspuren
+        <br>
+        -	Monde: keine
+        <br>
+        -	Atmosphäre: 96,5% Kohlendioxid, 3,5%Stickstoff, Schwerfeldioxid: 0,015%, Bis 0,015% macht Mark                         
+        <br>                           
+        -	Entstehung des Namen: Grichische Göttin der Liebe, Schönheit, Fruchtbarkeit und des Vergnügens (Aphrodite)
+        <br>
+        -	Druck: 92Bar
+        <br>
+        -	Im Sonnensystem der 2.Planet 
+        <br>
+        -	Größe: Der Venus ist kleiner als die Erde.
+        <br>
+        -   Durchmesser: 12.104km
+        <br>
+        -	Der Venus ist 108 Millionen Kilometer von der Sonne entfernt.
+        <br>
+        -	Es gibt keine Beweise auf Leben auf dem Venus.
+        <br>
+        -	Das Licht braucht: ca. 6min
+        <br>
+        -	Kruste: ca.10km dick
+        `,
+        oSubject: "ph",
+        oFsk: 0,
+        oType: "3d",
+
+        oBanner: "./data/3d/img/venus-ro.png",
+        oSrc: "./data/3d/object/venus-ro.glb",
+        oCopyright: `"Venus" (https://skfb.ly/ITvT) by kongle is licensed under Creative Commons Attribution-ShareAlike (http://creativecommons.org/licenses/by-sa/4.0/).`,
+        oSizeMultiplier: 6,
+        oBackground: "none",
+        oBackgroundSrc: "",
+
+        oMainTextColor: "white",
+        oMainBgColor: "rgba(98, 166, 14, 0.5)",
+
+        oAudioId: 3,
+
+        oHotspots: ``,
+        oFacts: `
+        <div class="fact">Typ: Planet</div>
+        <div class="fact">Astronomisches Symbol: ♀</div>
+        <div class="fact">4,5 Mrd. Jahre</div>
+        <div class="fact">⌀ 12104 km</div>
+        `,
+    },
+    {
+        id: "7ra-erde-ro",
+        oTitle: "Erde (7Ra)",
+        oDescription: `
+        <h1>Die Erde</h1>
+
+        Basisdaten:
+
+        <br><br>
+
+        -Was ist es für ein Planet? Gesteins und Wasser Planet
+        <br>
+        -Zusammensetzung: 3 Große Schichten
+        <br>
+        -Monde: Einen permanenten Mond 
+        <br>
+        - Atmosphäre:78% Stickstoff/24% Sauerstoff
+
+        <br><br>
+
+        Größe im Verhältnis zur Erde:Sonne ist 109 x größer als die Erde(ca.1,4 Mio Km
+        <br>
+        Entfernung zur Sonne im Bezug zur:149,6 Mio. km 
+        <br>
+        Temperatur:15°C (durchschnittlich)kann variieren(288°C Kelvin/14,58°C 
+        <br>
+        Leben?:Ja,Pflanzen,Tiere,Bakterien und Menschen
+        <br>
+        Umlauf um Sonne:Erde umkreist die Sonne in einer leicht elliptischen Bahn in 365,25 Tagen /Entfernung von ca.150 Mio Km/Geschwindigkeit 30kms
+        <br>
+        Umlauf um sich selbst:Dreht sich in ca.24h(genau 23h,56min und 4s)einmal um ihre eigene Achse.Genannt Erdrotation/verursacht Tag und Nacht
+        <br>
+        Neigung:23,5°
+        <br>
+        Geschwindigkeit am Äquator ca. 1670 km/h
+        `,
         oSubject: "ph",
         oFsk: 0,
         oType: "3d",
@@ -616,9 +905,203 @@ const database = [
         `,
     },
     {
-        id: "mars-ro",
-        oTitle: "Mars",
-        oDescription: `(Beschreibung folgt)`,
+        id: "7rb-erde-ro",
+        oTitle: "Erde (7Rb)",
+        oDescription: `
+        <h1>Die Erde</h1>
+
+        Herkunft des Name Erde (Blauer Planet): 
+        <br>
+        - Mythologische Begriff ist “Mutter“ und “Boden“
+
+        <br><br>
+
+        Zusammensetzung:
+        <br>
+        3 Schichten
+        <br> 
+        - Erdkruste (Silizium, Aluminium)
+        <br>
+        - Erdmantel (Magnesium, Eisen)
+        <br>
+        - Erdkern (Eisen, Nickel)
+
+        <br><br>
+
+        Atmosphäre:
+        <br>
+        - Gasförmige Hülle (Luft)
+        <br>
+        - Pflanzen und Lebewesen sind dort ermöglicht zu leben
+
+        <br><br>
+
+        Monde: 
+        <br>
+        - 1 Mond
+
+        <br><br>
+
+        Druck:
+        <br>
+        - Luftdruck (1013,25 Milibar)
+
+        <br><br>
+
+        Größe:
+        <br>
+        - 12742 km Durchmesser 
+        <br>
+        - 40000 km um die Welt
+
+        <br><br>
+
+        Entfernung zur Sonne:
+        <br>
+        - Liegt bei 147.105.052km
+        <br>
+        - 3. Planet im Sonnensystem
+
+        <br><br>
+
+        Rotation:
+        <br>
+        - Dreht sich um sich selbst (circa 24 Stunden)
+        <br>
+        - Um die Sonne (365d u.6 h)
+        <br>
+        - Mond um die Erde (29,5d)
+
+        <br><br>
+
+        Alter:
+        <br>
+        - 4,6 Milliarden Jahre
+
+        <br><br>
+
+        Nachbar-Planeten:
+        <br>
+        - Venus 
+        <br>
+        - Mars 
+        `,
+        oSubject: "ph",
+        oFsk: 0,
+        oType: "3d",
+
+        oBanner: "./data/3d/img/erde-ro.png",
+        oSrc: "./data/3d/object/erde-ro.glb",
+        oCopyright: `"Earth" (https://skfb.ly/6U8BH) by PatelDev is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).`,
+        oSizeMultiplier: 6,
+        oBackground: "none",
+        oBackgroundSrc: "",
+
+        oMainTextColor: "white",
+        oMainBgColor: "rgba(98, 166, 14, 0.5)",
+
+        oAudioId: 3,
+
+        oHotspots: ``,
+        oFacts: `
+        <div class="fact">Typ: Planet</div>
+        <div class="fact">Astronomisches Symbol: 🜨</div>
+        <div class="fact">4,54 Mrd. Jahre</div>
+        <div class="fact">⌀ 12700 km</div>
+        `,
+    },
+    {
+        id: "7ra-mars-ro",
+        oTitle: "Mars (7Ra)",
+        oDescription: `
+        <h1>Der Mars</h1>
+
+        Was für ein Planet ist der Mars?
+        <br>
+        - Einer der vier erdähnlichen Gesteinsplaneten.
+
+        <br><br>
+
+        Zusammensetzung des Mars:
+        <br>
+        - Atmosphäre
+        <br>
+        - Oberfläche/Kruste 
+        <br>
+        - und das Innere
+
+        <br><br>
+
+        Monde des Mars
+        <br>
+        - zwei kleine Monde namens 
+        <br>
+        - Phobos (Frucht) und 
+        <br>
+        - Deimos (panik/schrecken)
+
+        <br><br>
+
+        Atmosphäre
+        <br>
+        - Extrem dünn 
+        <br>
+        - besteht zu ca. 95 Prozent aus kohlenstoffdioxid 
+        <br>
+        - bietet keine Schutz vor Sonnenstrahlung 
+
+        <br><br>
+
+        Größe im Verhältnis zur Erde
+        <br>
+        - Er ist deutlich kleiner 
+        <br>
+        - etwa nur die Hälfte groß
+
+        <br><br>
+
+        Entfernung zur Sonne/Bezug zur Erde
+        <br>
+        - Zur Sonne: 228 Millionen Kilometer 
+        <br>
+        - Zur Erde: 54-56 Kilometer 
+
+        <br><br>
+
+        Temperatur
+        <br>
+        - Durchschnittlich -63 grad 
+        <br>
+        - Tagsüber bis zu 20 grad 
+        <br>
+        - Nachts -80 bis -100 grad 
+
+        <br><br>
+
+        Leben?
+        <br>
+        - Es gibt bisher noch keine Beweise für leben
+
+        <br><br>
+
+        Umlauf um die Sonne
+        <br>
+        - Dauer: 687 Erd-Tage
+
+        <br><br>
+
+        Umlauf um sich sich selbst 
+        <br>
+        - Dauer 24 Stunden 37 Minuten und 22 Sekunden 
+
+        <br><br>
+
+        Aus welcher Mythologie kommt der Name Mars/ welche Bedeutung hat er?
+        <br>
+        - Mythologie: römische 
+        <br>
+        - Bedeutung: Er heißt so wegen dem römischen Kriegsgott und da die Farbe an Blut erinnert 
+        `,
         oSubject: "ph",
         oFsk: 0,
         oType: "3d",
@@ -644,9 +1127,145 @@ const database = [
         `,
     },
     {
-        id: "jupiter-ro",
-        oTitle: "Jupiter",
-        oDescription: "(Beschreibung folgt)",
+        id: "7rb-mars-ro",
+        oTitle: "Mars (7Rb)",
+        oDescription: `
+        <h1>Roter Planet der Mars</h1>
+
+        - Umlauf = 687 Tage 
+        <br>
+        - Durchmesser = halb so groß wie die Erde 
+        <br>
+        - Oberfläche = 144.400.00 km2
+        <br>
+        - Masse = 6,39∙1023kg à 0,1mal die Erde 
+        <br>
+        - Gravitation = 3,73m/s2 
+        <br>
+        - Farbe = rot durch Eisenoxid (Rost)
+        <br>
+        - Oberfläche = staubige Wüstenwelt 
+        <br>
+        - Monde = Phobos und Deimos 
+        <br>
+        - Atmosphäre =0,6% des irdischen Luftdrucks sehr dünn und aus 96% aus Kohlendioxid 
+        <br>
+        - Luftdruck = 600 bis 700 Pascal 
+        <br>
+        - Temperatur = -63C auch +20 C am Äquator
+        <br>
+        - Götter = Ares/ Gott des Krieges, der Fruchtbarkeit und der Vegetation 
+        `,
+        oSubject: "ph",
+        oFsk: 0,
+        oType: "3d",
+
+        oBanner: "./data/3d/img/mars-ro.png",
+        oSrc: "./data/3d/object/mars-ro.glb",
+        oCopyright: "'Mars' (https://skfb.ly/oyCyK) by JanesBT is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).",
+        oSizeMultiplier: 6,
+        oBackground: "none",
+        oBackgroundSrc: "",
+
+        oMainTextColor: "white",
+        oMainBgColor: "rgba(98, 166, 14, 0.5)",
+
+        oAudioId: 4,
+
+        oHotspots: ``,
+        oFacts: `
+        <div class="fact">Typ: Planet</div>
+        <div class="fact">Astronomisches Symbol: ♂</div>
+        <div class="fact">4,5 Mrd. Jahre</div>
+        <div class="fact">⌀ 6794 km</div>
+        `,
+    },
+    {
+        id: "7ra-jupiter-ro",
+        oTitle: "Jupiter (7Ra)",
+        oDescription: `
+        <h1>Jupiter</h1>
+
+        - Jupiter ist ein Gasriese
+        <br>
+        - Größte Planet 
+        <br>
+        - fünfte Planet von der Sonne 
+
+        <br><br>
+
+        - überwiegend Wasserstoff (ca. 90 %) und Helium (ca.10%) mit Spuren von Methan, Ammoniak, Wasser 
+        <br>
+        - fester Kern, besteht aus Metall, Gestein und verfestigtem Eis, etwa so groß wie Erde 
+
+        <br><br>
+
+        - Jupiter hat derzeit 97 bekannte natürliche Monde, die vier größten und bekanntesten Monde sind die Galileischen Monde: lo, Europa, Ganymed und Kallisto 
+
+        <br><br>
+
+        - keine feste Oberfläche 
+        <br>
+        - viele Stürme, größter „Großer Roter Fleck“
+        <br>
+        - dichte Atmosphäre mit bunten Gürteln und Punkten 
+        <br>
+        - schwarze Streifen, Bewegung der verschiedenen Gaswolken 
+        <br>
+        - starke Schwerkraft, sehr starkes Magnetfeld, zieht Gesteinsbrocken an
+
+        <br><br>
+
+        - 11 mal größer als die Erde, durchmesser 143000 km 
+
+        <br><br>
+
+        - Entfernung zur Sonne 780 Millionen km 
+        <br>
+        - bezug zur Erde, Abstand zwischen Jupiter und Erde verändert sich , beide umkreisen Sonne 
+        <br>
+        - Nächster Stand ca. 588 Millionen km 
+        <br>
+        - Größter Entfernung ca. 968 Millionen km 
+
+        <br><br>
+
+        - Oberflächentemperatur ca. -145°C 
+        <br>
+        - mittlere Schicht ca. -100°C bis -50°C 
+        <br>
+        - tiefere Schicht je näher zum Kern, sehr heiß, mehrere tausend Grad 
+
+        <br><br>
+
+        - wahrscheinlich kein Leben möglich 
+        <br>
+        - kein fester Boden 
+        <br>
+        - extreme Temperaturen
+        <br>
+        - starke Stürme 
+
+        <br><br>
+
+        - 11 Jahre, 315 Tage 
+
+        <br><br>
+
+        - 9 Stunden 55 Minuten 
+        <br>
+        - 45000 km/h 
+
+        <br><br>
+
+        - Namen von Römern 
+        <br>
+        - Wegen Größe und Helligkeit 
+        <br>
+        - Jupiter entspricht dem griechischen Gott Zeus 
+        <br>
+        - bedeutet Vater des Lichtes 
+        `,
         oSubject: "ph",
         oFsk: 0,
         oType: "3d",
@@ -672,9 +1291,57 @@ const database = [
         `,
     },
     {
-        id: "saturn-ro",
-        oTitle: "Saturn",
-        oDescription: "(Beschreibung folgt)",
+        id: "7ra-saturn-ro",
+        oTitle: "Saturn (7Ra)",
+        oDescription: `
+        <h1>Der Saturn</h1>
+
+        Zusammensetzung
+        <br>
+        Der Saturn besteht aus Wasserstoff 96%
+        <br>
+        Und aus Helium 3%
+
+        <br><br>
+
+        Monde
+        <br>
+        Der Saturn hat 274 saturnmonde 
+
+        <br><br>
+
+        Atmosphäre
+        <br>
+        Die Atmosphäre des Saturn ist eine extrem dicke, stürmische Gashülle, die zu etwa aus Wasserstoff und aus Helium besteht
+
+        <br><br>
+
+        Größe im Verhältnis zur Erde
+        <br>
+        mit einem etwa 9,5-mal größeren Radius und der 95-fachen Masse der Erde
+
+        <br><br>
+
+        Entfernung zur Sonne
+        <br>
+        Mittlere Entfernung: Der Saturn ist durchschnittlich etwa 1,433 Milliarden Kilometer von der Sonne entfernt und zur erde im Durchschnitt etwa 1,28 bis 1,43 Milliarden km
+
+        <br><br>
+
+        Temperatur 
+        <br>
+        -139 bis -180 grad
+
+        <br><br>
+
+        Leben
+        <br>
+        Ist sehr unwahrscheinlich wegen der Temperatur 
+
+        <br><br>
+
+        Umlauf um die Sonne
+        `,
         oSubject: "ph",
         oFsk: 0,
         oType: "3d",
@@ -700,9 +1367,135 @@ const database = [
         `,
     },
     {
-        id: "uranus-ro",
-        oTitle: "Uranus",
-        oDescription: "(Beschreibung folgt)",
+        id: "7rb-saturn-ro",
+        oTitle: "Saturn (7Rb)",
+        oDescription: `
+        <h1>SATURN</h1>
+
+        - Ca. 274 Monde
+        <br>
+        - Durchmesser=120.500 km = 9, 5mal größer als die Erde
+        <br>
+        - Entfernung zur Sonne etwa 1,43 Milliarden
+        <br>
+        - Umlauf um sonne ca. 29,5 Erdjahre
+        <br>
+        - 10h um die eigene Achse
+        <br>
+        - 0,1 bar Druck
+        <br>
+        - Anziehungskraft = 10,44m/s2 
+        <br>
+        - Temperatur Kern = 11.000 °C bis 11.700°C
+        <br>
+        - Temperatur außen = -139 °C bis -180 °C kalt
+        <br>
+        - Zusammensetzung = Wasserstoff + Helium
+        `,
+        oSubject: "ph",
+        oFsk: 0,
+        oType: "3d",
+
+        oBanner: "./data/3d/img/saturn-ro.png",
+        oSrc: "./data/3d/object/saturn-ro.glb",
+        oCopyright: `"Saturn" (https://skfb.ly/onNus) by PatelDev is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).`,
+        oSizeMultiplier: 6,
+        oBackground: "none",
+        oBackgroundSrc: "",
+
+        oMainTextColor: "white",
+        oMainBgColor: "rgba(98, 166, 14, 0.5)",
+
+        oAudioId: 3,
+
+        oHotspots: ``,
+        oFacts: `
+        <div class="fact">Typ: Planet</div>
+        <div class="fact">Astronomisches Symbol: ♄</div>
+        <div class="fact">4,5 Mrd. Jahre</div>
+        <div class="fact">⌀ 120536 km</div>
+        `,
+    },
+    {
+        id: "7ra-uranus-ro",
+        oTitle: "Uranus (7Ra)",
+        oDescription: `
+        <h1>URANUS</h1>
+
+        Basisdaten: 
+
+        <br><br>
+
+        Was für ein Planet ist es:
+        <br>
+        Gasplanet
+
+        <br><br>
+
+        Zusammensetzung:
+        <br>
+        Eis, Gesteinkern, Mantel aus Wasser
+
+        <br><br>
+
+        Monde:
+        <br>
+        27 (Titania, Oberon, Arid, Umbriel)
+
+        <br><br>
+
+        Atmosphäre:
+        <br>
+        besteht aus Wasserstoff, Helium und Methan
+        <br>
+        ist der kälteste aller Planeten, bis zu -224°C
+
+        <br><br>
+
+        Größe im Verhältnis zur Erde:
+        <br>
+        viermal so groß im Durchmesser
+        <br>
+        64-mal so groß im Volumen
+
+        <br><br>
+
+        Entfernung zu Sonne Bezug zur Erde:
+        <br>
+        2,9 Milliarden Kilometer
+
+        <br><br>
+
+        Temperatur:
+        <br>
+        bis zu -224°C, heißer Kern 4982°C
+
+        <br><br>
+
+        Leben:
+        <br>
+        nicht möglich, weil Gasriese -> keine feste Oberfläche
+
+        <br><br>
+
+        Umlauf um Sonne:
+        <br>
+        84,02 Jahre
+
+        <br><br>
+
+        Umlauf um sich selbst:
+        <br>
+        16 Stunden 50 Minuten
+
+        <br><br>
+
+        Herkunft des Namens – Mythologie, Bedeutung: 
+        <br>
+        stammt aus altgriechischem und bedeutet Himmel
+        <br>
+        griechische Mythologie: Uranus = Gott des Himmels
+        `,
         oSubject: "ph",
         oFsk: 0,
         oType: "3d",
@@ -728,9 +1521,125 @@ const database = [
         `,
     },
     {
-        id: "neptun-ro",
-        oTitle: "Neptun",
-        oDescription: "(Beschreibung folgt)",
+        id: "7rb-uranus-ro",
+        oTitle: "Uranus (7Rb)",
+        oDescription: `
+        <h1>URANUS</h1>
+
+        - Uranus: personifiziert den Himmel, ist ein Ur-Gott
+        <br>
+        - Gasplanet
+        <br>
+        - 83% Wasserstoff, 15% Helium, 2% Methan
+        <br>
+        - 27 Monde
+        <br>
+        - Anziehungskraft: 8,69m/s²
+        <br>
+        - Kalte / dichte Gashülle
+        <br>
+        - In obere Schicht ca. 1 Bar
+        <br>
+        - 46-mal Größe-Erde
+        <br>
+        - 42-mal Erde zu Sonne
+        <br>
+        - Temperatur -197°C
+        <br>
+        - 84 Jahre um Sonne
+        <br>
+        - Drehung um sich selbst: 17h. 14min
+        <br>
+        - Achsenneigung: 97,77°
+        `,
+        oSubject: "ph",
+        oFsk: 0,
+        oType: "3d",
+
+        oBanner: "./data/3d/img/uranus-ro.png",
+        oSrc: "./data/3d/object/uranus-ro.glb",
+        oCopyright: `"Uranus" (https://skfb.ly/6TwIN) by Akshat is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).`,
+        oSizeMultiplier: 6,
+        oBackground: "none",
+        oBackgroundSrc: "",
+
+        oMainTextColor: "white",
+        oMainBgColor: "rgba(98, 166, 14, 0.5)",
+
+        oAudioId: 3,
+
+        oHotspots: ``,
+        oFacts: `
+        <div class="fact">Typ: Planet</div>
+        <div class="fact">Astronomisches Symbol: ⛢ ♅</div>
+        <div class="fact">4,5 Mrd. Jahre</div>
+        <div class="fact">⌀ 51118 km</div>
+        `,
+    },
+    {
+        id: "7ra-neptun-ro",
+        oTitle: "Neptun (7Ra)",
+        oDescription: `
+        <h1>Der Planet Neptun</h1>
+
+        1. Was ist Neptun für ein Planet?
+        <br>
+        Gasplanet
+
+        <br><br>
+
+        2. Zusammensetzung?
+        <br>
+        Dichten, heißen, flüssigen Gemisch aus Wasser, Amoniak und Methan
+
+        <br><br>
+
+        3. Hat der Neptun Monde?
+        <br>
+        Ja (stand 2024) sind 16 Monde bekannt 
+
+        <br><br>
+
+        4. Wie ist die Atmosphare?
+        <br>
+        Extrem kalt  80% wassersoff , 19% Helium und 1% Methan 
+
+        <br><br>
+
+        5. Wie oft passt die Erde in Neptun?
+        <br>
+        ca 57 mal
+
+        <br><br>
+
+        6. Wie weit ist der neputn von der sonne entfernt?
+        <br>
+        Er ist 30 mal weiter weg 
+
+        <br><br>
+
+        7. Temperatur?
+        <br>
+        ca-218°
+
+        <br><br>
+
+        8. Gibt es Leben auf den Neptun?
+        <br>
+        Nach aktuellem Wasserstand ist das Leben nicht möglich
+
+        <br><br>
+
+        9. Umlauf um Sonne?
+        <br>
+        Durchschnittlich 4,5 milliarden kilometer
+
+        <br><br>
+
+        10. Umlauf um sich selbst?
+        <br>
+        15h , 57min , 59sek
+        `,
         oSubject: "ph",
         oFsk: 0,
         oType: "3d",
@@ -755,6 +1664,82 @@ const database = [
         <div class="fact">⌀ 49528 km</div>
         `,
     },
+    {
+        id: "7rb-neptun-ro",
+        oTitle: "Neptun (7Rb)",
+        oDescription: `
+        <h1>Neptun</h1>
+
+        Eisriese = kältester Planet
+
+        <br><br>
+
+        - 8 & äußerster Planet des Sonnensystems
+        <br>
+        - Alter: 4,5 Milliarden Jahre
+        <br>
+        - Monde: 14
+        <br>
+        - Durchmesser: etwa 49.500, erde ist vier Mal so groß
+        <br>
+        - Umfang: 155.600km, Erde ist 3,9-mal größer
+        <br>
+        - Farbe Blau: Atmosphäre reich an Methan à absorbiert rotes Licht, reflektiert blaues Licht
+        <br>
+        - Hat schnellste Winde im Sonnensystem, erreicht etwa 2400km/h
+        <br>
+        - Umlaufszeit: ca.164 Erdjahre
+        <br>
+        - Kältester Planet mit ca. -200 grad                  
+        <br>
+        - Von Sonne entfernt 4.515               
+        <br>
+        - Hat 6 Ringe
+
+        <br><br>
+
+        Aufbau
+        <br>
+        <img src="https://www.sivakids.de/wp-content/uploads/2020/11/neptun-steckbrief-aufbau.jpg" style="width:100%">
+
+        <br><br>
+
+        - Kern: Gestein und Eis
+        <br>
+        - Mantel: Wasser, Methaneis und Ammoniak
+        <br>
+        - Darum eine Atmosphäre die aus Wasserstoff, Helium und Methan
+        <br>
+        - Römischer Meeresgott
+        `,
+        oSubject: "ph",
+        oFsk: 0,
+        oType: "3d",
+
+        oBanner: "./data/3d/img/neptun-ro.png",
+        oSrc: "./data/3d/object/neptun-ro.glb",
+        oCopyright: `"Neptune" (https://skfb.ly/IUFS) by kongle is licensed under Creative Commons Attribution-ShareAlike (http://creativecommons.org/licenses/by-sa/4.0/).`,
+        oSizeMultiplier: 6,
+        oBackground: "none",
+        oBackgroundSrc: "",
+
+        oMainTextColor: "white",
+        oMainBgColor: "rgba(98, 166, 14, 0.5)",
+
+        oAudioId: 3,
+
+        oHotspots: ``,
+        oFacts: `
+        <div class="fact">Typ: Planet</div>
+        <div class="fact">Astronomisches Symbol: ♆</div>
+        <div class="fact">4,5 Mrd. Jahre</div>
+        <div class="fact">⌀ 49528 km</div>
+        `,
+    },
+
+
+
+
     {
         id: "pluto-ro",
         oTitle: "Pluto",
@@ -1164,6 +2149,12 @@ const database = [
 
 
 const audioDatabase = [
+    {
+        id: 0,
+        aSrc: "./data/music/nothing.mp3",
+        aStartAt: 0,
+        aCopyright: "Sound Effect by <a href='https://pixabay.com/users/freesound_community-46691455/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=67407'>freesound_community</a> from <a href='https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=67407'>Pixabay</a>",
+    },
     {
         id: 1,
         aSrc: "./data/music/night-before-dawn-129272.mp3",

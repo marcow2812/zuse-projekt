@@ -1636,6 +1636,12 @@ border: 0.5px solid #d4d4d4;
   border-radius: 8px;
   background-color: #fcfcfc; /* fafafa */
 }
+#bottom-modal-description h1
+{
+  font-size: 18px;
+  color: #757575;
+  margin-bottom: 14px;
+}
 
 .cross-reference 
 {
